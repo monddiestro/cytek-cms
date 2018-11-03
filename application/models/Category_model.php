@@ -9,11 +9,19 @@ class Category_model extends CI_Model
       return $query->result();
     }
     function pull_subcategories() {
+      $this->db->join('category_tbl','category_tbl.cat_id = subcategory_tbl.cat_id', 'inner');
+      $this->db->order_by('category_tbl.cat_id','ASC');
+      $this->db->order_by('subcat_desc','ASC');
       $query = $this->db->get('subcategory_tbl');
       return $query->result();
     }
     function push_subcategory($data) {
       $this->db->insert('subcategory_tbl',$data);
+    }
+    function pull_category_subcategories($cat_id) {
+      $this->db->where('cat_id',$cat_id);
+      $query = $this->db->get('subcategory_tbl');
+      return $query->result();
     }
     function drop_category($cat_id) {
       $this->db->where('cat_id',$cat_id);

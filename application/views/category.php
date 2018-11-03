@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="pull-right">
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#new-category"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Category</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-category"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Category</button>
             </div>
         </div>
     </div>

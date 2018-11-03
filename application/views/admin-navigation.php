@@ -6,18 +6,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Cytek</a>
+      <a class="navbar-brand" href="#">Cytek Web Admin</a>
     </div>
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
-          </ul>
-        </li>
+        <li class="<?php echo ($active == "category") ? 'active' : '' ?>"><a href="<?php echo base_url('admin/category') ?>">Category</a></li>
+        <li class="<?php echo ($active == "products") ? 'active' : '' ?>"><a href="<?php echo base_url('admin/products') ?>">Products</a></li>
+        <li><a href="#">Users</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logouts</a></li>
