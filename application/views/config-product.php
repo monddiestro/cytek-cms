@@ -25,7 +25,38 @@
     </div>
   </div>
   <div class="row">
-    
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            Banners
+        </div>
+        <div class="panel panel-body">
+          <?php if (!empty($banners)): ?>
+            <?php foreach ($banners as $b): ?>
+              <div class="col-sm-3">
+                <div style="border:1px solid #ddd;">
+                  <div style="padding:10px">
+                    <img style="width:100%;" src="<?php echo base_url('utilities/images/banners/'.$b->image_path) ?>" alt="">
+                  </div>
+                  <div style="padding:10px;">
+                    <a href="<?php echo base_url('admin/drop_banner?id='.$b->banner_id) ?>"  class="btn btn-danger btn-block">DELETE</a>
+                  </div>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="pull-right">
+                <button type="button" data-toggle="modal" data-target="#new-banner" class="btn btn-primary">Add Banner</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="row">
     <!-- details -->
@@ -211,6 +242,34 @@
       </div>
       <?php echo form_close(); ?>
     </div>
+  </div>
+</div>
+<!-- new banner -->
+<div id="new-banner" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <?php echo form_open_multipart(base_url('admin/add_banner')); ?>
+    <input type="hidden" name="prod_id" value="<?php echo $product["prod_id"] ?>">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Product Banner</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="">Select Image</label>
+          <br/>
+          <label class="btn btn-default" id="btn_browse">
+              <input type="file" name="image" id="banner_img" accept="image/*" style="display:none;">
+              Browse ..
+          </label>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted filename">No File Selected</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" name="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <?php echo form_close(); ?>
   </div>
 </div>
 <!-- new feature  -->

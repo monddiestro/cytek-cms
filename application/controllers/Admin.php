@@ -266,6 +266,7 @@ class Admin extends CI_Controller
       $body["subcategories"] = $subcategories;
       $body["features"] = $this->product_model->pull_features($prod_id);
       $body["specification"] = $specification;
+      $body["banners"] = $this->product_model->pull_banners($prod_id);
       $this->load->view('config-product',$body);
       $this->load->view('pre-footer');
       $this->load->view('config-product-script');
@@ -395,6 +396,41 @@ class Admin extends CI_Controller
         $subcategories_str .= '</option>';
       }
       echo $subcategories_str;
+    }
+    function add_banner() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $prod_id = $this->input->post('prod_id');
+      $banner = "";
+      $config["upload_path"] = './utilities/images/banners';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if($this->upload->do_upload('image')) {
+        $banner = $this->upload->data('raw_name').$this->upload->data('file_ext');
+      }
+      $data = array(
+        'prod_id' => $prod_id,
+        'image_path' => $banner
+      );
+      $this->product_model->push_banner($data);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> New banner image added to product."
+      );
+      redirect($referer);
+    }
+
+    function drop_banner() {
+      $referer = $this->input->server('HTTP_REFERRER');
+      $banner_id = $this->input->get('id');
+      $image_name = $this->product_model->pull_banner($banner_id);
+      $dir = "utilities/images/banners/".$image_name;
+      unlink($dir);
+      $this->product_model->drop_banner($banner_id);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> " . $image_name . " remove from product banner"
+      );
+      redirect($referer);
     }
 
 }

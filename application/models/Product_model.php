@@ -63,5 +63,24 @@ class Product_model extends CI_Model
   function push_update_specs($prod_id,$specs) {
     $this->db->query("update product_specs_tbl set specs = '".$specs."' where prod_id=".$prod_id);
   }
+  function pull_banners($prod_id) {
+    $this->db->where('prod_id',$prod_id);
+    $query = $this->db->get('product_banner_tbl');
+    return $query->result();
+  }
+  function push_banner($data) {
+    $this->db->insert('product_banner_tbl',$data);
+  }
+  function pull_banner($banner_id) {
+    $this->db->where('banner_id',$banner_id);
+    $this->db->select('image_path');
+    $query = $this->db->get('product_banner_tbl');
+    $row = $query->row();
+    return $row->image_path;
+  }
+  function drop_banner($banner_id) {
+    $this->db->where('banner_id',$banner_id);
+    $this->db->delete('product_banner_tbl');
+  }
 
 }

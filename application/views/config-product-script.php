@@ -1,18 +1,19 @@
 <script type="text/javascript">
   $('#new-feature #image').on('change',function() {
     var input = $(this);
-    numFiles = input.get(0).files ? input.get(0).files.length : 1;
-    label = input.val().replace(/\\/g,'/').replace(/.*\//,'');
-    input.trigger('fileselect',[numFiles,label]);
-    $(this).closest('.form-group').find('.filename').text(label);
+    getFileName(input);
   });
-  $('#meta_img').on('change',function() {
+  $('#new-banner #banner_img').on('change',function() {
     var input = $(this);
+    getFileName(input);
+  });
+
+  function getFileName(input) {
     numFiles = input.get(0).files ? input.get(0).files.length : 1;
     label = input.val().replace(/\\/g,'/').replace(/.*\//,'');
     input.trigger('fileselect',[numFiles,label]);
-    $(this).closest('.form-group').find('.filename').text(label);
-  });
+    input.closest('.form-group').find('.filename').text(label);
+  }
 
   function readURL(input) {
     if (input.files && input.files[0]) {
@@ -25,6 +26,8 @@
   }
   $('#meta_img').on('change',function() {
       readURL(this);
+      var input = $(this);
+      getFileName(input);
   });
   $('#cat_id').on('change',function(){
     var cat_id = $(this).val();
