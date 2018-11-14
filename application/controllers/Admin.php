@@ -38,13 +38,30 @@ class Admin extends CI_Controller
         $body_data["subcategories"] = $this->category_model->pull_subcategories();
         $this->load->view('category',$body_data);
         $this->load->view('pre-footer');
+        $this->load->view('category-script');
         $this->load->view('footer');
     }
     function new_category() {
         $referer = $this->input->server('HTTP_REFERER');
         $category_name = $this->input->post('category_name');
+        $meta_title = $this->input->post('meta_title');
+        $meta_keywords = $this->input->post('meta_keywords');
+        $meta_desc = $this->input->post('meta_desc');
+        $meta_img = "";
+
+        $config["upload_path"] = './utilities/images/meta';
+        $config["allowed_types"] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
+        if($this->upload->do_upload('meta_img')) {
+          $meta_img = $this->upload->data('raw_name').$this->upload->data('file_ext');
+        }
+
         $data = array(
-            'cat_desc' => $category_name
+            'cat_desc' => $category_name,
+            'meta_title' => $meta_title,
+            'meta_desc' => $meta_desc,
+            'meta_keywords' => $meta_keywords,
+            'meta_img' => $meta_img
         );
         $this->category_model->push_category($data);
         // result alert

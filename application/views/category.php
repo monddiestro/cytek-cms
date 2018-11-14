@@ -38,7 +38,7 @@
                       <tr>
                         <td><?php echo $cat->cat_id ?></td>
                         <td><?php echo $cat->cat_desc ?></td>
-                        <td style="min-width:250px;">
+                        <td>
                           <div class="panel-group">
                             <div class="panel panel-default">
                               <div class="panel-heading" data-toggle="collapse" href="#collapse<?php echo $cat->cat_id ?>">
@@ -107,7 +107,7 @@
 <div id="new-category" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
-    <?php echo form_open(base_url('admin/new_category')) ?>
+    <?php echo form_open_multipart(base_url('admin/new_category')) ?>
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -119,6 +119,30 @@
                 <label for="category">Category Name</label>
                 <input class="form-control" name="category_name" type="text" placeholder="Example: Microscope" required>
             </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>Meta Title</label>
+              <input class="form-control" name="meta_title" type="text" placeholder="Example: Microscope" required>
+            </div>
+            <div class="form-group">
+              <label>Meta Keywords</label>
+              <input class="form-control" name="meta_keywords" type="text" placeholder="Words separated by comma" required>
+            </div>
+            <div class="form-group">
+              <label>Meta Description</label>
+              <textarea class="form-control" name="meta_desc" rows="8" cols="80" placeholder="Description for category"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="meta_img">Meta Image</label>
+                <br>
+                <label class="btn btn-default" id="btn_browse">
+                    <input type="file" name="meta_img" accept="image/*" style="display:none;">
+                    Browse ..
+                </label>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted filename">No File Selected</span>
+            </div>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
@@ -188,7 +212,7 @@
     </div>
   </div>
   <div id="modify-category-<?php echo $cat->cat_id ?>" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog">
       <!-- Modal content-->
       <?php echo form_open(base_url('admin/modify_category')) ?>
       <div class="modal-content">
@@ -200,8 +224,38 @@
           <div class="row">
               <div class="col-sm-12">
                 <input type="hidden" name="cat_id" value="<?php echo $cat->cat_id ?>">
-                <label for="category">Category Name</label>
-                <input class="form-control" name="cat_desc" type="text" placeholder="Example: Microscope" value="<?php echo $cat->cat_desc ?>" required>
+                <div class="form-group">
+                  <label for="category">Category Name</label>
+                  <input class="form-control" name="cat_desc" type="text" placeholder="Example: Microscope" value="<?php echo $cat->cat_desc ?>" required>
+                </div>
+                <div class="form-group">
+                  <label>Meta Title</label>
+                  <input class="form-control" name="meta_title" type="text" placeholder="Example: Microscope" required value="<?php echo $cat->meta_title ?>">
+                </div>
+                <div class="form-group">
+                  <label>Meta Keywords</label>
+                  <input class="form-control" name="meta_keywords" type="text" placeholder="Words separated by comma" required value="<?php echo $cat->meta_keywords ?>">
+                </div>
+                <div class="form-group">
+                  <label>Meta Description</label>
+                  <textarea class="form-control" name="meta_desc" rows="8" cols="80" placeholder="Description for category"><?php echo $cat->meta_desc   ?></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Meta Image</label>
+                    <div class="media">
+                      <div class="media-left">
+                        <img class="media-object" src="<?php echo (empty($cat->meta_img)) ? base_url('utilities/images/meta/no-image.png') : base_url('utilities/images/meta/'.$cat->meta_img)  ?>" style="width:100px">
+                      </div>
+                      <div class="media-body">
+                        <span class="text-muted filename">No File Selected</span>
+                        <br/>
+                        <label class="btn btn-default" id="btn_browse">
+                            <input type="file" name="meta_img" accept="image/*" style="display:none;">
+                            Browse ..
+                        </label>
+                      </div>
+                    </div>
+                </div>
               </div>
           </div>
         </div>

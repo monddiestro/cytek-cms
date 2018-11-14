@@ -25,6 +25,9 @@
     </div>
   </div>
   <div class="row">
+    
+  </div>
+  <div class="row">
     <!-- details -->
     <div class="col-sm-6">
       <?php echo form_open(base_url('admin/update_product_details')) ?>

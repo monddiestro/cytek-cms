@@ -9,19 +9,40 @@
       <a class="navbar-brand" href="#">Cytek</a>
     </div>
     <div class="collapse navbar-collapse" id="navbar">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products</a>
           <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
+          <?php $cat_id = "" ?>
+          <?php $cnt = 0; ?>
+          <?php foreach ($navs as $nav): ?>
+            <?php if ($cat_id != $nav->cat_id): ?>
+              <?php echo ($cnt != 0) ? '<li class="divider"></li>' : '' ?>
+              <li class="dropdown-header"><strong><a href="<?php echo base_url('products/category?id='.$nav->cat_id) ?>"><?php echo $nav->cat_desc ?></a></strong></li>
+              <li class="divider"></li>
+              <?php $cat_id = $nav->cat_id ?>
+              <?php $cnt += 1; ?>
+            <?php endif; ?>
+            <li><a href="<?php echo base_url('products/category?sub_category='.$nav->subcat_desc."&id=".$nav->subcat_id) ?>"><?php echo $nav->subcat_desc ?></a></li>
+          <?php endforeach; ?>
           </ul>
         </li>
+        <li>
+          <a href="#" class="">Events</a>
+        </li>
+        <li>
+          <a href="#" class="">Blog</a>
+        </li>
+        <li>
+          <a href="#" class="">About us</a>
+        </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logouts</a></li>
-      </ul>
+      <form class="navbar-form navbar-right" action="/action_page.php">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default  ">Submit</button>
+      </form>
     </div>
   </div>
 </nav>
