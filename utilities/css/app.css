@@ -4,6 +4,15 @@ body {
     font-size: 1.4em;
     font-weight: 400;
 }
+footer {
+  background: #003158;
+}
 label {
   font-weight: 600;
+}
+.center {
+  text-align:center;
+}
+.center-title {
+  padding:10px 20px;
 }
