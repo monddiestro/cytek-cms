@@ -18,12 +18,12 @@
           <?php foreach ($navs as $nav): ?>
             <?php if ($cat_id != $nav->cat_id): ?>
               <?php echo ($cnt != 0) ? '<li class="divider"></li>' : '' ?>
-              <li class="dropdown-header"><strong><a href="<?php echo base_url('products/category?id='.$nav->cat_id) ?>"><?php echo $nav->cat_desc ?></a></strong></li>
+              <li class="dropdown-header"><strong><a href="<?php echo base_url('products?c='.$nav->cat_id.'&category='.$nav->cat_desc) ?>"><?php echo $nav->cat_desc ?></a></strong></li>
               <li class="divider"></li>
               <?php $cat_id = $nav->cat_id ?>
               <?php $cnt += 1; ?>
             <?php endif; ?>
-            <li><a href="<?php echo base_url('products/category?sub_category='.$nav->subcat_desc."&id=".$nav->subcat_id) ?>"><?php echo $nav->subcat_desc ?></a></li>
+            <li><a href="<?php echo base_url('products?s='.$nav->subcat_id."&subcategory=".$nav->subcat_desc) ?>"><?php echo $nav->subcat_desc ?></a></li>
           <?php endforeach; ?>
           </ul>
         </li>

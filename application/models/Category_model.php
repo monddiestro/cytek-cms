@@ -43,4 +43,9 @@ class Category_model extends CI_Model
       $this->db->set($data);
       $this->db->update('subcategory_tbl');
     }
+    function pull_category_headers($cat_id) {
+      $this->db->where('cat_id',$cat_id);
+      $query = $this->db->get('category_tbl');
+      return $query->result();
+    }
 }
