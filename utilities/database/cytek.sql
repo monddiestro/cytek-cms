@@ -213,6 +213,35 @@ LOCK TABLES `subcategory_tbl` WRITE;
 INSERT INTO `subcategory_tbl` VALUES (2,1,'Light Microscope',NULL,NULL,NULL,NULL),(3,1,'Stereo Zoom Microscope',NULL,NULL,NULL,NULL),(4,1,'DIgital Microscope',NULL,NULL,NULL,NULL),(5,1,'Semiconductor Microscope',NULL,NULL,NULL,NULL),(6,1,'Measuring Microscope',NULL,NULL,NULL,NULL),(7,1,'Cleanliness Inspection Microscope',NULL,NULL,NULL,NULL),(8,1,'Laser Scanning Confocal Microscope',NULL,NULL,NULL,NULL),(9,1,'Image Analysis Software',NULL,NULL,NULL,NULL),(10,1,'Microscope Digital Cameras',NULL,NULL,NULL,NULL),(11,1,'Objective Lenses',NULL,NULL,NULL,NULL),(12,1,'Microscope Accessories',NULL,NULL,NULL,NULL),(13,2,'XRF Analyzer',NULL,NULL,NULL,NULL),(14,2,'XRD Analyzer',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `subcategory_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `user_tbl`
+--
+
+DROP TABLE IF EXISTS `user_tbl`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_tbl` (
+  `user_id` int(10) NOT NULL AUTO_INCREMENT,
+  `f_name` varchar(100) NOT NULL,
+  `l_name` varchar(100) NOT NULL,
+  `uac_id` int(10) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `contact` varchar(13) DEFAULT NULL,
+  `password` varchar(200) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_tbl`
+--
+
+LOCK TABLES `user_tbl` WRITE;
+/*!40000 ALTER TABLE `user_tbl` DISABLE KEYS */;
+INSERT INTO `user_tbl` VALUES (1,'Mond','Diestro',1,'reymonddiestro@gmail.com','639176278173','692db33e4a3ff050ce164b9eeb4e46e4');
+/*!40000 ALTER TABLE `user_tbl` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -223,4 +252,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-07 18:53:52
+-- Dump completed on 2019-01-08  1:20:32

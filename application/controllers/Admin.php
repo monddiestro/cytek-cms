@@ -1,19 +1,84 @@
 <?php
 class Admin extends CI_Controller
 {
-    function __construct()
-	{
-		parent::__construct();
-		$this->load->model('category_model');
-    $this->load->model('product_model');
-	}
-    function index() {
-        $this->load->view('header');
-        $this->load->view('admin-navigation');
-        $this->load->view('admin');
-        $this->load->view('pre-footer');
-        $this->load->view('footer');
+    function __construct() {
+      parent::__construct();
+      $this->load->model('category_model');
+      $this->load->model('product_model');
+      $this->load->model('user_model');
     }
+
+    function check_account() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $email = $this->input->post('email');
+      $password = $this->input->post('password');
+
+      $user_cnt = $this->user_model->pull_user($email);
+      if($user_cnt > 0) {
+        // if user count is more than one check the password if match then return appropriate message to user
+        $user = $this->user_model->pull_userdata($email,$password);
+        if(empty($user)) {
+          $notif = array(
+            'message' => "<strong>Oops!</strong> Invalid Password",
+            'class' => "danger"
+          );
+          $this->session->set_flashdata($notif);
+          redirect($referer);
+        } else {
+          foreach ($user as $u) {
+            $userdata = array(
+              'user_id' => $u->user_id,
+              'f_name' => $u->f_name,
+              'l_name' => $u->l_name,
+              'uac_id' => $u->uac_id,
+              'email' => $u->email,
+              'contact' => $u->contact
+            );
+            $this->session->set_userdata($userdata);
+            redirect(base_url('admin/dashboard'));
+          }
+        }
+      } else {
+        // return invalid username message to user
+        $notif = array(
+          'message' => "<strong>Oops!</strong> Username doesn't exist",
+          'class' => "danger"
+        );
+        $this->session->set_flashdata($notif);
+        redirect($referer);
+      } 
+
+    }
+
+
+    function index() {
+        if(!empty($this->session->userdata('user_id'))) {
+          redirect(base_url('admin/dashboard'));
+        } else {
+          $header = array(
+            'description' => '',
+            'keywords' => '',
+            'robots' => '',
+            'og_title' => '',
+            'og_description' => '',
+            'og_image' => '',
+            'og_url' => '',
+            'og_type' => '',
+            'cannonical' => '',
+            'title' => 'Security Check | Cytek Solutions Inc.'
+          );
+          $this->load->view('header',$header);
+          $this->load->view('login');
+          $this->load->view('pre-footer');
+          $this->load->view('footer');
+        }
+        
+    }
+
+    function dashboard() {
+      
+    }
+
     // Category and Sub category CRUD
     function category() {
         // header data
@@ -72,6 +137,7 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('result',$result_data);
         redirect($referer);
     }
+
     function new_subcategory() {
       $referer = $this->input->server('HTTP_REFERER');
       $subcat_desc = $this->input->post('subcategory');
