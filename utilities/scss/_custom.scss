@@ -1,0 +1,170 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    // font-size: 1.4em;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: #E5E5E5;
+}
+footer {
+  background: #003158;
+}
+label {
+  font-weight: 600;
+}
+.center {
+  text-align:center;
+}
+.center-title {
+  padding:10px 20px;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+  border-bottom: 1px solid #dee2e6;
+}
+.table.pro-table th, .table.pro-table td {
+  vertical-align: top !important;
+}
+
+// admin dashboard
+.bg-cytek {
+  background: #003158 !important;
+}
+.cytek-sidebar {
+  width: 230px;
+  position:fixed;
+  background: #003158;
+  box-shadow: 3px 0px 7px rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+}
+.sidebar-content {
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+.sidebar-menu {
+  position:relative;
+  flex:1;
+  overflow-y: auto;
+}
+.cytek-main {
+  width:100%;
+  overflow:hidden;
+  padding-left: 15rem;  
+}
+.wrapper {
+    position: relative;
+    margin: 0 auto;
+}
+.navbar-nav a.nav-link {
+  color:#fff ;
+  font-size:18px;
+  cursor: pointer;
+  padding-left: 23px;
+
+  &:hover,&.active,&:active,&:focus {
+    color: #FFCC00;
+  }
+
+}
+.card.shadow {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25) !important;
+}
+.card-header,.card-footer {
+  background-color: #fff;
+  color:#646464; 
+  a {
+    text-decoration: none;
+    color:#646464; 
+  }
+}
+.card-header {
+  border-bottom: none;
+  box-shadow: 0px 2px 0px rgba(204, 204, 204, 0.25);
+}
+.card-footer {
+  border-top: none;
+  box-shadow: 0px -2px 0px rgba(204, 204, 204, 0.25);
+  
+}
+.header-text {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 36px;
+  letter-spacing: 0.05em;
+  color: #646464;  
+  padding-bottom: 23px;
+}
+.header-mt {
+  padding-top: 51px;
+}
+.fw-bold {
+  font-weight: $font-weight-bold;
+}
+.fw-normal {
+  font-weight:$font-weight-normal;
+}
+.fw-light {
+  font-weight: $font-weight-light;
+}
+.active-lbl {
+  color: #28A745;;
+  font-weight: 600;
+  text-align: center
+}
+
+.inactive-lbl {
+  color: #DC3545;
+  font-weight: 600;
+  text-align: center
+}
+
+.action-btn {
+  text-align: center;
+  button {
+    width: 88px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    border:1px solid transparent;
+    border-color: 1px solid transparent;
+    outline: none;
+    white-space: nowrap;
+  }
+ 
+}
+
+.form-control {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btn-link {
+  
+  color: #646464;
+  text-align: left;
+  
+  &:hover {
+    text-decoration: none !important;
+  }
+
+  &:after {
+    font-family:FontAwesome;
+    content: "\f055" ;
+    float: right;
+    color: #007bff !important;
+  }
+}
+
+.btn-link[aria-expanded="true"]:after {
+  content: "\f056";   
+}
+
+

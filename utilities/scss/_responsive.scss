@@ -1,0 +1,44 @@
+// Widescreens
+@include mediaXl {
+}
+
+// Desktop & Laptops
+@include mediaLg {    
+}
+
+// Tablets $ Small Laptops
+@include mediaMd {
+    .cytek-sidebar {
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+        z-index: 1050;  
+        -webkit-transform: translate3d(-100%,0,0);
+        transform: translate3d(-100%,0,0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transition: -webkit-transform .2s ease-in-out;
+        transition: transform .2s ease-in-out;
+        transition: transform .2s ease-in-out,-webkit-transform .2s ease-in-out;
+                    
+        &.show {
+            -webkit-backface-visibility: visible;
+            backface-visibility: visible;
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0); 
+            transition: -webkit-transform .2s ease-in-out;
+            transition: transform .2s ease-in-out;
+            transition: transform .2s ease-in-out,-webkit-transform .2s ease-in-out;
+        }
+    }
+    .cytek-main {
+        padding: 0 !important;
+    }
+    .header-text {
+        font-size: 19px;
+        padding-top: 80px;
+    }
+}
+
+// Smartphones Landscape
+@include landscapeSm {
+    
+}

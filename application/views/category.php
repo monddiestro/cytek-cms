@@ -1,107 +1,123 @@
-<div class="container-fluid">
-    <!-- alert -->
-    <?php
-      $flash = $this->session->flashdata('result');
-      if(!empty($flash)) {
-        $display = 'block';
-        $class = $flash["class"];
-        $message = $flash["message"];
-      } else {
-        $display = 'none';
-        $class = $message = '';
-      }
-    ?>
-    <div class="alert alert-<?php echo $class ?> alert-dismissible" style="display:<?php echo $display ?>">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <?php echo $message; ?>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="pull-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-category"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Category</button>
+<main class="cytek-main">
+  <div class="wrapper">
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <div class="container px-5">
+      <!-- alert -->
+      <?php
+        $flash = $this->session->flashdata('result');
+        if(!empty($flash)) {
+          $display = 'block';
+          $class = $flash["class"];
+          $message = $flash["message"];
+        } else {
+          $display = 'none';
+          $class = $message = '';
+        }
+      ?>
+      <div class="alert alert-<?php echo $class ?> alert-dismissible" style="display:<?php echo $display ?>">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <?php echo $message; ?>
+      </div>
+      <div class="row">
+          <div class="col-lg-6">
+            <div class="header-text header-mt">
+              <span>Product Categories</span>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Category</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($categories as $cat): ?>
+          </div>
+          <div class="col-lg-6">
+            <div class="row header-mt">
+              <div class="col-lg-8">
+                <input type="text" class="form-control" placeholder="Category name">
+              </div>
+              <div class="col-lg-4">
+                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#new-category"><i class="fa fa-plus"></i>&nbsp;&nbsp;Category</button>
+              </div>
+            </div>            
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-12">
+            <div class="card shadow">
+              <table class="table mb-0 pro-table">
+                  <thead>
                       <tr>
-                        <td><?php echo $cat->cat_id ?></td>
-                        <td><?php echo $cat->cat_desc ?></td>
-                        <td>
-                          <div class="panel-group">
-                            <div class="panel panel-default">
-                              <div class="panel-heading" data-toggle="collapse" href="#collapse<?php echo $cat->cat_id ?>">
-                                <span data-toggle="tooltip" data-placement="top" title="Click to View">
-                                  <h4 class="panel-title">
-                                    Sub Category
-                                  </h4>
-                                </span>
-                              </div>
-                              <div id="collapse<?php echo $cat->cat_id ?>" class="panel-collapse collapse">
-                                <table class="table table-hover">
-                                <?php foreach ($subcategories as $subcat): ?>
-                                  <?php if ($subcat->cat_id == $cat->cat_id): ?>
-                                    <tr>
-                                      <td>
-                                        <?php echo $subcat->subcat_desc ?>
-                                      </td>
-                                      <td width="10">
-                                        <span data-toggle="tooltip" data-placement="top" title="Edit">
-                                          <a class="text-success" data-toggle="modal" data-target="#modify-subcategory-<?php echo $subcat->subcat_id ?>">
-                                            <span class="glyphicon glyphicon-pencil"></span>
-                                          </a>
-                                        </span>
-                                      </td>
-                                      <td width="10">
-                                        <span data-toggle="tooltip" data-placement="top" title="Delete">
-                                          <a class="text-danger" data-toggle="modal" data-target="#delete-subcategory-<?php echo $subcat->subcat_id ?>">
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                          </a>
-                                        </span>
-                                      </td>
-                                    </tr>
-                                  <?php endif; ?>
-                                <?php endforeach; ?>
-                                </table>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span data-toggle="tooltip" data-placement="top" title="Edit Category">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modify-category-<?php echo $cat->cat_id ?>">
-                              <span class="glyphicon glyphicon-pencil"></span>
-                            </button>
-                          </span>
-                          <span data-toggle="tooltip" data-placement="top" title="New Sub Category">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-sub-category-<?php echo $cat->cat_id ?>">
-                              <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                          </span>
-                          <span data-toggle="tooltip" data-placement="top" title="Delete Category">
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-category-<?php echo $cat->cat_id ?>">
-                              <span class="glyphicon glyphicon-trash"></span>
-                            </button>
-                          </span>
-                        </td>
+                          <th>ID</th>
+                          <th>Category</th>
+                          <th></th>
+                          <th></th>
                       </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                  </thead>
+                  <tbody>
+                      <?php foreach ($categories as $cat): ?>
+                        <tr>
+                          <td><?php echo $cat->cat_id ?></td>
+                          <td><?php echo $cat->cat_desc ?></td>
+                          <td width="35%">
+                            <div class="border">
+                              <button class="btn btn-link w-100 " type="button" data-toggle="collapse" data-target="#subCollapse<?php echo $cat->cat_id ?>" aria-expanded="false" aria-controls="subCollapse">
+                              Sub Categories
+                              </button>
+                              <div id="subCollapse<?php echo $cat->cat_id ?>" class="collapse" aria-labelledby="headingOne">
+                                <div class="">
+                                  <table class="table mb-0">
+                                    <?php foreach ($subcategories as $subcat): ?>
+                                      <?php if ($subcat->cat_id == $cat->cat_id): ?>
+                                        <tr>
+                                          <td>
+                                            <?php echo $subcat->subcat_desc ?>
+                                          </td>
+                                          <td width="10">
+                                            <span data-toggle="tooltip" data-placement="top" title="Edit">
+                                              <a class="text-success" data-toggle="modal" data-target="#modify-subcategory-<?php echo $subcat->subcat_id ?>">
+                                                <i class="fa fa-pencil"></i>
+                                              </a>
+                                            </span>
+                                          </td>
+                                          <td width="10">
+                                            <span data-toggle="tooltip" data-placement="top" title="Delete">
+                                              <a class="text-danger" data-toggle="modal" data-target="#delete-subcategory-<?php echo $subcat->subcat_id ?>">
+                                                <i class="fa fa-trash"></i>
+                                              </a>
+                                            </span>
+                                          </td>
+                                        </tr>
+                                      <?php endif; ?>
+                                    <?php endforeach; ?>
+                                    </table>
+                                </div>
+                              </div>
+                            </div>                            
+                          </td>
+                          <td class="text-center">
+                            <span data-toggle="tooltip" data-placement="top" title="Edit Category">
+                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modify-category-<?php echo $cat->cat_id ?>">
+                                <span class="fa fa-edit"></span>
+                              </button>
+                            </span>
+                            <span data-toggle="tooltip" data-placement="top" title="New Sub Category">
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-sub-category-<?php echo $cat->cat_id ?>">
+                                <span class="fa fa-plus"></span>
+                              </button>
+                            </span>
+                            <span data-toggle="tooltip" data-placement="top" title="Delete Category">
+                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-category-<?php echo $cat->cat_id ?>">
+                                <span class="fa fa-trash"></span>
+                              </button>
+                            </span>
+                          </td>                          
+                        </tr>
+                      <?php endforeach; ?>
+                  </tbody>
+              </table>
+            </div>              
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+</main>
+
 
 <!-- new category modal -->
 <div id="new-category" class="modal fade" role="dialog">

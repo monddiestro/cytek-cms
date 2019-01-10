@@ -76,7 +76,11 @@ class Admin extends CI_Controller
     }
 
     function dashboard() {
-      
+          $this->load->view('header');
+          $this->load->view('admin-navigation');
+          $this->load->view('admin');
+          $this->load->view('pre-footer');
+          $this->load->view('footer');
     }
 
     // Category and Sub category CRUD

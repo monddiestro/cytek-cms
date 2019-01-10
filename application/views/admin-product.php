@@ -1,65 +1,73 @@
-<div class="container-fluid">
-  <!-- alert -->
-  <?php
-    $flash = $this->session->flashdata('result');
-    if(!empty($flash)) {
-      $display = 'block';
-      $class = $flash["class"];
-      $message = $flash["message"];
-    } else {
-      $display = 'none';
-      $class = $message = '';
-    }
-  ?>
-  <div class="alert alert-<?php echo $class ?> alert-dismissible" style="display:<?php echo $display ?>">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <?php echo $message; ?>
-  </div>
-  <div class="row">
-      <div class="col-sm-12">
-          <div class="pull-right">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-product"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Product</button>
+<main class="cytek-main">
+  <div class="wrapper">
+    <div id="page-content-wrapper">
+      <div class="container px-5">
+      <!-- alert -->
+      <?php
+        $flash = $this->session->flashdata('result');
+        if(!empty($flash)) {
+          $display = 'block';
+          $class = $flash["class"];
+          $message = $flash["message"];
+        } else {
+          $display = 'none';
+          $class = $message = '';
+        }
+      ?>
+      <div class="alert alert-<?php echo $class ?> alert-dismissible" style="display:<?php echo $display ?>">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <?php echo $message; ?>
+      </div>
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="text-right">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-product"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Product</button>
+              </div>
           </div>
       </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Sub Category</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($products as $p): ?>
-            <tr>
-              <td><?php echo $p->prod_id ?></td>
-              <td><?php echo $p->prod_name ?></td>
-              <td><?php echo $p->cat_desc ?></td>
-              <td><?php echo $p->subcat_desc ?></td>
-              <td>
-                <span data-toggle="tooltip" data-placement="top" title="Edit">
-                  <a href="<?php echo base_url('admin/config_product?id='.$p->prod_id) ?>" type="button" class="btn btn-success">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                  </a>
-                </span>
-                <span data-toggle="tooltip" data-placement="top" title="Delete">
-                  <button type="button" data-toggle="modal" data-target="#drop-product-<?php echo $p->prod_id ?>" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-trash"></span>
-                  </button>
-                </span>
-              </td>
-            </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card shadow">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Sub Category</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($products as $p): ?>
+                  <tr>
+                    <td><?php echo $p->prod_id ?></td>
+                    <td><?php echo $p->prod_name ?></td>
+                    <td><?php echo $p->cat_desc ?></td>
+                    <td><?php echo $p->subcat_desc ?></td>
+                    <td>
+                      <span data-toggle="tooltip" data-placement="top" title="Edit">
+                        <a href="<?php echo base_url('admin/config_product?id='.$p->prod_id) ?>" type="button" class="btn btn-success">
+                          <span class="fa fa-edit"></span>
+                        </a>
+                      </span>
+                      <span data-toggle="tooltip" data-placement="top" title="Delete">
+                        <button type="button" data-toggle="modal" data-target="#drop-product-<?php echo $p->prod_id ?>" class="btn btn-danger">
+                          <span class="fa fa-trash"></span>
+                        </button>
+                      </span>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>          
+        </div>
+      </div>
+    </div>
     </div>
   </div>
-</div>
+</main>
 <!-- new product -->
 <div id="new-product" class="modal fade" role="dialog">
   <div class="modal-dialog">
