@@ -31,7 +31,7 @@
                 <input type="text" class="form-control" placeholder="Category name">
               </div>
               <div class="col-lg-4">
-                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#new-category"><i class="fa fa-plus"></i>&nbsp;&nbsp;Category</button>
+                <button type="button" class="btn btn-primary w-100 btn-shadow" data-toggle="modal" data-target="#new-category"><i class="fa fa-plus"></i>&nbsp;&nbsp;Category</button>
               </div>
             </div>            
           </div>
@@ -39,7 +39,7 @@
       <div class="row">
           <div class="col-lg-12">
             <div class="card shadow">
-              <table class="table mb-0 pro-table">
+              <table class="table tbl-mobile mb-0 pro-table">
                   <thead>
                       <tr>
                           <th>ID</th>
@@ -51,30 +51,30 @@
                   <tbody>
                       <?php foreach ($categories as $cat): ?>
                         <tr>
-                          <td><?php echo $cat->cat_id ?></td>
-                          <td><?php echo $cat->cat_desc ?></td>
-                          <td width="35%">
+                          <td class="pt-20"><?php echo $cat->cat_id ?></td>
+                          <td class="pt-20 td-header"><?php echo $cat->cat_desc ?></td>
+                          <td class="btn-collapse">
                             <div class="border">
                               <button class="btn btn-link w-100 " type="button" data-toggle="collapse" data-target="#subCollapse<?php echo $cat->cat_id ?>" aria-expanded="false" aria-controls="subCollapse">
                               Sub Categories
                               </button>
                               <div id="subCollapse<?php echo $cat->cat_id ?>" class="collapse" aria-labelledby="headingOne">
                                 <div class="">
-                                  <table class="table mb-0">
+                                  <table class="table tbl-collapse mb-0">
                                     <?php foreach ($subcategories as $subcat): ?>
                                       <?php if ($subcat->cat_id == $cat->cat_id): ?>
                                         <tr>
                                           <td>
                                             <?php echo $subcat->subcat_desc ?>
                                           </td>
-                                          <td width="10">
+                                          <td class="icon-btn" width="10">
                                             <span data-toggle="tooltip" data-placement="top" title="Edit">
                                               <a class="text-success" data-toggle="modal" data-target="#modify-subcategory-<?php echo $subcat->subcat_id ?>">
-                                                <i class="fa fa-pencil"></i>
+                                                <i class="fa fa-edit"></i>
                                               </a>
                                             </span>
                                           </td>
-                                          <td width="10">
+                                          <td class="icon-btn" width="10">
                                             <span data-toggle="tooltip" data-placement="top" title="Delete">
                                               <a class="text-danger" data-toggle="modal" data-target="#delete-subcategory-<?php echo $subcat->subcat_id ?>">
                                                 <i class="fa fa-trash"></i>
@@ -125,9 +125,9 @@
     <!-- Modal content-->
     <?php echo form_open_multipart(base_url('admin/new_category')) ?>
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <div class="modal-header">        
         <h4 class="modal-title">New Category</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -176,9 +176,9 @@
       <!-- Modal content-->
       <?php echo form_open(base_url('admin/new_subcategory')) ?>
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-header">          
           <h4 class="modal-title">Sub Category of <?php echo $cat->cat_desc ?></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -206,9 +206,9 @@
       <!-- Modal content-->
       <?php echo form_open(base_url('admin/drop_category')) ?>
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-header">          
           <h4 class="modal-title">Delete Category </h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -232,9 +232,9 @@
       <!-- Modal content-->
       <?php echo form_open(base_url('admin/modify_category')) ?>
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-header">          
           <h4 class="modal-title">Modify Category</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -290,9 +290,9 @@
       <!-- Modal content-->
       <?php echo form_open(base_url('admin/drop_subcategory')) ?>
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-header">          
           <h4 class="modal-title">Delete Sub Category </h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -316,9 +316,9 @@
       <!-- Modal content-->
       <?php echo form_open(base_url('admin/modify_subcategory')) ?>
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-header">          
           <h4 class="modal-title">Modify Sub Category </h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <div class="row">

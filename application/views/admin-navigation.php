@@ -51,7 +51,7 @@
                               <span class="fw-bold">Mond</span>
                               <span class="d-block fw-light text-white small" style="line-height:0.8;">System Admin</span>                                
                             </div>                
-                            <span class="d-block py-2 pl-2"><i class="fa fa-sign-out-alt fa-lg"></i> </span>   
+                            <span class="d-block py-2 pl-2 pr-2"><i class="fa fa-sign-out-alt fa-lg"></i> </span>   
                           </div>
                       </a>
                     </li>

@@ -22,7 +22,15 @@
     //   $('#sidenav').removeClass('show');
     //   $('.sidebar').removeClass('show');
     // });
-  });   
+  }); 
+
+  $('tr td.td-header').click(function() {
+    if ($(window).width() < 600 ) {
+      $(this).toggleClass('expand').nextUntil('tr td.row-title').css('display' , function(i,v) {
+           return this.style.display === 'block' ? 'none' : 'block';
+      });
+    }
+  });  
 </script>
 </body>
 </html>
