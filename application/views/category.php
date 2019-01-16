@@ -25,13 +25,13 @@
               <span>Product Categories</span>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-6 ctg-function">
             <div class="row header-mt">
               <div class="col-lg-8">
                 <input type="text" class="form-control" placeholder="Category name">
               </div>
               <div class="col-lg-4">
-                <button type="button" class="btn btn-primary w-100 btn-shadow" data-toggle="modal" data-target="#new-category"><i class="fa fa-plus"></i>&nbsp;&nbsp;Category</button>
+                <button type="button" class="btn btn-primary w-100 shadow" data-toggle="modal" data-target="#new-category"><i class="fa fa-plus"></i>&nbsp;&nbsp;Category</button>
               </div>
             </div>            
           </div>
@@ -39,7 +39,7 @@
       <div class="row">
           <div class="col-lg-12">
             <div class="card shadow">
-              <table class="table tbl-mobile mb-0 pro-table">
+              <table class="table tbl-mobile mb-0 pro-table shadow">
                   <thead>
                       <tr>
                           <th>ID</th>
@@ -153,7 +153,7 @@
             <div class="form-group">
                 <label for="meta_img">Meta Image</label>
                 <br>
-                <label class="btn btn-default" id="btn_browse">
+                <label class="btn btn-default shadow" id="btn_browse">
                     <input type="file" name="meta_img" accept="image/*" style="display:none;">
                     Browse ..
                 </label>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted filename">No File Selected</span>
@@ -162,8 +162,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary shadow">Save</button>
+        <button type="button" class="btn btn-default shadow" data-dismiss="modal">Close</button>
       </div>
     </div>
     <?php echo form_close(); ?>
