@@ -191,8 +191,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Save</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary shadow">Save</button>
+          <button type="button" class="btn btn-default shadow" data-dismiss="modal">Close</button>
         </div>
       </div>
       <?php echo form_close(); ?>
@@ -220,8 +220,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Yes</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          <button type="submit" class="btn btn-primary shadow">Yes</button>
+          <button type="button" class="btn btn-default shadow" data-dismiss="modal">No</button>
         </div>
       </div>
       <?php echo form_close(); ?>
@@ -265,7 +265,7 @@
                       <div class="media-body">
                         <span class="text-muted filename">No File Selected</span>
                         <br/>
-                        <label class="btn btn-default" id="btn_browse">
+                        <label class="btn btn-default shadow" id="btn_browse">
                             <input type="file" name="meta_img" accept="image/*" style="display:none;">
                             Browse ..
                         </label>
@@ -276,8 +276,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Save</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary shadow">Save</button>
+          <button type="button" class="btn btn-default shadow" data-dismiss="modal">Cancel</button>
         </div>
       </div>
       <?php echo form_close(); ?>
@@ -304,8 +304,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Yes</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          <button type="submit" class="btn btn-primary shadow">Yes</button>
+          <button type="button" class="btn btn-default shadow" data-dismiss="modal">No</button>
         </div>
       </div>
       <?php echo form_close(); ?>
@@ -330,8 +330,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Save</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary shadow">Save</button>
+          <button type="button" class="btn btn-default shadow" data-dismiss="modal">Cancel</button>
         </div>
       </div>
       <?php echo form_close(); ?>

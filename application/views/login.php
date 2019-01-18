@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="card-footer text-center">
-                <button class="btn btn-primary shadow w-50" type="submit">Login</button>
+                <button class="btn btn-primary shadow w-50" type="submit"><b>Log in</b></button>
             </div>
         </div>
         <?php echo form_close(); ?>

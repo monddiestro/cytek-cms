@@ -1,5 +1,6 @@
 
 <div class="d-flex">
+<div id="nav-backdrop"></div>
 <nav class="navbar fixed-top navbar-toggleable-md bg-cytek  d-block d-lg-none">
   <a class="navbar-brand text-white" id="showMenu"><span>&#9776;</span></a>
 </nav>
@@ -45,7 +46,7 @@
                       <a href="" class="nav-link">
                           <div class="media mb-1">
                             <div class="py-1 pr-2">
-                            <img src="" class="rounded-circle mr-1" alt="" width="25" height="25">
+                            <img src="https://i.imgur.com/wxB6KfO.png" class="rounded-circle mr-1" alt="" width="25" height="25">
                             </div>                
                             <div class="media-body">
                               <span class="fw-bold">Mond</span>
