@@ -3,12 +3,15 @@
 <div id="nav-backdrop"></div>
 <nav class="navbar fixed-top navbar-toggleable-md bg-cytek  d-block d-lg-none">
   <a class="navbar-brand text-white" id="showMenu"><span>&#9776;</span></a>
+  <img src="../utilities/images/nav-logo/cytek-logo.png" alt="" class="w-75">
 </nav>
 <aside class="cytek-sidebar">
     <div class="sidebar-content">
         <section class="sidebar-menu">
            <nav>
-                <a class="sidebar-brand" href=""></a>
+                <a class="sidebar-brand" href="">
+                    <img src="../utilities/images/nav-logo/cytek-logo.png" alt="">
+                </a>
                 <ul class="navbar-nav flex-column ">
                     <li class="nav-item">
                         <a href="<?php echo base_url('admin/category') ?>" class="nav-link active ">
@@ -39,20 +42,22 @@
            </nav>            
         </section>
         <section class="sidebar-footer text-white">
-            <img src="" alt="">
+            <a href="" class="px-4">
+                <img src="../utilities/images/nav-logo/olympus.png" alt="" class="">
+            </a>            
             <nav>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                       <a href="" class="nav-link">
                           <div class="media mb-1">
                             <div class="py-1 pr-2">
-                            <img src="https://i.imgur.com/wxB6KfO.png" class="rounded-circle mr-1" alt="" width="25" height="25">
+                            <img src="https://i.imgur.com/wxB6KfO.png" class="rounded-circle mr-1" alt="" width="40" height="40">
                             </div>                
-                            <div class="media-body">
+                            <div class="media-body mt-2">
                               <span class="fw-bold">Mond</span>
                               <span class="d-block fw-light text-white small" style="line-height:0.8;">System Admin</span>                                
                             </div>                
-                            <span class="d-block py-2 pl-2 pr-2"><i class="fa fa-sign-out-alt fa-lg"></i> </span>   
+                            <span class="d-block py-2 pl-2 pr-2 mt-2"><i class="fa fa-sign-out-alt fa-lg"></i> </span>   
                           </div>
                       </a>
                     </li>

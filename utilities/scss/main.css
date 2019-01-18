@@ -9516,7 +9516,6 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
   font-weight: 400;
-  background-color: #E5E5E5;
 }
 
 footer {
@@ -9525,6 +9524,12 @@ footer {
 
 label {
   font-weight: 600;
+}
+
+.img-container {
+  width: 100%;
+  height: 135px;
+  background: #EFEFEF;
 }
 
 .center {
@@ -9595,7 +9600,7 @@ label {
   color: #FFCC00;
 }
 
-.card.shadow, .shadow {
+.shadow {
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2) !important;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2) !important;
 }
@@ -9678,9 +9683,8 @@ td.btn-collapse {
   width: 35%;
 }
 
-.form-control {
-  -webkit-box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 0px 0px -2px rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 0px 0px -2px rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+.form-control.form-shadow {
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .pt-20 {
@@ -9704,6 +9708,45 @@ td.btn-collapse {
 
 .btn-link[aria-expanded=true]:after {
   content: "";
+}
+
+.modal-footer .btn-link {
+  font-weight: bold !important;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+.modal-footer .btn-link:after {
+  content: "" !important;
+}
+
+.sidebar-brand img {
+  width: 100%;
+  padding-bottom: 47px;
+  padding-top: 55px;
+}
+
+.modal .modal-title {
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+}
+.modal .cytek-modal {
+  width: 358px;
+  border-radius: 5px;
+}
+.modal .btn-default {
+  font-size: 11px;
+  font-weight: 600;
+}
+.modal span.form-label {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: #5E5E5E;
+  line-height: 1.2;
+}
+.modal .form-control {
+  font-size: 12px !important;
+  margin-top: 8px !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -9753,6 +9796,11 @@ td.btn-collapse {
     z-index: 1040;
     background-color: #000;
     opacity: 0.5;
+  }
+
+  .cytek-modal {
+    width: auto;
+    border-radius: 5px;
   }
 }
 @media screen and (min-device-width: 320px) and (max-device-width: 480px) {

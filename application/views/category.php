@@ -28,18 +28,18 @@
           <div class="col-lg-6 ctg-function">
             <div class="row header-mt">
               <div class="col-lg-8">
-                <input type="text" class="form-control" placeholder="Category name">
+                <input type="text" class="form-control form-shadow" placeholder="Category name">
               </div>
               <div class="col-lg-4">
-                <button type="button" class="btn btn-primary w-100 shadow" data-toggle="modal" data-target="#new-category"><i class="fa fa-plus"></i>&nbsp;&nbsp;Category</button>
+                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#new-category">New Category</button>
               </div>
             </div>            
           </div>
       </div>
       <div class="row">
           <div class="col-lg-12">
-            <div class="card shadow">
-              <table class="table tbl-mobile mb-0 pro-table shadow">
+            <div class="card ">
+              <table class="table tbl-mobile mb-0 pro-table">
                   <thead>
                       <tr>
                           <th>ID</th>
@@ -121,49 +121,52 @@
 
 <!-- new category modal -->
 <div id="new-category" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog cytek-modal">
     <!-- Modal content-->
     <?php echo form_open_multipart(base_url('admin/new_category')) ?>
     <div class="modal-content">
-      <div class="modal-header">        
-        <h4 class="modal-title">New Category</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <div class="modal-header border-0">        
+        <span class="modal-title">Category Details</span>        
       </div>
-      <div class="modal-body">
+      <div class="modal-body py-0">
         <div class="row">
             <div class="col-sm-12">
-                <label for="category">Category Name</label>
+              <div class="">
+                  <div class="img-container mb-2">
+                    <img src="" alt="">
+                  </div>
+                  <label class="btn btn-default shadow" id="btn_browse">
+                      <input type="file" name="meta_img" accept="image/*" style="display:none;">
+                      BROWSE
+                  </label>&nbsp;&nbsp;<span class="text-muted filename small">No image selected</span>
+              </div>
+              <div class="form-group">
+                <span class="form-label">Category Name</span>
                 <input class="form-control" name="category_name" type="text" placeholder="Example: Microscope" required>
+              </div>  
             </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
-              <label>Meta Title</label>
+              <span class="form-label">Category Description</span>
+              <textarea class="form-control" name="meta_desc" rows="8" cols="80" placeholder="ex. Industrial Microscope"></textarea>
+            </div> 
+            <!-- <div class="form-group">
+              <h6>Meta Title</h6>
               <input class="form-control" name="meta_title" type="text" placeholder="Example: Microscope" required>
-            </div>
+            </div> -->
             <div class="form-group">
-              <label>Meta Keywords</label>
-              <input class="form-control" name="meta_keywords" type="text" placeholder="Words separated by comma" required>
-            </div>
-            <div class="form-group">
-              <label>Meta Description</label>
-              <textarea class="form-control" name="meta_desc" rows="8" cols="80" placeholder="Description for category"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="meta_img">Meta Image</label>
-                <br>
-                <label class="btn btn-default shadow" id="btn_browse">
-                    <input type="file" name="meta_img" accept="image/*" style="display:none;">
-                    Browse ..
-                </label>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted filename">No File Selected</span>
-            </div>
+              <span class="form-label">Category Keywords</span>
+              <input class="form-control" name="meta_keywords" type="text" placeholder="ex. Words separated by comma" required>
+            </div>                       
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary shadow">Save</button>
-        <button type="button" class="btn btn-default shadow" data-dismiss="modal">Close</button>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-link text-dark" data-dismiss="modal">CANCEL</button>
+        <button type="submit" class="btn btn-link text-dark">SAVE</button>
+        
       </div>
     </div>
     <?php echo form_close(); ?>
@@ -176,23 +179,22 @@
       <!-- Modal content-->
       <?php echo form_open(base_url('admin/new_subcategory')) ?>
       <div class="modal-content">
-        <div class="modal-header">          
-          <h4 class="modal-title">Sub Category of <?php echo $cat->cat_desc ?></h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-header border-0">          
+          <span class="modal-title">Sub Category of <?php echo $cat->cat_desc ?></span>
         </div>
-        <div class="modal-body">
+        <div class="modal-body py-0">
           <div class="row">
               <div class="col-sm-12">
-                  <label for="category">Sub Category Name</label>
+                <span class="form-label">Sub Category Name</span>
                   <input class="form-control" type="text" name="subcategory" placeholder="Example: Stereo Zoom Microscope" required>
                   <input type="hidden" name="cat_id" value="<?php echo $cat->cat_id; ?>">
                   <input type="hidden" name="cat_desc" value="<?php echo $cat->cat_desc; ?>">
               </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary shadow">Save</button>
-          <button type="button" class="btn btn-default shadow" data-dismiss="modal">Close</button>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-link">Save</button>          
         </div>
       </div>
       <?php echo form_close(); ?>
@@ -206,78 +208,71 @@
       <!-- Modal content-->
       <?php echo form_open(base_url('admin/drop_category')) ?>
       <div class="modal-content">
-        <div class="modal-header">          
-          <h4 class="modal-title">Delete Category </h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-header border-0">          
+          <span class="modal-title">Delete Category </span>
         </div>
-        <div class="modal-body">
+        <div class="modal-body py-0">
           <div class="row">
               <div class="col-sm-12">
                 <input type="hidden" name="cat_id" value="<?php echo $cat->cat_id ?>">
                 <input type="hidden" name="cat_desc" value="<?php echo $cat->cat_desc ?>">
-                Are you sure you want to delete <?php echo $cat->cat_desc ?> and it's subcategories?
+                <span class="form-label">Are you sure you want to delete <?php echo $cat->cat_desc ?> and it's subcategories?</span>
               </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary shadow">Yes</button>
-          <button type="button" class="btn btn-default shadow" data-dismiss="modal">No</button>
+        <div class="modal-footer border-0">
+          <button type="submit" class="btn btn-link">Yes</button>
+          <button type="button" class="btn btn-link" data-dismiss="modal">No</button>
         </div>
       </div>
       <?php echo form_close(); ?>
     </div>
   </div>
   <div id="modify-category-<?php echo $cat->cat_id ?>" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog cytek-modal">
       <!-- Modal content-->
       <?php echo form_open(base_url('admin/modify_category')) ?>
       <div class="modal-content">
-        <div class="modal-header">          
-          <h4 class="modal-title">Modify Category</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-header border-0">          
+          <span class="modal-title">Modify Category</span>
         </div>
-        <div class="modal-body">
+        <div class="modal-body py-0">
           <div class="row">
               <div class="col-sm-12">
                 <input type="hidden" name="cat_id" value="<?php echo $cat->cat_id ?>">
+                <div class="">
+                  <span class="form-label">Meta Image</span>
+                  <div class="img-container mb-2">
+                    <img class="media-object" src="<?php echo (empty($cat->meta_img)) ? base_url('utilities/images/meta/no-image.png') : base_url('utilities/images/meta/'.$cat->meta_img)  ?>" style="width:100px">
+                  </div> 
+                    <label class="btn btn-default shadow" id="btn_browse">
+                      <input type="file" name="meta_img" accept="image/*" style="display:none;">
+                      BROWSE
+                    </label>&nbsp;&nbsp;<span class="text-muted filename small">No image selected</span>                     
+                </div>
                 <div class="form-group">
-                  <label for="category">Category Name</label>
+                  <span class="form-label">Category Name</span>
                   <input class="form-control" name="cat_desc" type="text" placeholder="Example: Microscope" value="<?php echo $cat->cat_desc ?>" required>
                 </div>
                 <div class="form-group">
-                  <label>Meta Title</label>
+                  <span class="form-label">Meta Title</span>
                   <input class="form-control" name="meta_title" type="text" placeholder="Example: Microscope" required value="<?php echo $cat->meta_title ?>">
                 </div>
                 <div class="form-group">
-                  <label>Meta Keywords</label>
+                  <span class="form-label">Meta Keywords</span>
                   <input class="form-control" name="meta_keywords" type="text" placeholder="Words separated by comma" required value="<?php echo $cat->meta_keywords ?>">
                 </div>
                 <div class="form-group">
-                  <label>Meta Description</label>
+                  <span class="form-label">Meta Description</span>
                   <textarea class="form-control" name="meta_desc" rows="8" cols="80" placeholder="Description for category"><?php echo $cat->meta_desc   ?></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Meta Image</label>
-                    <div class="media">
-                      <div class="media-left">
-                        <img class="media-object" src="<?php echo (empty($cat->meta_img)) ? base_url('utilities/images/meta/no-image.png') : base_url('utilities/images/meta/'.$cat->meta_img)  ?>" style="width:100px">
-                      </div>
-                      <div class="media-body">
-                        <span class="text-muted filename">No File Selected</span>
-                        <br/>
-                        <label class="btn btn-default shadow" id="btn_browse">
-                            <input type="file" name="meta_img" accept="image/*" style="display:none;">
-                            Browse ..
-                        </label>
-                      </div>
-                    </div>
-                </div>
+                </div>                
               </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary shadow">Save</button>
-          <button type="button" class="btn btn-default shadow" data-dismiss="modal">Cancel</button>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-link">Save</button>
+          
         </div>
       </div>
       <?php echo form_close(); ?>
@@ -290,22 +285,21 @@
       <!-- Modal content-->
       <?php echo form_open(base_url('admin/drop_subcategory')) ?>
       <div class="modal-content">
-        <div class="modal-header">          
-          <h4 class="modal-title">Delete Sub Category </h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-header border-0">          
+          <span class="modal-title">Delete Sub Category </span>
         </div>
-        <div class="modal-body">
+        <div class="modal-body py-0">
           <div class="row">
               <div class="col-sm-12">
                 <input type="hidden" name="subcat_id" value="<?php echo $subcat->subcat_id ?>">
                 <input type="hidden" name="subcat_desc" value="<?php echo $subcat->subcat_desc ?>">
-                Are you sure you want to delete <?php echo $cat->cat_desc ?>?
+                <span class="form-label">Are you sure you want to delete <?php echo $cat->cat_desc ?>?</span>
               </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary shadow">Yes</button>
-          <button type="button" class="btn btn-default shadow" data-dismiss="modal">No</button>
+        <div class="modal-footer border-0">
+          <button type="submit" class="btn btn-link">Yes</button>
+          <button type="button" class="btn btn-link" data-dismiss="modal">No</button>
         </div>
       </div>
       <?php echo form_close(); ?>
@@ -316,22 +310,21 @@
       <!-- Modal content-->
       <?php echo form_open(base_url('admin/modify_subcategory')) ?>
       <div class="modal-content">
-        <div class="modal-header">          
-          <h4 class="modal-title">Modify Sub Category </h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-header border-0">          
+          <span class="modal-title">Modify Sub Category </span>
         </div>
-        <div class="modal-body">
+        <div class="modal-body py-0">
           <div class="row">
               <div class="col-sm-12">
                 <input type="hidden" name="subcat_id" value="<?php echo $subcat->subcat_id ?>">
-                <label for="category">Sub Category Name</label>
+                  <span class="form-label">Sub Category Name</span>
                 <input class="form-control" type="text" name="subcat_desc" value="<?php echo $subcat->subcat_desc ?>" placeholder="Example: Stereo Zoom Microscope" required>
               </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary shadow">Save</button>
-          <button type="button" class="btn btn-default shadow" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-link">Save</button>          
         </div>
       </div>
       <?php echo form_close(); ?>
