@@ -31,11 +31,11 @@
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                  Banners
+            <div class="card mb-3">
+              <div class="card-header">
+                 <strong>Banners</strong> 
               </div>
-              <div class="panel panel-body">
+              <div class="card-body">
                 <?php if (!empty($banners)): ?>
                   <?php foreach ($banners as $b): ?>
                     <div class="col-sm-3">
@@ -51,7 +51,7 @@
                   <?php endforeach; ?>
                 <?php endif; ?>
               </div>
-              <div class="panel-footer">
+              <div class="card-footer">
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="pull-right">
@@ -67,11 +67,11 @@
           <!-- details -->
           <div class="col-sm-6">
             <?php echo form_open(base_url('admin/update_product_details')) ?>
-            <div class="panel panel-default">
-              <div class="panel-heading">
+            <div class="card mb-3">
+              <div class="card-header">
                 <strong>Product Details</strong>
               </div>
-              <div class="panel-body">
+              <div class="card-body">
                 <div class="row">
                   <div class="col-sm-6">
                     <input type="hidden" name="prod_id" value="<?php echo $product["prod_id"]; ?>">
@@ -106,7 +106,7 @@
                   </div>
                 </div>
               </div>
-              <div class="panel-footer">
+              <div class="card-footer">
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="pull-right">
@@ -122,11 +122,11 @@
           <div class="col-sm-6">
             <?php echo form_open_multipart(base_urL('admin/update_product_meta')); ?>
             <input type="hidden" name="prod_id" value="<?php echo $product["prod_id"] ?>">
-            <div class="panel panel-default" id="product_details">
-              <div class="panel-heading">
+            <div class="card mb-3" id="product_details">
+              <div class="card-header">
                 <strong>Meta Content</strong>
               </div>
-              <div class="panel-body">
+              <div class="card-body">
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -155,7 +155,7 @@
                   </div>
                 </div>
               </div>
-              <div class="panel-footer">
+              <div class="card-footer">
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="pull-right">
@@ -171,11 +171,11 @@
         <div class="row">
           <!-- feature  -->
           <div class="col-sm-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
+            <div class="card mb-3">
+              <div class="card-header">
                 <strong>Product Features</strong>
               </div>
-              <div class="panel-body">
+              <div class="card-body">
                   <?php if (!empty($features)): ?>
                     <div class="panel-group" id="feature">
                     <?php foreach ($features as $f): ?>
@@ -211,7 +211,7 @@
                       <h5 class="text-warning">No feature available</h5>
                   <?php endif; ?>
               </div>
-              <div class="panel-footer">
+              <div class="card-footer">
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="pull-right">
@@ -225,17 +225,17 @@
           <!-- specs -->
           <div class="col-sm-6">
             <?php echo form_open('admin/update_specs') ?>
-            <div class="panel panel-default">
-              <div class="panel-heading">
+            <div class="card mb-3">
+              <div class="card-header">
                 <strong>Product Specification (<small>In HTML Table format</small>)</strong>
               </div>
-              <div class="panel-body">
+              <div class="card-body">
                 <div class="form-group">
                   <input type="hidden" name="prod_id" value="<?php echo $product["prod_id"] ?>">
                   <textarea name="prod_specs" rows="15" cols="80" class="form-control" placeholder="HTML Table format accepted"><?php echo $product["specs"] ?></textarea>
                 </div>
               </div>
-              <div class="panel-footer">
+              <div class="card-footer">
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="pull-right">
@@ -260,21 +260,20 @@
     <input type="hidden" name="prod_id" value="<?php echo $product["prod_id"] ?>">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Product Banner</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label for="">Select Image</label>
+          <span class="form-label">Select Image</span>
           <br/>
-          <label class="btn btn-default" id="btn_browse">
-              <input type="file" name="image" id="banner_img" accept="image/*" style="display:none;">
-              Browse ..
-          </label>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted filename">No File Selected</span>
+          <label class="btn btn-default shadow" id="btn_browse">
+              <input type="file" name="meta_img" accept="image/*" style="display:none;">
+              BROWSE
+          </label>&nbsp;&nbsp;<span class="text-muted filename small">No image selected</span>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" name="button" class="btn btn-primary">Save</button>
+        <button type="submit" name="button" class="btn btn-default">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -288,30 +287,29 @@
     <?php echo form_open_multipart(base_url('admin/add_feature')); ?>
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Feature Details</h4>
+        <span class="modal-title">Feature Details</span>
       </div>
       <div class="modal-body">
         <input type="hidden" name="prod_id" value="<?php echo $product["prod_id"] ?>">
         <div class="form-group">
-          <label for="">Title</label>
+          <span class="form-label">Title</span>
           <input type="text" class="form-control" name="title" value="">
         </div>
         <div class="form-group">
-          <label for="">Description</label>
+          <span class="form-label">Description</span>
           <textarea name="description" class="form-control" rows="8" cols="80"></textarea>
         </div>
         <div class="form-group">
-          <label for="">Image</label>
+          <span class="form-label">Image</span>
           <br/>
-          <label class="btn btn-default" id="btn_browse">
+          <label class="btn btn-default shadow " id="btn_browse">
               <input type="file" name="image" id="image" accept="image/*" style="display:none;">
-              Browse ..
-          </label>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted filename">No File Selected</span>
+              BROWSE
+          </label>&nbsp;&nbsp;<span class="text-muted filename small">No File Selected</span>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" name="button" class="btn btn-primary">Save</button>
+        <button type="submit" name="button" class="btn btn-default">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

@@ -9518,6 +9518,10 @@ body {
   font-weight: 400;
 }
 
+textarea.form-control, .form-control, .btn {
+  font-size: 14px;
+}
+
 footer {
   background: #003158;
 }
@@ -9665,7 +9669,7 @@ label {
 .action-btn {
   text-align: center;
 }
-.action-btn button {
+.action-btn button, .action-btn a {
   width: 88px;
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
@@ -9738,7 +9742,7 @@ td.btn-collapse {
   font-size: 11px;
   font-weight: 600;
 }
-.modal span.form-label {
+.modal span.form-label, .modal label.form-label {
   font-size: 12px;
   letter-spacing: 0.1em;
   color: #5E5E5E;
