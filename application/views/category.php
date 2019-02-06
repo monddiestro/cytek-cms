@@ -39,7 +39,7 @@
       <div class="row">
           <div class="col-lg-12">
             <div class="card ">
-              <table class="table tbl-mobile mb-0 pro-table">
+              <table class="table tbl-mobile mb-0 pro-tablegmaii">
                   <thead>
                       <tr>
                           <th>ID</th>
