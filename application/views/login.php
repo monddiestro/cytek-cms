@@ -1,16 +1,16 @@
 <div class="login-bg">
     <div class="container" style="margin-top:10%;">
-        <div class="offset-4 col-sm-4">
-            <?php if(!empty($this->session->flashdata('message'))): ?>
-            <div class="alert alert-<?php echo $this->session->flashdata('class') ?>">
-                <?php echo $this->session->flashdata('message'); ?>
-            </div>
-            <?php endif; ?>
-            <?php echo form_open('admin/check_account') ?>
+        <div class="offset-4 col-sm-4">            
             <div class="card shadow">
                 <div class="card-header shadow-none">
                     Login
                 </div>
+                <?php if(!empty($this->session->flashdata('message'))): ?>
+                <div class="alert alert-<?php echo $this->session->flashdata('class') ?>">
+                    <?php echo $this->session->flashdata('message'); ?>
+                </div>
+                <?php endif; ?>
+                <?php echo form_open('admin/check_account') ?>
                 <div class="card-body">
                     <div class="form-group">
                         <label for="email">Email</label>
