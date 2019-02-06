@@ -31,7 +31,7 @@
                 <input type="text" class="form-control form-shadow" placeholder="Category name">
               </div>
               <div class="col-lg-4">
-                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#new-category">New Category</button>
+                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#new-category"><b>New Category</b></button>
               </div>
             </div>            
           </div>

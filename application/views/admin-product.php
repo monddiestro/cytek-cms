@@ -1,7 +1,7 @@
 <main class="cytek-main">
   <div class="wrapper">
     <div id="page-content-wrapper">
-      <div class="container px-5">
+      <div class="container px-5 pt-5">
       <!-- alert -->
       <?php
         $flash = $this->session->flashdata('result');
@@ -19,16 +19,16 @@
         <?php echo $message; ?>
       </div>
       <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-12 pb-3">
               <div class="text-right">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-product"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Product</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-product"><i class="fa fa-plus"></i>&nbsp;&nbsp;<b>Product</b></button>
               </div>
           </div>
       </div>
       <div class="row">
         <div class="col-lg-12">
           <div class="card shadow">
-            <table class="table">
+            <table class="table mb-0">
               <thead>
                 <tr>
                   <th>ID</th>

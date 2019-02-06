@@ -1,30 +1,33 @@
-<div class="container" style="margin-top:10%;">
-    <div class="offset-4 col-sm-4">
-        <?php if(!empty($this->session->flashdata('message'))): ?>
-        <div class="alert alert-<?php echo $this->session->flashdata('class') ?>">
-            <?php echo $this->session->flashdata('message'); ?>
-        </div>
-        <?php endif; ?>
-        <?php echo form_open('admin/check_account') ?>
-        <div class="card shadow">
-            <div class="card-header">
-                Login
+<div class="login-bg">
+    <div class="container" style="margin-top:10%;">
+        <div class="offset-4 col-sm-4">
+            <?php if(!empty($this->session->flashdata('message'))): ?>
+            <div class="alert alert-<?php echo $this->session->flashdata('class') ?>">
+                <?php echo $this->session->flashdata('message'); ?>
             </div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" id="email" class="form-control" name="email" placeholder="Email"/>
+            <?php endif; ?>
+            <?php echo form_open('admin/check_account') ?>
+            <div class="card shadow">
+                <div class="card-header shadow-none">
+                    Login
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <a href="" style="float:right;"> <span class="pt-1 small text-muted">Forgot Password?</span> </a>
-                    <input type="password" id="password" class="form-control" name="password" placeholder="Password"/>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" class="form-control" name="email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <a href="" style="float:right;"> <span class="pt-1 small text-muted">Forgot Password?</span> </a>
+                        <input type="password" id="password" class="form-control" name="password" />
+                    </div>
+                </div>
+                <div class="card-footer text-center shadow-none">
+                    <button class="btn btn-primary shadow w-50" type="submit"><b>Log in</b></button>
+                    <p class="mt-3">Don't Have an account ? <a href="" class="text-primary"><b>Sign up</b></a></p>
                 </div>
             </div>
-            <div class="card-footer text-center">
-                <button class="btn btn-primary shadow w-50" type="submit"><b>Log in</b></button>
-            </div>
+            <?php echo form_close(); ?>
         </div>
-        <?php echo form_close(); ?>
     </div>
 </div>

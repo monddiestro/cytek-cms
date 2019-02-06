@@ -1,10 +1,10 @@
-<div class="container-fluid">
+<div class="container-fluid pt-4">
     <div class="row">
         <!-- sub menu -->
         <?php $cat_id = "" ?>
         <?php $cnt = 0 ?>
         <div class="col-lg-3 col-md-3">
-            <h3>Products</h3>
+            <h4 class="mt-2 mb-4">Products</h4>
             <div class="panel-group" id="accordion">
             <?php foreach($submenu as $s): ?>
                 <?php if($cat_id != $s->cat_id): ?>
@@ -14,17 +14,17 @@
                         </div>
                         </div>
                     <?php endif; ?>
-                    <div class="panel panel-default">
-                    <div class="panel-heading">
-                    <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $s->cat_id ?>">
-                    <?php echo $s->cat_desc; ?>
+                    <div class="card">
+                    <div class="card-header">
+                    <span class="card-title">
+                    <a data-toggle="collapse" id="test" data-parent="#accordion" class="d-flex" href="#collapse<?php echo $s->cat_id ?>">
+                    <div class="col-sm-9 p-0"><?php echo $s->cat_desc; ?></div><div class="col-sm-3 p-0 text-right text-primary"><i class="fa fa-plus-circle"></i></div> 
                     </a>
                     </h4>
                     </div>
                     <div id="collapse<?php echo $s->cat_id ?>" class="panel-collapse collapse <?php echo ($s->cat_id == $selected_category) ? 'in' : '' ?>">
-                    <div class="panel-body">
-                    <ul>
+                    <div class="card-body">
+                    <ul class="list-unstyled fw-light">
                     <li><?php echo $s->subcat_desc ?></li>
                     <?php $cat_id = $s->cat_id; $cnt+=1; continue; ?>
                 <?php else: ?>
@@ -53,14 +53,14 @@
             <main class="row">
                 <?php ?>
                 <article class="col-sm-4">
-                    <figure class="panel panel-default">
-                        <figure class="panel-body">
+                    <figure class="card">
+                        <figure class="card-body">
                             <img src="<?php echo base_url('utilities/images/meta/no-image.png')?>" alt="">
                             <figcaption>Lorem Ipsum</figcaption>
                             <p>Lorem Ipsum</p>
                         </figure>
-                        <div class="panel-footer">
-                            <a href="" class="btn btn-primary">Read More</a>
+                        <div class="card-footer">
+                            <a href="" class="btn btn-primary text-white">Read More</a>
                         </div>
                     </figure>
                 </article>

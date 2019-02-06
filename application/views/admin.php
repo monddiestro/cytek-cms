@@ -38,7 +38,7 @@
                                 </table>
                             </div>
                             <div class="card-footer text-center">
-                                <a href="">View More</a>
+                                <a href=""><b>View More</b></a>
                             </div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                                 </table>
                             </div>
                             <div class="card-footer text-center">
-                                <a href="">View More</a>
+                                <a href=""><b>View More</b></a>
                             </div>
                         </div>
                     </div>

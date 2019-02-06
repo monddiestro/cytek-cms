@@ -9518,7 +9518,7 @@ body {
   font-weight: 400;
 }
 
-textarea.form-control, .form-control, .btn {
+textarea.form-control, .form-control, .btn, .dropdown-menu {
   font-size: 14px;
 }
 
@@ -9551,6 +9551,31 @@ label {
 
 .table.pro-table th, .table.pro-table td {
   vertical-align: top !important;
+}
+
+.breadcrumb {
+  background: transparent;
+}
+.breadcrumb li + li:before {
+  display: inline-block;
+  padding: 0 0.5rem;
+  color: #000;
+  content: ">";
+}
+.breadcrumb a:hover {
+  text-decoration: none;
+}
+
+.login-bg {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  background: -webkit-radial-gradient(#40404b, #032641) rgba(34, 34, 40, 0.94);
+  background: radial-gradient(#40404b, #032641) rgba(34, 34, 40, 0.94);
 }
 
 .bg-cytek {
@@ -9639,7 +9664,7 @@ label {
 }
 
 .header-mt {
-  padding-top: 51px;
+  padding-top: 35px;
 }
 
 .fw-bold {
