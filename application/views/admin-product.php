@@ -47,14 +47,14 @@
                     <td><?php echo $p->subcat_desc ?></td>
                     <td>
                       <span data-toggle="tooltip" data-placement="top" title="Edit">
-                        <a href="<?php echo base_url('admin/config_product?id='.$p->prod_id) ?>" type="button" class="btn btn-success">
+                        <a href="<?php echo base_url('admin/config_product?id='.$p->prod_id) ?>"  class="text-success mr-3" style="text-decoration:none;">
                           <span> <i class="fa fa-edit"></i></span>
                         </a>
                       </span>
                       <span data-toggle="tooltip" data-placement="top" title="Delete">
-                        <button type="button" data-toggle="modal" data-target="#drop-product-<?php echo $p->prod_id ?>" class="btn btn-danger">
-                          <span class="fa fa-trash"></span>
-                        </button>
+                        <a  data-toggle="modal" data-target="#drop-product-<?php echo $p->prod_id ?>" class="text-danger">
+                          <span> <i class="fa fa-trash"></i></span>
+                        </a>
                       </span>
                     </td>
                   </tr>

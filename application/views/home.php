@@ -1,52 +1,5 @@
- <!-- <div id="carousel" class="carousel slide" data-ride="carousel"> -->
-    <!-- Indicators -->
-    <!-- <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol> -->
-
-    <!-- Wrapper for slides -->
-    <!-- <div class="carousel-inner">
-
-      <div class="item active">
-        <img src="https://www.w3schools.com/bootstrap/ny.jpg" alt="Los Angeles" style="width:100%;">
-        <div class="carousel-caption">
-          <h3>Los Angeles</h3>
-          <p>LA is always so much fun!</p>
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="https://www.w3schools.com/bootstrap/chicago.jpg" alt="Chicago" style="width:100%;">
-        <div class="carousel-caption">
-          <h3>Chicago</h3>
-          <p>Thank you, Chicago!</p>
-        </div>
-      </div>
-    
-      <div class="item">
-        <img src="https://www.w3schools.com/bootstrap/la.jpg" alt="New York" style="width:100%;">
-        <div class="carousel-caption">
-          <h3>New York</h3>
-          <p>We love the Big Apple!</p>
-        </div>
-      </div>
-  
-    </div> -->
-
-    <!-- Left and right controls -->
-    <!-- <a class="left carousel-control" href="#carousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div> -->
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+ 
+<div id="carouselExampleIndicators" class="carousel slide">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -54,13 +7,18 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="https://www.w3schools.com/bootstrap/ny.jpg" alt="First slide">
+      <img  src="utilities/images/meta/test.jpg" alt="First slide">
+      <div class="carousel-caption 1st-slide">
+        <h4>LOREM IPSUM DOLOR</h4>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        <a href="" class="btn btn-primary text-white px-4 py-2"><b>READ MORE</b></a>
+      </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="https://www.w3schools.com/bootstrap/chicago.jpg" alt="Second slide">
+      <img  src="https://www.w3schools.com/bootstrap/chicago.jpg" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="https://www.w3schools.com/bootstrap/la.jpg" alt="Third slide">
+      <img  src="https://www.w3schools.com/bootstrap/la.jpg" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -72,118 +30,110 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<div class="container">
+<div class="container home-page mb-4">
     <!-- Products -->
     <div class="row center">
       <div class="col-sm-12 center-title">
-        <h3>Our Products</h3>
-        <h5>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </h5>
+        <h4>Our Products</h4>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</h5>
       </div>
     </div>
     <div class="row">
       <?php foreach($categories as $category): ?>
       <div class="col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <img src="<?php echo base_url('utilities/images/meta/'.$category->meta_img)?>" alt="">
+        <div class="card">
+          <div class="card-header p-0">
+            <!-- <img src="<?php echo base_url('utilities/images/meta/'.$category->meta_img)?>" alt="" class="product-img"> -->
+            <img src="<?php echo base_url('utilities/images/meta/test.jpg')?>" alt="" class="product-img">
+          </div>
+          <div class="card-body">            
             <h5><strong><?php echo $category->cat_desc ?></strong></h5>
             <p><?php echo mb_strimwidth($category->meta_desc, 0, 100, " ...") ?></p>
           </div>
-          <div class="panel-footer">
-            <a href="<?php echo base_url('category?q='.$category->cat_id) ?>" class="btn btn-primary">VIEW PRODUCTS</a>
+          <div class="card-footer">
+            <a href="<?php echo base_url('category?q='.$category->cat_id) ?>" class="btn btn-primary text-white px-4"><b>VIEW ALL</b></a>
           </div>
         </div>
       </div>
       <?php endforeach; ?>
     </div>
+  </div>
+<div style="background:#f0f0f0;">  
+  <div class="container home-page">   
     <!-- Events -->
-    <div class="row center">
-      <div class="col-sm-12 center-title">
-        <h3>Events</h3>
-        <h5>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </h5>
-      </div>
-    </div>
     <div class="row">
-      <div class="col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <img src="<?php echo base_url('utilities/images/meta/no-image.png')?>" alt="">
-            <h5><strong>Lorem Ipsum Dolors</strong></h5>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+      <div class="col-lg-7">
+        <div class="section-title">
+          <h4>News and Events</h4>
+        </div>
+        <div class="col-lg-12 card mb-3">
+          <div class="row">
+            <div class="col-md-4 px-0">
+              <img src="<?php echo base_url('utilities/images/meta/test.jpg')?>" alt="" class="product-img">
+            </div>
+            <div class="col-md-8 py-3">
+              <div class="col-event">
+                <h5><strong>Bacon ipsum dolor amet biltong</strong></h5>
+                <p>Boudin venison cupim t-bone tri-tip. Short loin frankfurter filet mignon swine. Pork belly beef sausage ham hock tri-tip. Filet mignon ball tip pork swine ground round.</p>
+              </div>
+              <a href="<?php echo base_url('event?q=event_id') ?>" >READ MORE</a>
+            </div>
           </div>
-          <div class="panel-footer">
-            <a href="<?php echo base_url('event?q=event_id') ?>" class="btn btn-primary">READ MORE</a>
+        </div>  
+        <div class="col-lg-12 card mb-3">
+          <div class="row">
+            <div class="col-md-4 px-0">
+              <img src="<?php echo base_url('utilities/images/meta/test.jpg')?>" alt="" class="product-img">
+            </div>
+            <div class="col-md-8 py-3">
+              <div class="col-event">
+                <h5><strong>Bacon ipsum dolor amet biltong</strong></h5>
+                <p>Boudin venison cupim t-bone tri-tip. Short loin frankfurter filet mignon swine. Pork belly beef sausage ham hock tri-tip. Filet mignon ball tip pork swine ground round.</p>
+              </div>  
+              <a href="<?php echo base_url('event?q=event_id') ?>" >READ MORE</a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <img src="<?php echo base_url('utilities/images/meta/no-image.png')?>" alt="">
-            <h5><strong>Lorem Ipsum Dolors</strong></h5>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-          </div>
-          <div class="panel-footer">
-            <a href="<?php echo base_url('event?q=event_id') ?>" class="btn btn-primary">READ MORE</a>
-          </div>
+      <!-- What's New -->
+      <div class="offset-md-1 col-lg-4">
+        <div class="section-title ">
+          <h4>What's New?</h4>
         </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <img src="<?php echo base_url('utilities/images/meta/no-image.png')?>" alt="">
-            <h5><strong>Lorem Ipsum Dolors</strong></h5>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-          </div>
-          <div class="panel-footer">
-            <a href="<?php echo base_url('event?q=event_id') ?>" class="btn btn-primary">READ MORE</a>
-          </div>
+        <div class="line">
         </div>
-      </div>
+        <div class="col-lg-12 pb-3 mb-3 border-bottom">
+          <div class="row">
+            <div class="col-md-4 px-0">
+              <img src="<?php echo base_url('utilities/images/meta/pulag.jpg')?>" alt="" class="product-img">
+            </div>
+            <div class="col-md-8 px-2">
+              <div class="col-blog"> 
+                <span>Bacon ipsum dolor amet biltong buffalo boudin venison prosciutto burgdoggen</span>
+              </div>
+              <div class="section-footer text-right">
+                <a href="">READ MORE</a>
+              </div>
+            </div>
+          </div>
+        </div>  
+        <div class="col-lg-12 pb-3 mb-3 border-bottom">
+          <div class="row">
+            <div class="col-md-4 px-0">
+              <img src="<?php echo base_url('utilities/images/meta/pulag.jpg')?>" alt="" class="product-img">
+            </div>
+            <div class="col-md-8 px-2">
+              <div class="col-blog">
+                <span>Bacon ipsum dolor amet biltong buffalo boudin venison prosciutto burgdoggen</span>
+              </div>
+              <div class="section-footer text-right">
+                <a href="">READ MORE</a>
+              </div>
+            </div>
+          </div>
+        </div>      
+      </div>      
     </div>
-    <!-- Blogs -->
-    <div class="row center">
-      <div class="col-sm-12 center-title">
-        <h3>Blogs</h3>
-        <h5>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </h5>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <img src="<?php echo base_url('utilities/images/meta/no-image.png')?>" alt="">
-            <h5><strong>Lorem Ipsum Dolors</strong></h5>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-          </div>
-          <div class="panel-footer">
-            <a href="<?php echo base_url('event?q=event_id') ?>" class="btn btn-primary">READ MORE</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <img src="<?php echo base_url('utilities/images/meta/no-image.png')?>" alt="">
-            <h5><strong>Lorem Ipsum Dolors</strong></h5>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-          </div>
-          <div class="panel-footer">
-            <a href="<?php echo base_url('event?q=event_id') ?>" class="btn btn-primary">READ MORE</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <img src="<?php echo base_url('utilities/images/meta/no-image.png')?>" alt="">
-            <h5><strong>Lorem Ipsum Dolors</strong></h5>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-          </div>
-          <div class="panel-footer">
-            <a href="<?php echo base_url('event?q=event_id') ?>" class="btn btn-primary">READ MORE</a>
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
+  </div> 
+</div>     
+    

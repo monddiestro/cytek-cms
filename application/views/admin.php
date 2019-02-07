@@ -10,7 +10,7 @@
                 <div class="row pb-4">
                     <div class="col-lg-12 ">
                         <div class="card shadow">
-                            <div class="card-header">
+                            <div class="card-header border-0">
                                 You have <b>100 new inquiries </b>as of January.
                             </div>
                             <div class="card-body p-0">
@@ -37,7 +37,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="card-footer text-center">
+                            <div class="card-footer text-center border-0">
                                 <a href=""><b>View More</b></a>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                 <div class="row pb-4">
                     <div class="col-lg-12 ">
                         <div class="card shadow">
-                            <div class="card-header">
+                            <div class="card-header border-0">
                                 Users currently enrolled
                             </div>
                             <div class="card-body p-0">
@@ -133,7 +133,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="card-footer text-center">
+                            <div class="card-footer border-0 text-center">
                                 <a href=""><b>View More</b></a>
                             </div>
                         </div>

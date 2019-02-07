@@ -91,19 +91,19 @@
                           </td>
                           <td class="text-center">
                             <span data-toggle="tooltip" data-placement="top" title="Edit Category">
-                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modify-category-<?php echo $cat->cat_id ?>">
+                              <a class="text-success mr-3" data-toggle="modal" data-target="#modify-category-<?php echo $cat->cat_id ?>">
                                 <span class="fa fa-edit"></span>
-                              </button>
+                              </a>
                             </span>
                             <span data-toggle="tooltip" data-placement="top" title="New Sub Category">
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-sub-category-<?php echo $cat->cat_id ?>">
+                              <a class="text-primary mr-3" data-toggle="modal" data-target="#new-sub-category-<?php echo $cat->cat_id ?>">
                                 <span class="fa fa-plus"></span>
-                              </button>
+                              </a>
                             </span>
                             <span data-toggle="tooltip" data-placement="top" title="Delete Category">
-                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-category-<?php echo $cat->cat_id ?>">
+                              <a class="text-danger mr-3" data-toggle="modal" data-target="#delete-category-<?php echo $cat->cat_id ?>">
                                 <span class="fa fa-trash"></span>
-                              </button>
+                              </a>
                             </span>
                           </td>                          
                         </tr>
