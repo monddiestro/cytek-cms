@@ -9,7 +9,7 @@
     <div class="sidebar-content">
         <section class="sidebar-menu">
            <nav>
-                <a class="sidebar-brand" href="">
+                <a class="sidebar-brand" href="<?php echo base_url('/admin') ?>">
                     <img src="<?php echo base_url('utilities/images/nav-logo/cytek-white-logo.png') ?>" alt="">
                 </a>
                 <ul class="navbar-nav flex-column ">
