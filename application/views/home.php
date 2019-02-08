@@ -43,12 +43,11 @@
       <div class="col-sm-4 mb-4">
         <div class="card">
           <div class="card-header p-0">
-            <!-- <img src="<?php echo base_url('utilities/images/meta/'.$category->meta_img)?>" alt="" class="product-img"> -->
-            <img src="<?php echo base_url('utilities/images/meta/test.jpg')?>" alt="" class="product-img">
+            <img src="<?php echo base_url($category->img)?>" alt="" class="product-img">
           </div>
           <div class="card-body">            
             <h5><strong><?php echo $category->cat_title ?></strong></h5>
-            <p><?php echo mb_strimwidth($category->meta_desc, 0, 100, " ...") ?></p>
+            <p><?php echo mb_strimwidth($category->description, 0, 100, " ...") ?></p>
           </div>
           <div class="card-footer">
             <a href="<?php echo base_url('category?q='.$category->cat_id) ?>" class="btn btn-primary text-white px-4"><b>VIEW ALL</b></a>
