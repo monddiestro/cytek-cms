@@ -2,8 +2,8 @@
     <div class="container" style="margin-top:10%;">
         <div class="offset-lg-4 col-sm-4">            
             <div class="card shadow">
-                <div class="card-header shadow-none">
-                   <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" alt="">
+                <div class="card-header border-0 text-center">
+                   <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" class="w-50" alt="">
                 </div>
                 <?php if(!empty($this->session->flashdata('message'))): ?>
                 <div class="alert alert-<?php echo $this->session->flashdata('class') ?>">
