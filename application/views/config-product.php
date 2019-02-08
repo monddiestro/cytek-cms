@@ -133,9 +133,9 @@
                       <label for="">Image</label>
                       <img class="image_preview" style="width:100%;" src="<?php echo base_url('utilities/images/meta/'.$product["meta_img"]) ?>" alt="">
                       <br/>
-                      <label class="btn btn-default" id="btn_browse">
+                      <label class="btn btn-default shadow" id="btn_browse">
                           <input type="file" name="meta_img" id="meta_img" accept="image/*" style="display:none;">
-                          Browse ..
+                          <b>BROWSE</b>
                       </label>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted filename">No File Selected</span>
                     </div>
                     <div class="form-group">

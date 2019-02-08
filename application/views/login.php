@@ -1,9 +1,9 @@
 <div class="login-bg">
     <div class="container" style="margin-top:10%;">
-        <div class="offset-4 col-sm-4">            
+        <div class="offset-lg-4 col-sm-4">            
             <div class="card shadow">
-                <div class="card-header shadow-none">
-                    Login
+                <div class="card-header border-0 text-center">
+                    <img src="utilities/images/nav-logo/cytek-100.png" alt=""> 
                 </div>
                 <?php if(!empty($this->session->flashdata('message'))): ?>
                 <div class="alert alert-<?php echo $this->session->flashdata('class') ?>">
@@ -22,12 +22,13 @@
                         <input type="password" id="password" class="form-control" name="password" />
                     </div>
                 </div>
-                <div class="card-footer text-center shadow-none">
-                    <button class="btn btn-primary shadow w-50" type="submit"><b>Log in</b></button>
+                <div class="card-footer text-center border-0">
+                    <button class="btn btn-primary shadow w-100" type="submit"><b>Log in</b></button>
                     <p class="mt-3">Don't Have an account ? <a href="" class="text-primary"><b>Sign up</b></a></p>
                 </div>
             </div>
             <?php echo form_close(); ?>
         </div>
     </div>
+    <footer></footer>
 </div>

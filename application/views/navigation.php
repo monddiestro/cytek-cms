@@ -1,15 +1,14 @@
-
-
-<nav class="navbar navbar-expand-lg  text-light">
+<div id="nav-backdrop"></div>
+<div class="mobile-banner d-none">
+  <a class="navbar-brand text-dark p-2" id="showNavbar"><span>&#9776;</span></a>
+  <img src="utilities/images/nav-logo/cytek-100.png" class="py-2" alt=""> 
+</div>
+<nav class="navbar navbar-expand-lg  text-light" id="navbarCustom">
   <a class="navbar-brand ml-5" href="#">
     <img src="utilities/images/nav-logo/cytek-100.png" alt=""> 
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto mr-2">
+  <div class="navbar-collapse " id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto mr-2 mb-4">
       <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="sr-only">(current)</span></a>
           <ul class="dropdown-menu">
@@ -28,16 +27,16 @@
         </ul>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="#" class="">BLOGS</a>
+        <a class="nav-link" href="#" >BLOGS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" class="">EVENTS</a>
+        <a class="nav-link" href="#" >EVENTS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" class="">ABOUT US</a>
+        <a class="nav-link" href="#">ABOUT US</a>
       </li>      
     </ul>
-    <div class="mr-5">
+    <div class="mr-5 d-lg-block d-none">
       <img src="utilities/images/nav-logo/cytek-100.png" alt="">
     </div>
   </div>
