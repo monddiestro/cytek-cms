@@ -18,7 +18,7 @@
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <?php echo $message; ?>
       </div>
-      <div class="row">
+      <div class="row prod-page">
           <div class="col-sm-6 pb-3">
               <h5>PRODUCTS</h5>
           </div>
@@ -31,7 +31,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card shadow">
-            <table class="table mb-0">
+            <table class="table tbl-mobile mb-0">
               <thead>
                 <tr>
                   <th>ID</th>
@@ -44,10 +44,10 @@
               <tbody>
                 <?php foreach ($products as $p): ?>
                   <tr>
-                    <td><?php echo $p->prod_id ?></td>
-                    <td><?php echo $p->prod_title ?></td>
-                    <td><?php echo $p->cat_title ?></td>
-                    <td><?php echo $p->subcat_title ?></td>
+                    <td data-title="ID" class="td-header"><?php echo $p->prod_id ?></td>
+                    <td data-title="Name" ><?php echo $p->prod_title ?></td>
+                    <td data-title="Category"><?php echo $p->cat_title ?></td>
+                    <td data-title="Sub Category"><?php echo $p->subcat_title ?></td>
                     <td>
                       <span data-toggle="tooltip" data-placement="top" title="Edit">
                         <a href="<?php echo base_url('admin/config_product?id='.$p->prod_id) ?>"  class="text-success mr-3" style="text-decoration:none;">

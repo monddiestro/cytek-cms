@@ -9746,7 +9746,7 @@ textarea::-webkit-scrollbar-thumb {
   cursor: pointer;
   padding-left: 23px;
 }
-.navbar-nav a.nav-link:hover, .navbar-nav a.nav-link.active, .navbar-nav a.nav-link:active, .navbar-nav a.nav-link:focus {
+.navbar-nav a.nav-link:hover, .navbar-nav a.nav-link.active, .navbar-nav a.nav-link:active, .navbar-nav a.nav-link:focus, .navbar-nav a.nav-link.active {
   color: #FFCC00;
 }
 
@@ -10026,7 +10026,15 @@ td.btn-collapse {
   margin-top: 70px;
 }
 
+.prod-page {
+  margin-top: 80px;
+}
+
 @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .prod-page {
+    margin-top: 30px;
+  }
+
   .mobile-banner {
     display: block !important;
   }
@@ -10111,6 +10119,7 @@ td.btn-collapse {
     border: none;
     position: relative;
     white-space: normal;
+    text-align: right;
   }
 
   .tbl-mobile.table > tbody > tr:first-child td:first-child {

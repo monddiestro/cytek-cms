@@ -219,7 +219,7 @@ textarea::-webkit-scrollbar-thumb
   cursor: pointer;
   padding-left: 23px;
 
-  &:hover,&.active,&:active,&:focus {
+  &:hover,&.active,&:active,&:focus,&.active {
     color: #FFCC00;
   }
 

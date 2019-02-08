@@ -93,9 +93,15 @@
 .breadcrumb {
     margin-top : 70px;
 }
+.prod-page {
+    margin-top: 80px;
+}
 
 // Smartphones Landscape
 @include landscapeSm {
+    .prod-page {
+        margin-top: 30px;
+    }
     .mobile-banner {
         display:block !important;
     } 
@@ -180,7 +186,7 @@
       border: none;
       position: relative;
       white-space: normal;
-    //   text-align: right;
+      text-align: right;
   
     }
 
