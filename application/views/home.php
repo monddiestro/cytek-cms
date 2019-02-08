@@ -30,17 +30,17 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<div class="container home-page mb-4">
+<div class="container home-page ">
     <!-- Products -->
     <div class="row center">
-      <div class="col-sm-12 center-title">
+      <div class="col-sm-12 center-title mt-4">
         <h4>Our Products</h4>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</h5>
       </div>
     </div>
     <div class="row">
       <?php foreach($categories as $category): ?>
-      <div class="col-sm-4">
+      <div class="col-sm-4 mb-4">
         <div class="card">
           <div class="card-header p-0">
             <!-- <img src="<?php echo base_url('utilities/images/meta/'.$category->meta_img)?>" alt="" class="product-img"> -->
@@ -96,7 +96,7 @@
         </div>
       </div>
       <!-- What's New -->
-      <div class="offset-md-1 col-lg-4">
+      <div class="offset-lg-1 col-lg-4">
         <div class="section-title ">
           <h4>What's New?</h4>
         </div>

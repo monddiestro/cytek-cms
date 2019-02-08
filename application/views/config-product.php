@@ -110,8 +110,22 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
+<<<<<<< HEAD
                       <label for="">Description</label>
                       <textarea placeholder="Add your product description here" name="description" class="form-control" rows="13"><?php echo $product["description"] ?></textarea>
+=======
+                      <label for="">Image</label>
+                      <img class="image_preview" style="width:100%;" src="<?php echo base_url('utilities/images/meta/'.$product["meta_img"]) ?>" alt="">
+                      <br/>
+                      <label class="btn btn-default shadow" id="btn_browse">
+                          <input type="file" name="meta_img" id="meta_img" accept="image/*" style="display:none;">
+                          <b>BROWSE</b>
+                      </label>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted filename">No File Selected</span>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Title</label>
+                      <input type="text" name="meta_title" placeholder="Add product meta title here" value="<?php echo $product["meta_title"] ?>" class="form-control"/>
+>>>>>>> df7079815e8c4fc2acf270cc3ac3f1645150e1a5
                     </div>
                     <div class="form-group">
                       <label for="">Keywords (<small>separated by comma</small>)</label>

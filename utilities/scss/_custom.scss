@@ -1,8 +1,9 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    // font-size: 1.4em;
     font-size: 14px;
     font-weight: 400;
+    color: #494949;
+    letter-spacing : .05em;
 }
 .line {
   height:1px;
@@ -69,12 +70,12 @@ label {
 .dropdown-list {  
   a.dropdown-item {
     font-weight: 300 !important;
-    padding-left: 15px;
+    padding-left: 40px;
   }  
 }
 // carousel
 .carousel-inner {
-  height: 91vh ;
+  max-height: 91vh ;
 
   img {
     width:100%;
@@ -201,7 +202,33 @@ label {
   }
 
 }
-.shadow{
+ul.list-unstyled.fw-light {
+  margin-bottom:0px;
+  li {
+    margin-bottom:5px;
+    a {
+      color:#494949 ;
+      &:hover {
+        color:#FFCC00;
+        text-decoration:none;
+      }
+    }
+  }
+}
+// alert
+
+.login-bg .alert {
+  border-radius: 0px;
+  margin-bottom:0px;  
+}
+ .alert-danger {
+  color: #FFF;
+  background-color: #f54337;
+  border-color: #ff0c00;
+  border-radius: none;
+}
+
+.shadow , .navbar-expand-lg{
   -webkit-box-shadow: 0px 1px 2px rgba(100, 100, 100, 0.25) !important;
     box-shadow: 0px 1px 2px rgba(100, 100, 100, 0.25) !important;
 }
@@ -305,14 +332,15 @@ td.btn-collapse {
   }
 }
 
+
 .btn-link[aria-expanded="true"]:after {
   content: "\f056";   
 }
 
 .modal-footer .btn-link {
   font-weight: bold !important;
-  font-size: 11px;
-  letter-spacing: 0.1em;
+  font-size: 12px;
+  letter-spacing: 0.05em;
 
   &:after {
     content: "" !important; 
@@ -320,16 +348,16 @@ td.btn-collapse {
 }
 .sidebar-brand {
   img {
-    width: 100%;
-    padding-bottom: 47px;
-    padding-top: 55px;
+    width: 80%;
+    padding-bottom: 20px;
+    padding-top: 20px;
   }
 }
 .modal{
   .modal-title {
     font-weight: bold;
     font-size: 14px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
   }  
   .cytek-modal {
     width: 358px;
@@ -341,7 +369,7 @@ td.btn-collapse {
   }
   span.form-label , label.form-label {
     font-size: 12px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     color: #5E5E5E;
     line-height: 1.2;
   }
