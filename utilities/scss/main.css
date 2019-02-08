@@ -9883,9 +9883,9 @@ td.btn-collapse {
 }
 
 .sidebar-brand img {
-  width: 100%;
-  padding-bottom: 47px;
-  padding-top: 55px;
+  width: 80%;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .modal .modal-title {
@@ -9989,9 +9989,13 @@ td.btn-collapse {
   flex-basis: inherit;
   flex-grow: inherit;
   align-items: center;
+  display: flex;
 }
 .navbar-collapse ul.navbar-nav {
   flex-direction: row;
+}
+.navbar-collapse .mr-5 {
+  margin: 0 !important;
 }
 
 @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -10026,9 +10030,11 @@ td.btn-collapse {
   .navbar.navbar-expand-lg .navbar-collapse {
     height: 100vh;
     overflow-x: auto;
+    display: block;
   }
   .navbar.navbar-expand-lg .navbar-collapse ul.navbar-nav {
     flex-direction: column;
+    margin-bottom: 15px;
   }
   .navbar.navbar-expand-lg .navbar-collapse ul.navbar-nav a.nav-link {
     padding-left: 0;

@@ -82,8 +82,12 @@
     flex-basis: inherit;
     flex-grow: inherit; 
     align-items: center;
+    display:flex;
     ul.navbar-nav {
         flex-direction: row;
+    }
+    .mr-5 {
+        margin:0 !important;
     }
 }
 
@@ -120,8 +124,10 @@
         .navbar-collapse {
             height:100vh;
             overflow-x:auto;
+            display:block;
             ul.navbar-nav {
                 flex-direction: column;
+                margin-bottom:15px;
                 a.nav-link {
                     padding-left: 0;
                 }  
