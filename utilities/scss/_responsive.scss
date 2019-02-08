@@ -80,7 +80,7 @@
 }
 .navbar-collapse {
     flex-basis: inherit;
-    flex-grow: inherit; 
+    // flex-grow: inherit; 
     align-items: center;
     display:flex;
     ul.navbar-nav {
@@ -90,9 +90,18 @@
         margin:0 !important;
     }
 }
+.breadcrumb {
+    margin-top : 70px;
+}
+.prod-page {
+    margin-top: 80px;
+}
 
 // Smartphones Landscape
 @include landscapeSm {
+    .prod-page {
+        margin-top: 30px;
+    }
     .mobile-banner {
         display:block !important;
     } 
@@ -177,7 +186,7 @@
       border: none;
       position: relative;
       white-space: normal;
-    //   text-align: right;
+      text-align: right;
   
     }
 
@@ -255,6 +264,9 @@
     }
     .action-btn button , .btn-collapse {
         width: 100% !important;
+    }
+    .breadcrumb {
+        margin-top : 50px;
     }
     
 }
