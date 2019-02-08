@@ -43,9 +43,22 @@ class Category_model extends CI_Model
       $this->db->set($data);
       $this->db->update('subcategory_tbl');
     }
-    function pull_category_headers($cat_id) {
+    function pull_category($cat_id) {
       $this->db->where('cat_id',$cat_id);
       $query = $this->db->get('category_tbl');
+      return $query->result();
+    }
+    function pull_subcategory($subcat_id) {
+      $this->db->where('subcat_id',$subcat_id);
+      $this->db->join('category_tbl','subcategory_tbl.cat_id = category_tbl.cat_id');
+      $this->db->select('subcat_id,subcat_title,subcategory_tbl.cat_id, subcategory_tbl.description, subcategory_tbl.img, subcategory_tbl.keyword,cat_title');
+      $query = $this->db->get('subcategory_tbl');
+      return $query->result();
+    }
+
+    function pull_subcategory_product($subcat_id) {
+      $this->db->where('subcat_id',$subcat_id);
+      $query = $this->db->get('product_tbl');
       return $query->result();
     }
 }
