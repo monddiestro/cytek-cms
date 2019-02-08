@@ -10,8 +10,8 @@ class Category_model extends CI_Model
     }
     function pull_subcategories() {
       $this->db->join('category_tbl','category_tbl.cat_id = subcategory_tbl.cat_id', 'inner');
-      $this->db->order_by('category_tbl.cat_id','ASC');
-      $this->db->order_by('subcat_desc','ASC');
+      $this->db->order_by('category_tbl.cat_title','ASC');
+      $this->db->order_by('subcat_title','ASC');
       $query = $this->db->get('subcategory_tbl');
       return $query->result();
     }

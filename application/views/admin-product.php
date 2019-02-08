@@ -19,8 +19,11 @@
         <?php echo $message; ?>
       </div>
       <div class="row">
-          <div class="col-sm-12 pb-3">
-              <div class="text-right">
+          <div class="col-sm-6 pb-3">
+              <h5>PRODUCTS</h5>
+          </div>
+          <div class="col-sm-6 pb-3">
+            <div class="text-right">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-product"><i class="fa fa-plus"></i>&nbsp;&nbsp;<b>Product</b></button>
               </div>
           </div>
@@ -42,9 +45,9 @@
                 <?php foreach ($products as $p): ?>
                   <tr>
                     <td><?php echo $p->prod_id ?></td>
-                    <td><?php echo $p->prod_name ?></td>
-                    <td><?php echo $p->cat_desc ?></td>
-                    <td><?php echo $p->subcat_desc ?></td>
+                    <td><?php echo $p->prod_title ?></td>
+                    <td><?php echo $p->cat_title ?></td>
+                    <td><?php echo $p->subcat_title ?></td>
                     <td>
                       <span data-toggle="tooltip" data-placement="top" title="Edit">
                         <a href="<?php echo base_url('admin/config_product?id='.$p->prod_id) ?>"  class="text-success mr-3" style="text-decoration:none;">
@@ -78,7 +81,28 @@
         <span class="modal-title">New Product</span>
       </div>
       <div class="modal-body">
-        <span class="modal-title">Meta Details</span>
+        <div class="well">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="cat_id">Category</label>
+                <select class="selectpicker form-control" title="Select Category" id="cat_id" name="cat_id" required>
+                  <?php foreach ($categories as $c): ?>
+                    <option value="<?php echo $c->cat_id ?>"><?php echo $c->cat_title ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label" for="cat_id">Sub-Category</label>
+                <select class="selectpicker form-control" title="Select Sub Category" id="subcat_id" name="subcat_id" required>
+
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="well">
           <div class="row">
             <div class="col-sm-12">
@@ -110,45 +134,6 @@
                     <input type="file" name="meta_img" id="meta_img" accept="image/*" style="display:none;">
                     Browse ..
                 </label>&nbsp;&nbsp;<span class="text-muted small" id="filename">No File Selected</span>
-            </div>
-          </div>
-        </div>
-        <span class="modal-title">Product Details<span>
-        <div class="well">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label class="form-label" for="cat_id">Category</label>
-                <select class="form-control selectpicker" title="Select Category" id="cat_id" name="cat_id" required>
-                  <?php foreach ($categories as $c): ?>
-                    <option value="<?php echo $c->cat_id ?>"><?php echo $c->cat_desc ?></option>
-                  <?php endforeach; ?>
-                </select>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label class="form-label" for="cat_id">Sub-Category</label>
-                <select class="form-control selectpicker" title="Select Sub Category" id="subcat_id" name="subcat_id" required>
-
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <label for="prod_name" class="form-label">Name</label>
-                  <input class="form-control" name="prod_name" type="text" placeholder="Example: Stereo Microscope SZ51" required>
-                </div>
-              </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="prod_desc" class="form-label">Description</label>
-                <textarea class="form-control" name="prod_desc" id="prod_desc" rows="10" cols="80" required></textarea>
-              </div>
             </div>
           </div>
         </div>

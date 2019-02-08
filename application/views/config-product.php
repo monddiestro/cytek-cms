@@ -2,13 +2,14 @@
   <div class="wrapper">
     <div id="page-content-wrapper">
       <div class="container px-5">
-        <div class="row">
-          <div class="col-lg-12">
-           <div class="header-text header-mt">
-              <span>Configure Product Page</span>
-            </div>
-          </div>
-        </div>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="<?php echo base_url('admin') ?>">Home</a></li>
+          <li class="breadcrumb-item"><a href="<?php echo base_url('admin/products') ?>">Products</a></li>
+          <li class="breadcrumb-item active"><?php echo ucwords($product["prod_title"])?></li>
+        </ol>
+        <span class="header-text">Edit <?php echo ucwords($product["prod_title"]) ?> Details</span>
+        <br/>
+        <small>Don't forget to click update button to save your changes</small>
         <div class="row">
           <div class="col-sm-12">
             <!-- alert -->
@@ -41,7 +42,7 @@
                     <div class="col-sm-3">
                       <div style="border:1px solid #ddd;">
                         <div style="padding:10px">
-                          <img style="width:100%;" src="<?php echo base_url('utilities/images/banners/'.$b->image_path) ?>" alt="">
+                          <img style="width:100%;" src="<?php echo base_url($b->image_path) ?>" alt="">
                         </div>
                         <div style="padding:10px;">
                           <a href="<?php echo base_url('admin/drop_banner?id='.$b->banner_id) ?>"  class="btn btn-danger btn-block">DELETE</a>
@@ -65,7 +66,7 @@
         </div>
         <div class="row">
           <!-- details -->
-          <div class="col-sm-6">
+          <div class="col-sm-12">
             <?php echo form_open(base_url('admin/update_product_details')) ?>
             <div class="card mb-3">
               <div class="card-header">
@@ -76,32 +77,45 @@
                   <div class="col-sm-6">
                     <input type="hidden" name="prod_id" value="<?php echo $product["prod_id"]; ?>">
                     <div class="form-group">
-                      <label for="">Name</label>
-                      <input type="text" class="form-control" placeholder="Add product name" name="prod_name" value="<?php echo $product["prod_name"] ?>">
+                      <label for="">Image</label>
+                      <img class="image_preview" style="width:100%;" src="<?php echo base_url($product["img"]) ?>" alt="">
+                      <br/>
+                      <label class="btn btn-default shadow mt-2" id="btn_browse">
+                          <input type="file" name="img" id="img" accept="image/*" style="display:none;">
+                          Browse ..
+                      </label>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted filename">No File Selected</span>
                     </div>
                     <div class="form-group">
                       <label for="">Category</label>
                       <select class="form-control selectpicker" title="Select Category" id="cat_id" name="cat_id" required>
                         <?php foreach ($categories as $cat): ?>
-                          <option value="<?php echo $cat->cat_id ?>" <?php echo ($cat->cat_id == $product["cat_id"] ? 'selected' : '') ?>><?php echo $cat->cat_desc ?></option>
+                          <option value="<?php echo $cat->cat_id ?>" <?php echo ($cat->cat_id == $product["cat_id"] ? 'selected' : '') ?>><?php echo $cat->cat_title ?></option>
                         <?php endforeach; ?>
                       </select>
                     </div>
                     <div class="form-group">
-                      <label for="">Subcategory</label>
+                      <label for="">Sub Category</label>
                       <select class="form-control selectpicker" title="Select Sub Category" id="subcat_id" name="subcat_id" required>
                         <?php foreach ($subcategories as $subcat): ?>
                           <?php if ($subcat->cat_id == $product["cat_id"]): ?>
-                            <option value="<?php echo $subcat->subcat_id ?>" <?php echo ($subcat->subcat_id == $product["subcat_id"]) ? 'selected' :'' ?>><?php echo $subcat->subcat_desc ?></option>
+                            <option value="<?php echo $subcat->subcat_id ?>" <?php echo ($subcat->subcat_id == $product["subcat_id"]) ? 'selected' :'' ?>><?php echo $subcat->subcat_title ?></option>
                           <?php endif; ?>
                         <?php endforeach; ?>
                       </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Name</label>
+                      <input type="text" class="form-control" placeholder="Add product name" name="prod_title" value="<?php echo $product["prod_title"] ?>">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="">Description</label>
-                      <textarea placeholder="Add your product description here" name="prod_desc" class="form-control" rows="9" cols="80"><?php echo $product["prod_desc"] ?></textarea>
+                      <textarea placeholder="Add your product description here" name="description" class="form-control" rows="13"><?php echo $product["description"] ?></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Keywords (<small>separated by comma</small>)</label>
+                      <textarea class="form-control" name="keyword" id="" placeholder="Add product meta keywords here separated by comma" rows="6"><?php echo $product["keyword"] ?></textarea>
                     </div>
                   </div>
                 </div>
@@ -111,55 +125,6 @@
                   <div class="col-sm-12">
                     <div class="pull-right">
                       <button type="submit" class="btn btn-primary">Update Product</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <?php echo form_close(); ?>
-          </div>
-          <!-- meta  -->
-          <div class="col-sm-6">
-            <?php echo form_open_multipart(base_urL('admin/update_product_meta')); ?>
-            <input type="hidden" name="prod_id" value="<?php echo $product["prod_id"] ?>">
-            <div class="card mb-3" id="product_details">
-              <div class="card-header">
-                <strong>Meta Content</strong>
-              </div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="">Image</label>
-                      <img class="image_preview" style="width:100%;" src="<?php echo base_url('utilities/images/meta/'.$product["meta_img"]) ?>" alt="">
-                      <br/>
-                      <label class="btn btn-default" id="btn_browse">
-                          <input type="file" name="meta_img" id="meta_img" accept="image/*" style="display:none;">
-                          Browse ..
-                      </label>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted filename">No File Selected</span>
-                    </div>
-                    <div class="form-group">
-                      <label for="">Title</label>
-                      <input type="text" name="meta_title" placeholder="Add product meta title here" value="<?php echo $product["meta_title"] ?>" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                      <label for="">Keywords (<small>separated by comma</small>)</label>
-                      <input type="text" name="meta_keyword" placeholder="Add product meta keywords here separated by comma" value="<?php echo $product["meta_keyword"] ?>" class="form-control"/>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="">Description</label>
-                      <textarea name="meta_desc" class="form-control" rows="15" cols="80" placeholder="Add product meta desciption here"><?php echo $product["meta_desc"] ?></textarea>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="pull-right">
-                      <button type="submit" class="btn btn-primary">Update Meta's</button>
                     </div>
                   </div>
                 </div>
@@ -232,7 +197,7 @@
               <div class="card-body">
                 <div class="form-group">
                   <input type="hidden" name="prod_id" value="<?php echo $product["prod_id"] ?>">
-                  <textarea name="prod_specs" rows="15" cols="80" class="form-control" placeholder="HTML Table format accepted"><?php echo $product["specs"] ?></textarea>
+                  <textarea name="prod_specs" rows="15" cols="80" class="form-control" placeholder="HTML Table format accepted"><?php echo $specification ?></textarea>
                 </div>
               </div>
               <div class="card-footer">

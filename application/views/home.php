@@ -47,7 +47,7 @@
             <img src="<?php echo base_url('utilities/images/meta/test.jpg')?>" alt="" class="product-img">
           </div>
           <div class="card-body">            
-            <h5><strong><?php echo $category->cat_desc ?></strong></h5>
+            <h5><strong><?php echo $category->cat_title ?></strong></h5>
             <p><?php echo mb_strimwidth($category->meta_desc, 0, 100, " ...") ?></p>
           </div>
           <div class="card-footer">

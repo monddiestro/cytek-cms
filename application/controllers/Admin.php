@@ -246,37 +246,25 @@ class Admin extends CI_Controller
     // End
     // Products CRUD
     function products() {
-      // header data
-      $header = array(
-          'description' => '',
-          'keywords' => '',
-          'robots' => '',
-          'og_title' => '',
-          'og_description' => '',
-          'og_image' => '',
-          'og_url' => '',
-          'og_type' => '',
-          'cannonical' => '',
-          'title' => 'Cytek Solutions Inc. | Product'
-      );
-      $this->load->view('header',$header);
-      // admin-navigation data
-      $nav["active"] = "products";
-      $this->load->view('admin-navigation',$nav);
-      // body data
+      // view data
+      $header = $this->header_array('','','','Admin Products | Cytek Solutions Inc.','',base_url('admin/products'));
+      $nav["page"] = "products";
       $body_data["products"] = $this->product_model->pull_products();
       $body_data["categories"] = $this->category_model->pull_categories();
+
+      // load view
+      $this->load->view('header',$header);
+      $this->load->view('admin-navigation',$nav);
       $this->load->view('admin-product',$body_data);
       $this->load->view('pre-footer');
       $this->load->view('admin-product-script');
       $this->load->view('footer');
     }
     function new_products() {
+
       $referer = $this->input->server('HTTP_REFERER');
       $cat_id = $this->input->post('cat_id');
       $subcat_id = $this->input->post('subcat_id');
-      $prod_name = $this->input->post('prod_name');
-      $prod_desc = $this->input->post('prod_desc');
       $meta_title = $this->input->post('meta_title');
       $meta_desc = $this->input->post('meta_desc');
       $meta_keywords = $this->input->post('meta_keywords');
@@ -286,24 +274,26 @@ class Admin extends CI_Controller
       $config["allowed_types"] = 'gif|jpg|png';
       $this->load->library('upload', $config);
       if($this->upload->do_upload('meta_img')) {
-        $meta_img = $this->upload->data('raw_name').$this->upload->data('file_ext');
+        $meta_img = 'utilities/images/meta/' . $this->upload->data('raw_name').$this->upload->data('file_ext');
       }
 
       $product = array(
-        'prod_name' => $prod_name,
-        'prod_desc' => $prod_desc,
         'cat_id' => $cat_id,
         'subcat_id' => $subcat_id,
-        'meta_title' => $meta_title,
-        'meta_desc' => $meta_desc,
-        'meta_keyword' => $meta_keywords,
-        'meta_img' => $meta_img
+        'prod_title' => $meta_title,
+        'description' => $meta_desc,
+        'keyword' => $meta_keywords,
+        'img' => $meta_img,
+        'date_created' => date('Y-m-d H:i:s')
       );
+
       $prod_id = $this->product_model->push_product($product);
+
       $specs = array(
         'prod_id' => $prod_id,
         'specs' => ''
       );
+      // push specs of product and set to empty
       $this->product_model->push_specs($specs);
       // result alert
       $result_data = array(
@@ -315,101 +305,81 @@ class Admin extends CI_Controller
     }
     function config_product() {
       $prod_id = $this->input->get('id');
-      // header data
-      $header = array(
-          'description' => '',
-          'keywords' => '',
-          'robots' => '',
-          'og_title' => '',
-          'og_description' => '',
-          'og_image' => '',
-          'og_url' => '',
-          'og_type' => '',
-          'cannonical' => '',
-          'title' => 'Cytek Solutions Inc. | Product'
-      );
-      $this->load->view('header',$header);
-      // admin-navigation data
-      $nav["active"] = "products";
-      $this->load->view('admin-navigation',$nav);
-      // body data
+
+      
+      
+      // product data
       $product = $this->product_model->pull_product($prod_id);
-      $categories = $this->category_model->pull_categories();
-      $subcategories = $this->category_model->pull_subcategories();
-      $specification = $this->product_model->pull_specs($prod_id);
+
       foreach ($product as $p) {
-        $detail = array (
+        $prod_data = array(
           'prod_id' => $p->prod_id,
-          'prod_name' => $p->prod_name,
-          'prod_desc' => $p->prod_desc,
+          'prod_title' => $p->prod_title,
+          'description' => $p->description,
           'cat_id' => $p->cat_id,
+          'cat_title' => $p->cat_title,
           'subcat_id' => $p->subcat_id,
-          'meta_title' => $p->meta_title,
-          'meta_desc' => $p->meta_desc,
-          'meta_img' => $p->meta_img,
-          'meta_keyword' => $p->meta_keyword,
-          'specs' => $specification
+          'subcat_title' => $p->subcat_title,
+          'img' => $p->img,
+          'keyword' => $p->keyword,
+          'date_created' => $p->date_created
         );
       }
-      $body["product"] = $detail;
-      $body["categories"] = $categories;
-      $body["subcategories"] = $subcategories;
+
+      $header = $this->header_array($prod_data["description"],$prod_data["keyword"],'',$prod_data["subcat_title"]. " " .$prod_data["prod_title"] . " | " . $prod_data["cat_title"] . " | Product Configuration" . " | Cytek Solutions Inc." ,base_url($prod_data["img"]),base_url('admin/config_product?id='.$prod_id));
+      $nav["page"] = "products";
+
+      $body["product"] = $prod_data;
+      $body["categories"] = $this->category_model->pull_categories();
+      $body["subcategories"] = $this->category_model->pull_subcategories();
       $body["features"] = $this->product_model->pull_features($prod_id);
-      $body["specification"] = $specification;
+      $body["specification"] = $this->product_model->pull_specs($prod_id);
       $body["banners"] = $this->product_model->pull_banners($prod_id);
+
+
+      // load view
+      $this->load->view('header',$header);
+      $this->load->view('admin-navigation',$nav);
       $this->load->view('config-product',$body);
       $this->load->view('pre-footer');
       $this->load->view('config-product-script');
       $this->load->view('footer');
     }
-    function update_product_meta() {
-      $referer = $this->input->server('HTTP_REFERER');
-      $prod_id = $this->input->post('prod_id');
-      $meta_title = $this->input->post('meta_title');
-      $meta_desc = $this->input->post('meta_desc');
-      $meta_keyword = $this->input->post('meta_keyword');
-      // image update
-      if($_FILES["meta_img"]["size"] != 0) {
-        $old_meta_img = $this->product_model->pull_meta_img($prod_id);
-        $config["upload_path"] = './utilities/images/meta';
-        $config["allowed_types"] = 'gif|jpg|png';
-        $this->load->library('upload', $config);
-        if($this->upload->do_upload('meta_img')) {
-          $meta_img = $this->upload->data('raw_name').$this->upload->data('file_ext');
-          $data = array('meta_img' => $meta_img);
-          // upload new and update db
-          $this->product_model->push_product_update($data,$prod_id);
-          // delete old pic
-          $dir = "utilities/images/meta/".$old_meta_img;
-          unlink($dir);
-        }
-      }
-      $data = array (
-        'meta_title' => $meta_title,
-        'meta_desc' => $meta_desc,
-        'meta_keyword' => $meta_keyword
-      );
-      $this->product_model->push_product_update($data,$prod_id);
-      $result_data = array(
-        'class' => "success",
-        'message' => "<strong>Success!</strong> Product meta updated"
-      );
-      $this->session->set_flashdata('result',$result_data);
-      redirect($referer);
-    }
     function update_product_details() {
       $referer = $this->input->server('HTTP_REFERER');
+
       $prod_id = $this->input->post('prod_id');
-      $prod_name = $this->input->post('prod_name');
-      $prod_desc = $this->input->post('prod_desc');
+      $prod_title = $this->input->post('prod_title');
+      $description = $this->input->post('description');
       $cat_id = $this->input->post('cat_id');
       $subcat_id = $this->input->post('subcat_id');
+      $keyword = $this->input->post('keyword');
+
+      // image update 
+      if(!empty($_FILES["user_image"]["name"])) {
+        if($this->upload->do_upload('user_image')) {
+          // check if has existing image 
+          $old_image = $this->product_model->pull_product_img($prod_id);
+          // new image
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $data = array(
+            'img' => 'utilities/images/'.$filename
+          );
+          $this->product_model->push_product_update($data,$prod_id);
+          // delete old
+          if(!empty($old_image)) {
+            unlink("./".$old_image);
+          }
+        }
+      }
       // data array
       $data = array(
-        'prod_name' => $prod_name,
-        'prod_desc' => $prod_desc,
+        'prod_title' => $prod_title,
+        'description' => $description,
         'cat_id' => $cat_id,
-        'subcat_id' => $subcat_id
+        'subcat_id' => $subcat_id,
+        'keyword' => $keyword,
+        'date_created' => date('Y-m-d H:i:s')
       );
       $this->product_model->push_product_update($data,$prod_id);
       $result_data = array(
@@ -482,7 +452,7 @@ class Admin extends CI_Controller
       $subcategories_str = "";
       foreach ($subcategories as $sc) {
         $subcategories_str .= '<option value="'.$sc->subcat_id.'">';
-        $subcategories_str .= $sc->subcat_desc;
+        $subcategories_str .= $sc->subcat_title;
         $subcategories_str .= '</option>';
       }
       echo $subcategories_str;
