@@ -14,27 +14,27 @@
                 </a>
                 <ul class="navbar-nav flex-column ">
                     <li class="nav-item">
-                        <a href="<?php echo base_url('admin/category') ?>" class="nav-link active ">
+                        <a href="<?php echo base_url('admin/category') ?>" class="nav-link <?php echo ($page == "category") ? 'active' : ''; ?>">
                             <span><i class="fa fa-list-alt fa-lg fa-fw  mr-2"></i> Category</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url('admin/products') ?>" class="nav-link">
+                        <a href="<?php echo base_url('admin/products') ?>" class="nav-link <?php echo ($page == "products") ? 'active' : ''; ?>">
                             <span><i class="fa fa-store fa-lg fa-fw  mr-2"></i> Products</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="" class="nav-link <?php echo ($page == "events") ? 'active' : ''; ?>">
                             <span><i class="fa fa-calendar-alt fa-lg fa-fw  mr-2"></i> Events</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="" class="nav-link <?php echo ($page == "users") ? 'active' : ''; ?>">
                             <span><i class="fa fa-users-cog fa-lg fa-fw  mr-2"></i> User</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="" class="nav-link <?php echo ($page == "settings") ? 'active' : ''; ?>">
                             <span><i class="fa fa-cogs fa-lg fa-fw  mr-2"></i> Settings</span>
                         </a>
                     </li>
@@ -48,7 +48,7 @@
             <nav>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                      <a href="" class="nav-link">
+                      <a href="<?php echo base_url('admin/logout') ?>" class="nav-link">
                           <div class="media mb-1">
                             <div class="py-1 pr-2">
                             <img src="<?php echo base_url('utilities/images/nav-logo/olympus-white-logo.png') ?>" class="rounded-circle mr-1" alt="" width="40" height="40">
