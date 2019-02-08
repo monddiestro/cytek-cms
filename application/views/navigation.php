@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg  text-light">
   <a class="navbar-brand ml-5" href="#">
-    <img src="utilities/images/nav-logo/cytek-100.png" alt=""> 
+    <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" alt=""> 
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -38,7 +38,7 @@
       </li>      
     </ul>
     <div class="mr-5">
-      <img src="utilities/images/nav-logo/cytek-100.png" alt="">
+      <img src="<?php echo base_url('utilities/images/nav-logo/olympus-blue-logo.png') ?>" alt="">
     </div>
   </div>
 </nav>
