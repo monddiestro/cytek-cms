@@ -2,7 +2,7 @@
 <div id="nav-backdrop"></div>
 <div class="mobile-banner d-none">
   <a class="navbar-brand text-dark p-2" id="showNavbar"><span>&#9776;</span></a>
-  <img src="utilities/images/nav-logo/cytek-100.png" class="py-2" alt=""> 
+  <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" class="py-2" alt=""> 
 </div>
 <nav class="navbar navbar-expand-lg  text-light" id="navbarCustom">
   <a class="navbar-brand ml-5" href="<?php echo base_url(); ?>">
