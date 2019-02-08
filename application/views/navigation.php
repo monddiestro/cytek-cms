@@ -8,7 +8,7 @@
   <a class="navbar-brand ml-5" href="<?php echo base_url(); ?>">
     <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" width="100" alt="">
   </a>
-  <div class="navbar-collapse " id="navbarSupportedContent">
+  <div class="navbar-collapse mr-5" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mr-2">
       <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="sr-only">(current)</span></a>

@@ -2,15 +2,15 @@
   <div class="wrapper">
     <div id="page-content-wrapper">
       <div class="container px-5">
-        <ol class="breadcrumb">
+        <ol class="breadcrumb pt-5">
           <li class="breadcrumb-item"><a href="<?php echo base_url('admin') ?>">Home</a></li>
           <li class="breadcrumb-item"><a href="<?php echo base_url('admin/products') ?>">Products</a></li>
           <li class="breadcrumb-item active"><?php echo ucwords($product["prod_title"])?></li>
         </ol>
-        <span class="header-text">Edit <?php echo ucwords($product["prod_title"]) ?> Details</span>
+        <span class="header-text mb-2">Edit <?php echo ucwords($product["prod_title"]) ?> Details</span>
         <br/>
         <small>Don't forget to click update button to save your changes</small>
-        <div class="row">
+        <div class="row mt-3">
           <div class="col-sm-12">
             <!-- alert -->
             <?php
@@ -82,7 +82,7 @@
                       <br/>
                       <label class="btn btn-default shadow mt-2" id="btn_browse">
                           <input type="file" name="img" id="img" accept="image/*" style="display:none;">
-                          Browse ..
+                          BROWSE
                       </label>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted filename">No File Selected</span>
                     </div>
                     <div class="form-group">

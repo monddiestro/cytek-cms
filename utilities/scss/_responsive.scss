@@ -80,7 +80,7 @@
 }
 .navbar-collapse {
     flex-basis: inherit;
-    flex-grow: inherit; 
+    // flex-grow: inherit; 
     align-items: center;
     display:flex;
     ul.navbar-nav {
@@ -89,6 +89,9 @@
     .mr-5 {
         margin:0 !important;
     }
+}
+.breadcrumb {
+    margin-top : 70px;
 }
 
 // Smartphones Landscape
@@ -255,6 +258,9 @@
     }
     .action-btn button , .btn-collapse {
         width: 100% !important;
+    }
+    .breadcrumb {
+        margin-top : 50px;
     }
     
 }
