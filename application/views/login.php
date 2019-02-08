@@ -2,8 +2,8 @@
     <div class="container" style="margin-top:10%;">
         <div class="offset-lg-4 col-sm-4">            
             <div class="card shadow">
-                <div class="card-header border-0 text-center">
-                    <img src="utilities/images/nav-logo/cytek-100.png" alt=""> 
+                <div class="card-header shadow-none">
+                   <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" alt="">
                 </div>
                 <?php if(!empty($this->session->flashdata('message'))): ?>
                 <div class="alert alert-<?php echo $this->session->flashdata('class') ?>">
@@ -18,8 +18,8 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <a href="" style="float:right;"> <span class="pt-1 small text-muted">Forgot Password?</span> </a>
                         <input type="password" id="password" class="form-control" name="password" />
+                        <a href="" style="float:right;"> <span class="pt-1 small text-muted">Forgot Password?</span> </a>
                     </div>
                 </div>
                 <div class="card-footer text-center border-0">

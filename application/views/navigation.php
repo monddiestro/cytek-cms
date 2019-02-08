@@ -1,11 +1,12 @@
+
 <div id="nav-backdrop"></div>
 <div class="mobile-banner d-none">
   <a class="navbar-brand text-dark p-2" id="showNavbar"><span>&#9776;</span></a>
   <img src="utilities/images/nav-logo/cytek-100.png" class="py-2" alt=""> 
 </div>
 <nav class="navbar navbar-expand-lg  text-light" id="navbarCustom">
-  <a class="navbar-brand ml-5" href="#">
-    <img src="utilities/images/nav-logo/cytek-100.png" alt=""> 
+  <a class="navbar-brand ml-5" href="<?php echo base_url(); ?>">
+    <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" alt="">
   </a>
   <div class="navbar-collapse " id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mr-2 mb-4">
@@ -36,8 +37,10 @@
         <a class="nav-link" href="#">ABOUT US</a>
       </li>      
     </ul>
-    <div class="mr-5 d-lg-block d-none">
-      <img src="utilities/images/nav-logo/cytek-100.png" alt="">
+    <div class="mr-5">
+      <a href="https://www.olympus-ims.com/en/">
+        <img src="<?php echo base_url('utilities/images/nav-logo/olympus-blue-logo.png') ?>" alt="">
+      </a>
     </div>
   </div>
 </nav>

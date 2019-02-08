@@ -8,6 +8,12 @@ class Admin extends CI_Controller
       $this->load->model('user_model');
     }
 
+    function check_session() {
+      if(empty($this->session->userdata('user_id'))) {
+        redirect(base_url('admin'));
+      }
+    }
+
     function check_account() {
       $referer = $this->input->server('HTTP_REFERER');
       $email = $this->input->post('email');
@@ -50,23 +56,16 @@ class Admin extends CI_Controller
 
     }
 
+    function logout() {
+      session_destroy();
+      redirect(base_url('admin'));
+    }
 
     function index() {
         if(!empty($this->session->userdata('user_id'))) {
           redirect(base_url('admin/dashboard'));
         } else {
-          $header = array(
-            'description' => '',
-            'keywords' => '',
-            'robots' => '',
-            'og_title' => '',
-            'og_description' => '',
-            'og_image' => '',
-            'og_url' => '',
-            'og_type' => '',
-            'cannonical' => '',
-            'title' => 'Security Check | Cytek Solutions Inc.'
-          );
+          $header = $this->header_array('','','','Admin Security Check | Cytek Solutions Inc.','',base_url('admin'));
           $this->load->view('header',$header);
           $this->load->view('login');
           $this->load->view('pre-footer');
@@ -74,13 +73,34 @@ class Admin extends CI_Controller
         }
         
     }
+    // header data 
+    function header_array($description,$keywords,$robots,$title,$image,$url) {
+      $header = array(
+        'description' => $description,
+        'keywords' => $keywords,
+        'robots' => $robots,
+        'og_title' => $title,
+        'og_description' => $description,
+        'og_image' => $image,
+        'og_url' => $url,
+        'cannonical' => $url,
+        'title' => $title
+      );
+      return $header;
+    }
 
     function dashboard() {
-          $this->load->view('header');
-          $this->load->view('admin-navigation');
-          $this->load->view('admin');
-          $this->load->view('pre-footer');
-          $this->load->view('footer');
+
+      $this->check_session(); // check if logged in
+      // view data
+      $header = $this->header_array('','','','Admin Dashboard | Cytek Solutions Inc.','',base_url('admin/dashboard'));
+      $nav["page"] = "dashboard";
+      $this->load->view('header',$header);
+      $this->load->view('admin-navigation',$nav);
+      $this->load->view('admin');
+      $this->load->view('pre-footer');
+      $this->load->view('footer');
+
     }
 
     // Category and Sub category CRUD
