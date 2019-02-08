@@ -3,14 +3,14 @@
 <div id="nav-backdrop"></div>
 <nav class="navbar fixed-top navbar-toggleable-md bg-cytek  d-block d-lg-none">
   <a class="navbar-brand text-white" id="showMenu"><span>&#9776;</span></a>
-  <img src="../utilities/images/nav-logo/cytek-logo.png" alt="" class="w-75">
+  <img src="<?php echo base_url('utilities/images/nav-logo/cytek-white-logo.png') ?>" alt="" class="w-75">
 </nav>
 <aside class="cytek-sidebar">
     <div class="sidebar-content">
         <section class="sidebar-menu">
            <nav>
                 <a class="sidebar-brand" href="">
-                    <img src="../utilities/images/nav-logo/cytek-logo.png" alt="">
+                    <img src="<?php echo base_url('utilities/images/nav-logo/cytek-white-logo.png') ?>" alt="">
                 </a>
                 <ul class="navbar-nav flex-column ">
                     <li class="nav-item">
@@ -42,8 +42,8 @@
            </nav>            
         </section>
         <section class="sidebar-footer text-white">
-            <a href="" class="px-4">
-                <img src="../utilities/images/nav-logo/olympus.png" alt="" class="">
+            <a href="https://www.olympus-ims.com/en/" class="px-4">
+                <img src="<?php echo base_url('utilities/images/nav-logo/olympus-white-logo.png') ?>" alt="" style="width:100px">
             </a>            
             <nav>
                 <ul class="navbar-nav">
@@ -51,7 +51,7 @@
                       <a href="" class="nav-link">
                           <div class="media mb-1">
                             <div class="py-1 pr-2">
-                            <img src="https://i.imgur.com/wxB6KfO.png" class="rounded-circle mr-1" alt="" width="40" height="40">
+                            <img src="<?php echo base_url('utilities/images/nav-logo/olympus-white-logo.png') ?>" class="rounded-circle mr-1" alt="" width="40" height="40">
                             </div>                
                             <div class="media-body mt-2">
                               <span class="fw-bold">Mond</span>

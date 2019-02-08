@@ -92,8 +92,11 @@ class Admin extends CI_Controller
     function dashboard() {
 
       $this->check_session(); // check if logged in
+      // view data
+      $header = $this->header_array('','','','Admin Dashboard | Cytek Solutions Inc.','',base_url('admin/dashboard'));
+      $nav["page"] = "dashboard";
       $this->load->view('header',$header);
-      $this->load->view('admin-navigation');
+      $this->load->view('admin-navigation',$nav);
       $this->load->view('admin');
       $this->load->view('pre-footer');
       $this->load->view('footer');
