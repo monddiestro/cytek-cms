@@ -1,7 +1,7 @@
 
 
 <nav class="navbar navbar-expand-lg  text-light">
-  <a class="navbar-brand ml-5" href="#">
+  <a class="navbar-brand ml-5" href="<?php echo base_url(); ?>">
     <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" alt=""> 
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,9 @@
       </li>      
     </ul>
     <div class="mr-5">
-      <img src="<?php echo base_url('utilities/images/nav-logo/olympus-blue-logo.png') ?>" alt="">
+      <a href="https://www.olympus-ims.com/en/">
+        <img src="<?php echo base_url('utilities/images/nav-logo/olympus-blue-logo.png') ?>" alt="">
+      </a>
     </div>
   </div>
 </nav>
