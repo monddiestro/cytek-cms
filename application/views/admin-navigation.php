@@ -3,15 +3,17 @@
 <div id="nav-backdrop"></div>
 <nav class="navbar fixed-top navbar-toggleable-md bg-cytek  d-block d-lg-none">
   <a class="navbar-brand text-white" id="showMenu"><span>&#9776;</span></a>
-  <img src="<?php echo base_url('utilities/images/nav-logo/cytek-white-logo.png') ?>" alt="" class="w-75">
+  <img src="<?php echo base_url('utilities/images/nav-logo/cytek-white-logo.png') ?>" alt="" class="w-25">
 </nav>
 <aside class="cytek-sidebar">
     <div class="sidebar-content">
         <section class="sidebar-menu">
            <nav>
-                <a class="sidebar-brand" href="<?php echo base_url('/admin') ?>">
-                    <img src="<?php echo base_url('utilities/images/nav-logo/cytek-white-logo.png') ?>" alt="">
-                </a>
+                <div class="px-4">
+                    <a class="sidebar-brand" href="<?php echo base_url('/admin') ?>">
+                        <img src="<?php echo base_url('utilities/images/nav-logo/cytek-white-logo.png') ?>" alt="">
+                    </a>
+                </div>
                 <ul class="navbar-nav flex-column ">
                     <li class="nav-item">
                         <a href="<?php echo base_url('admin/category') ?>" class="nav-link <?php echo ($page == "category") ? 'active' : ''; ?>">
@@ -41,10 +43,7 @@
                 </ul>   
            </nav>            
         </section>
-        <section class="sidebar-footer text-white">
-            <a href="https://www.olympus-ims.com/en/" class="px-4">
-                <img src="<?php echo base_url('utilities/images/nav-logo/olympus-white-logo.png') ?>" alt="" style="width:100px">
-            </a>            
+        <section class="sidebar-footer text-white ">         
             <nav>
                 <ul class="navbar-nav">
                     <li class="nav-item">

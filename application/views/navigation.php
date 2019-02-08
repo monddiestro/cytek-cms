@@ -6,10 +6,10 @@
 </div>
 <nav class="navbar navbar-expand-lg  text-light" id="navbarCustom">
   <a class="navbar-brand ml-5" href="<?php echo base_url(); ?>">
-    <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" alt="">
+    <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" width="100" alt="">
   </a>
   <div class="navbar-collapse " id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto mr-2 mb-4">
+    <ul class="navbar-nav ml-auto mr-2">
       <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="sr-only">(current)</span></a>
           <ul class="dropdown-menu">
@@ -37,9 +37,9 @@
         <a class="nav-link" href="#">ABOUT US</a>
       </li>      
     </ul>
-    <div class="mr-5">
+    <div class="mr-5 ">
       <a href="https://www.olympus-ims.com/en/">
-        <img src="<?php echo base_url('utilities/images/nav-logo/olympus-blue-logo.png') ?>" alt="">
+        <img src="<?php echo base_url('utilities/images/nav-logo/olympus-blue-logo.png') ?> " width="160" alt="">
       </a>
     </div>
   </div>

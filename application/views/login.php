@@ -19,7 +19,7 @@
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" id="password" class="form-control" name="password" />
-                        <a href="" style="float:right;"> <span class="pt-1 small text-muted">Forgot Password?</span> </a>
+                        <a href="" style="float:right;text-decoration:none;"> <span class="pt-1 small text-muted">Forgot Password?</span> </a>
                     </div>
                 </div>
                 <div class="card-footer text-center border-0">
