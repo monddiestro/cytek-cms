@@ -26,7 +26,7 @@ class Product extends CI_Controller
   function category() {
 
     $subcategory = $this->uri->segment(3);
-    
+    $item = $this->uri->segment(4);
 
     if(empty($subcategory)) {
       $category_id = $this->input->get('id');
@@ -53,7 +53,39 @@ class Product extends CI_Controller
       $data["selected"] = $category_id;
       $view = "product-category";
 
+    } elseif(!empty($item)) {
+
+      $product_id = $this->input->get('id');
+      $url = base_url('products/category/subcategory?id='.$item);
+      $product_data = $this->product_model->pull_product($product_id);
+      foreach($product_data as $d) {
+        $header_data = array(
+          'prod_id' => $d->prod_id,
+          'title' => $d->prod_title,
+          'description' => $d->description,
+          'img' => $d->img,
+          'keyword' => $d->keyword,
+          'cat_id' => $d->cat_id,
+          'cat_title' => $d->cat_title,
+          'subcat_id' => $d->subcat_id,
+          'subcat_title' => $d->subcat_title
+        );
+      }
+      // data
+      $header = $this->header_array($header_data["description"],$header_data["keyword"],$header_data["title"],$header_data["img"],$url);
+      $navigation["navs"] = $this->category_model->pull_subcategories();
+      $navigation["page"] = "products";
+      $data["data"] = $this->category_model->pull_subcategory_product($header_data["subcat_id"]);
+      $data["cat_id"] = $header_data["cat_id"];
+      $data["cat_title"] = $header_data["cat_title"];
+      $data["subcat_id"] = $header_data["subcat_id"];
+      $data["subcat_title"] = $header_data["subcat_title"];
+      $data["prod_id"] = $header_data["prod_id"];
+      $data["prod_title"] = $header_data["title"];
+      $view = "product-item";
+
     } else {
+
       $id = $this->input->get('id');
       $url = base_url('products/category/subcategory?id='.$id);
       $subcategory_data = $this->category_model->pull_subcategory($id);

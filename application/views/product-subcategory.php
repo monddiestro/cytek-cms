@@ -17,7 +17,7 @@
                     <ul class="list-unstyled fw-light">
                         <?php foreach($data as $p): ?>
                         <li>
-                            <a href="<?php echo base_url('product?id='.$p->prod_id) ?>"><?php echo $p->prod_title ?></a>
+                            <a href="<?php echo base_url('product/category/subcategory/item?id='.$p->prod_id) ?>"><?php echo $p->prod_title ?></a>
                         </li>
                         <?php endforeach; ?>
                     </ul>
@@ -45,7 +45,7 @@
                             <p><?php echo mb_strimwidth($d->description, 0, 100, " ...") ?></p>
                         </figure>
                         <div class="card-footer">
-                            <a href="<?php echo base_url('product?id='.$d->prod_id) ?>" class="btn btn-primary text-white fw-bold">VIEW ALL</a>
+                            <a href="<?php echo base_url('product/category/subcategory/item?id='.$d->prod_id) ?>" class="btn btn-primary text-white fw-bold">VIEW ALL</a>
                         </div>
                     </figure>
                 </article>

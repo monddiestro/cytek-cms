@@ -133,7 +133,7 @@
                 <label class="btn btn-default shadow mt-2" id="btn_browse">
                     <input type="file" name="meta_img" id="meta_img" accept="image/*" style="display:none;">
                     <b>BROWSE</b>
-                </label>&nbsp;&nbsp;<span class="text-muted small" id="filename">No File Selected</span>
+                </label>&nbsp;&nbsp;<span class="text-muted filename small">No File Selected</span>
             </div>
           </div>
         </div>

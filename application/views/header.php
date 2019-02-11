@@ -13,7 +13,7 @@
     <?php echo !empty($og_image) ? '<meta property="og:image" content="'.$og_image.'">' : '' ?>
     <?php echo !empty($og_url) ? '<meta property="og:url" content="'.$og_url.'">' : '' ?>
     <?php echo !empty($cannonical) ? '<link rel="canonical" href="'.$cannonical.'">' : '' ?>
-    <meta name="copyright" content="Copyright &copy; 2019 Cytek Solutions Inc"/>
+    <meta name="copyright" content="Copyright &copy; <?php echo date('Y') ?> Cytek Solutions Inc"/>
     <meta property="og:type" content="website">
     <title><?php echo $title ?></title>
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('utilities/css/bootstrap-select.min.css') ?>" />    

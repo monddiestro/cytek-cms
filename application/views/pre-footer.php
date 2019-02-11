@@ -5,4 +5,37 @@
 <script src="<?php echo base_url('utilities/js/bootstrap-select.min.js') ?>"></script>
 <script src="<?php echo base_url('utilities/js/jquery-ui.min.js') ?>"></script>
 <script src="<?php echo base_url('utilities/js/bootstrap.min.js') ?>"></script>
+<script>
+  $('input[name="meta_img"]').on('change',function() {
+    var input = $(this);
+    numFiles = input.get(0).files ? input.get(0).files.length : 1;
+    label = input.val().replace(/\\/g,'/').replace(/.*\//,'');
+    input.trigger('fileselect',[numFiles,label]);
+    $(this).closest('.modal-body').find('.filename').text(label);
+    readURL(this)
+  });
 
+  function readURL(input) {
+    var object = $(input)
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        object.closest('.modal-body').find('.media-object').attr('src', e.target.result);
+        object.closest('.card-body').find('.media-object').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $('#cat_id').on('change',function(){
+    var cat_id = $(this).val();
+    $.ajax({
+      url: '<?php echo base_url('admin/pull_subcategories') ?>',
+      type: 'POST',
+      data: { 'cat_id': cat_id },
+      success: function(data) {
+        $('#subcat_id').html(data);
+        $('.selectpicker').selectpicker('refresh');
+      }
+    });
+  });
+</script>

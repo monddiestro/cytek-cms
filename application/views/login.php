@@ -24,7 +24,6 @@
                 </div>
                 <div class="card-footer text-center border-0">
                     <button class="btn btn-primary shadow w-100" type="submit"><b>Log in</b></button>
-                    <p class="mt-3">Don't Have an account ? <a href="" class="text-primary"><b>Sign up</b></a></p>
                 </div>
             </div>
             <?php echo form_close(); ?>

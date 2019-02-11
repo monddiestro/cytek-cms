@@ -52,7 +52,7 @@
                       <?php foreach ($categories as $cat): ?>
                         <tr>
                           <td class="pt-20"><?php echo $cat->cat_id ?></td>
-                          <td class="pt-20 td-header"><?php echo $cat->cat_desc ?></td>
+                          <td class="pt-20 td-header"><?php echo $cat->cat_title ?></td>
                           <td class="btn-collapse">
                             <div class="border">
                               <button class="btn btn-link w-100 " type="button" data-toggle="collapse" data-target="#subCollapse<?php echo $cat->cat_id ?>" aria-expanded="false" aria-controls="subCollapse">
@@ -65,7 +65,7 @@
                                       <?php if ($subcat->cat_id == $cat->cat_id): ?>
                                         <tr>
                                           <td>
-                                            <?php echo $subcat->subcat_desc ?>
+                                            <?php echo $subcat->subcat_title ?>
                                           </td>
                                           <td class="icon-btn" width="10">
                                             <span data-toggle="tooltip" data-placement="top" title="Edit">
@@ -133,7 +133,7 @@
             <div class="col-sm-12">
               <div class="">
                   <div class="img-container mb-2">
-                    <img src="" alt="">
+                    <img class="media-object" src="" alt="">
                   </div>
                   <label class="btn btn-default shadow" id="btn_browse">
                       <input type="file" name="meta_img" accept="image/*" style="display:none;">
@@ -180,7 +180,7 @@
       <?php echo form_open(base_url('admin/new_subcategory')) ?>
       <div class="modal-content">
         <div class="modal-header border-0">          
-          <span class="modal-title">Sub Category of <?php echo $cat->cat_desc ?></span>
+          <span class="modal-title">Sub Category of <?php echo $cat->cat_title ?></span>
         </div>
         <div class="modal-body py-0">
           <div class="row">
@@ -188,7 +188,7 @@
                 <span class="form-label">Sub Category Name</span>
                   <input class="form-control" type="text" name="subcategory" placeholder="Example: Stereo Zoom Microscope" required>
                   <input type="hidden" name="cat_id" value="<?php echo $cat->cat_id; ?>">
-                  <input type="hidden" name="cat_desc" value="<?php echo $cat->cat_desc; ?>">
+                  <input type="hidden" name="cat_title" value="<?php echo $cat->cat_title; ?>">
               </div>
           </div>
         </div>
@@ -215,8 +215,8 @@
           <div class="row">
               <div class="col-sm-12">
                 <input type="hidden" name="cat_id" value="<?php echo $cat->cat_id ?>">
-                <input type="hidden" name="cat_desc" value="<?php echo $cat->cat_desc ?>">
-                <span class="form-label">Are you sure you want to delete <?php echo $cat->cat_desc ?> and it's subcategories?</span>
+                <input type="hidden" name="cat_title" value="<?php echo $cat->cat_title ?>">
+                <span class="form-label">Are you sure you want to delete <?php echo $cat->cat_title ?> and it's subcategories?</span>
               </div>
           </div>
         </div>
@@ -252,7 +252,7 @@
                 </div>
                 <div class="form-group">
                   <span class="form-label">Category Name</span>
-                  <input class="form-control" name="cat_desc" type="text" placeholder="Example: Microscope" value="<?php echo $cat->cat_desc ?>" required>
+                  <input class="form-control" name="cat_title" type="text" placeholder="Example: Microscope" value="<?php echo $cat->cat_title ?>" required>
                 </div>
                 <div class="form-group">
                   <span class="form-label">Meta Title</span>
@@ -292,8 +292,8 @@
           <div class="row">
               <div class="col-sm-12">
                 <input type="hidden" name="subcat_id" value="<?php echo $subcat->subcat_id ?>">
-                <input type="hidden" name="subcat_desc" value="<?php echo $subcat->subcat_desc ?>">
-                <span class="form-label">Are you sure you want to delete <?php echo $cat->cat_desc ?>?</span>
+                <input type="hidden" name="subcat_title" value="<?php echo $subcat->subcat_title ?>">
+                <span class="form-label">Are you sure you want to delete <?php echo $cat->cat_title ?>?</span>
               </div>
           </div>
         </div>
@@ -318,7 +318,7 @@
               <div class="col-sm-12">
                 <input type="hidden" name="subcat_id" value="<?php echo $subcat->subcat_id ?>">
                   <span class="form-label">Sub Category Name</span>
-                <input class="form-control" type="text" name="subcat_desc" value="<?php echo $subcat->subcat_desc ?>" placeholder="Example: Stereo Zoom Microscope" required>
+                <input class="form-control" type="text" name="subcat_title" value="<?php echo $subcat->subcat_title ?>" placeholder="Example: Stereo Zoom Microscope" required>
               </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ class Category_model extends CI_Model
         $this->db->insert('category_tbl',$data);
     }
     function pull_categories() {
+      $this->db->order_by('cat_title','ASC');
       $query = $this->db->get('category_tbl');
       return $query->result();
     }
@@ -20,6 +21,7 @@ class Category_model extends CI_Model
     }
     function pull_category_subcategories($cat_id) {
       $this->db->where('cat_id',$cat_id);
+      $this->db->order_by('subcat_title','ASC');
       $query = $this->db->get('subcategory_tbl');
       return $query->result();
     }

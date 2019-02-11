@@ -7,6 +7,8 @@ class Product_model extends CI_Model
   function pull_products() {
     $this->db->join('category_tbl', "product_tbl.cat_id = category_tbl.cat_id", "left");
     $this->db->join('subcategory_tbl', "product_tbl.subcat_id = subcategory_tbl.subcat_id", "left");
+    $this->db->order_by('cat_title','ASC');
+    $this->db->order_by('subcat_title','ASC');
     $query = $this->db->get('product_tbl');
     return $query->result();
   }

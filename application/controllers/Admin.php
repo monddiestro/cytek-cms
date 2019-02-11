@@ -106,28 +106,17 @@ class Admin extends CI_Controller
     // Category and Sub category CRUD
     function category() {
         // header data
-        $header = array(
-            'description' => '',
-            'keywords' => '',
-            'robots' => '',
-            'og_title' => '',
-            'og_description' => '',
-            'og_image' => '',
-            'og_url' => '',
-            'og_type' => '',
-            'cannonical' => '',
-            'title' => 'Cytek Solutions Inc. | Product Category'
-        );
-        $this->load->view('header',$header);
+        $header = $this->header_array('','','','Admin Category | Cytek Solutions Inc.','',base_url('admin/category'));
         // admin-navigation data
-        $nav["active"] = "category";
-        $this->load->view('admin-navigation',$nav);
+        $nav["page"] = "category";
         // body data
         $body_data["categories"] = $this->category_model->pull_categories();
         $body_data["subcategories"] = $this->category_model->pull_subcategories();
+        //view
+        $this->load->view('header',$header);
+        $this->load->view('admin-navigation',$nav);
         $this->load->view('category',$body_data);
         $this->load->view('pre-footer');
-        $this->load->view('category-script');
         $this->load->view('footer');
     }
     function new_category() {
@@ -304,10 +293,7 @@ class Admin extends CI_Controller
       redirect($referer);
     }
     function config_product() {
-      $prod_id = $this->input->get('id');
-
-      
-      
+      $prod_id = $this->input->get('id');  
       // product data
       $product = $this->product_model->pull_product($prod_id);
 
@@ -464,8 +450,8 @@ class Admin extends CI_Controller
       $config["upload_path"] = './utilities/images/banners';
       $config["allowed_types"] = 'gif|jpg|png';
       $this->load->library('upload', $config);
-      if($this->upload->do_upload('image')) {
-        $banner = $this->upload->data('raw_name').$this->upload->data('file_ext');
+      if($this->upload->do_upload('meta_img')) {
+        $banner = "utilities/images/banners/". $this->upload->data('raw_name').$this->upload->data('file_ext');
       }
       $data = array(
         'prod_id' => $prod_id,

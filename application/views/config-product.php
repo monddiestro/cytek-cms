@@ -37,6 +37,7 @@
                  <strong>Banners</strong> 
               </div>
               <div class="card-body">
+                <div class="row">
                 <?php if (!empty($banners)): ?>
                   <?php foreach ($banners as $b): ?>
                     <div class="col-sm-3">
@@ -50,6 +51,7 @@
                       </div>
                     </div>
                   <?php endforeach; ?>
+                  </div>
                 <?php endif; ?>
               </div>
               <div class="card-footer">
@@ -78,10 +80,10 @@
                     <input type="hidden" name="prod_id" value="<?php echo $product["prod_id"]; ?>">
                     <div class="form-group">
                       <label for="">Image</label>
-                      <img class="image_preview" style="width:100%;" src="<?php echo base_url($product["img"]) ?>" alt="">
+                      <img class="media-object" style="width:100%;" src="<?php echo base_url($product["img"]) ?>" alt="">
                       <br/>
                       <label class="btn btn-default shadow mt-2" id="btn_browse">
-                          <input type="file" name="img" id="img" accept="image/*" style="display:none;">
+                          <input type="file" name="meta_img" id="img" accept="image/*" style="display:none;">
                           BROWSE
                       </label>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-muted filename">No File Selected</span>
                     </div>

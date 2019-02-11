@@ -23,7 +23,7 @@
               <?php $cat_id = $nav->cat_id ?>
               <?php $cnt += 1; ?>
             <?php endif; ?>
-            <li class="dropdown-list"><a href="<?php echo base_url('product?s='.$nav->subcat_id) ?>" class="dropdown-item"><?php echo $nav->subcat_title ?></a></li>
+            <li class="dropdown-list"><a href="<?php echo base_url('product/category/subcategory?id='.$nav->subcat_id) ?>" class="dropdown-item"><?php echo $nav->subcat_title ?></a></li>
           <?php endforeach; ?>
         </ul>
       </li>
