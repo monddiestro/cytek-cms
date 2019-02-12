@@ -34,7 +34,7 @@
           <div class="col-sm-12">
             <div class="card mb-3">
               <div class="card-header">
-                 <strong>Banners</strong> 
+                 <strong>Gallery</strong> 
               </div>
               <div class="card-body">
                 <div class="row">
@@ -52,13 +52,15 @@
                     </div>
                   <?php endforeach; ?>
                   </div>
-                <?php endif; ?>
+                  <?php else: ?>
+                  <span class="text-muted">No image available</span>
+                  <?php endif; ?>
               </div>
               <div class="card-footer">
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="pull-right">
-                      <button type="button" data-toggle="modal" data-target="#new-banner" class="btn btn-primary">Add Banner</button>
+                      <button type="button" data-toggle="modal" data-target="#new-banner" class="btn btn-primary">Add Image</button>
                     </div>
                   </div>
                 </div>
@@ -144,38 +146,74 @@
               </div>
               <div class="card-body">
                   <?php if (!empty($features)): ?>
-                    <div class="panel-group" id="feature">
-                    <?php foreach ($features as $f): ?>
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#feature" href="#feature<?php echo $f->feature_id ?>">
-                              <?php echo $f->feature_title ?>
-                            </a>
-                            <a href="<?php echo base_url('admin/drop_feature?id='.$f->feature_id) ?>" data-toggle="tooltip" title="Delete" data-placement="right" class="pull-right">
-                              <span class="glyphicon glyphicon-trash text-danger"></span>
-                            </a>
-                          </h4>
-                        </div>
-                        <div id="feature<?php echo $f->feature_id ?>" class="panel-collapse collapse">
-                          <div class="panel-body">
+                    <div id="accordion">
+                      <?php foreach($features as $f): ?>
+                        <div>
+                          <strong>
+                          <a class="d-flex collapse" data-toggle="collapse" href="#collapse<?php echo $f->feature_id ?>">
+                            <div class="col-sm-9 p-0"><?php echo ucwords($f->title) ?></div>
+                            <div class="col-sm-3 p-0 text-right text-primary">
+                              <i class="fa fa-plus-circle"></i>
+                            </div> 
+                          </a>
+                          </strong>
+                          <div id="collapse<?php echo $f->feature_id ?>" class="collapse" data-parent="#accordion">
                             <div class="row">
+                            <?php foreach ($feature_img as $img): ?>
+                              <?php if($img->feature_id == $f->feature_id): ?>
                               <div class="col-sm-4">
-                                <img src="<?php echo base_url('utilities/images/product_src/'.$f->feature_img) ?>" alt="<?php echo $f->feature_title ?>">
+                                <div style="border:1px solid #ddd;">
+                                  <div style="padding:10px">
+                                    <img style="width:100%;" src="<?php echo base_url($img->img) ?>" alt="">
+                                    <p><?php echo ucwords($img->title) ?></p>
+                                  </div>
+                                  <div style="padding:10px;">
+                                    <a href="<?php echo base_url('admin/drop_feature_img?id='.$img->img_id) ?>"  class="btn btn-danger btn-block">DELETE</a>
+                                  </div>
+                                </div>
                               </div>
-                              <div class="col-sm-8">
-                                <p>
-                                  <?php echo $f->feature_desc ?>
-                                </p>
-                              </div>
+                              <?php endif; ?>
+                            <?php endforeach; ?>
                             </div>
+                            <button type="button" data-toggle="modal" data-target="#feature_img_<?php echo $f->feature_id ?>" class="btn btn-primary">Add Image</button>
+                            <?php echo $f->description ?>
                           </div>
                         </div>
-                      </div>
-                    <?php endforeach; ?>
+                        <div id="feature_img_<?php echo $f->feature_id ?>" class="modal fade" role="dialog">
+                          <div class="modal-dialog modal-sm">
+                            <?php echo form_open_multipart(base_url('admin/add_feature_img')); ?>
+                            <input type="hidden" name="feature_id" value="<?php echo $f->feature_id ?>">
+                            <input type="hidden" name="prod_id" value="<?php echo $product["prod_id"] ?>">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title">Feature Image</h4>
+                              </div>
+                              <div class="modal-body">
+                                <div class="form-group">
+                                  <label for="">Title</label>
+                                  <input type="text" class="form-control" placeholder="Image title">
+                                </div>
+                                <div class="form-group">
+                                  <span class="form-label">Select Image</span>
+                                  <br/>
+                                  <label class="btn btn-default shadow" id="btn_browse">
+                                      <input type="file" name="meta_img" accept="image/*" style="display:none;">
+                                      BROWSE
+                                  </label>&nbsp;&nbsp;<span class="text-muted filename small">No image selected</span>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="submit" name="button" class="btn btn-default">Save</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                            <?php echo form_close(); ?>
+                          </div>
+                        </div>
+                      <?php endforeach; ?>
                     </div>
-                    <?php else: ?>
-                      <h5 class="text-warning">No feature available</h5>
+                  <?php else: ?>
+                    <span class="text-muted">No feature available</span>
                   <?php endif; ?>
               </div>
               <div class="card-footer">
@@ -227,7 +265,7 @@
     <input type="hidden" name="prod_id" value="<?php echo $product["prod_id"] ?>">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Product Banner</h4>
+        <h4 class="modal-title">Product Image</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -265,14 +303,6 @@
         <div class="form-group">
           <span class="form-label">Description</span>
           <textarea name="description" class="form-control" rows="8" cols="80"></textarea>
-        </div>
-        <div class="form-group">
-          <span class="form-label">Image</span>
-          <br/>
-          <label class="btn btn-default shadow " id="btn_browse">
-              <input type="file" name="image" id="image" accept="image/*" style="display:none;">
-              BROWSE
-          </label>&nbsp;&nbsp;<span class="text-muted filename small">No File Selected</span>
         </div>
       </div>
       <div class="modal-footer">

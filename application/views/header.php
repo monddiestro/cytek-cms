@@ -16,6 +16,7 @@
     <meta name="copyright" content="Copyright &copy; <?php echo date('Y') ?> Cytek Solutions Inc"/>
     <meta property="og:type" content="website">
     <title><?php echo $title ?></title>
+    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('utilities/css/lightslider.css') ?>" />
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('utilities/css/bootstrap-select.min.css') ?>" />    
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('utilities/scss/main.css') ?>">
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('utilities/@fortawesome/fontawesome-free/css/all.min.css') ?>">

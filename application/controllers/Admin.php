@@ -319,6 +319,7 @@ class Admin extends CI_Controller
       $body["categories"] = $this->category_model->pull_categories();
       $body["subcategories"] = $this->category_model->pull_subcategories();
       $body["features"] = $this->product_model->pull_features($prod_id);
+      $body["feature_img"] = $this->product_model->pull_feature_img($prod_id);
       $body["specification"] = $this->product_model->pull_specs($prod_id);
       $body["banners"] = $this->product_model->pull_banners($prod_id);
 
@@ -328,7 +329,6 @@ class Admin extends CI_Controller
       $this->load->view('admin-navigation',$nav);
       $this->load->view('config-product',$body);
       $this->load->view('pre-footer');
-      $this->load->view('config-product-script');
       $this->load->view('footer');
     }
     function update_product_details() {
@@ -383,19 +383,11 @@ class Admin extends CI_Controller
       $prod_id = $this->input->post('prod_id');
       $title = $this->input->post('title');
       $description = $this->input->post('description');
-      $image = "";
-      $config["upload_path"] = './utilities/images/product_src';
-      $config["allowed_types"] = 'gif|jpg|png';
-      $this->load->library('upload', $config);
-      if($this->upload->do_upload('image')) {
-        $image = $this->upload->data('raw_name').$this->upload->data('file_ext');
-      }
-      // data
+  
       $data = array(
         'prod_id' => $prod_id,
-        'feature_title' => $title,
-        'feature_desc' => $description,
-        'feature_img' => $image
+        'title' => $title,
+        'description' => $description
       );
       $this->product_model->push_feature($data);
       $result_data = array(
@@ -405,6 +397,31 @@ class Admin extends CI_Controller
       $this->session->set_flashdata('result',$result_data);
       redirect($referer);
     }
+
+    function add_feature_img() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $prod_id = $this->input->post('prod_id');
+      $feature_id = $this->input->post('feature_id');
+      $img = "";
+      $config["upload_path"] = './utilities/images/feature';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if($this->upload->do_upload('meta_img')) {
+        $img = "utilities/images/feature/". $this->upload->data('raw_name').$this->upload->data('file_ext');
+      }
+      $data = array(
+        'feature_id' => $feature_id,
+        'prod_id' => $prod_id,
+        'img' => $img
+      );
+      $this->product_model->push_feature_img($data);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> New feature image added."
+      );
+      redirect($referer);
+    }
+
     function drop_feature() {
       $referer = $this->input->server('HTTP_REFERER');
       $feature_id = $this->input->get('id');

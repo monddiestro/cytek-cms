@@ -82,6 +82,9 @@ class Product extends CI_Controller
       $data["subcat_title"] = $header_data["subcat_title"];
       $data["prod_id"] = $header_data["prod_id"];
       $data["prod_title"] = $header_data["title"];
+      $data["description"] = $header_data["description"];
+      $data["banners"] = $this->product_model->pull_banners($header_data["prod_id"]);
+      $data["features"] = $this->product_model->pull_features($header_data["prod_id"]);
       $view = "product-item";
 
     } else {

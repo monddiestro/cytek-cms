@@ -5,6 +5,7 @@
 <script src="<?php echo base_url('utilities/js/bootstrap-select.min.js') ?>"></script>
 <script src="<?php echo base_url('utilities/js/jquery-ui.min.js') ?>"></script>
 <script src="<?php echo base_url('utilities/js/bootstrap.min.js') ?>"></script>
+<script src="<?php echo base_url('utilities/js/lightslider.js') ?>"></script>
 <script>
   $('input[name="meta_img"]').on('change',function() {
     var input = $(this);
@@ -37,5 +38,20 @@
         $('.selectpicker').selectpicker('refresh');
       }
     });
+  });
+
+  $(document).ready(function(){
+    $('#product-gallery').lightSlider({
+      gallery:true,
+      item:1,
+      thumbItem:4,
+      slideMargin: 0,
+      speed:300,
+      auto:true,
+      loop:true,
+      onSliderLoad: function() {
+          $('#product-gallery').removeClass('cS-hidden');
+      }
+  });
   });
 </script>

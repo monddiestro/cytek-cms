@@ -11,7 +11,7 @@
         <div class="col-lg-3 col-md-3">
             <div class="card">
                 <div class="card-header">
-                    <span class="card-title"><?php echo $subcat_title ?> Products</span>
+                    <span class="card-title"><strong><?php echo $subcat_title ?></strong></span>
                 </div>
                 <div class="card-body">
                     <ul class="list-unstyled fw-light">
@@ -45,7 +45,7 @@
                             <p><?php echo mb_strimwidth($d->description, 0, 100, " ...") ?></p>
                         </figure>
                         <div class="card-footer">
-                            <a href="<?php echo base_url('product/category/subcategory/item?id='.$d->prod_id) ?>" class="btn btn-primary text-white fw-bold">VIEW ALL</a>
+                            <a href="<?php echo base_url('product/category/subcategory/item?id='.$d->prod_id) ?>" class="btn btn-primary text-white fw-bold">VIEW</a>
                         </div>
                     </figure>
                 </article>

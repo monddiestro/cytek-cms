@@ -99,4 +99,15 @@ class Product_model extends CI_Model
     return $row->img;
   }
 
+  function push_feature_img($data) {
+    $this->db->insert('feature_img_tbl',$data);
+  }
+
+  function pull_feature_img($prod_id) {
+    $this->db->where('prod_id',$prod_id);
+    $this->db->order_by('title','ASC');
+    $query = $this->db->get('feature_img_tbl');
+    return $query->result();
+  }
+
 }

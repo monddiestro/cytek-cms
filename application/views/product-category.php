@@ -22,9 +22,11 @@
                     <div class="card">
                     <div class="card-header">
                     <span class="card-title">
-                    <a data-toggle="collapse" id="test" data-parent="#accordion" class="d-flex <?php ($s->cat_id == $selected) ? '' : 'collapsed'; ?>" href="#collapse<?php echo $s->cat_id ?>">
-                    <div class="col-sm-9 p-0"><?php echo $s->cat_title; ?></div><div class="col-sm-3 p-0 text-right text-primary"><i class="fa fa-plus-circle"></i></div> 
-                    </a>
+                        <strong>
+                            <a data-toggle="collapse" id="test" data-parent="#accordion" class="d-flex <?php ($s->cat_id == $selected) ? '' : 'collapsed'; ?>" href="#collapse<?php echo $s->cat_id ?>">
+                            <div class="col-sm-9 p-0"><?php echo $s->cat_title; ?></div><div class="col-sm-3 p-0 text-right text-primary"><i class="fa fa-plus-circle"></i></div> 
+                            </a>
+                        </strong>
                     </h4>
                     </div>
                     <div id="collapse<?php echo $s->cat_id ?>" class="panel-collapse collapse <?php echo ($s->cat_id == $selected) ? 'show' : '' ?>">
