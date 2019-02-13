@@ -52,24 +52,50 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <!-- tablist -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#features"><strong>Features</strong></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#specs">Specification</a>
-                        </li>
-                    </ul>
-                    <!-- tab panes -->
-                    <div class="tab-content">
-                        <div id="features" class="container tab-pane active"><br>
-                           
+            <div class="form-group">
+                <div class="card">
+                    <div class="card-body">
+                        <h6><strong>Features</strong></h6>
+                        <div id="accordion">
+                            <?php foreach($features as $f): ?>
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>
+                                    <a class="d-flex collapse" data-toggle="collapse" href="#collapse<?php echo $f->feature_id ?>">
+                                        <div class="col-sm-9 p-0"><?php echo ucwords($f->title) ?></div>
+                                        <div class="col-sm-3 p-0 text-right text-primary">
+                                        <i class="fa fa-plus-circle"></i>
+                                        </div> 
+                                    </a>
+                                    </strong>
+                                    <div id="collapse<?php echo $f->feature_id ?>" class="collapse" data-parent="#accordion">
+                                        <div class="row">
+                                            <?php foreach($feature_img as $img): ?>
+                                            <?php if($img->feature_id == $f->feature_id): ?>
+                                            <div class="col-lg-4 col-sm-12">
+                                                <img width="100%" src="<?php echo base_url($img->img) ?>" alt="">
+                                                <small><?php echo ucwords($img->title) ?></small>
+                                            </div>
+                                            <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </div>
+                                        <div><?php echo $f->description ?></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endforeach;?>
                         </div>
-                        <div id="specs" class="container tab-pane fade"><br>
-                            
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="card">
+                    <div class="card-body">
+                        <h6><strong>Specification</strong></h6>
+                        <div style="width:100%;">
+                            <div class="table-responsive">
+                                <?php echo $specs ?>
+                            </div>
                         </div>
                     </div>
                 </div>

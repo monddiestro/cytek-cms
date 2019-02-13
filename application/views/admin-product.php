@@ -18,14 +18,21 @@
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <?php echo $message; ?>
       </div>
-      <div class="row prod-page">
-          <div class="col-sm-6 pb-3">
-              <h5>PRODUCTS</h5>
+      <div class="row">
+          <div class="col-lg-4">
+            <div class="header-text header-mt">
+              <span>PRODUCT</span>
+            </div>
           </div>
-          <div class="col-sm-6 pb-3">
-            <div class="text-right">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new-product"><i class="fa fa-plus"></i>&nbsp;&nbsp;<b>Product</b></button>
+          <div class="col-lg-8 ctg-function">
+            <div class="row header-mt">
+              <div class="col-md-8">
+                <input type="text" class="form-control form-shadow" placeholder="Product name">
               </div>
+              <div class="col-md-4">
+                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#new-product"><b>New Product</b></button>
+              </div>
+            </div>            
           </div>
       </div>
       <div class="row">

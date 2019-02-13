@@ -191,7 +191,7 @@
                               <div class="modal-body">
                                 <div class="form-group">
                                   <label for="">Title</label>
-                                  <input type="text" class="form-control" placeholder="Image title">
+                                  <input type="text" name="title" class="form-control" placeholder="Image title">
                                 </div>
                                 <div class="form-group">
                                   <span class="form-label">Select Image</span>

@@ -26,17 +26,17 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link <?php echo ($page == "events") ? 'active' : ''; ?>">
+                        <a href="<?php echo base_url('admin/events') ?>" class="nav-link <?php echo ($page == "events") ? 'active' : ''; ?>">
                             <span><i class="fa fa-calendar-alt fa-lg fa-fw  mr-2"></i> Events</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link <?php echo ($page == "users") ? 'active' : ''; ?>">
+                        <a href="<?php echo base_url('admin/users') ?>" class="nav-link <?php echo ($page == "users") ? 'active' : ''; ?>">
                             <span><i class="fa fa-users-cog fa-lg fa-fw  mr-2"></i> User</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link <?php echo ($page == "settings") ? 'active' : ''; ?>">
+                        <a href="<?php echo base_url('admin/settings') ?>" class="nav-link <?php echo ($page == "settings") ? 'active' : ''; ?>">
                             <span><i class="fa fa-cogs fa-lg fa-fw  mr-2"></i> Settings</span>
                         </a>
                     </li>
@@ -63,7 +63,7 @@
                 </ul>
             </nav>
             <footer class="px-4">
-                <span class="small">Copyright by Cytek Solutions Inc. © 2019 All Rights Reserved</span>
+                <span class="small">Copyright by <br/>Cytek Solutions Inc. <br/>© 2019 All Rights Reserved</span>
             </footer>
         </section>
     </div>

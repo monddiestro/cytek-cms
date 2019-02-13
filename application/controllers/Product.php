@@ -85,6 +85,8 @@ class Product extends CI_Controller
       $data["description"] = $header_data["description"];
       $data["banners"] = $this->product_model->pull_banners($header_data["prod_id"]);
       $data["features"] = $this->product_model->pull_features($header_data["prod_id"]);
+      $data["feature_img"] = $this->product_model->pull_feature_img($header_data["prod_id"]);
+      $data["specs"] = $this->product_model->pull_specs($header_data["prod_id"]);
       $view = "product-item";
 
     } else {
