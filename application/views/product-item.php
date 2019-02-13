@@ -62,14 +62,14 @@
                                 <div class="card-header">
                                     <strong>
                                     <a class="d-flex collapse" data-toggle="collapse" href="#collapse<?php echo $f->feature_id ?>">
-                                        <div class="col-sm-9 p-0"><?php echo ucwords($f->title) ?></div>
-                                        <div class="col-sm-3 p-0 text-right text-primary">
+                                        <div class="col-sm-11 p-0"><?php echo ucwords($f->title) ?></div>
+                                        <div class="col-sm-1 p-0 text-right text-primary">
                                         <i class="fa fa-plus-circle"></i>
                                         </div> 
                                     </a>
                                     </strong>
                                     <div id="collapse<?php echo $f->feature_id ?>" class="collapse" data-parent="#accordion">
-                                        <div class="row">
+                                        <div class="row py-3">
                                             <?php foreach($feature_img as $img): ?>
                                             <?php if($img->feature_id == $f->feature_id): ?>
                                             <div class="col-lg-4 col-sm-12">
@@ -104,7 +104,7 @@
         <div></div>
         <!-- contact form -->
         <div class="col-lg-3 col-md-3">
-            <div class="card">
+            <div class="card sticky-form">
                 <div class="card-body">
                     <h6><strong>Inquire Now</strong></h6>
                     <p>Bacon ipsum dolor amet rump swine meatloaf ribeye beef ribs. </p>

@@ -63,11 +63,15 @@
                 <article class="col-sm-4 mb-4">
                     <figure class="card">
                         <figure class="card-header p-0">
-                        <img src="<?php echo empty($d->img) ? base_url('utilities/images/no-image.png') : base_url($d->img) ?>" alt="" class="product-img">
+                            <div class="img-box">
+                                <img src="<?php echo empty($d->img) ? base_url('utilities/images/no-image.png') : base_url($d->img) ?>" alt="" class="product-img">
+                            </div>                        
                         </figure>
                         <figure class="card-body">
-                            <h5><strong><?php echo $d->subcat_title ?></strong></h5>
-                            <p><?php echo mb_strimwidth($d->description, 0, 100, " ...") ?></p>
+                            <div class="img-desc">
+                                <h5><strong><?php echo $d->subcat_title ?></strong></h5>
+                                <p><?php echo mb_strimwidth($d->description, 0, 100, " ...") ?></p>
+                            </div>                            
                         </figure>
                         <div class="card-footer">
                             <a href="<?php echo base_url('product/category/subcategory?id='.$d->subcat_id) ?>" class="btn btn-primary text-white fw-bold">VIEW ALL</a>

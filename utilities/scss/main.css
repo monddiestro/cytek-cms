@@ -9718,6 +9718,7 @@ textarea::-webkit-scrollbar-thumb {
   width: 100%;
   object-position: 50% 50%;
   object-fit: cover;
+  height: 100%;
 }
 
 .bg-cytek {
@@ -9787,9 +9788,30 @@ ul.list-unstyled.fw-light li {
 ul.list-unstyled.fw-light li a {
   color: #494949;
 }
-ul.list-unstyled.fw-light li a:hover {
+ul.list-unstyled.fw-light li a:hover, ul.list-unstyled.fw-light li a.active {
   color: #FFCC00;
   text-decoration: none;
+}
+
+.img-box {
+  width: 100%;
+  height: 100%;
+}
+
+.img-desc {
+  height: 125px;
+  overflow: hidden;
+}
+
+textarea {
+  resize: none;
+}
+
+.sticky-form {
+  position: sticky;
+  top: 20px;
+  margin-bottom: 20px;
+  z-index: 1030;
 }
 
 .login-bg .alert {
