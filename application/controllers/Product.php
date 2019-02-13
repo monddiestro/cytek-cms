@@ -121,6 +121,7 @@ class Product extends CI_Controller
     $this->load->view('navigation',$navigation);
     $this->load->view($view,$data);
     $this->load->view('pre-footer');
+    $this->load->view('script');
     $this->load->view('footer');
 
    

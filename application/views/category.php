@@ -243,7 +243,7 @@
                 <div class="">
                   <span class="form-label">Meta Image</span>
                   <div class="img-container mb-2">
-                    <img class="media-object" src="<?php echo (empty($cat->meta_img)) ? base_url('utilities/images/meta/no-image.png') : base_url('utilities/images/meta/'.$cat->meta_img)  ?>" style="width:100px">
+                    <img class="media-object" src="<?php echo (empty($cat->meta_img)) ? base_url('utilities/images/meta/no-image.png') : base_url('utilities/images/meta/'.$cat->meta_img)  ?>">
                   </div> 
                     <label class="btn btn-default shadow" id="btn_browse">
                       <input type="file" name="meta_img" accept="image/*" style="display:none;">

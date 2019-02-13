@@ -62,8 +62,8 @@
                     </li>
                 </ul>
             </nav>
-            <footer class="px-4">
-                <span class="small">Copyright by Cytek Solutions Inc. © 2019 All Rights Reserved</span>
+            <footer class="px-4 pb-4">
+                <span style="font-size:11px;">Copyright by Cytek Solutions Inc. © 2019 All Rights Reserved</span>
             </footer>
         </section>
     </div>

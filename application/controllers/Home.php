@@ -30,6 +30,7 @@ class Home extends CI_Controller
         $body_data["categories"] = $this->category_model->pull_categories();
         $this->load->view('home',$body_data);
         $this->load->view('pre-footer');
+        $this->load->view('script');
         $this->load->view('footer');
     }
 }

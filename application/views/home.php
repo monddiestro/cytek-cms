@@ -60,7 +60,7 @@
 <div style="background:#f0f0f0;">  
   <div class="container home-page">   
     <!-- Events -->
-    <div class="row">
+    <div class="row pb-4">
       <div class="col-lg-7">
         <div class="section-title">
           <h4>News and Events</h4>
