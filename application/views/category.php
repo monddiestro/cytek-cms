@@ -2,7 +2,7 @@
   <div class="wrapper">
     <!-- Page Content -->
     <div id="page-content-wrapper">
-      <div class="container px-5">
+      <div class="container px-5 pt-5">
       <!-- alert -->
       <?php
         $flash = $this->session->flashdata('result');
@@ -20,17 +20,17 @@
         <?php echo $message; ?>
       </div>
       <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-4">
             <div class="header-text header-mt">
-              <span>Product Categories</span>
+              <span>CATEGORIES</span>
             </div>
           </div>
-          <div class="col-lg-6 ctg-function">
+          <div class="col-lg-8 ctg-function">
             <div class="row header-mt">
-              <div class="col-lg-8">
+              <div class="col-md-8">
                 <input type="text" class="form-control form-shadow" placeholder="Category name">
               </div>
-              <div class="col-lg-4">
+              <div class="col-md-4">
                 <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#new-category"><b>New Category</b></button>
               </div>
             </div>            

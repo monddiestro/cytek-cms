@@ -55,12 +55,10 @@ class Admin extends CI_Controller
       } 
 
     }
-
     function logout() {
       session_destroy();
       redirect(base_url('admin'));
     }
-
     function index() {
         if(!empty($this->session->userdata('user_id'))) {
           redirect(base_url('admin/dashboard'));
@@ -88,7 +86,6 @@ class Admin extends CI_Controller
       );
       return $header;
     }
-
     function dashboard() {
 
       $this->check_session(); // check if logged in
@@ -102,9 +99,11 @@ class Admin extends CI_Controller
       $this->load->view('footer');
 
     }
-
     // Category and Sub category CRUD
     function category() {
+        // check session 
+        $this->check_session();
+      
         // header data
         $header = $this->header_array('','','','Admin Category | Cytek Solutions Inc.','',base_url('admin/category'));
         // admin-navigation data
@@ -150,7 +149,6 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('result',$result_data);
         redirect($referer);
     }
-
     function new_subcategory() {
       $referer = $this->input->server('HTTP_REFERER');
       $subcat_desc = $this->input->post('subcategory');
@@ -249,6 +247,7 @@ class Admin extends CI_Controller
       $this->load->view('admin-product-script');
       $this->load->view('footer');
     }
+
     function new_products() {
 
       $referer = $this->input->server('HTTP_REFERER');
@@ -292,6 +291,7 @@ class Admin extends CI_Controller
       $this->session->set_flashdata('result',$result_data);
       redirect($referer);
     }
+
     function config_product() {
       $prod_id = $this->input->get('id');  
       // product data
@@ -331,6 +331,7 @@ class Admin extends CI_Controller
       $this->load->view('script');
       $this->load->view('footer');
     }
+
     function update_product_details() {
       $referer = $this->input->server('HTTP_REFERER');
 
@@ -375,6 +376,7 @@ class Admin extends CI_Controller
       $this->session->set_flashdata('result',$result_data);
       redirect($referer);
     }
+
     function drop_product() {
     }
     // product feature
@@ -402,6 +404,7 @@ class Admin extends CI_Controller
       $referer = $this->input->server('HTTP_REFERER');
       $prod_id = $this->input->post('prod_id');
       $feature_id = $this->input->post('feature_id');
+      $title = $this->input->post('title');
       $img = "";
       $config["upload_path"] = './utilities/images/feature';
       $config["allowed_types"] = 'gif|jpg|png';
@@ -412,7 +415,8 @@ class Admin extends CI_Controller
       $data = array(
         'feature_id' => $feature_id,
         'prod_id' => $prod_id,
-        'img' => $img
+        'img' => $img,
+        'title' => $title
       );
       $this->product_model->push_feature_img($data);
       $result_data = array(
@@ -433,6 +437,7 @@ class Admin extends CI_Controller
       $this->session->set_flashdata('result',$result_data);
       redirect($referer);
     }
+
     function update_specs() {
       $referer = $this->input->server('HTTP_REFERER');
       $prod_id = $this->input->post('prod_id');
@@ -460,6 +465,7 @@ class Admin extends CI_Controller
       }
       echo $subcategories_str;
     }
+
     function add_banner() {
       $referer = $this->input->server('HTTP_REFERER');
       $prod_id = $this->input->post('prod_id');
@@ -494,6 +500,35 @@ class Admin extends CI_Controller
         'message' => "<strong>Success!</strong> " . $image_name . " remove from product banner"
       );
       redirect($referer);
+    }
+
+    function events() {
+      $header = $this->header_array('','','','Admin Events | Cytek Solutions Inc.','',base_url('admin/events'));
+      $nav["page"] = "events";
+      $this->load->view('header',$header);
+      $this->load->view('admin-navigation',$nav);
+      $this->load->view('admin-events');
+      $this->load->view('pre-footer');
+      $this->load->view('footer');
+    }
+
+    function users() {
+      $header = $this->header_array('','','','Admin Users | Cytek Solutions Inc.','',base_url('admin/users'));
+      $nav["page"] = "users";
+      $this->load->view('header',$header);
+      $this->load->view('admin-navigation',$nav);
+      $this->load->view('admin-events');
+      $this->load->view('pre-footer');
+      $this->load->view('footer');
+    }
+    function settings() {
+      $header = $this->header_array('','','','Admin Settings | Cytek Solutions Inc.','',base_url('admin/settings'));
+      $nav["page"] = "settings";
+      $this->load->view('header',$header);
+      $this->load->view('admin-navigation',$nav);
+      $this->load->view('admin-events');
+      $this->load->view('pre-footer');
+      $this->load->view('footer');
     }
 
 }
