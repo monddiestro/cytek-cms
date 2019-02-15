@@ -118,11 +118,14 @@ class Product extends CI_Controller
       $view= "product-subcategory";
     }
 
+    $footer["categories"] = $this->category_model->pull_categories();
+    $footer["subcategories"] = $this->category_model->pull_subcategories();
+
     //load views
     $this->load->view('header',$header);
     $this->load->view('navigation',$navigation);
     $this->load->view($view,$data);
-    $this->load->view('pre-footer');
+    $this->load->view('pre-footer',$footer);
     $this->load->view('script');
     $this->load->view('footer');
 
