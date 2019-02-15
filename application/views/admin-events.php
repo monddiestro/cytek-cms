@@ -1,5 +1,4 @@
 <main class="cytek-main">
-<<<<<<< HEAD
   <div class="wrapper">
     <!-- Page Content -->
     <div id="page-content-wrapper">
@@ -92,11 +91,3 @@
     </div>
   </div>
 </div>
-=======
-    <div class="wrapper">
-        <div id="page-content-wrapper">
-            <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#new-event"><b>New Product</b></button>
-        </div>
-    </div>
-</main>
->>>>>>> 667457af386e6828e5312ffa3ad0a25ebad1fecf
