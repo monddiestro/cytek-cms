@@ -3,51 +3,18 @@
     <div class="row">
       <div class="col-lg-8 pr-0 text-white">
         <div class="row">
+          <?php foreach($categories as $c): ?>
           <div class="col-lg-4 col-md-6">
-            <p class="footer-title">Industrial Microscope</p>
+            <p class="footer-title"><a href="<?php echo base_url('product/category?id='.$c->cat_id) ?>"><?php echo ucwords($c->cat_title) ?></a></p>
             <ul class="list-unstyled">
-              <li><a href="">Cleanliness Inspections Microscope</a></li>
-              <li><a href="">Digital Microscope</a></li>
-              <li><a href="">Image Analysis Software</a></li>
-              <li><a href="">Laser Scanning Confocal Microscope</a></li>
-              <li><a href="">Light Microscope</a></li>
-              <li><a href="">Measuring Microscope</a></li>
-              <li><a href="">Microscope Accessories</a></li>
-              <li><a href="">Microscope Digital Camera</a></li>
-              <li><a href="">Objective Lense</a></li>
-              <li><a href="">Semiconductor Microscope</a></li>
+              <?php foreach($subcategories as $s): ?>
+                <?php if($s->cat_id == $c->cat_id): ?>
+                  <li><a href="<?php echo base_url('product/category/subcategory?id='.$s->subcat_id) ?>"><?php echo ucwords($s->subcat_title) ?></a></li>
+                <?php endif; ?>
+              <?php endforeach; ?>
             </ul>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <p class="footer-title">Analytical Instruments</p>
-            <ul class="list-unstyled">
-              <li><a href="">Cleanliness Inspections Microscope</a></li>
-              <li><a href="">Digital Microscope</a></li>
-              <li><a href="">Image Analysis Software</a></li>
-              <li><a href="">Laser Scanning Confocal Microscope</a></li>
-              <li><a href="">Light Microscope</a></li>
-              <li><a href="">Measuring Microscope</a></li>
-              <li><a href="">Microscope Accessories</a></li>
-              <li><a href="">Microscope Digital Camera</a></li>
-              <li><a href="">Objective Lense</a></li>
-              <li><a href="">Semiconductor Microscope</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <p class="footer-title">Lorem Bacon Ipsum</p>
-            <ul class="list-unstyled">
-              <li><a href="">Cleanliness Inspections Microscope</a></li>
-              <li><a href="">Digital Microscope</a></li>
-              <li><a href="">Image Analysis Software</a></li>
-              <li><a href="">Laser Scanning Confocal Microscope</a></li>
-              <li><a href="">Light Microscope</a></li>
-              <li><a href="">Measuring Microscope</a></li>
-              <li><a href="">Microscope Accessories</a></li>
-              <li><a href="">Microscope Digital Camera</a></li>
-              <li><a href="">Objective Lense</a></li>
-              <li><a href="">Semiconductor Microscope</a></li>
-            </ul>
-          </div>
+          <?php endforeach; ?>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 pl-5 mb-4">

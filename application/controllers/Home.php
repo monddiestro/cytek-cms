@@ -23,13 +23,18 @@ class Home extends CI_Controller
                 'title' => $meta->title .' | Cytek Solutions Inc.' 
             );
         }
-        // header data
-        $this->load->view('header',$meta);
+        // data
+        
         $navigation["navs"] = $this->category_model->pull_subcategories();
-        $this->load->view('navigation',$navigation);
         $body_data["categories"] = $this->category_model->pull_categories();
+        $footer["categories"] = $this->category_model->pull_categories();
+        $footer["subcategories"] = $this->category_model->pull_subcategories();
+
+        // load view
+        $this->load->view('header',$meta);
+        $this->load->view('navigation',$navigation);
         $this->load->view('home',$body_data);
-        $this->load->view('pre-footer');
+        $this->load->view('pre-footer',$footer);
         $this->load->view('script');
         $this->load->view('footer');
     }
