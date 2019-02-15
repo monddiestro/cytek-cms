@@ -164,9 +164,8 @@
         </div>
       </div>
       <div class="modal-footer border-0">
-        <button type="button" class="btn btn-link text-dark" data-dismiss="modal">Cancel</button>
         <button type="submit" class="btn btn-link text-dark">Save</button>
-        
+        <button type="button" class="btn btn-link text-dark" data-dismiss="modal">Cancel</button>        
       </div>
     </div>
     <?php echo form_close(); ?>
@@ -193,8 +192,8 @@
           </div>
         </div>
         <div class="modal-footer border-0">
-          <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-link">Save</button>          
+          <button type="submit" class="btn btn-link">Save</button>  
+          <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>                  
         </div>
       </div>
       <?php echo form_close(); ?>
@@ -270,9 +269,8 @@
           </div>
         </div>
         <div class="modal-footer border-0">
-          <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
           <button type="submit" class="btn btn-link">Save</button>
-          
+          <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>         
         </div>
       </div>
       <?php echo form_close(); ?>
@@ -322,9 +320,9 @@
               </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-link">Save</button>          
+        <div class="modal-footer">          
+          <button type="submit" class="btn btn-link">Save</button>
+          <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>          
         </div>
       </div>
       <?php echo form_close(); ?>
