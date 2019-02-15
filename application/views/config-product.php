@@ -42,8 +42,8 @@
                   <?php foreach ($banners as $b): ?>
                     <div class="col-sm-3">
                       <div style="border:1px solid #ddd;">
-                        <div style="padding:10px">
-                          <img style="width:100%;" src="<?php echo base_url($b->image_path) ?>" alt="">
+                        <div class="gallery-box">
+                          <img class="gallery-img" src="<?php echo base_url($b->image_path) ?>" alt="">
                         </div>
                         <div style="padding:10px;">
                           <a href="<?php echo base_url('admin/drop_banner?id='.$b->banner_id) ?>"  class="btn btn-danger btn-block">DELETE</a>
@@ -144,21 +144,21 @@
               <div class="card-header">
                 <strong>Product Features</strong>
               </div>
-              <div class="card-body">
+              <div class="card-body p-0">
                   <?php if (!empty($features)): ?>
                     <div id="accordion">
                       <?php foreach($features as $f): ?>
-                        <div>
+                        <div class="card-header">
                           <strong>
                           <a class="d-flex collapse" data-toggle="collapse" href="#collapse<?php echo $f->feature_id ?>">
-                            <div class="col-sm-9 p-0"><?php echo ucwords($f->title) ?></div>
-                            <div class="col-sm-3 p-0 text-right text-primary">
+                            <div class="col-sm-11 p-0"><?php echo ucwords($f->title) ?></div>
+                            <div class="col-sm-1 p-0 text-right text-primary">
                               <i class="fa fa-plus-circle"></i>
                             </div> 
                           </a>
                           </strong>
                           <div id="collapse<?php echo $f->feature_id ?>" class="collapse" data-parent="#accordion">
-                            <div class="row">
+                            <div class="row pt-3">
                             <?php foreach ($feature_img as $img): ?>
                               <?php if($img->feature_id == $f->feature_id): ?>
                               <div class="col-sm-4">
@@ -168,14 +168,14 @@
                                     <p><?php echo ucwords($img->title) ?></p>
                                   </div>
                                   <div style="padding:10px;">
-                                    <a href="<?php echo base_url('admin/drop_feature_img?id='.$img->img_id) ?>"  class="btn btn-danger btn-block">DELETE</a>
+                                    <a href="<?php echo base_url('admin/drop_feature_img?id='.$img->img_id) ?>"  class="btn btn-danger btn-block text-white">DELETE</a>
                                   </div>
                                 </div>
                               </div>
                               <?php endif; ?>
                             <?php endforeach; ?>
                             </div>
-                            <button type="button" data-toggle="modal" data-target="#feature_img_<?php echo $f->feature_id ?>" class="btn btn-primary">Add Image</button>
+                            <button type="button" data-toggle="modal" data-target="#feature_img_<?php echo $f->feature_id ?>" class="btn btn-primary my-2">Add Image</button>
                             <?php echo $f->description ?>
                           </div>
                         </div>

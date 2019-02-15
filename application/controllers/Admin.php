@@ -508,7 +508,7 @@ class Admin extends CI_Controller
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
       $this->load->view('admin-events');
-      $this->load->view('pre-footer');
+      $this->load->view('script');
       $this->load->view('footer');
     }
 
@@ -517,8 +517,8 @@ class Admin extends CI_Controller
       $nav["page"] = "users";
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
-      $this->load->view('admin-events');
-      $this->load->view('pre-footer');
+      $this->load->view('admin-users');
+      $this->load->view('script');
       $this->load->view('footer');
     }
     function settings() {
@@ -526,8 +526,8 @@ class Admin extends CI_Controller
       $nav["page"] = "settings";
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
-      $this->load->view('admin-events');
-      $this->load->view('pre-footer');
+      $this->load->view('admin-settings');
+      $this->load->view('script');
       $this->load->view('footer');
     }
 

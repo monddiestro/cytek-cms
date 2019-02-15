@@ -43,7 +43,9 @@
       <div class="col-sm-4 mb-4">
         <div class="card">
           <div class="card-header p-0">
-            <img src="<?php echo empty($category->img) ? base_url('utilities/images/no-image.png') : base_url($category->img) ?>" alt="" class="product-img">
+            <div class="img-box">
+              <img src="<?php echo empty($category->img) ? base_url('utilities/images/no-image.png') : base_url($category->img) ?>" alt="" class="product-img">
+            </div>            
           </div>
           <div class="card-body">            
             <h5><strong><?php echo $category->cat_title ?></strong></h5>
@@ -68,7 +70,7 @@
         <div class="col-lg-12 card mb-3">
           <div class="row">
             <div class="col-md-4 px-0">
-              <img src="<?php echo base_url('utilities/images/meta/test.jpg')?>" alt="" class="product-img">
+              <img src="<?php echo base_url('utilities/images/meta/test.jpg')?>" alt="" class="event-img">
             </div>
             <div class="col-md-8 py-3">
               <div class="col-event">
@@ -82,7 +84,7 @@
         <div class="col-lg-12 card mb-3">
           <div class="row">
             <div class="col-md-4 px-0">
-              <img src="<?php echo base_url('utilities/images/meta/test.jpg')?>" alt="" class="product-img">
+              <img src="<?php echo base_url('utilities/images/meta/test.jpg')?>" alt="" class="event-img">
             </div>
             <div class="col-md-8 py-3">
               <div class="col-event">
@@ -104,7 +106,7 @@
         <div class="col-lg-12 pb-3 mb-3 border-bottom">
           <div class="row">
             <div class="col-md-4 px-0">
-              <img src="<?php echo base_url('utilities/images/meta/pulag.jpg')?>" alt="" class="product-img">
+              <img src="<?php echo base_url('utilities/images/meta/pulag.jpg')?>" alt="" class="event-img">
             </div>
             <div class="col-md-8 px-2">
               <div class="col-blog"> 
@@ -119,7 +121,7 @@
         <div class="col-lg-12 pb-3 mb-3 border-bottom">
           <div class="row">
             <div class="col-md-4 px-0">
-              <img src="<?php echo base_url('utilities/images/meta/pulag.jpg')?>" alt="" class="product-img">
+              <img src="<?php echo base_url('utilities/images/meta/pulag.jpg')?>" alt="" class="event-img">
             </div>
             <div class="col-md-8 px-2">
               <div class="col-blog">

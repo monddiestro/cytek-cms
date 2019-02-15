@@ -39,7 +39,7 @@
       <div class="row">
           <div class="col-lg-12">
             <div class="card ">
-              <table class="table tbl-mobile mb-0 pro-tablegmaii">
+              <table class="table tbl-mobile mb-0">
                   <thead>
                       <tr>
                           <th>ID</th>
@@ -150,7 +150,7 @@
           <div class="col-sm-12">
             <div class="form-group">
               <span class="form-label">Category Description</span>
-              <textarea class="form-control" name="meta_desc" rows="8" cols="80" placeholder="ex. Industrial Microscope"></textarea>
+              <textarea class="form-control" name="meta_desc" rows="8" cols="80" placeholder="Example: Industrial Microscope"></textarea>
             </div> 
             <!-- <div class="form-group">
               <h6>Meta Title</h6>
@@ -158,7 +158,7 @@
             </div> -->
             <div class="form-group">
               <span class="form-label">Category Keywords</span>
-              <input class="form-control" name="meta_keywords" type="text" placeholder="ex. Words separated by comma" required>
+              <input class="form-control" name="meta_keywords" type="text" placeholder="Example: Words separated by comma" required>
             </div>                       
           </div>
         </div>
