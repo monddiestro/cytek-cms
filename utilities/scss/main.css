@@ -9604,7 +9604,7 @@ textarea::-webkit-scrollbar-thumb {
   margin-bottom: 5px;
 }
 .footer-section .footer-content {
-  font-size: 12px;
+  font-size: 13px;
   color: #fff;
 }
 .footer-section ul.list-unstyled {
@@ -9614,15 +9614,26 @@ textarea::-webkit-scrollbar-thumb {
   color: #fff;
 }
 .footer-section ul.list-unstyled li span {
-  font-size: 12px;
+  font-size: 13px;
 }
 .footer-section ul.list-unstyled li a {
   color: #fff;
-  font-size: 12px;
+  font-size: 13px;
 }
 .footer-section ul.list-unstyled li a:hover {
   color: #FFCC00;
   text-decoration: none;
+}
+
+.gallery-box {
+  height: 170px;
+  padding: 10px;
+}
+
+.gallery-img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
 .login-bg {
@@ -9717,6 +9728,13 @@ textarea::-webkit-scrollbar-thumb {
 .product-img {
   width: 100%;
   object-position: 50% 50%;
+  object-fit: contain;
+  height: 100%;
+}
+
+.event-img {
+  width: 100%;
+  object-position: 50% 50%;
   object-fit: cover;
   height: 100%;
 }
@@ -9795,7 +9813,7 @@ ul.list-unstyled.fw-light li a:hover, ul.list-unstyled.fw-light li a.active {
 
 .img-box {
   width: 100%;
-  height: 100%;
+  height: 200px;
 }
 
 .img-desc {
@@ -9912,7 +9930,7 @@ textarea {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   text-align: center;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   border: 1px solid transparent;
   border-color: 1px solid transparent;
@@ -9957,7 +9975,7 @@ td.btn-collapse {
 
 .modal-footer .btn-link {
   font-weight: bold !important;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.05em;
 }
 .modal-footer .btn-link:after {
@@ -9980,17 +9998,17 @@ td.btn-collapse {
   border-radius: 5px;
 }
 .modal .btn-default {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
 }
 .modal span.form-label, .modal label.form-label {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.05em;
   color: #5E5E5E;
   line-height: 1.2;
 }
 .modal .form-control {
-  font-size: 12px !important;
+  font-size: 13px !important;
   margin-top: 8px !important;
 }
 
