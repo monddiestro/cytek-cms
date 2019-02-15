@@ -85,8 +85,8 @@
         </div>
       </div>
       <div class="modal-footer border-0">
-        <button type="button" class="btn btn-link text-dark" data-dismiss="modal">CANCEL</button>
-        <button type="submit" class="btn btn-link text-dark">SAVE</button>        
+        <button type="button" class="btn btn-link text-dark" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-link text-dark">Save</button>        
       </div>
     </div>
   </div>

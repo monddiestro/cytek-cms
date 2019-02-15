@@ -9603,6 +9603,12 @@ textarea::-webkit-scrollbar-thumb {
   text-transform: uppercase;
   margin-bottom: 5px;
 }
+.footer-section .footer-title a {
+  color: #fff;
+}
+.footer-section .footer-title a:hover {
+  text-decoration: none;
+}
 .footer-section .footer-content {
   font-size: 13px;
   color: #fff;
@@ -10105,7 +10111,7 @@ td.btn-collapse {
     margin-top: 80px;
   }
 
-  .footer-section .col-lg-4.pl-5 {
+  .footer-section .col-lg-4.pl-4 {
     padding-left: 1rem !important;
   }
 }
@@ -10279,9 +10285,11 @@ td.btn-collapse {
 
   .tbl-mobile .tbl-collapse tr td {
     display: block !important;
+    text-align: left;
   }
   .tbl-mobile .tbl-collapse tr td.icon-btn {
-    display: inline-block !important;
+    display: table-cell !important;
+    text-align: left;
   }
 
   .tbl-mobile tr td.td-header {

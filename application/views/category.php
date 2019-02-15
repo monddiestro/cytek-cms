@@ -64,7 +64,7 @@
                                     <?php foreach ($subcategories as $subcat): ?>
                                       <?php if ($subcat->cat_id == $cat->cat_id): ?>
                                         <tr>
-                                          <td>
+                                          <td class="subcat-title">
                                             <?php echo $subcat->subcat_title ?>
                                           </td>
                                           <td class="icon-btn" width="10">
@@ -164,8 +164,8 @@
         </div>
       </div>
       <div class="modal-footer border-0">
-        <button type="button" class="btn btn-link text-dark" data-dismiss="modal">CANCEL</button>
-        <button type="submit" class="btn btn-link text-dark">SAVE</button>
+        <button type="button" class="btn btn-link text-dark" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-link text-dark">Save</button>
         
       </div>
     </div>

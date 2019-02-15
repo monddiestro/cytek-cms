@@ -79,6 +79,12 @@ textarea::-webkit-scrollbar-thumb
       margin-top:25px;
       text-transform: uppercase;
       margin-bottom: 5px;
+      a {
+        color: #fff;
+        &:hover {
+          text-decoration: none;
+        }
+      }
   }
   .footer-content {
       font-size: 13px;

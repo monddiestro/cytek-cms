@@ -17,7 +17,7 @@
           <?php endforeach; ?>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6 pl-5 mb-4">
+      <div class="col-lg-4 col-md-6 pl-4 mb-4">
         <p class="footer-title">Inquire now</p>
         <p class="footer-content">Send your inquiries to us and we will contact you</p>
         <div class="form-group">
