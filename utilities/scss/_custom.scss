@@ -212,7 +212,7 @@ textarea::-webkit-scrollbar-thumb
 .product-img {
   width:100%;
   object-position: 50% 50%;
-  object-fit: contain;
+  object-fit: cover;
   height: 100%;
 }
 .event-img {
@@ -292,7 +292,7 @@ ul.list-unstyled.fw-light {
 }
 .img-box {
   width: 100%;
-  height: 200px;
+  // height: 200px;
 }
 .img-desc {
   height: 125px;
