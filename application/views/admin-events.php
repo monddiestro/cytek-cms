@@ -53,6 +53,7 @@
 <div id="new-event" class="modal fade" role="dialog">
   <div class="modal-dialog cytek-modal">
     <!-- Modal content-->
+    <?php echo form_open_multipart(base_url('admin/new_event')); ?>
     <div class="modal-content">
       <div class="modal-header border-0">        
         <span class="modal-title">New Event</span>        
@@ -70,17 +71,31 @@
                   </label>&nbsp;&nbsp;<span class="text-muted filename small">No image selected</span>
               </div>
               <div class="form-group">
-                <span class="form-label">Event Name</span>
-                <input class="form-control" name="category_name" type="text" placeholder="Example: Bacon Ipsum" required>
+                <span class="form-label">Title</span>
+                <input class="form-control" name="title" type="text" placeholder="Example: Ribbon Cutting" required>
               </div>  
             </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
-              <span class="form-label">Event Description</span>
-              <textarea class="form-control" name="meta_desc" rows="8" cols="80" placeholder="Example: Bacon Ipsum"></textarea>
+              <span class="form-label">Description</span>
+              <textarea class="form-control" name="description" rows="5" placeholder="Place event short description here .."></textarea>
             </div>                       
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <span class="form-label">Content</span>
+              <textarea class="form-control" name="content" rows="5" placeholder="Place event content here this input also accept HTML format ..."></textarea>
+            </div>                       
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <label for="">Date</label>
+            <input type="text" value="" autocomplete="off" name="date" class="form-control" placeholder="MM/DD/YY" id="date">
           </div>
         </div>
       </div>
@@ -89,5 +104,6 @@
         <button type="submit" class="btn btn-link text-dark">Save</button>        
       </div>
     </div>
+    <?php echo form_close(); ?>
   </div>
 </div>
