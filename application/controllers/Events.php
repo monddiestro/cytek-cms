@@ -31,6 +31,7 @@ class Events extends CI_Controller
         }
 
         $navigation["navs"] = $this->category_model->pull_subcategories();
+        $navigation["page"] = "events";
         $footer["categories"] = $this->category_model->pull_categories();
         $footer["subcategories"] = $this->category_model->pull_subcategories();
 
