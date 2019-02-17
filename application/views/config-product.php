@@ -111,6 +111,15 @@
                       <label for="">Name</label>
                       <input type="text" class="form-control" placeholder="Add product name" name="prod_title" value="<?php echo $product["prod_title"] ?>">
                     </div>
+                    <div class="form-group">
+                      <label for="">Featured</label>
+                      <label class="form-check-label" style="padding-left:25px;">
+                        <input type="radio" class="form-check-input" value="yes" name="featured" <?php echo $product["featured"] == 'yes' ? 'checked' : '' ?>>Yes
+                      </label>
+                      <label class="form-check-label" style="padding-left:25px;">
+                        <input type="radio" class="form-check-input" value="no" name="featured" <?php echo $product["featured"] == 'no' ? 'checked' : '' ?>>No
+                      </label>
+                    </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">

@@ -59,7 +59,31 @@
       <?php endforeach; ?>
     </div>
   </div>
-<div style="background:#f0f0f0;">  
+<?php if(!empty($featured)): ?>
+<div style="background:#f0f0f0;">
+ <div class="container home-page">
+  <div class="row pb-4 pt-4">
+    <?php foreach($featured as $f): ?>
+    <div class="col-sm-4 mb-4">
+      <div class="card">
+        <div class="card-header p-0">
+          <div class="img-box">
+            <img src="<?php echo empty($f->img) ? base_url('utilities/images/no-image.png') : base_url($f->img) ?>" alt="" class="product-img">
+          </div>
+        </div>
+        <div class="card-body">
+          <h5><strong><?php echo ucwords($f->prod_title) ?></strong></h5>
+          <p><?php echo mb_strimwidth($f->description, 0, 100, " ...") ?></p>
+          <a href="<?php echo base_url('product/category/subcategory/item?id='.$f->prod_id) ?>" class="btn btn-primary text-white px-4"><b>VIEW</b></a>
+        </div>
+      </div>
+    </div>
+    <?php endforeach; ?>
+  </div>
+ </div>
+</div>
+<?php endif; ?>
+<div style="background:#fff;">  
   <div class="container home-page">   
     <!-- Events -->
     <div class="row pb-4">

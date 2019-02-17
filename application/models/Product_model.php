@@ -38,7 +38,7 @@ class Product_model extends CI_Model
     $this->db->order_by('cat_title','ASC');
     $this->db->order_by('subcat_title', 'ASC');
     $this->db->order_by('prod_title', 'ASC');
-    $this->db->select('prod_id,prod_title,product_tbl.cat_id,product_tbl.subcat_id,product_tbl.description, product_tbl.img,product_tbl.keyword, product_tbl.date_created, cat_title,subcat_title');
+    $this->db->select('featured,prod_id,prod_title,product_tbl.cat_id,product_tbl.subcat_id,product_tbl.description, product_tbl.img,product_tbl.keyword, product_tbl.date_created, cat_title,subcat_title');
     $query = $this->db->get('product_tbl');
     return $query->result();
   }
@@ -107,6 +107,13 @@ class Product_model extends CI_Model
     $this->db->where('prod_id',$prod_id);
     $this->db->order_by('title','ASC');
     $query = $this->db->get('feature_img_tbl');
+    return $query->result();
+  }
+
+  function pull_products_featured() {
+    $this->db->where('featured','yes');
+    $this->db->order_by('prod_title','ASC');
+    $query = $this->db->get('product_tbl');
     return $query->result();
   }
 
