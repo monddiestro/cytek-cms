@@ -274,6 +274,9 @@ textarea::-webkit-scrollbar-thumb
   }
 
 }
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+  z-index: 1040;
+}
 ul.list-unstyled.fw-light {
   margin-bottom:0px;
   li {
