@@ -94,7 +94,7 @@
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <label for="">Date</label>
+            <span class="form-label">Date</span>
             <input type="text" value="" autocomplete="off" name="date" class="form-control" placeholder="MM/DD/YY" id="date">
           </div>
         </div>
