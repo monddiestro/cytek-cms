@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('utilities/css/bootstrap-select.min.css') ?>" />    
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('utilities/scss/main.css') ?>">
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('utilities/@fortawesome/fontawesome-free/css/all.min.css') ?>">
+    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('utilities/css/gijgo.min.css') ?>">
     <link rel="apple-touch-icon" sizes="57x57" href="<?php echo base_url('utilities/images/icon/apple-icon-57x57.png') ?>">
     <link rel="apple-touch-icon" sizes="60x60" href="<?php echo base_url('utilities/images/icon/apple-icon-60x60.png') ?>">
     <link rel="apple-touch-icon" sizes="72x72" href="<?php echo base_url('utilities/images/icon/apple-icon-72x72.png') ?>">

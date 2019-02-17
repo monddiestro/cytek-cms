@@ -10,7 +10,7 @@
   </a>
   <div class="navbar-collapse mr-5" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mr-2">
-      <li class="nav-item dropdown active">
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="sr-only">(current)</span></a>
           <ul class="dropdown-menu">
           <?php $cat_id = "" ?>
@@ -28,13 +28,13 @@
         </ul>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="#" >BLOGS</a>
+        <a class="nav-link" href="<?php echo base_url('blogs') ?>" >BLOGS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" >EVENTS</a>
+        <a class="nav-link" href="<?php echo base_url('events') ?>" >EVENTS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">ABOUT US</a>
+        <a class="nav-link" href="<?php  echo base_url('blogs') ?>">ABOUT US</a>
       </li>      
     </ul>
     <div class="mr-5 ">

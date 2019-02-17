@@ -6,6 +6,7 @@ class Admin extends CI_Controller
       $this->load->model('category_model');
       $this->load->model('product_model');
       $this->load->model('user_model');
+      $this->load->model('event_model');
     }
 
     function check_session() {
@@ -510,6 +511,33 @@ class Admin extends CI_Controller
       $this->load->view('admin-events');
       $this->load->view('script');
       $this->load->view('footer');
+    }
+
+    function new_event() {
+      $title = $this->input->post('title');
+      $description = $this->input->post('description');
+      $content = $this->input->post('content');
+      $event_date = $this->input->post('date');
+      $img = "";
+
+      $config["upload_path"] = './utilities/images/events';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if($this->upload->do_upload('meta_img')) {
+        $img = 'utilities/images/events/' . $this->upload->data('raw_name').$this->upload->data('file_ext');
+      }
+
+      $data = array(
+        'title' => $title,
+        'description' => $description,
+        'content' => $content,
+        'event_date' => date("Y-m-d",strtotime($event_date)),
+        'img' => $img,
+        'date_created' => date('Y-m-d H:i:s')
+      );
+
+      $this->event_model->push_new_event($data);
+
     }
 
     function users() {

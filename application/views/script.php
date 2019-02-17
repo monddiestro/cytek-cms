@@ -6,6 +6,7 @@
 <script src="<?php echo base_url('utilities/js/jquery-ui.min.js') ?>"></script>
 <script src="<?php echo base_url('utilities/js/bootstrap.min.js') ?>"></script>
 <script src="<?php echo base_url('utilities/js/lightslider.js') ?>"></script>
+<script src="<?php echo base_url('utilities/js/gijgo.min.js') ?>"></script>
 <script>
   $('input[name="meta_img"]').on('change',function() {
     var input = $(this);
@@ -52,6 +53,13 @@
       onSliderLoad: function() {
           $('#product-gallery').removeClass('cS-hidden');
       }
-  });
+    });
+    $('#date').datepicker({
+        uiLibrary: 'bootstrap4',
+        iconsLibrary: 'fontawesome',
+        maxDate: function () {
+            return $('#enddate').val();
+        }
+    });
   });
 </script>
