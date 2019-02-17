@@ -15,4 +15,14 @@ class User_model extends CI_Model
         return $query->result();
     }
 
+    function pull_users() {
+        $this->db->order_by('f_name', 'ASC');
+        $query = $this->db->get('user_tbl');
+        return $query->result();
+    }
+
+    function push_new_user($data) {
+        $this->db->insert('user_tbl',$data);
+    }
+
 }

@@ -257,6 +257,7 @@ class Admin extends CI_Controller
       $meta_title = $this->input->post('meta_title');
       $meta_desc = $this->input->post('meta_desc');
       $meta_keywords = $this->input->post('meta_keywords');
+      $featured = $this->input->post('featured');
       $meta_img = "";
 
       $config["upload_path"] = './utilities/images/meta';
@@ -273,6 +274,7 @@ class Admin extends CI_Controller
         'description' => $meta_desc,
         'keyword' => $meta_keywords,
         'img' => $meta_img,
+        'featured' => $featured,
         'date_created' => date('Y-m-d H:i:s')
       );
 
@@ -309,6 +311,7 @@ class Admin extends CI_Controller
           'subcat_title' => $p->subcat_title,
           'img' => $p->img,
           'keyword' => $p->keyword,
+          'featured' => $p->featured,
           'date_created' => $p->date_created
         );
       }
@@ -342,6 +345,7 @@ class Admin extends CI_Controller
       $cat_id = $this->input->post('cat_id');
       $subcat_id = $this->input->post('subcat_id');
       $keyword = $this->input->post('keyword');
+      $featured = $this->input->post('featured');
 
       // image update 
       if(!empty($_FILES["user_image"]["name"])) {
@@ -367,6 +371,7 @@ class Admin extends CI_Controller
         'cat_id' => $cat_id,
         'subcat_id' => $subcat_id,
         'keyword' => $keyword,
+        'featured' => $featured,
         'date_created' => date('Y-m-d H:i:s')
       );
       $this->product_model->push_product_update($data,$prod_id);
@@ -506,9 +511,13 @@ class Admin extends CI_Controller
     function events() {
       $header = $this->header_array('','','','Admin Events | Cytek Solutions Inc.','',base_url('admin/events'));
       $nav["page"] = "events";
+
+      $data["events"] = $this->event_model->pull_events();
+
+      // load view
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
-      $this->load->view('admin-events');
+      $this->load->view('admin-events',$data);
       $this->load->view('script');
       $this->load->view('footer');
     }
@@ -536,19 +545,66 @@ class Admin extends CI_Controller
         'date_created' => date('Y-m-d H:i:s')
       );
 
-      $this->event_model->push_new_event($data);
+      $event_id = $this->event_model->push_new_event($data);
+
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> " . $title . " event is created. <a href='".base_url('events?id='.$event_id)."'Click this to view event."
+      );
+
+      redirect(base_url('admin/events'));
 
     }
 
+    function config_event() {
+      $id = $this->input->get('id');
+      $event_data = $this->event_model->pull_event($id);
+
+    }
     function users() {
       $header = $this->header_array('','','','Admin Users | Cytek Solutions Inc.','',base_url('admin/users'));
       $nav["page"] = "users";
+      $data["users"] = $this->user_model->pull_users();
+
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
-      $this->load->view('admin-users');
+      $this->load->view('admin-users',$data);
       $this->load->view('script');
       $this->load->view('footer');
     }
+
+
+    function new_user() {
+      $f_name = $this->input->post('f_name');
+      $l_name = $this->input->post('l_name');
+      $email = $this->input->post('email');
+      $contact = $this->input->post('contact');
+      $password = $this->input->post('password');
+      $img = "";
+
+      $config["upload_path"] = './utilities/images/users';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if($this->upload->do_upload('meta_img')) {
+        $img = 'utilities/images/users/' . $this->upload->data('raw_name').$this->upload->data('file_ext');
+      }
+
+      $data = array(
+        'f_name' => $f_name,
+        'l_name' => $l_name,
+        'email' => $email,
+        'contact' => $contact,
+        'password' => md5($password),
+        'img' => $img
+      );
+
+      $this->user_model->push_new_user($data);
+
+      redirect(base_url('admin/users'));
+
+    }
+
+
     function settings() {
       $header = $this->header_array('','','','Admin Settings | Cytek Solutions Inc.','',base_url('admin/settings'));
       $nav["page"] = "settings";

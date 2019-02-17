@@ -22,23 +22,52 @@
       </div>
       <div class="row">
           <div class="col-lg-12">
+            <!-- alert -->
+            <?php
+              $flash = $this->session->flashdata('result');
+              if(!empty($flash)) {
+                $display = 'block';
+                $class = $flash["class"];
+                $message = $flash["message"];
+              } else {
+                $display = 'none';
+                $class = $message = '';
+              }
+            ?>
+            <div class="alert alert-<?php echo $class ?> alert-dismissible" style="display:<?php echo $display ?>">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <?php echo $message; ?>
+            </div>
             <div class="card ">
               <table class="table tbl-mobile mb-0 ">
                   <thead>
                       <tr>
-                          <th>ID</th>
-                          <th>Event</th>
+                          <th>Title</th>
                           <th>Description</th>
                           <th>Date</th>
+                          <th></th>
                       </tr>
                   </thead>
                   <tbody>
-                      <tr>
-                        <td class="td-header">1</td>
-                        <td>Bacon ipsum dolor amet biltong</td>
-                        <td>Boudin venison cupim t-bone tri-tip. Short loin </td>
-                        <td>02/14/2018</td>
-                      </tr>
+                      <?php foreach($events as $e): ?>
+                        <tr>
+                          <td class="td-header"><?php echo ucwords($e->title) ?></td>
+                          <td><?php echo ucfirst($e->description) ?></td>
+                          <td><?php echo date('F d, Y',strtotime($e->event_date)) ?></td>
+                          <td>
+                            <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                              <a href="<?php echo base_url('admin/config_event?id='.$e->event_id) ?>" class="text-success mr-3" style="text-decoration:none;">
+                                <span> <i class="fa fa-edit"></i></span>
+                              </a>
+                            </span>
+                            <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                              <a data-toggle="modal" data-target="#drop-event-<?php echo $e->event_id ?>" class="text-danger">
+                                <span> <i class="fa fa-trash"></i></span>
+                              </a>
+                            </span>
+                          </td>
+                        </tr>
+                      <?php endforeach; ?>
                   </tbody>
               </table>
             </div>              

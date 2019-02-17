@@ -41,7 +41,6 @@
             <table class="table tbl-mobile mb-0">
               <thead>
                 <tr>
-                  <th>ID</th>
                   <th>Name</th>
                   <th>Category</th>
                   <th>Sub Category</th>
@@ -51,8 +50,7 @@
               <tbody>
                 <?php foreach ($products as $p): ?>
                   <tr>
-                    <td data-title="ID" class="td-header"><?php echo $p->prod_id ?></td>
-                    <td data-title="Name" ><?php echo $p->prod_title ?></td>
+                    <td data-title="Name" class="td-header"><?php echo $p->prod_title ?></td>
                     <td data-title="Category"><?php echo $p->cat_title ?></td>
                     <td data-title="Sub Category"><?php echo $p->subcat_title ?></td>
                     <td>
@@ -141,6 +139,17 @@
                     <input type="file" name="meta_img" id="meta_img" accept="image/*" style="display:none;">
                     <b>BROWSE</b>
                 </label>&nbsp;&nbsp;<span class="text-muted filename small">No File Selected</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="">Featured</label>
+              <label class="form-check-label" style="padding-left:25px;">
+                <input type="radio" class="form-check-input" value="yes" name="featured" checked>Yes
+              </label>
+              <label class="form-check-label" style="padding-left:25px;">
+                <input type="radio" class="form-check-input" value="no" name="featured">No
+              </label>
             </div>
           </div>
         </div>
