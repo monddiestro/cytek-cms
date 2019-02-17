@@ -474,10 +474,13 @@ td.btn-collapse {
     letter-spacing: 0.05em;
     color: #5E5E5E;
     line-height: 1.2;
+    margin-bottom: 8px;
   }
   .form-control {
-    font-size: 13px !important;
-    margin-top: 8px !important;
+    font-size: 13px !important;    
+  }
+  .gj-datepicker-bootstrap [role=right-icon] button {
+    padding: 0 15px;
   }
 }
 
