@@ -87,39 +87,29 @@
   <div class="container home-page">   
     <!-- Events -->
     <div class="row pb-4">
+      <?php if(!empty($events)): ?>
       <div class="col-lg-7">
         <div class="section-title">
           <h4>News and Events</h4>
         </div>
+        <?php foreach($events as $e): ?>
         <div class="col-lg-12 card mb-3">
           <div class="row">
             <div class="col-md-4 px-0">
-              <img src="<?php echo base_url('utilities/images/meta/test.jpg')?>" alt="" class="event-img">
+              <img src="<?php echo empty($e->img) ? base_url('utilities/images/meta/test.jpg') : base_url($e->img) ?>" alt="" class="event-img">
             </div>
             <div class="col-md-8 py-3">
               <div class="col-event">
-                <h5><strong>Bacon ipsum dolor amet biltong</strong></h5>
-                <p>Boudin venison cupim t-bone tri-tip. Short loin frankfurter filet mignon swine. Pork belly beef sausage ham hock tri-tip. Filet mignon ball tip pork swine ground round.</p>
-              </div>
-              <a href="<?php echo base_url('event?q=event_id') ?>" >READ MORE</a>
-            </div>
-          </div>
-        </div>  
-        <div class="col-lg-12 card mb-3">
-          <div class="row">
-            <div class="col-md-4 px-0">
-              <img src="<?php echo base_url('utilities/images/meta/test.jpg')?>" alt="" class="event-img">
-            </div>
-            <div class="col-md-8 py-3">
-              <div class="col-event">
-                <h5><strong>Bacon ipsum dolor amet biltong</strong></h5>
-                <p>Boudin venison cupim t-bone tri-tip. Short loin frankfurter filet mignon swine. Pork belly beef sausage ham hock tri-tip. Filet mignon ball tip pork swine ground round.</p>
+                <h5><strong><?php echo $e->title ?></strong></h5>
+                <p><?php echo mb_strimwidth($e->description, 0, 200, " ...") ?></p>
               </div>  
-              <a href="<?php echo base_url('event?q=event_id') ?>" >READ MORE</a>
+              <a href="<?php echo base_url('events?id='.$e->event_id) ?>" >READ MORE</a>
             </div>
           </div>
         </div>
+        <?php endforeach; ?>
       </div>
+      <?php endif; ?>
       <!-- What's New -->
       <div class="offset-lg-1 col-lg-4">
         <div class="section-title ">

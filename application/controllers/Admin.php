@@ -7,6 +7,7 @@ class Admin extends CI_Controller
       $this->load->model('product_model');
       $this->load->model('user_model');
       $this->load->model('event_model');
+      $this->load->model('inquiry_model');
     }
 
     function check_session() {
@@ -93,6 +94,7 @@ class Admin extends CI_Controller
       // view data
       $header = $this->header_array('','','','Admin Dashboard | Cytek Solutions Inc.','',base_url('admin/dashboard'));
       $nav["page"] = "dashboard";
+      $nav["inquiry"] = $this->inquiry_model->pull_new_lead_cnt();
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
       $this->load->view('admin');
@@ -109,6 +111,7 @@ class Admin extends CI_Controller
         $header = $this->header_array('','','','Admin Category | Cytek Solutions Inc.','',base_url('admin/category'));
         // admin-navigation data
         $nav["page"] = "category";
+        $nav["inquiry"] = $this->inquiry_model->pull_new_lead_cnt();
         // body data
         $body_data["categories"] = $this->category_model->pull_categories();
         $body_data["subcategories"] = $this->category_model->pull_subcategories();
@@ -237,6 +240,7 @@ class Admin extends CI_Controller
       // view data
       $header = $this->header_array('','','','Admin Products | Cytek Solutions Inc.','',base_url('admin/products'));
       $nav["page"] = "products";
+      $nav["inquiry"] = $this->inquiry_model->pull_new_lead_cnt();
       $body_data["products"] = $this->product_model->pull_products();
       $body_data["categories"] = $this->category_model->pull_categories();
 
@@ -318,6 +322,7 @@ class Admin extends CI_Controller
 
       $header = $this->header_array($prod_data["description"],$prod_data["keyword"],'',$prod_data["subcat_title"]. " " .$prod_data["prod_title"] . " | " . $prod_data["cat_title"] . " | Product Configuration" . " | Cytek Solutions Inc." ,base_url($prod_data["img"]),base_url('admin/config_product?id='.$prod_id));
       $nav["page"] = "products";
+      $nav["inquiry"] = $this->inquiry_model->pull_new_lead_cnt();
 
       $body["product"] = $prod_data;
       $body["categories"] = $this->category_model->pull_categories();
@@ -505,13 +510,14 @@ class Admin extends CI_Controller
         'class' => "success",
         'message' => "<strong>Success!</strong> " . $image_name . " remove from product banner"
       );
+      $this->session->set_flashdata('result',$result_data);
       redirect($referer);
     }
 
     function events() {
       $header = $this->header_array('','','','Admin Events | Cytek Solutions Inc.','',base_url('admin/events'));
       $nav["page"] = "events";
-
+      $nav["inquiry"] = $this->inquiry_model->pull_new_lead_cnt();
       $data["events"] = $this->event_model->pull_events();
 
       // load view
@@ -559,11 +565,12 @@ class Admin extends CI_Controller
     function config_event() {
       $id = $this->input->get('id');
       $event_data = $this->event_model->pull_event($id);
-
+      
     }
     function users() {
       $header = $this->header_array('','','','Admin Users | Cytek Solutions Inc.','',base_url('admin/users'));
       $nav["page"] = "users";
+      $nav["inquiry"] = $this->inquiry_model->pull_new_lead_cnt();
       $data["users"] = $this->user_model->pull_users();
 
       $this->load->view('header',$header);
@@ -608,11 +615,59 @@ class Admin extends CI_Controller
     function settings() {
       $header = $this->header_array('','','','Admin Settings | Cytek Solutions Inc.','',base_url('admin/settings'));
       $nav["page"] = "settings";
+      $nav["inquiry"] = $this->inquiry_model->pull_new_lead_cnt();
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
       $this->load->view('admin-settings');
       $this->load->view('script');
       $this->load->view('footer');
+    }
+
+    function leads() {
+
+      $lead_id = $this->input->get('id');
+
+      if(empty($lead_id)) {
+        $data["leads"] = $this->inquiry_model->pull_leads();
+        $view = "leads";
+      } else {
+        $this->inquiry_model->update_read_status($lead_id);
+        $detail = $this->inquiry_model->pull_lead($lead_id);
+        foreach($detail as $d) {
+          $lead = array(
+            'name' => $d->name,
+            'contact' => $d->contact,
+            'email' => $d->email,
+            'source' => $d->source,
+            'message' => $d->message,
+            'date_created' => $d->date_created
+          );
+        }
+        $data["detail"] = $lead;
+        $view = "lead-details";
+      }
+
+      $header = $this->header_array('','','','Admin Leads | Cytek Solutions Inc.','',base_url('admin/settings'));
+      $nav["page"] = "leads";
+      $nav["inquiry"] = $this->inquiry_model->pull_new_lead_cnt();
+      
+
+      $this->load->view('header',$header);
+      $this->load->view('admin-navigation',$nav);
+      $this->load->view($view,$data);
+      $this->load->view('script');
+      $this->load->view('footer');
+    }
+
+    function drop_lead() {
+      $lead_id = $this->input->get('id');
+      $this->inquiry_model->drop_lead($lead_id);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> Lead removed from database."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect(base_url('admin/leads'));
     }
 
 }

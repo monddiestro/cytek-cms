@@ -31,6 +31,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="<?php echo base_url('admin/leads') ?>" class="nav-link <?php echo ($page == "leads") ? 'active' : ''; ?>">
+                            <span class="mr-2"><i class="fas fa-envelope fa-lg fa-fw mr-2"></i> Leads</span><?php echo !empty($inquiry) ? '<span class="badge badge-light">' .$inquiry. ' unread</span>' : '' ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="<?php echo base_url('admin/users') ?>" class="nav-link <?php echo ($page == "users") ? 'active' : ''; ?>">
                             <span><i class="fa fa-users-cog fa-lg fa-fw  mr-2"></i> User</span>
                         </a>

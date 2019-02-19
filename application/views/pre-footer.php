@@ -19,14 +19,26 @@
       </div>
       <div class="col-lg-4 col-md-6 pl-4 mb-4">
         <p class="footer-title">Inquire now</p>
-        <p class="footer-content">Send your inquiries to us and we will contact you</p>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Enter your name*">
+        <p class="footer-content">If you have question you can reach us. Just fill up the form below.</p>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-footer" style="display:none">
+          <strong>Thank you!</strong> We received your inquiry we will contact you soon.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div class="form-group">
-          <textarea name="" id="" class="form-control" cols="10" rows="5" placeholder="Enter your message here*"></textarea>
+          <input type="text" id="footer-name" class="form-control" name="name" placeholder="Enter your name*" required>
         </div>
-        <a href="" class="btn btn-warning text-white mw-100">INQUIRE</a>
+        <div class="form-group">
+          <input type="text" id="footer-contact" class="form-control" name="contact" placeholder="Enter your contact number*" required>
+        </div>
+        <div class="form-group">
+          <input type="text" id="footer-email" name="email" class="form-control" placeholder="Enter your email address">
+        </div>
+        <div class="form-group">
+          <textarea name="message" id="footer-message" class="form-control" cols="10" rows="5" placeholder="Enter your message here"></textarea>
+        </div>
+        <button type="submit" id="footer-inquire" class="btn btn-warning text-white mw-100">INQUIRE</button>
         <div class="row">
           <div class="col-lg-6">
             <p class="footer-title">About</p>

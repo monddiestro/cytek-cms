@@ -62,4 +62,62 @@
         }
     });
   });
+
+  $('#footer-inquire').on('click',function(){
+    var name = $('#footer-name');
+    var contact = $('#footer-contact');
+    var email = $('#footer-email');
+    var message = $('#footer-message');
+    var notif = $('#success-footer');
+
+    name.val() == '' ? name.addClass('is-invalid') : name.removeClass('is-invalid');
+    contact.val() == '' ? contact.addClass('is-invalid') : contact.removeClass('is-invalid');
+    
+    if(name.val() != '' && contact.val() != '') {
+      post_inquire(name.val(),contact.val(),email.val(),message.val(),'Footer Contact Form',notif);
+      name.val('');
+      contact.val('');
+      email.val('');
+      message.val('');
+    }
+
+  });
+
+  $('#inquire-send').on('click',function(){
+    var name = $('#inquire-name');
+    var contact = $('#inquire-contact');
+    var email = $('#inquire-email');
+    var message = $('#inquire-message');
+    var source = $('#inquire-source');
+    var notif = $('#inquire-success');
+
+    name.val() == '' ? name.addClass('is-invalid') : name.removeClass('is-invalid');
+    contact.val() == '' ? contact.addClass('is-invalid') : contact.removeClass('is-invalid');
+
+    if(name.val() != '' && contact.val() != '') {
+      post_inquire(name.val(),contact.val(),email.val(),message.val(),source.val(),notif);
+      name.val('');
+      contact.val('');
+      email.val('');
+      message.val('');
+    }
+
+  });
+
+  function post_inquire(name,contact,email,message,source,notif) {
+    $.ajax({
+      url: '<?php echo base_url('inquiry/new_lead') ?>',
+      type: 'POST',
+      data: {
+        'name' : name,
+        'contact' : contact,
+        'email' : email,
+        'message' : message,
+        'source' : source
+      },
+      success: function(data) {
+        notif.show();
+      }
+    });
+  }
 </script>

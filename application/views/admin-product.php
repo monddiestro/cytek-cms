@@ -21,7 +21,7 @@
       <div class="row">
           <div class="col-lg-4">
             <div class="header-text header-mt">
-              <span>PRODUCT</span>
+              <span>PRODUCTS</span>
             </div>
           </div>
           <div class="col-lg-8 ctg-function">

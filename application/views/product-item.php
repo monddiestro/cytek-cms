@@ -107,20 +107,31 @@
             <div class="card sticky-form">
                 <div class="card-body">
                     <h6><strong>Inquire Now</strong></h6>
-                    <p>Bacon ipsum dolor amet rump swine meatloaf ribeye beef ribs. </p>
+                    <p>If you have question you can reach us. Just fill up the form below.</p>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" id="inquire-success" style="display:none">
+                        <strong>Thank you!</strong> We received your inquiry we will contact you soon.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <div class="form-group">
                       <label for="">Name</label>
-                      <input type="text" name="name" id="" class="form-control" placeholder="ex. Juan Dela Cruz">
+                      <input type="text" name="name" id="inquire-name" class="form-control" placeholder="ex. Juan Dela Cruz">
                     </div>
                     <div class="form-group">
                       <label for="">Contact Number</label>
-                      <input type="text" name="contact" id="" class="form-control" placeholder="ex. 091234567890 or 1234567">
+                      <input type="text" name="contact" id="inquire-contact" class="form-control" placeholder="ex. 091234567890 or 1234567">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Email Address</label>
+                      <input type="text" name="contact" id="inquire-email" class="form-control" placeholder="ex. juandelacruz@email.com">
                     </div>
                     <div class="form-group">
                       <label for="">Message</label>
-                      <textarea name="message" id="" rows="5" class="form-control" placeholder="Your message to us"></textarea>
+                      <textarea name="message" id="inquire-message" rows="5" class="form-control" placeholder="Your message to us"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">SEND INQUIRY</button>
+                    <input type="hidden" value="<?php $prod_title ?> Product Page" id="inquire-source">
+                    <button type="submit" id="inquire-send" class="btn btn-primary btn-lg btn-block">SEND INQUIRY</button>
                 </div>
             </div>
         </div>
