@@ -2,7 +2,7 @@
     <div class="wrapper">
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <div class="container px-5">
+            <div class="container px-5 admin-page">
                 <div class="header-text header-mt">
                     <span >Welcome, <b>Admin!</b>
                     <span> Today is <?php echo date('F Y') ?>.</span>
