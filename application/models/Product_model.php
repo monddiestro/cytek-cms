@@ -117,4 +117,12 @@ class Product_model extends CI_Model
     return $query->result();
   }
 
+  function pull_product_img($prod_id) {
+    $this->db->where('prod_id',$prod_id);
+    $this->db->select('img');
+    $query = $this->db->get('product_tbl');
+    $row = $query->row();
+    return $row->img;
+  }
+
 }

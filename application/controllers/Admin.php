@@ -353,14 +353,17 @@ class Admin extends CI_Controller
       $featured = $this->input->post('featured');
 
       // image update 
-      if(!empty($_FILES["user_image"]["name"])) {
-        if($this->upload->do_upload('user_image')) {
+      if(!empty($_FILES["meta_img"]["name"])) {
+        $config["upload_path"] = './utilities/images/meta';
+        $config["allowed_types"] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
+        if($this->upload->do_upload('meta_img')) {
           // check if has existing image 
           $old_image = $this->product_model->pull_product_img($prod_id);
           // new image
           $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
           $data = array(
-            'img' => 'utilities/images/'.$filename
+            'img' => 'utilities/images/meta/'.$filename
           );
           $this->product_model->push_product_update($data,$prod_id);
           // delete old
@@ -500,15 +503,15 @@ class Admin extends CI_Controller
     }
 
     function drop_banner() {
-      $referer = $this->input->server('HTTP_REFERRER');
+      $referer = $this->input->server('HTTP_REFERER');
       $banner_id = $this->input->get('id');
-      $image_name = $this->product_model->pull_banner($banner_id);
-      $dir = "utilities/images/banners/".$image_name;
+      $dir = $this->product_model->pull_banner($banner_id);
+      $dir = "./" . $dir;
       unlink($dir);
       $this->product_model->drop_banner($banner_id);
       $result_data = array(
         'class' => "success",
-        'message' => "<strong>Success!</strong> " . $image_name . " remove from product banner"
+        'message' => "<strong>Success!</strong> Image removed from product banner"
       );
       $this->session->set_flashdata('result',$result_data);
       redirect($referer);
@@ -580,7 +583,6 @@ class Admin extends CI_Controller
       $this->load->view('footer');
     }
 
-
     function new_user() {
       $f_name = $this->input->post('f_name');
       $l_name = $this->input->post('l_name');
@@ -611,6 +613,65 @@ class Admin extends CI_Controller
 
     }
 
+    function update_user() {
+      
+      $referer = $this->input->server('HTTP_REFERER');
+      $user_id = $this->input->post('user_id');
+      $f_name = $this->input->post('f_name');
+      $l_name = $this->input->post('l_name');
+      $email = $this->input->post('email');
+      $contact = $this->input->post('contact');
+      $password = $this->input->post('password');
+      $img = "";
+      $config["upload_path"] = './utilities/images/users';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if(!empty($_FILES["meta_img"]["name"])) {
+        if($this->upload->do_upload('meta_img')) {   
+          // check if has existing image 
+          $old_image = $this->user_model->pull_user_img($user_id);
+          // new image
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $data = array(
+            'img' => 'utilities/images/users/'.$filename
+          );
+          $this->user_model->push_user_update($data,$user_id);
+          // delete old
+          if(!empty($old_image)) {
+            unlink("./".$old_image);
+          }
+        }
+      }
+
+      $data =  array(
+        'f_name' => $f_name,
+        'l_name' => $l_name,
+        'email' => $email,
+        'contact' => $contact,
+        'password' => md5($password),
+      );
+
+      $this->user_model->push_user_update($data,$user_id);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> ".$f_name. " " . $l_name . " user data updated"
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+    }
+
+    function drop_user() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $user_id = $this->input->post('user_id');
+      $name = $this->input->post('name');
+      $this->user_model->drop_user($user_id);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> ".$name. " user removed from database."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+    }
 
     function settings() {
       $header = $this->header_array('','','','Admin Settings | Cytek Solutions Inc.','',base_url('admin/settings'));
@@ -651,7 +712,6 @@ class Admin extends CI_Controller
       $nav["page"] = "leads";
       $nav["inquiry"] = $this->inquiry_model->pull_new_lead_cnt();
       
-
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
       $this->load->view($view,$data);

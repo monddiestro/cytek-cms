@@ -71,7 +71,7 @@
         <div class="row">
           <!-- details -->
           <div class="col-sm-12">
-            <?php echo form_open(base_url('admin/update_product_details')) ?>
+            <?php echo form_open_multipart(base_url('admin/update_product_details')) ?>
             <div class="card mb-3">
               <div class="card-header">
                 <strong>Product Details</strong>

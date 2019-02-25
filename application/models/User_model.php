@@ -25,4 +25,22 @@ class User_model extends CI_Model
         $this->db->insert('user_tbl',$data);
     }
 
+    function pull_user_img($user_id) {
+        $this->db->where('user_id',$user_id);
+        $this->db->select('img');
+        $query = $this->db->get('user_tbl');
+        $row = $query->row();
+        return $row->img;
+    }
+
+    function push_user_update($data,$user_id) {
+        $this->db->where('user_id',$user_id);
+        $this->db->set($data);
+        $this->db->update('user_tbl');
+    }
+    function drop_user($user_id) {
+        $this->db->where('user_id',$user_id);
+        $this->db->delete('user_tbl');
+    }
+
 }

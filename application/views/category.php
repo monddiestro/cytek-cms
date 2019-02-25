@@ -303,6 +303,7 @@
       <?php echo form_close(); ?>
     </div>
   </div>
+  <!-- modify -->
   <div id="modify-subcategory-<?php echo $subcat->subcat_id ?>" class="modal fade" role="dialog">
     <div class="modal-dialog modal-sm">
       <!-- Modal content-->
