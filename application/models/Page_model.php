@@ -34,4 +34,18 @@ class Page_model extends CI_Model
         $this->db->where('slider_id',$slider_id);
         $this->db->delete('slider_tbl');
     }
+
+    function pull_page_image($id) {
+        $this->db->where('page_id',$id);
+        $this->db->select('meta_image');
+        $query = $this->db->get('page_tbl');
+        $query = $query->row();
+        return $query->meta_image;
+    }
+
+    function push_update_page($data,$id) {
+        $this->db->where('page_id',$id);
+        $this->db->set($data);
+        $this->db->update('page_tbl');
+    }
 }

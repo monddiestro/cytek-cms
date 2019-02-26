@@ -14,7 +14,7 @@ class Product extends CI_Controller
 
   function index() {
     // get data
-    echo $product_id = $this->input->get('id');
+    $product_id = $this->input->get('id');
 
     // $this->load->view('header',$header);
     // $navigation["navs"] = $this->category_model->pull_subcategories();

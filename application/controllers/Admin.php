@@ -40,7 +40,8 @@ class Admin extends CI_Controller
               'l_name' => $u->l_name,
               'uac_id' => $u->uac_id,
               'email' => $u->email,
-              'contact' => $u->contact
+              'contact' => $u->contact,
+              'image' => $u->img
             );
             $this->session->set_userdata($userdata);
             redirect(base_url('admin/dashboard'));
@@ -680,7 +681,7 @@ class Admin extends CI_Controller
 
       // data
       $data["sliders"] = $this->page_model->pull_slider();
-
+      $data["home"] = $this->page_model->pull_page_meta(1);
       // view
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
@@ -802,6 +803,7 @@ class Admin extends CI_Controller
         if($this->upload->do_upload('meta_img')) {   
           $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
           $img = 'utilities/images/slider/'.$filename;
+          $this->page_model->push_update(array('img'=>$img), $slider_id);
           unlink($old_image);
         }
       }
@@ -810,13 +812,44 @@ class Admin extends CI_Controller
         'title' => $title,
         'description' => $description,
         'url' => $url,
-        'img' => $img
       );
 
       $this->page_model->push_update($data,$slider_id);
       $result_data = array(
         'class' => "success",
         'message' => "<strong>Success!</strong> ".$title." slider updated."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+
+    }
+
+    function modify_homepage () {
+      $referer = $this->input->server('HTTP_REFERER');
+      $title = $this->input->post('title');
+      $description = $this->input->post('description');
+      $keywords = $this->input->post('keywords');
+
+      $old_image = $this->page_model->pull_page_image(1);
+      $old_image = './' . $old_image;
+
+      $config["upload_path"] = './utilities/images/meta';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if(!empty($_FILES["meta_img"]["name"])) {
+        if($this->upload->do_upload('meta_img')) {   
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $img = 'utilities/images/meta/'.$filename;
+          $this->page_model->push_update_page(array('meta_image'=>$img), 1);
+          unlink($old_image);
+        }
+      }
+
+      $data = array( 'title' => $title, 'meta_description' => $description, 'meta_keywords' => $keywords );
+      $this->page_model->push_update_page($data,1);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> Home details updated."
       );
       $this->session->set_flashdata('result',$result_data);
       redirect($referer);
