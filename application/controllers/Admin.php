@@ -8,7 +8,7 @@ class Admin extends CI_Controller
       $this->load->model('user_model');
       $this->load->model('event_model');
       $this->load->model('inquiry_model');
-    }
+      $this->load->model('page_model');    }
 
     function check_session() {
       if(empty($this->session->userdata('user_id'))) {
@@ -677,9 +677,14 @@ class Admin extends CI_Controller
       $header = $this->header_array('','','','Admin Settings | Cytek Solutions Inc.','',base_url('admin/settings'));
       $nav["page"] = "settings";
       $nav["inquiry"] = $this->inquiry_model->pull_new_lead_cnt();
+
+      // data
+      $data["sliders"] = $this->page_model->pull_slider();
+
+      // view
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
-      $this->load->view('admin-settings');
+      $this->load->view('admin-settings',$data);
       $this->load->view('script');
       $this->load->view('footer');
     }
@@ -728,6 +733,94 @@ class Admin extends CI_Controller
       );
       $this->session->set_flashdata('result',$result_data);
       redirect(base_url('admin/leads'));
+    }
+
+    function add_slider() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $title = $this->input->post('title');
+      $description = $this->input->post('description');
+      $url = $this->input->post('url');
+      $img = "";
+
+      $config["upload_path"] = './utilities/images/slider';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if(!empty($_FILES["meta_img"]["name"])) {
+        if($this->upload->do_upload('meta_img')) {   
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $img = 'utilities/images/slider/'.$filename;
+        }
+      }
+
+      $data = array(
+        'title' => $title,
+        'description' => $description,
+        'url' => $url,
+        'img' => $img
+      );
+
+      $this->page_model->push_slider($data);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> New slider saved."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+    }
+
+    function drop_slider() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $slider_id = $this->input->get('id');
+      $old_image = $this->page_model->pull_slider_img($slider_id);
+      $old_image = './' . $old_image;
+      unlink($old_imgage);
+      $this->page_model->drop_slider($slider_id);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> Slider removed."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+    }
+
+    function modify_slider() {
+
+      $referer = $this->input->server('HTTP_REFERER');
+      $slider_id = $this->input->post('slider_id');
+      $title = $this->input->post('title');
+      $description = $this->input->post('description');
+      $url = $this->input->post('url');
+      $img = "";
+
+      $old_image = $this->page_model->pull_slider_img($slider_id);
+      $old_image = './' . $old_image;
+
+      $config["upload_path"] = './utilities/images/slider';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if(!empty($_FILES["meta_img"]["name"])) {
+        if($this->upload->do_upload('meta_img')) {   
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $img = 'utilities/images/slider/'.$filename;
+          unlink($old_image);
+        }
+      }
+
+      $data = array(
+        'title' => $title,
+        'description' => $description,
+        'url' => $url,
+        'img' => $img
+      );
+
+      $this->page_model->push_update($data,$slider_id);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> ".$title." slider updated."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+
     }
 
 }

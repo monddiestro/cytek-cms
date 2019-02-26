@@ -6,4 +6,32 @@ class Page_model extends CI_Model
         $query = $this->db->get('page_tbl');
         return $query->result();
     }
+
+    function push_slider($data) {
+        $this->db->insert('slider_tbl',$data);
+    }
+
+    function pull_slider() {
+        $query = $this->db->get('slider_tbl');
+        return $query->result();
+    }
+
+    function pull_slider_img($slider_id) {
+        $this->db->where('slider_id',$slider_id);
+        $this->db->select('img');
+        $query = $this->db->get('slider_tbl');
+        $query = $query->row();
+        return $query->img;
+    }
+
+    function push_update($data,$slider_id) {
+        $this->db->where('slider_id',$slider_id);
+        $this->db->set($data);
+        $this->db->update('slider_tbl');
+    }
+    
+    function drop_slider($slider_id) {
+        $this->db->where('slider_id',$slider_id);
+        $this->db->delete('slider_tbl');
+    }
 }
