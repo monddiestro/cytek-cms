@@ -199,11 +199,37 @@ class Admin extends CI_Controller
     function modify_category() {
       $referer = $this->input->server('HTTP_REFERER');
       $cat_id = $this->input->post('cat_id');
-      $cat_desc = $this->input->post('cat_desc');
+      $cat_title = $this->input->post('cat_title');
+      $cat_desc = $this->input->post('description');
+      $keyword = $this->input->post('keyword');
+
       $data = array(
-        'cat_desc' => $cat_desc
+        'cat_title' => $cat_title,
+        'description' => $cat_desc,
+        'keyword' => $keyword
       );
       $this->category_model->update_category($cat_id,$data);
+
+      if(!empty($_FILES["meta_img"]["name"])) {
+        $config["upload_path"] = './utilities/images/meta';
+        $config["allowed_types"] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
+        if($this->upload->do_upload('meta_img')) {
+          // check if has existing image 
+          $old_image = $this->category_model->pull_image($cat_id);
+          // new image
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $data = array(
+            'img' => 'utilities/images/meta/'.$filename
+          );
+          $this->category_model->update_category($cat_id,$data);
+          // delete old
+          if(!empty($old_image)) {
+            unlink("./".$old_image);
+          }
+        }
+      }
+
       $result_data = array(
         'class' => "success",
         'message' => "<strong>Success!</strong> Category updated"
@@ -213,10 +239,38 @@ class Admin extends CI_Controller
     }
     function modify_subcategory() {
       $referer = $this->input->server('HTTP_REFERER');
+      $cat_id = $this->input->post('cat_id');
       $subcat_id = $this->input->post('subcat_id');
-      $subcat_desc = $this->input->post('subcat_desc');
+      $subcat_title = $this->input->post('subcat_title');
+      $subcat_desc = $this->input->post('description');
+      $keyword = $this->input->post('keyword');
+
+
+      if(!empty($_FILES["meta_img"]["name"])) {
+        $config["upload_path"] = './utilities/images/meta';
+        $config["allowed_types"] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
+        if($this->upload->do_upload('meta_img')) {
+          // check if has existing image 
+          $old_image = $this->category_model->pull_subcategory_image($subcat_id);
+          // new image
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $data = array(
+            'img' => 'utilities/images/meta/'.$filename
+          );
+          $this->category_model->update_subcategory($subcat_id,$data);
+          // delete old
+          if(!empty($old_image)) {
+            unlink("./".$old_image);
+          }
+        }
+      };
+
       $data = array(
-        'subcat_desc' => $subcat_desc
+        'cat_id' => $cat_id,
+        'subcat_title' => $subcat_title,
+        'description' => $subcat_desc,
+        'keyword' => $keyword
       );
       $this->category_model->update_subcategory($subcat_id,$data);
       $result_data = array(

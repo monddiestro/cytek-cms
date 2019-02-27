@@ -28,7 +28,7 @@
           <div class="col-lg-8 ctg-function">
             <div class="row header-mt">
               <div class="col-md-8">
-                <input type="text" class="form-control form-shadow" placeholder="Category name">
+                <!-- <input type="text" class="form-control form-shadow" placeholder="Category name"> -->
               </div>
               <div class="col-md-4">
                 <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#new-category"><b>New Category</b></button>
@@ -230,7 +230,7 @@
   <div id="modify-category-<?php echo $cat->cat_id ?>" class="modal fade" role="dialog">
     <div class="modal-dialog cytek-modal">
       <!-- Modal content-->
-      <?php echo form_open(base_url('admin/modify_category')) ?>
+      <?php echo form_open_multipart(base_url('admin/modify_category')) ?>
       <div class="modal-content">
         <div class="modal-header border-0">          
           <span class="modal-title">Modify Category</span>
@@ -240,9 +240,9 @@
               <div class="col-sm-12">
                 <input type="hidden" name="cat_id" value="<?php echo $cat->cat_id ?>">
                 <div class="">
-                  <span class="form-label">Meta Image</span>
+                  <span class="form-label">Image</span>
                   <div class="img-container mb-2">
-                    <img class="media-object" src="<?php echo (empty($cat->meta_img)) ? base_url('utilities/images/meta/no-image.png') : base_url('utilities/images/meta/'.$cat->meta_img)  ?>">
+                    <img class="media-object" src="<?php echo (empty($cat->img)) ? base_url('utilities/images/no-image.png') : base_url($cat->img)  ?>">
                   </div> 
                     <label class="btn btn-default shadow" id="btn_browse">
                       <input type="file" name="meta_img" accept="image/*" style="display:none;">
@@ -254,16 +254,12 @@
                   <input class="form-control" name="cat_title" type="text" placeholder="Example: Microscope" value="<?php echo $cat->cat_title ?>" required>
                 </div>
                 <div class="form-group">
-                  <span class="form-label">Meta Title</span>
-                  <input class="form-control" name="meta_title" type="text" placeholder="Example: Microscope" required value="<?php echo $cat->meta_title ?>">
+                  <span class="form-label">Keywords</span>
+                  <input class="form-control" name="keyword" type="text" placeholder="Words separated by comma" required value="<?php echo $cat->keyword ?>">
                 </div>
                 <div class="form-group">
-                  <span class="form-label">Meta Keywords</span>
-                  <input class="form-control" name="meta_keywords" type="text" placeholder="Words separated by comma" required value="<?php echo $cat->meta_keywords ?>">
-                </div>
-                <div class="form-group">
-                  <span class="form-label">Meta Description</span>
-                  <textarea class="form-control" name="meta_desc" rows="8" cols="80" placeholder="Description for category"><?php echo $cat->meta_desc   ?></textarea>
+                  <span class="form-label">Description</span>
+                  <textarea class="form-control" name="description" rows="8" cols="80" placeholder="Description for category"><?php echo $cat->description  ?></textarea>
                 </div>                
               </div>
           </div>
@@ -291,7 +287,7 @@
               <div class="col-sm-12">
                 <input type="hidden" name="subcat_id" value="<?php echo $subcat->subcat_id ?>">
                 <input type="hidden" name="subcat_title" value="<?php echo $subcat->subcat_title ?>">
-                <span class="form-label">Are you sure you want to delete <?php echo $cat->cat_title ?>?</span>
+                <span class="form-label">Are you sure you want to delete <?php echo $subcat->subcat_title ?>?</span>
               </div>
           </div>
         </div>
@@ -305,9 +301,9 @@
   </div>
   <!-- modify -->
   <div id="modify-subcategory-<?php echo $subcat->subcat_id ?>" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog cytek-modal">
       <!-- Modal content-->
-      <?php echo form_open(base_url('admin/modify_subcategory')) ?>
+      <?php echo form_open_multipart(base_url('admin/modify_subcategory')) ?>
       <div class="modal-content">
         <div class="modal-header border-0">          
           <span class="modal-title">Modify Sub Category </span>
@@ -315,9 +311,37 @@
         <div class="modal-body py-0">
           <div class="row">
               <div class="col-sm-12">
-                <input type="hidden" name="subcat_id" value="<?php echo $subcat->subcat_id ?>">
-                  <span class="form-label">Sub Category Name</span>
-                <input class="form-control" type="text" name="subcat_title" value="<?php echo $subcat->subcat_title ?>" placeholder="Example: Stereo Zoom Microscope" required>
+                  <input type="hidden" name="subcat_id" value="<?php echo $subcat->subcat_id ?>">
+                  <div class="">
+                    <span class="form-label">Image</span>
+                    <div class="img-container mb-2">
+                      <img class="media-object" src="<?php echo empty($subcat->img) ? base_url('utilities/images/no-image.png') : base_url($subcat->img) ; ?>">
+                    </div> 
+                      <label class="btn btn-default shadow" id="btn_browse">
+                        <input type="file" name="meta_img" accept="image/*" style="display:none;">
+                        BROWSE
+                      </label>&nbsp;&nbsp;<span class="text-muted filename small">No image selected</span>                     
+                  </div>
+                  <div class="form-group">
+                    <span class="form-label">Category Name</span>
+                    <select name="cat_id" id="" class="selectpicker form-control" required>
+                      <?php foreach($categories as $c): ?>
+                      <option value="<?php echo $c->cat_id ?>" <?php $c->cat_id == $subcat->cat_id ? 'active' :''; ?>><?php echo $c->cat_title ?></option>
+                      <?php endforeach ?>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <span class="form-label">Sub Category Name</span>
+                    <input class="form-control" type="text" name="subcat_title" value="<?php echo $subcat->subcat_title ?>" placeholder="Example: Stereo Zoom Microscope" required>
+                  </div>
+                  <div class="form-group">
+                    <span class="form-label">Keywords</span>
+                    <input class="form-control" name="keyword" type="text" placeholder="Words separated by comma" required value="<?php echo $subcat->keyword ?>">
+                  </div>
+                  <div class="form-group">
+                    <span class="form-label">Description</span>
+                    <textarea class="form-control" name="description" rows="8" cols="80" placeholder="Description for category"><?php echo $subcat->description  ?></textarea>
+                  </div> 
               </div>
           </div>
         </div>
