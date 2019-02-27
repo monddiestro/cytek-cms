@@ -84,6 +84,11 @@
     </div>
     <?php endforeach; ?>
   </div>
+  <div class="row pb-5 pt-4">
+    <div class="col-sm-12 text-center">
+      <a class="fw-bold" href="<?php echo base_url('product'); ?>">VIEW ALL PRODUCTS</a>
+    </div>
+  </div>
  </div>
 </div>
 <?php endif; ?>

@@ -33,7 +33,7 @@
                 </div>
             </div>
             <!-- content -->
-            <main class="row">
+            <main class="row mt-3">
                 <?php foreach($data as $d): ?>
                 <article class="col-sm-4 mb-4">
                     <figure class="card">

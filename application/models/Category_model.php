@@ -13,7 +13,7 @@ class Category_model extends CI_Model
       $this->db->join('category_tbl','category_tbl.cat_id = subcategory_tbl.cat_id', 'inner');
       $this->db->order_by('category_tbl.cat_title','ASC');
       $this->db->order_by('subcat_title','ASC');
-      $this->db->select('subcategory_tbl.cat_id,subcat_id,subcat_title,subcategory_tbl.description,subcategory_tbl.img,subcategory_tbl.keyword');
+      $this->db->select('cat_title,subcategory_tbl.cat_id,subcat_id,subcat_title,subcategory_tbl.description,subcategory_tbl.img,subcategory_tbl.keyword');
       $query = $this->db->get('subcategory_tbl');
       return $query->result();
     }
