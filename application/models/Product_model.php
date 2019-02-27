@@ -125,4 +125,16 @@ class Product_model extends CI_Model
     return $row->img;
   }
 
+  function drop_product($prod_id) {
+    $this->db->where('prod_id',$prod_id);
+    $this->db->delete('product_banner_tbl');
+    $this->db->where('prod_id',$prod_id);
+    $this->db->delete('product_feature_tbl');
+    $this->db->where('prod_id',$prod_id);
+    $this->db->delete('product_specs_tbl');
+    $this->db->where('prod_id',$prod_id);
+    $this->db->delete('product_tbl');
+  }
+
+
 }

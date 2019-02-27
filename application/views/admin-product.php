@@ -169,7 +169,7 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-body">
-          <span class="form-label">Are you sure to delete you want to delete <?php echo $p->prod_name; ?>?</span>
+          <span class="form-label">Are you sure to delete you want to delete <?php echo $p->prod_title; ?>?</span>
         </div>
         <div class="modal-footer">
           <a href="<?php echo base_url('admin/drop_product?id='.$p->prod_id) ?>" class="btn btn-default">Yes</a>
