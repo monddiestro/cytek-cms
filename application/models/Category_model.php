@@ -13,6 +13,7 @@ class Category_model extends CI_Model
       $this->db->join('category_tbl','category_tbl.cat_id = subcategory_tbl.cat_id', 'inner');
       $this->db->order_by('category_tbl.cat_title','ASC');
       $this->db->order_by('subcat_title','ASC');
+      $this->db->select('cat_title,subcategory_tbl.cat_id,subcat_id,subcat_title,subcategory_tbl.description,subcategory_tbl.img,subcategory_tbl.keyword');
       $query = $this->db->get('subcategory_tbl');
       return $query->result();
     }
@@ -62,5 +63,21 @@ class Category_model extends CI_Model
       $this->db->where('subcat_id',$subcat_id);
       $query = $this->db->get('product_tbl');
       return $query->result();
+    }
+
+    function pull_image($cat_id) {
+      $this->db->where('cat_id',$cat_id);
+      $this->db->select('img');
+      $query = $this->db->get('category_tbl');
+      $query = $query->row();
+      return $query->img;
+    }
+
+    function pull_subcategory_image($subcat_id) {
+      $this->db->where('subcat_id',$subcat_id);
+      $this->db->select('img');
+      $query = $this->db->get('subcategory_tbl');
+      $query = $query->row();
+      return $query->img;
     }
 }

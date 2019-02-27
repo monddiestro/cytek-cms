@@ -12,7 +12,7 @@
           <div class="col-lg-8 ctg-function">
             <div class="row header-mt">
               <div class="col-md-8">
-                <input type="text" class="form-control form-shadow" placeholder="Events name">
+                <!-- <input type="text" class="form-control form-shadow" placeholder="Events name"> -->
               </div>
               <div class="col-md-4">
                 <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#new-event"><b>New Event</b></button>

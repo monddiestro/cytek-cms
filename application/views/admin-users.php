@@ -12,7 +12,7 @@
           <div class="col-lg-8 ctg-function">
             <div class="row header-mt">
               <div class="col-md-8">
-                <input type="text" class="form-control form-shadow" placeholder="User name">
+                <!-- <input type="text" class="form-control form-shadow" placeholder="User name"> -->
               </div>
               <div class="col-md-4">
                 <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#new-user"><b>New User</b></button>
@@ -214,16 +214,6 @@
                 <span class="form-label">Contact Number</span>
                 <input class="form-control" name="contact" value="<?php echo $u->contact ?>" type="text" placeholder="Example: 09091234567" required>
               </div>
-              <div class="form-group">
-                <span class="form-label">Generated Password</span>
-                <?php
-                  $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 15);
-                ?>
-                <br/>
-                <small class="text-info">Copy before save user account</small>
-                <input class="form-control" type="text" name="password" value="<?php echo $randomString ?>" readonly>
-                <small>Account owner can change the password upon login</small>
-              </div>  
             </div>
         </div>
       </div>

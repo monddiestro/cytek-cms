@@ -10,18 +10,44 @@ class Product extends CI_Controller
     parent::__construct();
 		$this->load->model('category_model');
     $this->load->model('product_model');
+    $this->load->model('page_model');
   }
 
   function index() {
     // get data
-    echo $product_id = $this->input->get('id');
+    $product_id = $this->input->get('id');
 
-    // $this->load->view('header',$header);
-    // $navigation["navs"] = $this->category_model->pull_subcategories();
-    // $this->load->view('navigation',$navigation);
-    // $this->load->view('product',$data);
-    // $this->load->view('pre-footer');
-    // $this->load->view('footer');
+    $metas = $this->page_model->pull_page_meta(2);
+
+    $metas = $this->page_model->pull_page_meta(1);
+
+    foreach ($metas as $meta) {
+      $meta = array(
+        'description' => $meta->meta_description,
+        'keywords' => $meta->meta_keywords,
+        'robots' => 'follow',
+        'og_title' => $meta->title,
+        'og_description' => $meta->meta_description,
+        'og_image' => $meta->meta_image,
+        'og_url' => base_url('product'),
+        'cannonical' => base_url('product'),
+        'title' => $meta->title .' | Cytek Solutions Inc.' 
+      );
+    }
+    $navigation["navs"] = $this->category_model->pull_subcategories();
+    $navigation["page"] = "products";
+    $data["products"] = $this->product_model->pull_products();
+    $data["submenu"] = $this->category_model->pull_subcategories();
+    $footer["categories"] = $this->category_model->pull_categories();
+    $footer["subcategories"] = $this->category_model->pull_subcategories();
+    // load view
+    $this->load->view('header',$meta);
+    $navigation["navs"] = $this->category_model->pull_subcategories();
+    $this->load->view('navigation',$navigation);
+    $this->load->view('product',$data);
+    $this->load->view('pre-footer',$footer);
+    $this->load->view('script');
+    $this->load->view('footer');
   }
   function category() {
 

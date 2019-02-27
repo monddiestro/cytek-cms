@@ -32,6 +32,7 @@ class Home extends CI_Controller
         $body_data["categories"] = $this->category_model->pull_categories();
         $body_data["featured"] = $this->product_model->pull_products_featured();
         $body_data["events"] = $this->event_model->pull_events();
+        $body_data["slider"] = $this->page_model->pull_slider();
         
         $footer["categories"] = $this->category_model->pull_categories();
         $footer["subcategories"] = $this->category_model->pull_subcategories();

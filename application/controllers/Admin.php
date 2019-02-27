@@ -8,7 +8,7 @@ class Admin extends CI_Controller
       $this->load->model('user_model');
       $this->load->model('event_model');
       $this->load->model('inquiry_model');
-    }
+      $this->load->model('page_model');    }
 
     function check_session() {
       if(empty($this->session->userdata('user_id'))) {
@@ -40,7 +40,8 @@ class Admin extends CI_Controller
               'l_name' => $u->l_name,
               'uac_id' => $u->uac_id,
               'email' => $u->email,
-              'contact' => $u->contact
+              'contact' => $u->contact,
+              'image' => $u->img
             );
             $this->session->set_userdata($userdata);
             redirect(base_url('admin/dashboard'));
@@ -198,11 +199,37 @@ class Admin extends CI_Controller
     function modify_category() {
       $referer = $this->input->server('HTTP_REFERER');
       $cat_id = $this->input->post('cat_id');
-      $cat_desc = $this->input->post('cat_desc');
+      $cat_title = $this->input->post('cat_title');
+      $cat_desc = $this->input->post('description');
+      $keyword = $this->input->post('keyword');
+
       $data = array(
-        'cat_desc' => $cat_desc
+        'cat_title' => $cat_title,
+        'description' => $cat_desc,
+        'keyword' => $keyword
       );
       $this->category_model->update_category($cat_id,$data);
+
+      if(!empty($_FILES["meta_img"]["name"])) {
+        $config["upload_path"] = './utilities/images/meta';
+        $config["allowed_types"] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
+        if($this->upload->do_upload('meta_img')) {
+          // check if has existing image 
+          $old_image = $this->category_model->pull_image($cat_id);
+          // new image
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $data = array(
+            'img' => 'utilities/images/meta/'.$filename
+          );
+          $this->category_model->update_category($cat_id,$data);
+          // delete old
+          if(!empty($old_image)) {
+            unlink("./".$old_image);
+          }
+        }
+      }
+
       $result_data = array(
         'class' => "success",
         'message' => "<strong>Success!</strong> Category updated"
@@ -212,10 +239,38 @@ class Admin extends CI_Controller
     }
     function modify_subcategory() {
       $referer = $this->input->server('HTTP_REFERER');
+      $cat_id = $this->input->post('cat_id');
       $subcat_id = $this->input->post('subcat_id');
-      $subcat_desc = $this->input->post('subcat_desc');
+      $subcat_title = $this->input->post('subcat_title');
+      $subcat_desc = $this->input->post('description');
+      $keyword = $this->input->post('keyword');
+
+
+      if(!empty($_FILES["meta_img"]["name"])) {
+        $config["upload_path"] = './utilities/images/meta';
+        $config["allowed_types"] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
+        if($this->upload->do_upload('meta_img')) {
+          // check if has existing image 
+          $old_image = $this->category_model->pull_subcategory_image($subcat_id);
+          // new image
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $data = array(
+            'img' => 'utilities/images/meta/'.$filename
+          );
+          $this->category_model->update_subcategory($subcat_id,$data);
+          // delete old
+          if(!empty($old_image)) {
+            unlink("./".$old_image);
+          }
+        }
+      };
+
       $data = array(
-        'subcat_desc' => $subcat_desc
+        'cat_id' => $cat_id,
+        'subcat_title' => $subcat_title,
+        'description' => $subcat_desc,
+        'keyword' => $keyword
       );
       $this->category_model->update_subcategory($subcat_id,$data);
       $result_data = array(
@@ -677,9 +732,14 @@ class Admin extends CI_Controller
       $header = $this->header_array('','','','Admin Settings | Cytek Solutions Inc.','',base_url('admin/settings'));
       $nav["page"] = "settings";
       $nav["inquiry"] = $this->inquiry_model->pull_new_lead_cnt();
+
+      // data
+      $data["sliders"] = $this->page_model->pull_slider();
+      $data["home"] = $this->page_model->pull_page_meta(1);
+      // view
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
-      $this->load->view('admin-settings');
+      $this->load->view('admin-settings',$data);
       $this->load->view('script');
       $this->load->view('footer');
     }
@@ -728,6 +788,126 @@ class Admin extends CI_Controller
       );
       $this->session->set_flashdata('result',$result_data);
       redirect(base_url('admin/leads'));
+    }
+
+    function add_slider() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $title = $this->input->post('title');
+      $description = $this->input->post('description');
+      $url = $this->input->post('url');
+      $img = "";
+
+      $config["upload_path"] = './utilities/images/slider';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if(!empty($_FILES["meta_img"]["name"])) {
+        if($this->upload->do_upload('meta_img')) {   
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $img = 'utilities/images/slider/'.$filename;
+        }
+      }
+
+      $data = array(
+        'title' => $title,
+        'description' => $description,
+        'url' => $url,
+        'img' => $img
+      );
+
+      $this->page_model->push_slider($data);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> New slider saved."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+    }
+
+    function drop_slider() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $slider_id = $this->input->get('id');
+      $old_image = $this->page_model->pull_slider_img($slider_id);
+      $old_image = './' . $old_image;
+      unlink($old_imgage);
+      $this->page_model->drop_slider($slider_id);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> Slider removed."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+    }
+
+    function modify_slider() {
+
+      $referer = $this->input->server('HTTP_REFERER');
+      $slider_id = $this->input->post('slider_id');
+      $title = $this->input->post('title');
+      $description = $this->input->post('description');
+      $url = $this->input->post('url');
+      $img = "";
+
+      $old_image = $this->page_model->pull_slider_img($slider_id);
+      $old_image = './' . $old_image;
+
+      $config["upload_path"] = './utilities/images/slider';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if(!empty($_FILES["meta_img"]["name"])) {
+        if($this->upload->do_upload('meta_img')) {   
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $img = 'utilities/images/slider/'.$filename;
+          $this->page_model->push_update(array('img'=>$img), $slider_id);
+          unlink($old_image);
+        }
+      }
+
+      $data = array(
+        'title' => $title,
+        'description' => $description,
+        'url' => $url,
+      );
+
+      $this->page_model->push_update($data,$slider_id);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> ".$title." slider updated."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+
+    }
+
+    function modify_homepage () {
+      $referer = $this->input->server('HTTP_REFERER');
+      $title = $this->input->post('title');
+      $description = $this->input->post('description');
+      $keywords = $this->input->post('keywords');
+
+      $old_image = $this->page_model->pull_page_image(1);
+      $old_image = './' . $old_image;
+
+      $config["upload_path"] = './utilities/images/meta';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if(!empty($_FILES["meta_img"]["name"])) {
+        if($this->upload->do_upload('meta_img')) {   
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $img = 'utilities/images/meta/'.$filename;
+          $this->page_model->push_update_page(array('meta_image'=>$img), 1);
+          unlink($old_image);
+        }
+      }
+
+      $data = array( 'title' => $title, 'meta_description' => $description, 'meta_keywords' => $keywords );
+      $this->page_model->push_update_page($data,1);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> Home details updated."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+
     }
 
 }

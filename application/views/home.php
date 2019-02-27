@@ -1,25 +1,29 @@
  
 <div id="carouselExampleIndicators" class="carousel slide">
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <?php $count = 0 ?>
+    <?php foreach($slider as $s): ?>
+    <li data-target="#carouselExampleIndicators" data-slide-to="<?php $count ?>" class="<?php echo $count == 0 ? 'active' : '' ?>"></li>
+    <?php $count += 1; ?>
+    <?php endforeach ?>
   </ol>
   <div class="carousel-inner">
+    <?php foreach($slider as $s): ?>
     <div class="carousel-item active">
-      <img  src="<?php echo base_url('utilities/images/meta/test.jpg') ?>" alt="First slide">
+      <img  src="<?php echo base_url($s->img) ?>" alt="First slide">
       <div class="carousel-caption 1st-slide">
-        <h4>LOREM IPSUM DOLOR</h4>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        <a href="" class="btn btn-primary text-white px-4 py-2"><b>READ MORE</b></a>
+        <?php if(!empty($s->title)): ?>
+        <h4><?php echo strtoupper($s->title) ?></h4>
+        <?php endif ?>
+        <?php if(!empty($s->description)): ?>
+        <p><?php echo $s->description ?></p>
+        <?php endif ?>
+        <?php if(!empty($s->url)): ?>
+        <a href="<?php echo $s->url ?>" class="btn btn-primary text-white px-4 py-2"><b>READ MORE</b></a>
+        <?php endif ?>
       </div>
     </div>
-    <div class="carousel-item">
-      <img  src="https://www.w3schools.com/bootstrap/chicago.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img  src="https://www.w3schools.com/bootstrap/la.jpg" alt="Third slide">
-    </div>
+    <?php endforeach ?>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -79,6 +83,11 @@
       </div>
     </div>
     <?php endforeach; ?>
+  </div>
+  <div class="row pb-5 pt-4">
+    <div class="col-sm-12 text-center">
+      <a class="fw-bold" href="<?php echo base_url('product'); ?>">VIEW ALL PRODUCTS</a>
+    </div>
   </div>
  </div>
 </div>

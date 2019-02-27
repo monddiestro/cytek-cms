@@ -55,7 +55,7 @@
                       <a href="<?php echo base_url('admin/logout') ?>" class="nav-link">
                           <div class="media mb-1">
                             <div class="py-1 pr-2">
-                            <img src="<?php echo base_url('utilities/images/nav-logo/olympus-white-logo.png') ?>" class="rounded-circle mr-1" alt="" width="40" height="40">
+                            <img src="<?php echo  empty($this->session->userdata('image')) ? base_url('utilities/images/no-image.png') : base_url($this->session->userdata('image')) ?>" class="rounded-circle mr-1" alt="" width="40" height="40">
                             </div>                
                             <div class="media-body mt-2">
                               <span class="fw-bold">Mond</span>
