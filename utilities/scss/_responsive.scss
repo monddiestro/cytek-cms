@@ -110,6 +110,10 @@
 
 // Smartphones Landscape
 @include landscapeSm {
+    .footer-section .col-lg-8.pr-0 {
+        padding-right: 15px !important
+    }
+    
     .breadcrumb {
         display: none;
     }
@@ -152,6 +156,7 @@
             height:100vh;
             overflow-x:auto;
             display:block;
+            padding-bottom: 120px;
             ul.navbar-nav {
                 flex-direction: column;
                 margin-bottom:15px;

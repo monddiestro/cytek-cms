@@ -10128,6 +10128,10 @@ td.btn-collapse {
   }
 }
 @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .footer-section .col-lg-8.pr-0 {
+    padding-right: 15px !important;
+  }
+
   .breadcrumb {
     display: none;
   }
@@ -10173,6 +10177,7 @@ td.btn-collapse {
     height: 100vh;
     overflow-x: auto;
     display: block;
+    padding-bottom: 120px;
   }
   .navbar.navbar-expand-lg .navbar-collapse ul.navbar-nav {
     flex-direction: column;
