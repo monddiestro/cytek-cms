@@ -162,13 +162,11 @@ textarea::-webkit-scrollbar-thumb
   h4 {
     font-size: 36px;
     font-weight: bold;
-    text-shadow: 1px 2px 1px #aaaaaa;
   }
   p {
     width:60%;
     font-size: 20px;
     font-weight:400;
-    text-shadow: 1px 2px 1px #aaaaaa;
   }
 }
 .carousel-indicators li {
@@ -291,6 +289,14 @@ ul.list-unstyled.fw-light {
       }
     }
   }
+}
+.overlay-img {
+  z-index: 3;
+  background: #000;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  opacity: .2;
 }
 .img-box {
   width: 100%;

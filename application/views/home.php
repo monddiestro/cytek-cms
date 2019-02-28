@@ -10,6 +10,7 @@
   <div class="carousel-inner">
     <?php foreach($slider as $s): ?>
     <div class="carousel-item active">
+      <div class="overlay-img"></div>
       <img  src="<?php echo base_url($s->img) ?>" alt="First slide">
       <div class="carousel-caption 1st-slide">
         <?php if(!empty($s->title)): ?>
