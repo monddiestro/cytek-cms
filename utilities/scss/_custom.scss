@@ -35,7 +35,7 @@ label {
 .center-title {
   padding:10px 20px;
 }
-textarea::-webkit-scrollbar-track
+textarea::-webkit-scrollbar-track 
   {
       border-radius: 5px;
       background-color: #DCDDE1;
@@ -491,6 +491,26 @@ td.btn-collapse {
     padding: 0 15px;
   }
 }
+
+ .table-responsive::-webkit-scrollbar-track
+  {
+      border-radius: 5px;
+      background-color: #DCDDE1;
+
+  }
+  
+ .table-responsive::-webkit-scrollbar
+  {
+      height: 7px;
+      width: 7px;
+      background-color: #DCDDE1;
+  }
+  
+ .table-responsive::-webkit-scrollbar-thumb
+  {
+      border-radius: 10px;
+      background-color: rgba(47, 54, 64, 0.4);
+  }
 
 
 

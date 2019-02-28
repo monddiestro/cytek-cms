@@ -10033,6 +10033,22 @@ td.btn-collapse {
   padding: 0 15px;
 }
 
+.table-responsive::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #DCDDE1;
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+  background-color: #DCDDE1;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(47, 54, 64, 0.4);
+}
+
 @media screen and (max-width: 768px) {
   .navbar-brand.ml-5, .container-fluid.mx-5 {
     margin: 0 !important;
