@@ -447,6 +447,15 @@ class Admin extends CI_Controller
     }
 
     function drop_product() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $prod_id = $this->input->get('id');
+      $this->product_model->drop_product($prod_id);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> Product succesfully removed"
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
     }
     // product feature
     function add_feature() {

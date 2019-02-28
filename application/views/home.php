@@ -8,9 +8,10 @@
     <?php endforeach ?>
   </ol>
   <div class="carousel-inner">
+    <?php $count = 0 ?>
     <?php foreach($slider as $s): ?>
-    <div class="carousel-item active">
-      <div class="overlay-img"></div>
+    <div class="carousel-item <?php echo $count == 0 ? 'active' : '' ?> <?php $count ?>">
+    <div class="overlay-img"></div>
       <img  src="<?php echo base_url($s->img) ?>" alt="First slide">
       <div class="carousel-caption 1st-slide">
         <?php if(!empty($s->title)): ?>
@@ -24,6 +25,7 @@
         <?php endif ?>
       </div>
     </div>
+    <?php $count += 1; ?>
     <?php endforeach ?>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -57,7 +59,7 @@
             <p><?php echo mb_strimwidth($category->description, 0, 100, " ...") ?></p>
           </div>
           <div class="card-footer">
-            <a href="<?php echo base_url('category?q='.$category->cat_id) ?>" class="btn btn-primary text-white px-4"><b>VIEW ALL</b></a>
+            <a href="<?php echo base_url('product/category?id='.$category->cat_id."&category=".$category->cat_title) ?>" class="btn btn-primary text-white px-4"><b>VIEW ALL</b></a>
           </div>
         </div>
       </div>
