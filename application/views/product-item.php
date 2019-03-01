@@ -41,7 +41,7 @@
                             <ul id="product-gallery" class="list-unstyled cS-hidden">
                                 <?php foreach($banners as $b): ?>
                                 <li data-thumb="<?php echo base_url($b->image_path) ?>">
-                                    <img src="<?php echo base_url($b->image_path) ?>" alt="">
+                                    <img class="img-pro" src="<?php echo base_url($b->image_path) ?>" alt="">
                                 </li>
                                 <?php endforeach; ?>
                             </ul>

@@ -456,6 +456,11 @@ td.btn-collapse {
     content: "" !important; 
   }
 }
+.img-pro {
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
 .sidebar-brand {
   img {
     width: 80%;
