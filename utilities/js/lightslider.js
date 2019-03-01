@@ -182,7 +182,7 @@
             },
             controls: function () {
                 if (settings.controls) {
-                    $el.after('<div class="lSAction"><a class="lSPrev">' + settings.prevHtml + '<span class="glyphicon glyphicon-menu-left icon-prev"></span></a><a class="lSNext">' + settings.nextHtml + '<span class="glyphicon glyphicon-menu-right icon-next"></span></a></div>');
+                    $el.after('<div class="lSAction"><a class="lSPrev">' + settings.prevHtml + '<span class="carousel-control-prev-icon" aria-hidden="true"></span></a><a class="lSNext">' + settings.nextHtml + '<span class="carousel-control-next-icon" aria-hidden="true"></span></a></div>');
                     if (!settings.autoWidth) {
                         if (length <= settings.item) {
                             $slide.find('.lSAction').hide();
