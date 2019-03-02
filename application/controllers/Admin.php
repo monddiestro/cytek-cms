@@ -833,6 +833,9 @@ class Admin extends CI_Controller
             'name' => $d->name,
             'contact' => $d->contact,
             'email' => $d->email,
+            'company' => $d->company_name,
+            'department' => $d->department,
+            'position' => $d->position,
             'source' => $d->source,
             'message' => $d->message,
             'date_created' => $d->date_created

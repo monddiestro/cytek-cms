@@ -130,7 +130,14 @@
                       <label for="">Company Name</label>
                       <input type="text" name="company_name" id="inquire-company" class="form-control" placeholder="ex. Cytek Group Inc.">
                     </div>
-                    
+                    <div class="form-group">
+                      <label for="">Department</label>
+                      <input type="text" name="department" id="inquire-department" class="form-control" placeholder="ex. Marketing">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Position</label>
+                      <input type="text" name="position" id="inquire-position" class="form-control" placeholder="ex. Marketing Officer">
+                    </div>
                     <div class="form-group">
                       <label for="">Message</label>
                       <textarea name="message" id="inquire-message" rows="5" class="form-control" placeholder="Your message to us"></textarea>

@@ -23,11 +23,20 @@
                                             <label for="">Contact Number:</label> <span><?php echo $detail["contact"] ?></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Lead Source:</label> <span><?php echo $detail["source"] ?></span>
+                                            <label for="">Company Name:</label> <span><?php echo $detail["company"] ?></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Department:</label> <span><?php echo $detail["department"] ?></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Position:</label> <span><?php echo $detail["position"] ?></span>
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="form=group">
+                                        <div class="form-group">
+                                            <label for="">Lead Source:</label> <span><?php echo $detail["source"] ?></span>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="">Message:</label>
                                             <p><?php echo $detail["message"] ?></p>
                                         </div>

@@ -11,6 +11,9 @@ class Inquiry extends CI_Controller
         $name = $this->input->post('name');
         $contact = $this->input->post('contact');
         $email = $this->input->post('email');
+        $company = $this->input->post('company_name');
+        $department = $this->input->post('department');
+        $position = $this->input->post('position');
         $message = $this->input->post('message');
         $source = $this->input->post('source');
 
@@ -18,6 +21,9 @@ class Inquiry extends CI_Controller
             'name' => $name,
             'contact' => $contact,
             'email' => $email,
+            'company_name' => $company,
+            'department' => $department,
+            'position' => $position,
             'message' => $message,
             'status' => 1,
             'source' => $source,

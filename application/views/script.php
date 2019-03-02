@@ -88,6 +88,9 @@
     var name = $('#inquire-name');
     var contact = $('#inquire-contact');
     var email = $('#inquire-email');
+    var company = $('#inquire-company');
+    var department = $('#inquire-department');
+    var position = $('#inquire-position');
     var message = $('#inquire-message');
     var source = $('#inquire-source');
     var notif = $('#inquire-success');
@@ -96,16 +99,19 @@
     contact.val() == '' ? contact.addClass('is-invalid') : contact.removeClass('is-invalid');
 
     if(name.val() != '' && contact.val() != '') {
-      post_inquire(name.val(),contact.val(),email.val(),message.val(),source.val(),notif);
+      post_inquire(name.val(),contact.val(),email.val(),company.val(),department.val(),position.val(),message.val(),source.val(),notif);
       name.val('');
       contact.val('');
       email.val('');
       message.val('');
+      company.val('');
+      department.val('');
+      position.val('');
     }
 
   });
 
-  function post_inquire(name,contact,email,message,source,notif) {
+  function post_inquire(name,contact,email,company,department,position,message,source,notif) {
     $.ajax({
       url: '<?php echo base_url('inquiry/new_lead') ?>',
       type: 'POST',
@@ -113,6 +119,9 @@
         'name' : name,
         'contact' : contact,
         'email' : email,
+        'company_name' : company,
+        'department' : department,
+        'position' : position,
         'message' : message,
         'source' : source
       },
