@@ -36,6 +36,7 @@ class Home extends CI_Controller
         
         $footer["categories"] = $this->category_model->pull_categories();
         $footer["subcategories"] = $this->category_model->pull_subcategories();
+        $footer["products"] = $this->product_model->pull_products();
 
         // load view
         $this->load->view('header',$meta);

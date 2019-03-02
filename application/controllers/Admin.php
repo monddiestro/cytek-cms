@@ -348,7 +348,7 @@ class Admin extends CI_Controller
       // result alert
       $result_data = array(
         'class' => "success",
-        'message' => "<strong>Success!</strong> " . $prod_name . " added to database."
+        'message' => "<strong>Success!</strong> " . $meta_title . " added to products."
       );
       $this->session->set_flashdata('result',$result_data);
       redirect($referer);
