@@ -1,4 +1,4 @@
- 
+<!--  
 <div id="carouselExampleIndicators" class="carousel slide">
   <ol class="carousel-indicators">
     <?php $count = 0 ?>
@@ -27,6 +27,45 @@
     </div>
     <?php $count += 1; ?>
     <?php endforeach ?>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div> -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <?php $indicator = 0; ?>
+    <?php foreach($slider as $s): ?>
+    <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $indicator ?>" class="<?php echo $slider == 0 ? 'active' : ''; ?>"></li>
+    <?php $indicator += 1; ?>
+    <?php endforeach; ?>
+  </ol>
+  <div class="carousel-inner">
+    <?php $active_cnt = 0; ?>
+    <?php foreach($slider as $s): ?>
+    <?php $active_cnt += 1; ?>
+    <div class="carousel-item <?php echo $active_cnt == 1 ? 'active' : '' ?>">
+      <!-- <div class="overlay-img"> -->
+        <img class="d-block w-100" src="<?php echo base_url($s->img) ?>">
+      <!-- </div> -->
+      <div class="carousel-caption 1st-slide">
+        <?php if(!empty($s->title)): ?>
+        <h4><?php echo strtoupper($s->title) ?></h4>
+        <?php endif ?>
+        <?php if(!empty($s->description)): ?>
+        <p><?php echo $s->description ?></p>
+        <?php endif ?>
+        <?php if(!empty($s->url)): ?>
+        <a href="<?php echo $s->url ?>" class="btn btn-primary text-white px-4 py-2"><b>READ MORE</b></a>
+        <?php endif ?>
+      </div>
+    </div>
+    <?php endforeach; ?>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
