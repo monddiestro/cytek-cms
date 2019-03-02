@@ -152,6 +152,7 @@ textarea::-webkit-scrollbar-thumb
 }
 .carousel-control-prev, .carousel-control-next {
   width: 10% !important;
+  z-index: 5;
 }
 .carousel-caption {
     top:100px ;

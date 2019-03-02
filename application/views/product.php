@@ -8,7 +8,7 @@
         <!-- sub menu -->
         <?php $cat_id = "" ?>
         <?php $cnt = 0 ?>
-        <div class="col-lg-3 col-md-3">
+        <div class="col-lg-3 col-md-3 mb-3">
             <div class="panel-group" id="accordion">
             <?php foreach($submenu as $s): ?>
                 <?php if($cat_id != $s->cat_id): ?>

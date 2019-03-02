@@ -2,13 +2,15 @@
 <div id="nav-backdrop"></div>
 <div class="mobile-banner d-none">
   <a class="navbar-brand text-dark p-2" id="showNavbar"><span>&#9776;</span></a>
+  <a class="navbar-brand" href="<?php echo base_url(); ?>">
   <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" class="py-2" width="100" alt=""> 
+  </a>
 </div>
 <nav class="navbar navbar-expand-lg  text-light" id="navbarCustom">
-  <a class="navbar-brand ml-5" href="<?php echo base_url(); ?>">
+  <a class="navbar-brand" href="<?php echo base_url(); ?>">
     <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" width="100" alt="">
   </a>
-  <div class="navbar-collapse mr-5" id="navbarSupportedContent">
+  <div class="navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mr-2">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle <?php echo ($page == "products") ? 'active' : ''  ?>" data-toggle="dropdown" href="#">Products <span class="sr-only">(current)</span></a>
@@ -37,7 +39,7 @@
         <a class="nav-link <?php echo $page == "about" ? 'active' : '' ?>" href="<?php  echo base_url('blogs') ?>">ABOUT US</a>
       </li>      
     </ul>
-    <div class="mr-5 ">
+    <div class="">
       <a href="https://www.olympus-ims.com/en/">
         <img src="<?php echo base_url('utilities/images/nav-logo/olympus-blue-logo.png') ?> " width="70" alt="">
       </a>

@@ -3,12 +3,12 @@
         <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Home</a></li>
         <li class="breadcrumb-item"><a href="<?php echo base_url('product'); ?>">Products</a></li>
         <li class="breadcrumb-item"><a href="<?php echo base_url('product/category?id='.$cat_id); ?>"><?php echo ucwords($cat_title) ?></a></li>
-        <li class="breadcrumb-item"><a href="<?php echo base_url('product/category/subcategory?id='.$subcat_id); ?>"><?php echo ucwords($subcat_title) ?></a></li>
+        <li class="breadcrumb-item mb-active"><a href="<?php echo base_url('product/category/subcategory?id='.$subcat_id); ?>"><?php echo ucwords($subcat_title) ?></a></li>
         <li class="breadcrumb-item active"><?php echo ucwords($prod_title) ?></li>
     </ol>
     <div class="row">
         <!-- submenu -->
-        <div class="col-lg-3 col-md-3">
+        <div class="col-lg-3 d-lg-block d-none">
             <div class="card">
                 <div class="card-header">
                     <span class="card-title"><strong><?php echo $subcat_title ?></strong></span>
@@ -25,7 +25,7 @@
             </div>
         </div>
         <!-- body -->
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-6 col-md-8">
             <div class="form-group">
                 <div class="card">
                     <div class="card-body">
@@ -103,7 +103,7 @@
         </div>
         <div></div>
         <!-- contact form -->
-        <div class="col-lg-3 col-md-3">
+        <div class="col-lg-3 col-md-4">
             <div class="card sticky-form">
                 <div class="card-body">
                     <h6><strong>Inquire Now</strong></h6>

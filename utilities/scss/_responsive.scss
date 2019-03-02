@@ -111,11 +111,29 @@
 // Smartphones Landscape
 @include landscapeSm {
     .footer-section .col-lg-8.pr-0 {
-        padding-right: 15px !important
+        padding-right: 15px !important;
     }
-    
+    .container-fluid.pt-4 {
+        padding-top: 0px !important;
+    }
+    .carousel-item {
+        height:200px;    
+    }
     .breadcrumb {
-        display: none;
+        margin-top: 0px !important;
+        li.breadcrumb-item {
+            display:none;
+        }
+        li.breadcrumb-item.mb-active {
+            display:block !important;
+            padding-left: 0px !important;
+            &::before {
+                display: inline-block;
+                padding-right: 0.5rem;
+                color: #007bff;
+                content: "<";
+            }
+        }
     }
     .mw-100 {
         width: 100%;

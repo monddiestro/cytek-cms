@@ -3,12 +3,12 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Home</a></li>
         <li class="breadcrumb-item"><a href="<?php echo base_url('product'); ?>">Products</a></li>
-        <li class="breadcrumb-item"><a href="<?php echo base_url('product/category?id='.$selected); ?>"><?php echo ucwords($category) ?></a></li>
+        <li class="breadcrumb-item mb-active"><a href="<?php echo base_url('product/category?id='.$selected); ?>"><?php echo ucwords($category) ?></a></li>
         <li class="breadcrumb-item active"><?php echo $subcat_title ?></li>
     </ol>
     <div class="row">
         <!-- sub menu -->
-        <div class="col-lg-3 col-md-3">
+        <div class="col-lg-3 col-md-3 d-none d-lg-block d-mb-block">
             <div class="card">
                 <div class="card-header">
                     <span class="card-title"><strong><?php echo $subcat_title ?></strong></span>
@@ -25,7 +25,7 @@
             </div>
         </div>
         <!-- content -->
-        <div class="col-lg-9 col-md-9 col-sm-12">    
+        <div class="col-lg-9 col-md-9">    
             <div class="row">
                 <div class="col-lg-12">
                     <h4><?php echo $subcat_title ?></h4>

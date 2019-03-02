@@ -37,7 +37,7 @@
     <span class="sr-only">Next</span>
   </a>
 </div> -->
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"> 
   <ol class="carousel-indicators">
     <?php $indicator = 0; ?>
     <?php foreach($slider as $s): ?>
@@ -50,9 +50,8 @@
     <?php foreach($slider as $s): ?>
     <?php $active_cnt += 1; ?>
     <div class="carousel-item <?php echo $active_cnt == 1 ? 'active' : '' ?>">
-      <!-- <div class="overlay-img"> -->
-        <img class="d-block w-100" src="<?php echo base_url($s->img) ?>">
-      <!-- </div> -->
+    <div class="overlay-img"></div>
+        <img class="d-block w-100" src="<?php echo base_url($s->img) ?>">      
       <div class="carousel-caption 1st-slide">
         <?php if(!empty($s->title)): ?>
         <h4><?php echo strtoupper($s->title) ?></h4>
