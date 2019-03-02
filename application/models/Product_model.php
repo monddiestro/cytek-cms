@@ -127,14 +127,39 @@ class Product_model extends CI_Model
 
   function drop_product($prod_id) {
     $this->db->where('prod_id',$prod_id);
-    $this->db->delete('product_banner_tbl');
-    $this->db->where('prod_id',$prod_id);
-    $this->db->delete('product_feature_tbl');
-    $this->db->where('prod_id',$prod_id);
     $this->db->delete('product_specs_tbl');
     $this->db->where('prod_id',$prod_id);
     $this->db->delete('product_tbl');
   }
 
+  function push_feature_update($feature_id,$data) {
+    $this->db->where('feature_id', $feature_id);
+    $this->db->set($data);
+    $this->db->update('product_feature_tbl');
+  }
 
+  function pull_feature_img_url($img_id) {
+    $this->db->where('img_id',$img_id);
+    $this->db->select('img');
+    $query = $this->db->get('feature_img_tbl');
+    $query = $query->row();
+    return $query->img;
+  }
+
+  function drop_feature_img($img_id) {
+    $this->db->where('img_id',$img_id);
+    $this->db->delete('feature_img_tbl');
+  }
+
+  function pull_feature_images($feature_id) {
+    $this->db->where('feature_id',$feature_id);
+    $this->db->select('img');
+    $query = $this->db->get('feature_img_tbl');
+    return $query->result();
+  }
+
+  function drop_feature_images($feature_id) {
+    $this->db->where('feature_id',$feature_id);
+    $this->db->delete('feature_img_tbl');
+  }
 }

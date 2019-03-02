@@ -449,6 +449,26 @@ class Admin extends CI_Controller
     function drop_product() {
       $referer = $this->input->server('HTTP_REFERER');
       $prod_id = $this->input->get('id');
+
+      // remove banners
+      $banners = $this->product_model->pull_banners($prod_id);
+      foreach($banners as $b) {
+        unlink('./'.$b->image_path);
+        $this->product_model->drop_banner($$b->banner_id);
+      }
+      // remove features
+      $features = $this->product_model->pull_features($prod_id);
+      foreach($features as $f) {
+        $feature_images = $this->product_model->pull_feature_images($feature_id);
+        foreach($feature_images as $img) {
+          unlink('./'.$img->img);
+        }
+        // drop records from db
+        $this->product_model->drop_feature_images($feature_id);
+        // drop feature from db
+        $this->product_model->drop_feature($feature_id);
+      }
+
       $this->product_model->drop_product($prod_id);
       $result_data = array(
         'class' => "success",
@@ -504,13 +524,58 @@ class Admin extends CI_Controller
       redirect($referer);
     }
 
+    function mod_feature(){
+      $referer = $this->input->server('HTTP_REFERER');
+      $feature_id = $this->input->post('feature_id');
+      $title = $this->input->post('title');
+      $description = $this->input->post('description');
+      
+      $data = array(
+        'title' => $title,
+        'description' => $description
+      );
+
+      $this->product_model->push_feature_update($feature_id,$data);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> ".ucwords($title)." succesfully updated."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+      
+    }
+
     function drop_feature() {
       $referer = $this->input->server('HTTP_REFERER');
       $feature_id = $this->input->get('id');
+
+      // drop images from storage
+      $feature_images = $this->product_model->pull_feature_images($feature_id);
+      foreach($feature_images as $img) {
+        unlink('./'.$img->img);
+      }
+      // drop records from db
+      $this->product_model->drop_feature_images($feature_id);
+      // drop feature from db
       $this->product_model->drop_feature($feature_id);
       $result_data = array(
         'class' => "success",
         'message' => "<strong>Success!</strong> Product feature removed"
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+    }
+
+    function drop_feature_img() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $img_id = $this->input->get('id');
+      $image_url = $this->product_model->pull_feature_img_url($img_id);
+      // delete images uploaded to minimize storage usage
+      unlink('./'.$image_url);
+      $this->product_model->drop_feature_img($img_id);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> Feature image removed."
       );
       $this->session->set_flashdata('result',$result_data);
       redirect($referer);

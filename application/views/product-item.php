@@ -127,6 +127,11 @@
                       <input type="text" name="contact" id="inquire-email" class="form-control" placeholder="ex. juandelacruz@email.com">
                     </div>
                     <div class="form-group">
+                      <label for="">Company Name</label>
+                      <input type="text" name="company_name" id="inquire-company" class="form-control" placeholder="ex. Cytek Group Inc.">
+                    </div>
+                    
+                    <div class="form-group">
                       <label for="">Message</label>
                       <textarea name="message" id="inquire-message" rows="5" class="form-control" placeholder="Your message to us"></textarea>
                     </div>

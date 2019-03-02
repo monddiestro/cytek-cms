@@ -54,10 +54,55 @@
                           <td class="pt-20"><?php echo $cat->cat_id ?></td>
                           <td class="pt-20 td-header"><?php echo $cat->cat_title ?></td>
                           <td class="btn-collapse">
-                            <div class="border">
-                              <button class="btn btn-link w-100 " type="button" data-toggle="collapse" data-target="#subCollapse<?php echo $cat->cat_id ?>" aria-expanded="false" aria-controls="subCollapse">
-                              Sub Categories
-                              </button>
+                            <div class="row">
+                              <div class="col-12">
+                                <div class="card">
+                                  <div class="card-header">
+                                    <a class="d-flex collapse" data-toggle="collapse" href="#subCollapse<?php echo $cat->cat_id ?>">
+                                      <div class="col-sm-11 p-0 fw-bold">
+                                        Sub Category
+                                      </div>
+                                      <div class="col-sm-1 p-0 text-right">
+                                        <span class="text-primary"><i class="fa fa-plus-circle"></i></span>
+                                      </div>
+                                    </a>
+                                    <div class="collapse" id="subCollapse<?php echo $cat->cat_id ?>" style="margin-top:20px">
+                                      <?php foreach ($subcategories as $subcat): ?>
+                                        <?php if ($subcat->cat_id == $cat->cat_id): ?>
+                                        <div class="row" style="padding:15px 0; border-top:1px solid #dee2e6;">
+                                          <div class="col-9">
+                                            <?php echo $subcat->subcat_title ?>
+                                          </div>
+                                          <div class="col-3">
+                                            <span data-toggle="tooltip" data-placement="top" title="Edit">
+                                              <a class="text-success" data-toggle="modal" data-target="#modify-subcategory-<?php echo $subcat->subcat_id ?>">
+                                                <i class="fa fa-edit mr-1"></i>
+                                              </a>
+                                            </span>
+                                            <span data-toggle="tooltip" data-placement="top" title="Delete">
+                                              <a class="text-danger" data-toggle="modal" data-target="#delete-subcategory-<?php echo $subcat->subcat_id ?>">
+                                                <i class="fa fa-trash"></i>
+                                              </a>
+                                            </span>
+                                          </div>
+                                        </div>
+                                        <?php endif; ?>
+                                      <?php endforeach; ?>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <!-- <div class="border">
+                              <a class="btn btn-link w-100" data-toggle="collapse" data-target="#subCollapse<?php echo $cat->cat_id ?>" aria-expanded="false" aria-controls="subCollapse">
+                                <div class="col-sm-9 p-0">Sub Categories</div>
+                                <div class="col-sm-3 p-0 text-right text-primary">
+                                  <span class="text-primary">
+                                    <i class="fa fa-plus-circle"></i>
+                                  </span>
+                                </div> 
+                              </a>
                               <div id="subCollapse<?php echo $cat->cat_id ?>" class="collapse" aria-labelledby="headingOne">
                                 <div class="">
                                   <table class="table tbl-collapse mb-0">
@@ -87,7 +132,7 @@
                                     </table>
                                 </div>
                               </div>
-                            </div>                            
+                            </div>                             -->
                           </td>
                           <td class="text-center">
                             <span data-toggle="tooltip" data-placement="top" title="Edit Category">

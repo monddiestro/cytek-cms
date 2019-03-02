@@ -165,15 +165,18 @@
 <!-- delete product -->
 <?php foreach ($products as $p): ?>
   <div id="drop-product-<?php echo $p->prod_id ?>" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
+        <div class="modal-header">
+          <span class="modal-title">Drop Product</span>
+        </div>
         <div class="modal-body">
-          <span class="form-label">Are you sure to delete you want to delete <?php echo $p->prod_title; ?>?</span>
+          <span class="form-label">Are you sure to delete you want to delete <strong><?php echo $p->prod_title; ?></strong>? If yes all components of product will be deleted.</span>
         </div>
         <div class="modal-footer">
-          <a href="<?php echo base_url('admin/drop_product?id='.$p->prod_id) ?>" class="btn btn-default">Yes</a>
           <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          <a href="<?php echo base_url('admin/drop_product?id='.$p->prod_id) ?>" class="btn btn-default">Yes</a>
         </div>
       </div>
     </div>
