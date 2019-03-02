@@ -67,12 +67,12 @@
                         </figure>
                         <figure class="card-body">
                             <div class="img-desc">
-                                <h5><strong><?php echo $p->subcat_title ?></strong></h5>
+                                <h5><strong><?php echo $p->prod_title ?></strong></h5>
                                 <p><?php echo mb_strimwidth($p->description, 0, 100, " ...") ?></p>
                             </div>                            
                         </figure>
                         <div class="card-footer">
-                            <a href="<?php echo base_url('product/category/subcategory?id='.$p->subcat_id) ?>" class="btn btn-primary text-white fw-bold">VIEW ALL</a>
+                            <a href="<?php echo base_url('product/category/subcategory/item?id='.$p->prod_id) ?>" class="btn btn-primary text-white fw-bold">VIEW ALL</a>
                         </div>
                     </figure>
                 </article>
