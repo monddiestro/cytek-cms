@@ -69,13 +69,16 @@
     var contact = $('#footer-contact');
     var email = $('#footer-email');
     var message = $('#footer-message');
+    var company = $('#footer-company');
+    var department = $('#footer-department');
+    var postion = $('#footer-position');
     var notif = $('#success-footer');
 
     name.val() == '' ? name.addClass('is-invalid') : name.removeClass('is-invalid');
     contact.val() == '' ? contact.addClass('is-invalid') : contact.removeClass('is-invalid');
     
     if(name.val() != '' && contact.val() != '') {
-      post_inquire(name.val(),contact.val(),email.val(),message.val(),'Footer Contact Form',notif);
+      post_inquire(name.val(),contact.val(),email.val(),company.val(),department.val(),position.val(),message.val(),'Footer Contact Form',notif);
       name.val('');
       contact.val('');
       email.val('');
