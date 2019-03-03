@@ -3,7 +3,9 @@
 <div id="nav-backdrop"></div>
 <nav class="navbar fixed-top navbar-toggleable-md bg-cytek  d-block d-lg-none">
   <a class="navbar-brand text-white" id="showMenu"><span>&#9776;</span></a>
-  <img src="<?php echo base_url('utilities/images/nav-logo/cytek-white-logo.png') ?>" alt="" class="w-25">
+  <a href="<?php echo base_url('/admin') ?>">
+    <img src="<?php echo base_url('utilities/images/nav-logo/cytek-white-logo.png') ?>" alt="" class="w-25">
+  </a>    
 </nav>
 <aside class="cytek-sidebar">
     <div class="sidebar-content">

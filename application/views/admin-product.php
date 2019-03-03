@@ -50,7 +50,7 @@
               <tbody>
                 <?php foreach ($products as $p): ?>
                   <tr>
-                    <td data-title="Name" class="td-header"><?php echo $p->prod_title ?></td>
+                    <td data-title="Name" class="td-header"><div class="col-11"><?php echo $p->prod_title ?></div><div class="col-1 mb-icon"><span><i class="fa fa-chevron-down"></i></span></div></td>
                     <td data-title="Category"><?php echo $p->cat_title ?></td>
                     <td data-title="Sub Category"><?php echo $p->subcat_title ?></td>
                     <td>

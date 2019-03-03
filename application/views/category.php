@@ -52,7 +52,7 @@
                       <?php foreach ($categories as $cat): ?>
                         <tr>
                           <td class="pt-20"><?php echo $cat->cat_id ?></td>
-                          <td class="pt-20 td-header"><?php echo $cat->cat_title ?></td>
+                          <td class="pt-20 td-header"><div class="col-11"><?php echo $cat->cat_title ?></div><div class="col-1 mb-icon"><span><i class="fa fa-chevron-down"></i></span></div></td>
                           <td class="btn-collapse">
                             <div class="row">
                               <div class="col-12">

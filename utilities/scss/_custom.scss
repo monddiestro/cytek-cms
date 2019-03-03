@@ -155,7 +155,7 @@ textarea::-webkit-scrollbar-thumb
   z-index: 5;
 }
 .carousel-caption {
-    top:100px ;
+    top:10% ;
     text-align: left;
     left: 10%;
     right:10%;
@@ -411,6 +411,9 @@ textarea {
     white-space: nowrap;
   }
  
+}
+.mb-icon {
+  display:none;
 }
 .navbar-collapse {
   flex-grow: 1;

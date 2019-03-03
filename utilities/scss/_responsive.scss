@@ -272,19 +272,22 @@
         text-align: left !important;
         font-weight: 400;
         font-size: 14px;
+        .col-11 {
+            padding:0px;
+        }
     }
-    .tbl-mobile td.td-header.expand:after {
-        content:"\f0d7";
-        background: #fff;
-        color: inherit;
-    }
-    .tbl-mobile td.td-header:after {
-        font-family: FontAwesome;
-        content:"\f0da";
-        margin-left: 10px;
-        color: inherit;
-        float: right;
-    }
+    // .tbl-mobile td.td-header.expand:after {
+    //     content:"\f0d7";
+    //     background: #fff;
+    //     color: inherit;
+    // }
+    // .tbl-mobile td.td-header:after {
+    //     font-family: FontAwesome;
+    //     content:"\f0da";
+    //     margin-left: 10px;
+    //     color: inherit;
+    //     float: right;
+    // }
     
     .tbl-mobile tr td {
         display: none;
@@ -300,13 +303,16 @@
     
     
     .tbl-mobile tr td.td-header {
-        display: block ;
+        display: flex ;
     }
     .action-btn , .active-lbl ,.inactive-lbl{
         text-align: left !important;
     }
     .action-btn button , .btn-collapse {
         width: 100% !important;
+    }
+    .mb-icon {
+        display:block;
     }
 
     
