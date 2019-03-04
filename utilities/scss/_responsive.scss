@@ -104,6 +104,9 @@
           padding-left: 1rem !important;
       }
   }  
+  img.admin-logo {
+    width:130px;
+  }
 }
 
 
@@ -187,7 +190,9 @@
             }
         }
     }
-
+    a.navbar-brand img {
+        width:130px !important;
+    }
     .container.px-5 {
         padding-left: 15px !important;
         padding-right: 15px !important;
@@ -311,6 +316,11 @@
         -moz-transform:rotate(180deg);
         -webkit-transform:rotate(180deg);
         transform:rotate(180deg);
+    }
+
+    #showNavbar span {
+        font-size:28px;
+        margin-left:8px;
     }
 
     

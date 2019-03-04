@@ -10160,6 +10160,10 @@ td.btn-collapse {
   .footer-section .col-lg-4.pl-4 {
     padding-left: 1rem !important;
   }
+
+  img.admin-logo {
+    width: 130px;
+  }
 }
 @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .footer-section .col-lg-8.pr-0 {
@@ -10243,6 +10247,10 @@ td.btn-collapse {
   }
   .navbar.navbar-expand-lg .navbar-collapse ul.navbar-nav .dropdown-menu {
     overflow: hidden;
+  }
+
+  a.navbar-brand img {
+    width: 130px !important;
   }
 
   .container.px-5 {
@@ -10371,10 +10379,15 @@ td.btn-collapse {
     transition: all 0.2s linear;
   }
 
-  .expand .fa-chevron-down.rotate {
+  .expand .fa-chevron-down {
     -moz-transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
+  }
+
+  #showNavbar span {
+    font-size: 28px;
+    margin-left: 8px;
   }
 }
 
