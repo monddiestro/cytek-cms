@@ -40,16 +40,11 @@
     if ($(window).width() < 600 ) {
       $(this).toggleClass('expand').nextUntil('tr td.row-title').css('display' , function(i,v) {
            return this.style.display === 'block' ? 'none' : 'block';
-      });      
+      });
+      $('.fa-chevron-down').toggleClass('rotate');      
     }
   });
-  // $('tr td.td-header')on('keyup',function() {
-  //   if ($(this).hasClass('expand')) {
-  //     $('.expand span .fa-chevron-down').removeClass('fa-chevron-down').addClass('fa-chevron-up');
-  //   } else {
-  //     $('.expand span .fa-chevron-up').removeClass('fa-chevron-up').addClass('fa-chevron-down');
-  //   }
-  // });
+  
   $('.collapse').on('shown.bs.collapse', function(){
     $(this).parent().find(".fa-plus-circle").removeClass("fa-plus-circle").addClass("fa-minus-circle");
     }).on('hidden.bs.collapse', function(){
