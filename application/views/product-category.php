@@ -70,7 +70,7 @@
                         <figure class="card-body">
                             <div class="img-desc">
                                 <h5><strong><?php echo $d->subcat_title ?></strong></h5>
-                                <p><?php echo mb_strimwidth($d->description, 0, 100, " ...") ?></p>
+                                <p><?php echo mb_strimwidth($d->description, 0, 160, " ...") ?></p>
                             </div>                            
                         </figure>
                         <div class="card-footer">

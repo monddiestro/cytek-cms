@@ -51,7 +51,7 @@ class Page_model extends CI_Model
 
     function pull_description($page_id) {
         $this->db->where('page_id',$page_id);
-        $this->db->select('met_description');
+        $this->db->select('meta_description');
         $query = $this->db->get('page_tbl');
         $query = $query->row();
         return $query->meta_description;

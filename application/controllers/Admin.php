@@ -810,6 +810,7 @@ class Admin extends CI_Controller
       // data
       $data["sliders"] = $this->page_model->pull_slider();
       $data["home"] = $this->page_model->pull_page_meta(1);
+      $data["product"] = $this->page_model->pull_page_meta(2);
       // view
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
@@ -985,6 +986,37 @@ class Admin extends CI_Controller
       $this->session->set_flashdata('result',$result_data);
       redirect($referer);
 
+    }
+
+    function modify_product() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $title = $this->input->post('title');
+      $description = $this->input->post('description');
+      $keywords = $this->input->post('keywords');
+
+      $old_image = $this->page_model->pull_page_image(2);
+      $old_image = './' . $old_image;
+
+      $config["upload_path"] = './utilities/images/meta';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if(!empty($_FILES["meta_img"]["name"])) {
+        if($this->upload->do_upload('meta_img')) {   
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $img = 'utilities/images/meta/'.$filename;
+          $this->page_model->push_update_page(array('meta_image'=>$img), 2);
+          unlink($old_image);
+        }
+      }
+
+      $data = array( 'title' => $title, 'meta_description' => $description, 'meta_keywords' => $keywords );
+      $this->page_model->push_update_page($data,2);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> Product details updated."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
     }
 
 }

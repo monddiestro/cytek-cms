@@ -5,6 +5,8 @@ class Events extends CI_Controller
         parent::__construct();
         $this->load->model('event_model');
         $this->load->model('category_model');
+        $this->load->model('product_model');
+        $this->load->model('page_model');
     }
 
     function index() {
@@ -28,6 +30,22 @@ class Events extends CI_Controller
             $data["content"] = $content;
             $data["img"] = $img;
             $data["date"] = date("F d, Y",strtotime($date));
+            $view = "event";
+        } else {
+            $event = $this->page_model->pull_page_meta(3);
+            foreach($event as $e) {
+                $title = $e->title;
+                $keyword = $e->meta_keywords;
+                $description = $e->meta_description;
+                $img = base_url($e->meta_image);
+            }
+            $meta = $this->header_array($description,$keyword,$title,$img,base_url('events'));
+            $data["title"] = $title;
+            $data["descripton"] = $description;
+            $data["img"] = $img;
+            $data["events"] = $this->event_model->pull_events();
+            $data["page_description"] = $this->page_model->pull_description(3);
+            $view = "event-catalog";
         }
 
         $navigation["navs"] = $this->category_model->pull_subcategories();
@@ -38,7 +56,7 @@ class Events extends CI_Controller
 
         $this->load->view('header',$meta);
         $this->load->view('navigation',$navigation);
-        $this->load->view('event',$data);
+        $this->load->view($view,$data);
         $this->load->view('pre-footer',$footer);
         $this->load->view('script');
         $this->load->view('footer');
@@ -54,7 +72,7 @@ class Events extends CI_Controller
           'og_image' => base_url($img),
           'og_url' => $url,
           'cannonical' =>  $url,
-          'title' =>  $title .' | Products | Cytek Solutions Inc.'
+          'title' =>  $title .' | News and Events | Cytek Solutions Inc.'
         );
         return $header;
       }

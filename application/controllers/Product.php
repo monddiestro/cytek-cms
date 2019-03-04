@@ -36,6 +36,7 @@ class Product extends CI_Controller
     }
     $navigation["navs"] = $this->category_model->pull_subcategories();
     $navigation["page"] = "products";
+    $data["page_description"] = $this->page_model->pull_description(2);
     $data["products"] = $this->product_model->pull_products();
     $data["submenu"] = $this->category_model->pull_subcategories();
     $footer["categories"] = $this->category_model->pull_categories();

@@ -55,7 +55,7 @@
           </div>
           <div class="card-body">            
             <h5><strong><?php echo $category->cat_title ?></strong></h5>
-            <p><?php echo mb_strimwidth($category->description, 0, 100, " ...") ?></p>
+            <p><?php echo mb_strimwidth($category->description, 0, 160, " ...") ?></p>
           </div>
           <div class="card-footer">
             <a href="<?php echo base_url('product/category?id='.$category->cat_id."&category=".$category->cat_title) ?>" class="btn btn-primary text-white px-4"><b>VIEW ALL</b></a>
@@ -79,7 +79,7 @@
         </div>
         <div class="card-body">
           <h5><strong><?php echo ucwords($f->prod_title) ?></strong></h5>
-          <p><?php echo mb_strimwidth($f->description, 0, 100, " ...") ?></p>
+          <p><?php echo mb_strimwidth($f->description, 0, 160, " ...") ?></p>
           <a href="<?php echo base_url('product/category/subcategory/item?id='.$f->prod_id) ?>" class="btn btn-primary text-white px-4"><b>VIEW</b></a>
         </div>
       </div>
