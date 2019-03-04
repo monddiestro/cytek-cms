@@ -40,8 +40,7 @@
     if ($(window).width() < 600 ) {
       $(this).toggleClass('expand').nextUntil('tr td.row-title').css('display' , function(i,v) {
            return this.style.display === 'block' ? 'none' : 'block';
-      });
-      $('.fa-chevron-down').toggleClass('rotate');      
+      });     
     }
   });
   

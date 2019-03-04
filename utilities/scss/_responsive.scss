@@ -276,18 +276,6 @@
             padding:0px;
         }
     }
-    // .tbl-mobile td.td-header.expand:after {
-    //     content:"\f0d7";
-    //     background: #fff;
-    //     color: inherit;
-    // }
-    // .tbl-mobile td.td-header:after {
-    //     font-family: FontAwesome;
-    //     content:"\f0da";
-    //     margin-left: 10px;
-    //     color: inherit;
-    //     float: right;
-    // }
     
     .tbl-mobile tr td {
         display: none;
@@ -319,7 +307,7 @@
         -webkit-transition: all .2s linear;
         transition: all .2s linear;
     }
-    .expand .fa-chevron-down.rotate {
+    .expand .fa-chevron-down {
         -moz-transform:rotate(180deg);
         -webkit-transform:rotate(180deg);
         transform:rotate(180deg);
