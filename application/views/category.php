@@ -59,7 +59,7 @@
                                 <div class="card">
                                   <div class="card-header">
                                     <a class="d-flex collapse" data-toggle="collapse" href="#subCollapse<?php echo $cat->cat_id ?>">
-                                      <div class="col-sm-11 p-0 fw-bold">
+                                      <div class="col-sm-11 p-0 fw-bold text-left">
                                         Sub Category
                                       </div>
                                       <div class="col-sm-1 p-0 text-right">
@@ -70,7 +70,7 @@
                                       <?php foreach ($subcategories as $subcat): ?>
                                         <?php if ($subcat->cat_id == $cat->cat_id): ?>
                                         <div class="row" style="padding:15px 0; border-top:1px solid #dee2e6;">
-                                          <div class="col-9">
+                                          <div class="col-9 text-left">
                                             <?php echo $subcat->subcat_title ?>
                                           </div>
                                           <div class="col-3">

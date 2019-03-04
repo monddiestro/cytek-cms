@@ -37,26 +37,28 @@
               <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#new-slider" class="btn btn-primary">ADD SLIDER</button>
             </div>
             <div class="card-header">
-                <?php foreach($sliders as $s): ?>
-                <div class="col-sm-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <img style="width:100%;" src="<?php echo base_url($s->img) ?>" alt="">
-                    </div>
-                    <div class="card-footer">
-                      <div class="row">
-                        <div class="col-sm">
-                          <label><?php echo $s->title ?></label>
-                        </div>
-                        <div class="col-sm text-right">
-                          <a data-toggle="modal" data-target="#modify-slider-<?php echo $s->slider_id ?>" class="text-success"><span class="fa fa-edit"></span></a>
-                          <a href="<?php echo base_url('admin/drop_slider?id='.$s->slider_id) ?>"  class="text-danger"><span class="fa fa-trash"></span></a>
+              <div class="row">
+                <?php foreach($sliders as $s): ?>                
+                  <div class="col-sm-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <img style="width:100%;" src="<?php echo base_url($s->img) ?>" alt="">
+                      </div>
+                      <div class="card-footer">
+                        <div class="row">
+                          <div class="col-sm">
+                            <label><?php echo $s->title ?></label>
+                          </div>
+                          <div class="col-sm text-right">
+                            <a data-toggle="modal" data-target="#modify-slider-<?php echo $s->slider_id ?>" class="text-success"><span class="fa fa-edit"></span></a>
+                            <a href="<?php echo base_url('admin/drop_slider?id='.$s->slider_id) ?>"  class="text-danger"><span class="fa fa-trash"></span></a>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  </div>                                
                 <?php endforeach ?>
+              </div>  
             </div>
           </div>
         </div>
