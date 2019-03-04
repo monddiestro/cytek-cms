@@ -51,7 +51,7 @@
                   <tbody>
                       <?php foreach($events as $e): ?>
                         <tr>
-                          <td class="td-header"><?php echo ucwords($e->title) ?></td>
+                          <td class="td-header"><div class="col-11"><?php echo ucwords($e->title) ?></div><div class="col-1 mb-icon"><span><i class="fa fa-chevron-down"></i></span></div></td>
                           <td><?php echo ucfirst($e->description) ?></td>
                           <td><?php echo date('F d, Y',strtotime($e->event_date)) ?></td>
                           <td>

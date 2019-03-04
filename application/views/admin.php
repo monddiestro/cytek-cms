@@ -17,19 +17,19 @@
                                 <table class="table tbl-mobile mb-0 fw-light">
                                     <tbody>
                                         <tr>
-                                            <td class="td-header">Reymond Diestro</td>
+                                            <td class="td-header"><div class="col-11">Reymond Diestro</div><div class="col-1 mb-icon"><span><i class="fa fa-chevron-down"></i></span></div></td>
                                             <td>reymonddiestro@gmail.com</td>
                                             <td>+63917627917</td>
                                             <td>January 05, 2019</td>
                                         </tr>
                                         <tr>
-                                            <td class="td-header">Darnel Soriano</td>
+                                            <td class="td-header"><div class="col-11">Darnel Soriano</div><div class="col-1 mb-icon"><span><i class="fa fa-chevron-down"></i></span></div></td>
                                             <td>darnelsoriano@gmail.com</td>
                                             <td>+63917627917</td>
                                             <td>January 25, 2019</td>
                                         </tr>
                                         <tr>
-                                            <td class="td-header">Romel Portes</td>
+                                            <td class="td-header"><div class="col-11">Romel Portes</div><div class="col-1 mb-icon"><span><i class="fa fa-chevron-down"></i></span></div></td>
                                             <td>romel.portes@gmail.com</td>
                                             <td>+63917627917</td>
                                             <td>January 30, 2019</td>
@@ -107,7 +107,7 @@
                                 <table class="table tbl-mobile mb-0 fw-light">
                                     <tbody>
                                         <tr>
-                                            <td class="td-header">Reymond Diestro</td>
+                                            <td class="td-header"><div class="col-11">Reymond Diestro</div><div class="col-1 mb-icon"><span><i class="fa fa-chevron-down"></i></span></div></td>
                                             <td>reymonddiestro@gmail.com</td>
                                             <td class="active-lbl">active</td>
                                             <td class="action-btn">
@@ -115,7 +115,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="td-header">Darnel Soriano</td>
+                                            <td class="td-header"><div class="col-11">Darnel Soriano</div><div class="col-1 mb-icon"><span><i class="fa fa-chevron-down"></i></span></div></td>
                                             <td>darnelsoriano@gmail.com</td>
                                             <td class="inactive-lbl">Inactive</td>
                                             <td class="action-btn">
@@ -123,7 +123,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="td-header">Romel Portes</td>
+                                            <td class="td-header"><div class="col-11">Romel Portes</div><div class="col-1 mb-icon"><span><i class="fa fa-chevron-down"></i></span></div></td>
                                             <td>romel.portes@gmail.com</td>
                                             <td class="inactive-lbl">Inactive</td>
                                             <td class="action-btn">

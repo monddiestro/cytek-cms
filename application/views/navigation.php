@@ -2,13 +2,13 @@
 <div id="nav-backdrop"></div>
 <div class="mobile-banner d-none">
   <a class="navbar-brand text-dark p-2" id="showNavbar"><span>&#9776;</span></a>
-  <a class="navbar-brand" href="<?php echo base_url(); ?>">
-  <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" class="py-2" width="100" alt=""> 
+  <a class="navbar-brand py-0" href="<?php echo base_url(); ?>">
+  <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" class="py-2" width="130" alt=""> 
   </a>
 </div>
-<nav class="navbar navbar-expand-lg  text-light" id="navbarCustom">
+<nav class="navbar navbar-expand-lg  text-light py-0" id="navbarCustom">
   <a class="navbar-brand" href="<?php echo base_url(); ?>">
-    <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" width="100" alt="">
+    <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" width="130" alt="">
   </a>
   <div class="navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mr-2">

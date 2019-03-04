@@ -40,13 +40,14 @@
     if ($(window).width() < 600 ) {
       $(this).toggleClass('expand').nextUntil('tr td.row-title').css('display' , function(i,v) {
            return this.style.display === 'block' ? 'none' : 'block';
-      });
+      });     
     }
-  });  
+  });
+  
   $('.collapse').on('shown.bs.collapse', function(){
-  $(this).parent().find(".fa-plus-circle").removeClass("fa-plus-circle").addClass("fa-minus-circle");
-  }).on('hidden.bs.collapse', function(){
-  $(this).parent().find(".fa-minus-circle").removeClass("fa-minus-circle").addClass("fa-plus-circle");
+    $(this).parent().find(".fa-plus-circle").removeClass("fa-plus-circle").addClass("fa-minus-circle");
+    }).on('hidden.bs.collapse', function(){
+    $(this).parent().find(".fa-minus-circle").removeClass("fa-minus-circle").addClass("fa-plus-circle");
   });
 </script>
 </body>

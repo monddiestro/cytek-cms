@@ -9679,7 +9679,7 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 .carousel-caption {
-  top: 100px;
+  top: 10%;
   text-align: left;
   left: 10%;
   right: 10%;
@@ -9957,6 +9957,10 @@ textarea {
   white-space: nowrap;
 }
 
+.mb-icon {
+  display: none;
+}
+
 .navbar-collapse {
   flex-grow: 1;
 }
@@ -10156,6 +10160,10 @@ td.btn-collapse {
   .footer-section .col-lg-4.pl-4 {
     padding-left: 1rem !important;
   }
+
+  img.admin-logo {
+    width: 130px;
+  }
 }
 @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .footer-section .col-lg-8.pr-0 {
@@ -10239,6 +10247,10 @@ td.btn-collapse {
   }
   .navbar.navbar-expand-lg .navbar-collapse ul.navbar-nav .dropdown-menu {
     overflow: hidden;
+  }
+
+  a.navbar-brand img {
+    width: 130px !important;
   }
 
   .container.px-5 {
@@ -10332,19 +10344,8 @@ td.btn-collapse {
     font-weight: 400;
     font-size: 14px;
   }
-
-  .tbl-mobile td.td-header.expand:after {
-    content: "";
-    background: #fff;
-    color: inherit;
-  }
-
-  .tbl-mobile td.td-header:after {
-    font-family: FontAwesome;
-    content: "";
-    margin-left: 10px;
-    color: inherit;
-    float: right;
+  .tbl-mobile td.td-header .col-11 {
+    padding: 0px;
   }
 
   .tbl-mobile tr td {
@@ -10361,15 +10362,32 @@ td.btn-collapse {
   }
 
   .tbl-mobile tr td.td-header {
-    display: block;
-  }
-
-  .action-btn, .active-lbl, .inactive-lbl {
-    text-align: left !important;
+    display: flex;
   }
 
   .action-btn button, .btn-collapse {
     width: 100% !important;
+  }
+
+  .mb-icon {
+    display: block;
+  }
+
+  .expand .fa-chevron-down {
+    -moz-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+  }
+
+  .expand .fa-chevron-down {
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  #showNavbar span {
+    font-size: 28px;
+    margin-left: 8px;
   }
 }
 
