@@ -37,6 +37,7 @@
               <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#new-slider" class="btn btn-primary">ADD SLIDER</button>
             </div>
             <div class="card-header">
+              <div class="row">
                 <?php foreach($sliders as $s): ?>
                 <div class="col-sm-4">
                   <div class="card">
@@ -57,6 +58,52 @@
                   </div>
                 </div>
                 <?php endforeach ?>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-sm-12">
+          <h6 class="fw-bold">Page Settings</h6>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-10">
+                  <label for="">Home</label>
+                </div>
+                <div class="col-2 text-right">
+                  <a data-toggle="modal" data-target="#homepage" class="text-success"><span class="fa fa-edit"></span></a>
+                </div>
+              </div>
+            </div>
+            <div class="card-header">
+            <?php foreach($home as $h): ?>
+              <div class="row">
+                <div class="col-sm">
+                  <label>Image</label>
+                  <img src="<?php echo base_url($h->meta_image) ?>" style="width:100%;margin-bottom:10px" alt="">
+                </div>
+                <div class="col-sm">
+                  <label>Title</label>
+                  <p><?php echo $h->title ?><p>
+                </div>
+                <div class="col-sm">
+                  <label>Keywords</label>
+                  <p><?php echo $h->meta_keywords ?></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                  <label>Description</label>
+                  <p><?php echo $h->meta_description ?></p>
+                </div>
+              </div>
+              <?php endforeach ?>
             </div>
           </div>
         </div>
@@ -67,7 +114,7 @@
             <div class="card-header">
               <div class="row">
                 <div class="col-10">
-                  <label for="">Home</label>
+                  <label for="">Product</label>
                 </div>
                 <div class="col-2 text-right">
                   <a data-toggle="modal" data-target="#homepage" class="text-success"><span class="fa fa-edit"></span></a>

@@ -41,7 +41,7 @@
     <div class="row center">
       <div class="col-sm-12 center-title mt-4">
         <h4>Our Products</h4>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</h5>
+        <p><?php echo $product_description ?></h5>
       </div>
     </div>
     <div class="row">
