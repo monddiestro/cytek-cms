@@ -8,7 +8,7 @@
 </div>
 <nav class="navbar navbar-expand-lg  text-light py-0" id="navbarCustom">
   <a class="navbar-brand" href="<?php echo base_url(); ?>">
-    <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" width="130" alt="">
+    <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" width="150" alt="">
   </a>
   <div class="navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mr-2">
