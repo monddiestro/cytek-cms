@@ -156,14 +156,31 @@ class Admin extends CI_Controller
     }
     function new_subcategory() {
       $referer = $this->input->server('HTTP_REFERER');
-      $subcat_desc = $this->input->post('subcategory');
+      $description = $this->input->post('description');
       $cat_id = $this->input->post('cat_id');
-      $cat_desc = $this->input->post('cat_desc');
+      $subcat_title = $this->input->post('subcat_title');
+      $keyword = $this->input->post('keyword');
+      $img = "";
+      if(!empty($_FILES["meta_img"]["name"])) {
+        $config["upload_path"] = './utilities/images/meta';
+        $config["allowed_types"] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
+        if($this->upload->do_upload('meta_img')) {
+          // new image
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $img = 'utilities/images/meta/'.$filename;
+        }
+      }
+
       $data = array (
-        'subcat_desc' => $subcat_desc,
-        'cat_id' => $cat_id
+        'subcat_title' => $subcat_title,
+        'description' => $description,
+        'keyword' => $keyword,
+        'cat_id' => $cat_id,
+        'img' => $img
       );
       $this->category_model->push_subcategory($data);
+      
       // result alert
       $result_data = array(
         'class' => "success",
@@ -811,6 +828,8 @@ class Admin extends CI_Controller
       $data["sliders"] = $this->page_model->pull_slider();
       $data["home"] = $this->page_model->pull_page_meta(1);
       $data["product"] = $this->page_model->pull_page_meta(2);
+      $data["company_settings"] = $this->page_model->pull_company_data();
+      $data["about"] = $this->page_model->pull_page_meta(4);
       // view
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
@@ -1017,6 +1036,39 @@ class Admin extends CI_Controller
       );
       $this->session->set_flashdata('result',$result_data);
       redirect($referer);
+    }
+
+    function modify_company() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $contact = $this->input->post('contact');
+      $email = $this->input->post('email');
+      $hours = $this->input->post('office_hours');
+      $address = $this->input->post('address');
+      $facebook = $this->input->post('facebook');
+      $twitter = $this->input->post('twitter');
+      $instagram = $this->input->post('instagram');
+      $description = $this->input->post('description');
+      $img = "";
+
+      $data = array(
+        'address' => $address,
+        'contact' => $contact,
+        'email' => $email,
+        'office_hours' => $hours,
+        'facebook' => $facebook,
+        'twitter' => $twitter,
+        'instagram' => $instagram,
+        'description' => $description
+      );
+
+      $this->page_model->push_update_company($data);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> Company details updated."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+
     }
 
 }

@@ -42,6 +42,7 @@ class Product extends CI_Controller
     $footer["categories"] = $this->category_model->pull_categories();
     $footer["subcategories"] = $this->category_model->pull_subcategories();
     $footer["products"] = $this->product_model->pull_products();
+    $footer["company"] = $this->page_model->pull_company_data();
     // load view
     $this->load->view('header',$meta);
     $navigation["navs"] = $this->category_model->pull_subcategories();
@@ -149,6 +150,7 @@ class Product extends CI_Controller
     $footer["categories"] = $this->category_model->pull_categories();
     $footer["subcategories"] = $this->category_model->pull_subcategories();
     $footer["products"] = $this->product_model->pull_products();
+    $footer["company"] = $this->page_model->pull_company_data();
 
     //load views
     $this->load->view('header',$header);

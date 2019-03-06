@@ -29,9 +29,9 @@
           <?php endforeach; ?>
         </ul>
       </li>
-      <li class="nav-item ">
+      <!-- <li class="nav-item ">
         <a class="nav-link <?php echo $page == "blog" ? 'active' : '' ?>" href="<?php echo base_url('blogs') ?>" >BLOGS</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link <?php echo ($page == "events") ? 'active' : '' ?>" href="<?php echo base_url('events') ?>" >EVENTS</a>
       </li>

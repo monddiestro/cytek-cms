@@ -93,46 +93,6 @@
                                 </div>
                               </div>
                             </div>
-                            
-                            <!-- <div class="border">
-                              <a class="btn btn-link w-100" data-toggle="collapse" data-target="#subCollapse<?php echo $cat->cat_id ?>" aria-expanded="false" aria-controls="subCollapse">
-                                <div class="col-sm-9 p-0">Sub Categories</div>
-                                <div class="col-sm-3 p-0 text-right text-primary">
-                                  <span class="text-primary">
-                                    <i class="fa fa-plus-circle"></i>
-                                  </span>
-                                </div> 
-                              </a>
-                              <div id="subCollapse<?php echo $cat->cat_id ?>" class="collapse" aria-labelledby="headingOne">
-                                <div class="">
-                                  <table class="table tbl-collapse mb-0">
-                                    <?php foreach ($subcategories as $subcat): ?>
-                                      <?php if ($subcat->cat_id == $cat->cat_id): ?>
-                                        <tr>
-                                          <td class="subcat-title">
-                                            <?php echo $subcat->subcat_title ?>
-                                          </td>
-                                          <td class="icon-btn" width="10">
-                                            <span data-toggle="tooltip" data-placement="top" title="Edit">
-                                              <a class="text-success" data-toggle="modal" data-target="#modify-subcategory-<?php echo $subcat->subcat_id ?>">
-                                                <i class="fa fa-edit"></i>
-                                              </a>
-                                            </span>
-                                          </td>
-                                          <td class="icon-btn" width="10">
-                                            <span data-toggle="tooltip" data-placement="top" title="Delete">
-                                              <a class="text-danger" data-toggle="modal" data-target="#delete-subcategory-<?php echo $subcat->subcat_id ?>">
-                                                <i class="fa fa-trash"></i>
-                                              </a>
-                                            </span>
-                                          </td>
-                                        </tr>
-                                      <?php endif; ?>
-                                    <?php endforeach; ?>
-                                    </table>
-                                </div>
-                              </div>
-                            </div>                             -->
                           </td>
                           <td class="text-center">
                             <span data-toggle="tooltip" data-placement="top" title="Edit Category">
@@ -219,26 +179,45 @@
 <!-- new subcategory modal -->
 <?php foreach ($categories as $cat): ?>
   <div id="new-sub-category-<?php echo $cat->cat_id ?>" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog cytek-modal">
       <!-- Modal content-->
-      <?php echo form_open(base_url('admin/new_subcategory')) ?>
+      <?php echo form_open_multipart(base_url('admin/new_subcategory')) ?>
       <div class="modal-content">
         <div class="modal-header border-0">          
-          <span class="modal-title">Sub Category of <?php echo $cat->cat_title ?></span>
+          <span class="modal-title">New Sub Category </span>
         </div>
         <div class="modal-body py-0">
           <div class="row">
               <div class="col-sm-12">
-                <span class="form-label">Sub Category Name</span>
-                  <input class="form-control" type="text" name="subcategory" placeholder="Example: Stereo Zoom Microscope" required>
-                  <input type="hidden" name="cat_id" value="<?php echo $cat->cat_id; ?>">
-                  <input type="hidden" name="cat_title" value="<?php echo $cat->cat_title; ?>">
+                  <input type="hidden" name="cat_id" value="<?php echo $cat->cat_id ?>">
+                  <div class="">
+                    <span class="form-label">Image</span>
+                    <div class="img-container mb-2">
+                      <img class="media-object" >
+                    </div> 
+                      <label class="btn btn-default shadow" id="btn_browse">
+                        <input type="file" name="meta_img" accept="image/*" style="display:none;">
+                        BROWSE
+                      </label>&nbsp;&nbsp;<span class="text-muted filename small">No image selected</span>                     
+                  </div>
+                  <div class="form-group">
+                    <span class="form-label">Sub Category Name</span>
+                    <input class="form-control" type="text" name="subcat_title" value="" placeholder="Example: Stereo Zoom Microscope" required>
+                  </div>
+                  <div class="form-group">
+                    <span class="form-label">Keywords</span>
+                    <input class="form-control" name="keyword" type="text" placeholder="Words separated by comma" required>
+                  </div>
+                  <div class="form-group">
+                    <span class="form-label">Description</span>
+                    <textarea class="form-control" name="description" rows="8" cols="80" placeholder="Description for category"></textarea>
+                  </div> 
               </div>
           </div>
         </div>
-        <div class="modal-footer border-0">
-          <button type="submit" class="btn btn-link">Save</button>  
-          <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>                  
+        <div class="modal-footer">          
+          <button type="submit" class="btn btn-link">Save</button>
+          <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>          
         </div>
       </div>
       <?php echo form_close(); ?>
