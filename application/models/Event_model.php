@@ -19,4 +19,9 @@ class Event_model extends CI_Model
         $query = $this->db->get('events_tbl');
         return $query->result();
     }
+
+    function pull_events_count() {
+        $query = $this->db->get('events_tbl');
+        return $query->num_rows();
+    }
 }

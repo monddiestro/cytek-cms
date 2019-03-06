@@ -96,9 +96,17 @@ class Admin extends CI_Controller
       $header = $this->header_array('','','','Admin Dashboard | Cytek Solutions Inc.','',base_url('admin/dashboard'));
       $nav["page"] = "dashboard";
       $nav["inquiry"] = $this->inquiry_model->pull_new_lead_cnt();
+      $data["inquiry"] = $this->inquiry_model->pull_new_lead();
+      $data["inquiry_cnt"] = $this->inquiry_model->pull_new_lead_cnt();
+      $data["category"] = $this->category_model->pull_category_cnt();
+      $data["subcategory"] = $this->category_model->pull_subcategory_cnt();
+      $data["product"] = $this->product_model->pull_product_cnt();
+      $data["event"] = $this->event_model->pull_events_count();
+      $data["users"] = $this->user_model->pull_users();
+
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
-      $this->load->view('admin');
+      $this->load->view('admin',$data);
       $this->load->view('script');
       $this->load->view('footer');
 

@@ -80,4 +80,14 @@ class Category_model extends CI_Model
       $query = $query->row();
       return $query->img;
     }
+
+    function pull_category_cnt() {
+      $query = $this->db->get('category_tbl');
+      return $query->num_rows();
+    }
+
+    function pull_subcategory_cnt() {
+      $query = $this->db->get('subcategory_tbl');
+      return $query->num_rows();
+    }
 }
