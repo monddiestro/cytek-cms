@@ -430,15 +430,15 @@
 <?php foreach($about as $a): ?>
 <div id="about" class="modal fade" role="dialog">
   <div class="modal-dialog">
-    <?php echo form_open_multipart(base_url('admin/modify_product')); ?>
+    <?php echo form_open_multipart(base_url('admin/modify_about')); ?>
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Product Details</h4>
+        <h4 class="modal-title">About Details</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
           <input name="title" class="form-control" type="form-control" value="<?php echo $a->title ?>" placeholder="ex. Company Name"/>
-          <small>Title for Homepage</small>
+          <small>Title for About Us</small>
         </div>
         <div class="form-group">
           <textarea name="description" placeholder="Add your slider description here .." class="form-control" rows="10"><?php echo $a->meta_description ?></textarea>

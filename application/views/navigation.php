@@ -36,7 +36,7 @@
         <a class="nav-link <?php echo ($page == "events") ? 'active' : '' ?>" href="<?php echo base_url('events') ?>" >EVENTS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link <?php echo $page == "about" ? 'active' : '' ?>" href="<?php  echo base_url('blogs') ?>">ABOUT US</a>
+        <a class="nav-link <?php echo $page == "about" ? 'active' : '' ?>" href="<?php  echo base_url('about') ?>">ABOUT US</a>
       </li>      
     </ul>
     <div class="">
