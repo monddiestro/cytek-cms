@@ -41,7 +41,7 @@
     </ul>
     <div class="">
       <a href="https://www.olympus-ims.com/en/">
-        <img src="<?php echo base_url('utilities/images/nav-logo/olympus-blue-logo.png') ?> " width="70" alt="">
+        <img src="<?php echo base_url('utilities/images/nav-logo/olympus-blue-logo.png') ?> " width="100" alt="">
       </a>
     </div>
   </div>
