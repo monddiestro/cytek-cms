@@ -163,4 +163,9 @@ class Product_model extends CI_Model
     $this->db->where('feature_id',$feature_id);
     $this->db->delete('feature_img_tbl');
   }
+
+  function pull_product_cnt() {
+    $query = $this->db->get('product_tbl');
+    return $query->num_rows();
+  }
 }

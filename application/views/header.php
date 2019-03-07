@@ -10,7 +10,7 @@
     <?php echo !empty($robots) ? '<meta name="robots" content="index,follow"/>' : '' ?>
     <?php echo !empty($og_title) ? '<meta property="og:title" content="'.$og_title.'">' : '' ?>
     <?php echo !empty($og_description) ? '<meta property="og:description" content="'.$og_description.'">' : '' ?>
-    <?php echo !empty($og_image) ? '<meta property="og:image" content="'.$og_image.'">' : '' ?>
+    <?php echo !empty($og_image) ? '<meta property="og:image" content="'.base_url($og_image).'">' : '' ?>
     <?php echo !empty($og_url) ? '<meta property="og:url" content="'.$og_url.'">' : '' ?>
     <?php echo !empty($cannonical) ? '<link rel="canonical" href="'.$cannonical.'">' : '' ?>
     <meta name="copyright" content="Copyright &copy; <?php echo date('Y') ?> Cytek Solutions Inc"/>

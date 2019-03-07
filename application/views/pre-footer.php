@@ -86,28 +86,39 @@
           <div class="col-lg-6">
             <p class="footer-title">About</p>
             <ul class="list-unstyled">
-              <li><a href="">About us</a></li>
-              <li><a href="">Events</a></li>
-              <li><a href="">Blogs</a></li>
-              <li><a href="">Terms and Conditions</a></li>
-              <li><a href="">Privacy Policy</a></li>
-              <li><a href="">Cookies</a></li>
-              <li><a href="">Sitemap</a></li>
+              <li><a href="<?php echo base_url('about') ?>">About us</a></li>
+              <li><a href="<?php echo base_url('events') ?>">Events</a></li>
+              <li><a href="<?php echo base_url('careers') ?>">Careers</a></li>
+              <li><a href="<?php echo base_url('terms_and_conditions') ?>">Terms and Conditions</a></li>
+              <li><a href="<?php echo base_url('privacy_policy') ?>">Privacy Policy</a></li>
+              <li><a href="<?php echo base_url('cookies') ?>">Cookies</a></li>
+              <li><a href="<?php echo base_url('sitemap') ?>">Sitemap</a></li>
             </ul>
           </div>
           <div class="col-lg-6">
+            <?php foreach($company as $c): ?>
             <p class="footer-title">Connect with us</p>
-            <span><a href="" class="mr-1"><img src="https://i.imgur.com/GvxcSKF.png" alt="" width="25"></a></span>
-            <span><a href="" class="mr-1"><img src="https://i.imgur.com/QJzodYC.png" alt="" width="25"></a></span>
-            <span><a href="" class="mr-1"><img src="https://i.imgur.com/HhXQZm5.png" alt="" width="25"></a></span>
+            <?php if(!empty($c->facebook)): ?>
+            <span><a href="<?php echo $c->facebook ?>" target="_blank" class="mr-1"><img src="https://i.imgur.com/GvxcSKF.png" alt="" width="25"></a></span>
+            <?php endif ?>
+            <?php if(!empty($c->twitter)): ?>
+            <span><a href="<?php echo $c->twitter ?>"  target="_blank" class="mr-1"><img src="https://i.imgur.com/QJzodYC.png" alt="" width="25"></a></span>
+            <?php endif ?>
+            <?php if(!empty($c->instagram)): ?>
+            <span><a href="<?php echo $c->instagram ?>" target="_blank" class="mr-1"><img src="https://i.imgur.com/HhXQZm5.png" alt="" width="25"></a></span>
+            <?php endif ?>
+            <?php endforeach ?>
           </div>
         </div>
         <p class="footer-title">contact us</p>
+        <?php foreach($company as $c): ?>
         <ul class="list-unstyled">
-          <li><span>(02)-123-4567 / (63)9123-456-7890</span></li>
-          <li><span>#123 Lorem Ipsum St. Lorem Ipsum City, Metro Manila Philippines </span></li>
-          <li><span>Monday - Saturday (9:00 AM - 6:30PM)</span></li>
+          <li><span><?php echo $c->contact ?></span></li>
+          <li><span><?php echo $c->email ?></span></li>
+          <li><span><?php echo $c->address ?></span></li>
+          <li><span><?php echo $c->office_hours ?></span></li>
         </ul>
+        <?php endforeach ?>
       </div>
     </div>
   </div>

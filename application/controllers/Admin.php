@@ -96,9 +96,17 @@ class Admin extends CI_Controller
       $header = $this->header_array('','','','Admin Dashboard | Cytek Solutions Inc.','',base_url('admin/dashboard'));
       $nav["page"] = "dashboard";
       $nav["inquiry"] = $this->inquiry_model->pull_new_lead_cnt();
+      $data["inquiry"] = $this->inquiry_model->pull_new_lead();
+      $data["inquiry_cnt"] = $this->inquiry_model->pull_new_lead_cnt();
+      $data["category"] = $this->category_model->pull_category_cnt();
+      $data["subcategory"] = $this->category_model->pull_subcategory_cnt();
+      $data["product"] = $this->product_model->pull_product_cnt();
+      $data["event"] = $this->event_model->pull_events_count();
+      $data["users"] = $this->user_model->pull_users();
+
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
-      $this->load->view('admin');
+      $this->load->view('admin',$data);
       $this->load->view('script');
       $this->load->view('footer');
 
@@ -156,14 +164,31 @@ class Admin extends CI_Controller
     }
     function new_subcategory() {
       $referer = $this->input->server('HTTP_REFERER');
-      $subcat_desc = $this->input->post('subcategory');
+      $description = $this->input->post('description');
       $cat_id = $this->input->post('cat_id');
-      $cat_desc = $this->input->post('cat_desc');
+      $subcat_title = $this->input->post('subcat_title');
+      $keyword = $this->input->post('keyword');
+      $img = "";
+      if(!empty($_FILES["meta_img"]["name"])) {
+        $config["upload_path"] = './utilities/images/meta';
+        $config["allowed_types"] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
+        if($this->upload->do_upload('meta_img')) {
+          // new image
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $img = 'utilities/images/meta/'.$filename;
+        }
+      }
+
       $data = array (
-        'subcat_desc' => $subcat_desc,
-        'cat_id' => $cat_id
+        'subcat_title' => $subcat_title,
+        'description' => $description,
+        'keyword' => $keyword,
+        'cat_id' => $cat_id,
+        'img' => $img
       );
       $this->category_model->push_subcategory($data);
+      
       // result alert
       $result_data = array(
         'class' => "success",
@@ -811,6 +836,8 @@ class Admin extends CI_Controller
       $data["sliders"] = $this->page_model->pull_slider();
       $data["home"] = $this->page_model->pull_page_meta(1);
       $data["product"] = $this->page_model->pull_page_meta(2);
+      $data["company_settings"] = $this->page_model->pull_company_data();
+      $data["about"] = $this->page_model->pull_page_meta(4);
       // view
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
@@ -1014,6 +1041,70 @@ class Admin extends CI_Controller
       $result_data = array(
         'class' => "success",
         'message' => "<strong>Success!</strong> Product details updated."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+    }
+
+    function modify_company() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $contact = $this->input->post('contact');
+      $email = $this->input->post('email');
+      $hours = $this->input->post('office_hours');
+      $address = $this->input->post('address');
+      $facebook = $this->input->post('facebook');
+      $twitter = $this->input->post('twitter');
+      $instagram = $this->input->post('instagram');
+      $description = $this->input->post('description');
+      $img = "";
+
+      $data = array(
+        'address' => $address,
+        'contact' => $contact,
+        'email' => $email,
+        'office_hours' => $hours,
+        'facebook' => $facebook,
+        'twitter' => $twitter,
+        'instagram' => $instagram,
+        'description' => $description
+      );
+
+      $this->page_model->push_update_company($data);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> Company details updated."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+
+    }
+
+    function modify_about() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $title = $this->input->post('title');
+      $description = $this->input->post('description');
+      $keywords = $this->input->post('keywords');
+
+      $old_image = $this->page_model->pull_page_image(4);
+      $old_image = './' . $old_image;
+
+      $config["upload_path"] = './utilities/images/meta';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if(!empty($_FILES["meta_img"]["name"])) {
+        if($this->upload->do_upload('meta_img')) {   
+          $filename = $this->upload->data('raw_name').$this->upload->data('file_ext');
+          $img = 'utilities/images/meta/'.$filename;
+          $this->page_model->push_update_page(array('meta_image'=>$img), 4);
+          unlink($old_image);
+        }
+      }
+
+      $data = array( 'title' => $title, 'meta_description' => $description, 'meta_keywords' => $keywords );
+      $this->page_model->push_update_page($data,4);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> About details updated."
       );
       $this->session->set_flashdata('result',$result_data);
       redirect($referer);

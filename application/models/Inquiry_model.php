@@ -13,6 +13,12 @@ class Inquiry_model extends CI_Model
         return $row->count;
     }
 
+    function pull_new_lead() {
+        $this->db->where('status',1);
+        $query = $this->db->get('lead_tbl');
+        return $query->result();
+    }
+
     function pull_leads() {
         $this->db->order_by('date_created','DESC');
         $query = $this->db->get('lead_tbl');

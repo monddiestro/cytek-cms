@@ -56,4 +56,23 @@ class Page_model extends CI_Model
         $query = $query->row();
         return $query->meta_description;
     }
+
+    function push_update_company($data) {
+        $this->db->where('company_id',1);
+        $this->db->set($data);
+        $this->db->update('company_tbl');
+    }
+
+    function pull_company_image() {
+        $this->db->where('company_id',1);
+        $this->db->select('img');
+        $query = $this->db->get('company_tbl');
+        $query = $query->row();
+        return $query->img;
+    }
+
+    function pull_company_data() {
+        $query = $this->db->get('company_tbl');
+        return $query->result();
+    }
 }

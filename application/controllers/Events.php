@@ -53,6 +53,7 @@ class Events extends CI_Controller
         $footer["categories"] = $this->category_model->pull_categories();
         $footer["subcategories"] = $this->category_model->pull_subcategories();
         $footer["products"] = $this->product_model->pull_products();
+        $footer["company"] = $this->page_model->pull_company_data();
 
         $this->load->view('header',$meta);
         $this->load->view('navigation',$navigation);
