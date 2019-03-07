@@ -35,6 +35,10 @@
             transition: transform .2s ease-in-out,-webkit-transform .2s ease-in-out;
         }
     }
+    .navbar-nav .dropdown-menu {
+        position: absolute;
+        float: none;
+    }
     .cytek-main {
         padding: 0 !important;
     }
@@ -92,9 +96,6 @@
             margin:0 !important;
         }
     }
-    .breadcrumb {
-        margin-top : 70px;
-    }
     .prod-page {
         margin-top: 80px;
     }
@@ -113,6 +114,10 @@
 
 // Smartphones Landscape
 @include landscapeSm {
+    .navbar-nav .dropdown-menu {
+        position: static;
+        float: none;
+    }
     .footer-section .col-lg-8.pr-0 {
         padding-right: 15px !important;
     }
@@ -186,6 +191,7 @@
                 }  
                 .dropdown-menu {
                     overflow: hidden;
+                    overflow-x: auto;
                 }  
             }
         }

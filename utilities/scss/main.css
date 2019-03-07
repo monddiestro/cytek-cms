@@ -10414,6 +10414,10 @@ footer {
   background: #003158;
 }
 
+figure {
+  margin-bottom: 0 !important;
+}
+
 label {
   font-weight: 600;
 }
@@ -10746,9 +10750,8 @@ ul.list-unstyled.fw-light li a:hover, ul.list-unstyled.fw-light li a.active {
   width: 100%;
 }
 
-.img-desc {
-  height: 125px;
-  overflow: hidden;
+.img-desc p {
+  margin-bottom: 0;
 }
 
 textarea {
@@ -11021,6 +11024,10 @@ td.btn-collapse {
     transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
     transition: transform .2s ease-in-out,-webkit-transform .2s ease-in-out;
   }
+  .navbar-nav .dropdown-menu {
+    position: absolute;
+    float: none;
+  }
   .cytek-main {
     padding: 0 !important;
   }
@@ -11079,9 +11086,6 @@ td.btn-collapse {
   .navbar-collapse .mr-5 {
     margin: 0 !important;
   }
-  .breadcrumb {
-    margin-top: 70px;
-  }
   .prod-page {
     margin-top: 80px;
   }
@@ -11094,6 +11098,10 @@ td.btn-collapse {
 }
 
 @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .navbar-nav .dropdown-menu {
+    position: static;
+    float: none;
+  }
   .footer-section .col-lg-8.pr-0 {
     padding-right: 15px !important;
   }
@@ -11177,6 +11185,7 @@ td.btn-collapse {
   }
   .navbar.navbar-expand-lg .navbar-collapse ul.navbar-nav .dropdown-menu {
     overflow: hidden;
+    overflow-x: auto;
   }
   a.navbar-brand img {
     width: 130px !important;

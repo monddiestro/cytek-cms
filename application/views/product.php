@@ -1,14 +1,14 @@
 <div class="container-fluid pt-4">
     <!-- breadcrumb -->
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Home</a></li>
+        <li class="breadcrumb-item mb-active"><a href="<?php echo base_url(); ?>">Home</a></li>
         <li class="breadcrumb-item active">Products</li>
     </ol>
     <div class="row">
         <!-- sub menu -->
         <?php $cat_id = "" ?>
         <?php $cnt = 0 ?>
-        <div class="col-lg-3 col-md-3 mb-3">
+        <div class="col-lg-3 col-md-3 mb-3 d-none d-lg-block d-md-block">
             <div class="panel-group" id="accordion">
             <?php foreach($submenu as $s): ?>
                 <?php if($cat_id != $s->cat_id): ?>

@@ -53,9 +53,11 @@
               <img src="<?php echo empty($category->img) ? base_url('utilities/images/no-image.png') : base_url($category->img) ?>" alt="" class="product-img">
             </div>            
           </div>
-          <div class="card-body">            
-            <h5><strong><?php echo $category->cat_title ?></strong></h5>
-            <p><?php echo mb_strimwidth($category->description, 0, 160, " ...") ?></p>
+          <div class="card-body">    
+            <div class="img-desc">
+              <h5><strong><?php echo $category->cat_title ?></strong></h5>
+              <p><?php echo mb_strimwidth($category->description, 0, 160, " ...") ?></p>
+            </div>    
           </div>
           <div class="card-footer">
             <a href="<?php echo base_url('product/category?id='.$category->cat_id."&category=".$category->cat_title) ?>" class="btn btn-primary text-white px-4"><b>VIEW ALL</b></a>

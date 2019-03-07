@@ -21,6 +21,9 @@ textarea.form-control , .form-control ,.btn ,.dropdown-menu{
 footer {
   background: #003158;
 }
+figure {
+  margin-bottom:0 !important;
+}
 label {
   font-weight: 600;
 }
@@ -304,8 +307,15 @@ ul.list-unstyled.fw-light {
   // height: 200px;
 }
 .img-desc {
-  height: 125px;
-  overflow: hidden;
+  // max-height: 120px;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+  // -webkit-line-clamp: 3;
+  // display: -webkit-box;
+  // -webkit-box-orient: vertical;
+  p {
+    margin-bottom: 0;
+  }
 }
 textarea {
   resize: none;
