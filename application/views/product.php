@@ -22,8 +22,8 @@
                     <div class="card-header">
                     <span class="card-title">
                         <strong>
-                            <a data-toggle="collapse" id="test" data-parent="#accordion" class="d-flex">
-                            <div class="col-sm-9 p-0"><?php echo $s->cat_title; ?></div><div class="col-sm-3 p-0 text-right text-primary"><i class="fa fa-plus-circle"></i></div> 
+                            <a data-toggle="collapse" id="test" href="#collapse<?php echo $s->cat_id ?>" data-parent="#accordion" class="d-flex">
+                            <div class="col-sm-11 p-0"><?php echo $s->cat_title; ?></div><div class="col-sm-1 p-0 text-right text-primary"><i class="fa fa-plus-circle"></i></div> 
                             </a>
                         </strong>
                     </h4>
