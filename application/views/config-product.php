@@ -136,9 +136,7 @@
               <div class="card-footer">
                 <div class="row">
                   <div class="col-sm-12">
-                    <div class="pull-right">
-                      <button type="submit" class="btn btn-primary">Update Product</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary">Update Product</button>
                   </div>
                 </div>
               </div>

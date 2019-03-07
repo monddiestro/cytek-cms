@@ -11,7 +11,7 @@
           </div>
       </div>
       <div class="row mt-3">
-          <div class="col-sm-12">
+        <div class="col-sm-12">
             <!-- alert -->
             <?php
               $flash = $this->session->flashdata('result');
@@ -28,8 +28,8 @@
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
               <?php echo $message; ?>
             </div>
-          </div>
         </div>
+      </div>
       <div class="row">
         <div class="col-sm-12">
           <div class="card">
@@ -47,11 +47,11 @@
                       <div class="card-footer">
                         <div class="row">
                           <div class="col-sm">
-                          <label><?php echo $s->title ?></label>
+                            <label><?php echo $s->title ?></label>
                           </div>
                           <div class="col-sm text-right">
-                          <a data-toggle="modal" data-target="#modify-slider-<?php echo $s->slider_id ?>" class="text-success"><span class="fa fa-edit"></span></a>
-                          <a href="<?php echo base_url('admin/drop_slider?id='.$s->slider_id) ?>"  class="text-danger"><span class="fa fa-trash"></span></a>
+                            <a data-toggle="modal" data-target="#modify-slider-<?php echo $s->slider_id ?>" class="text-success"><span class="fa fa-edit"></span></a>
+                            <a href="<?php echo base_url('admin/drop_slider?id='.$s->slider_id) ?>"  class="text-danger"><span class="fa fa-trash"></span></a>
                           </div>
                         </div>
                       </div>
