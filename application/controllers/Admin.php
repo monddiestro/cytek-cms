@@ -507,7 +507,7 @@ class Admin extends CI_Controller
       $referer = $this->input->server('HTTP_REFERER');
       $prod_id = $this->input->post('prod_id');
       $title = $this->input->post('title');
-      $description = $this->input->post('description');
+      $description = $this->db->escape_str($this->input->post('description'));
   
       $data = array(
         'prod_id' => $prod_id,
@@ -714,7 +714,46 @@ class Admin extends CI_Controller
         'class' => "success",
         'message' => "<strong>Success!</strong> " . $title . " event is created. <a href='".base_url('events?id='.$event_id)."'Click this to view event."
       );
+      $this->session->set_flashdata('result',$result_data);
+      redirect(base_url('admin/events'));
 
+    }
+
+    function modify_event() {
+      $event_id = $this->input->post('event_id');
+      $title = $this->input->post('title');
+      $description = $this->input->post('description');
+      $content = $this->input->post('content');
+      $event_date = $this->input->post('date');
+      $img = "";
+
+      $old_image = $this->event_model->pull_image($event_id);
+
+      $config["upload_path"] = './utilities/images/events';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if(!empty($_FILES["meta_img"]["name"])) {
+        if($this->upload->do_upload('meta_img')) {
+          $img = 'utilities/images/events/' . $this->upload->data('raw_name').$this->upload->data('file_ext');
+          unlink('./'.$old_image);
+          $this->event_model->push_update(array('img' => $img),$event_id);
+        }
+      }
+
+      $data = array(
+        'title' => $title,
+        'description' => $description,
+        'content' => $content,
+        'event_date' => date("Y-m-d",strtotime($event_date))
+      );
+
+      $this->event_model->push_update($data,$event_id);
+
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> " . $title . " event data is updated. <a href='".base_url('events?id='.$event_id)."'Click this to view event."
+      );
+      $this->session->set_flashdata('result',$result_data);
       redirect(base_url('admin/events'));
 
     }
@@ -722,6 +761,28 @@ class Admin extends CI_Controller
     function config_event() {
       $id = $this->input->get('id');
       $event_data = $this->event_model->pull_event($id);
+      
+      foreach($event_data as $e) {
+        $data['event'] = array(
+          'event_id' => $e->event_id,
+          'title' => $e->title,
+          'description' => $e->description,
+          'content' => $e->content,
+          'img' => $e->img,
+          'event_date' => $e->event_date,
+          'keyword' => $e->keyword
+        );
+      }
+
+      $header = $this->header_array('','','','Admin Events | Cytek Solutions Inc.','',base_url('admin/config_event?id='.$id));
+      $nav["page"] = "events";
+
+      // load view
+      $this->load->view('header',$header);
+      $this->load->view('admin-navigation',$nav);
+      $this->load->view('config-event',$data);
+      $this->load->view('script');
+      $this->load->view('footer');
       
     }
     function users() {

@@ -79,7 +79,7 @@
                                             <?php endif; ?>
                                             <?php endforeach; ?>
                                         </div>
-                                        <div><?php echo $f->description ?></div>
+                                        <div><?php echo str_replace('\\','',$f->description) ?></div>
                                     </div>
                                 </div>
                             </div>

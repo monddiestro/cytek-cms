@@ -24,4 +24,18 @@ class Event_model extends CI_Model
         $query = $this->db->get('events_tbl');
         return $query->num_rows();
     }
+
+    function pull_image($event_id) {
+        $this->db->where('event_id',$event_id);
+        $this->db->select('img');
+        $query = $this->db->get('events_tbl');
+        $query = $query->row();
+        return $query->img;
+    }
+
+    function push_update($data,$event_id) {
+        $this->db->where('event_id',$event_id);
+        $this->db->set($data);
+        $this->db->update('events_tbl');
+    }
 }

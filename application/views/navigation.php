@@ -1,4 +1,3 @@
-
 <div id="nav-backdrop"></div>
 <div class="mobile-banner d-none">
   <a class="navbar-brand text-dark p-2" id="showNavbar"><span>&#9776;</span></a>

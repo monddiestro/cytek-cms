@@ -61,7 +61,8 @@ class Product_model extends CI_Model
     $query = $this->db->get('product_specs_tbl');
     if ($query->num_rows() > 0) {
       $row = $query->row();
-      return $row->specs;
+      $data = str_replace('\\','',$row->specs);
+      return $data;
     } else {
       return "";
     }
@@ -70,7 +71,11 @@ class Product_model extends CI_Model
     $this->db->insert('product_specs_tbl',$specs);
   }
   function push_update_specs($prod_id,$specs) {
-    $this->db->query("update product_specs_tbl set specs = '".$specs."' where prod_id=".$prod_id);
+    $specs = $this->db->escape_str($specs);
+    $this->db->set('specs',$specs);
+    $this->db->where('prod_id',$prod_id);
+    $this->db->update('product_specs_tbl');
+    //$this->db->query("update product_specs_tbl set specs = '".$specs."' where prod_id=".$prod_id);
   }
   function pull_banners($prod_id) {
     $this->db->where('prod_id',$prod_id);

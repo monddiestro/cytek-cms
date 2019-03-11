@@ -51,10 +51,10 @@
                       </div>
                     </div>
                   <?php endforeach; ?>
-                  </div>
                   <?php else: ?>
                   <span class="text-muted">No image available</span>
                   <?php endif; ?>
+                  </div>
               </div>
               <div class="card-footer">
                 <div class="row">
@@ -205,7 +205,7 @@
                             </div>
                             <button type="button" data-toggle="modal" data-target="#feature_img_<?php echo $f->feature_id ?>" class="btn btn-primary my-2">Add Image</button>
                             <br>
-                            <?php echo $f->description ?>
+                            <?php echo str_replace('\\','',$f->description) ?>
                           </div>
                         </div>
                         <div id="feature_img_<?php echo $f->feature_id ?>" class="modal fade" role="dialog">

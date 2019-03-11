@@ -4,29 +4,37 @@
         <li class="breadcrumb-item mb-active"><a href="<?php echo base_url('events'); ?>">Events</a></li>
         <li class="breadcrumb-item active"><?php echo ucwords($title) ?></li>
     </ol>
-    <div class="row">
-        <div classs="col-sm-12">
+    <div class="row pb-5">
+        <div class="col-lg-3 col-md-3 mb-3 d-lg-block d-md-block d-none">
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img style="width:100%" src="<?php echo $img ?>" alt="">
-                        </div>
-                        <div class="col-sm-7">
-                            <h5><?php echo $title ?></h5>
-                            <p><?php echo $description ?></p>
-                            <small><?php  echo $date ?></small>
-                        </div>
-                    </div>
+                    <ul class="list-unstyled fw-light">
+                        <?php foreach($events as $e): ?>
+                        <li>
+                            <a class="<?php echo $event_id == $e->event_id ? 'active' : ''; ?>" href="<?php echo base_url('events?id='.$e->event_id) ?>"><?php echo ucwords($e->title) ?></a>
+                        </li>
+                        <?php endforeach ?>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div classs="col-sm-12">
+        <div class="col-sm-9">
             <div class="card">
                 <div class="card-body">
-                    <p><?php echo $content ?></p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 class="mt-3 mb-1"><?php echo $title ?></h4>
+                            <h6><?php  echo $date ?></h6>
+                            <br>
+                            <img style="width:100%" src="<?php echo $img ?>" alt="">
+                            <br/>
+                            <br/>
+                            <p><?php echo $description ?></p>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-sm-12"><?php echo $content ?></div>
+                    </div>
                 </div>
             </div>
         </div>

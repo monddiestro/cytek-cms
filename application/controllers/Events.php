@@ -25,10 +25,12 @@ class Events extends CI_Controller
                 $url = base_url('event?id='.$id);
             }
             $meta = $this->header_array($description,$keyword,$title,$img,$url);
+            $data["event_id"] = $id;
             $data["title"] = $title;
             $data["descripton"] = $description;
             $data["content"] = $content;
             $data["img"] = $img;
+            $data["events"] = $this->event_model->pull_events();
             $data["date"] = date("F d, Y",strtotime($date));
             $view = "event";
         } else {

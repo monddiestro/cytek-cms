@@ -17,6 +17,7 @@
     label = input.val().replace(/\\/g,'/').replace(/.*\//,'');
     input.trigger('fileselect',[numFiles,label]);
     $(this).closest('.modal-body').find('.filename').text(label);
+    $(this).closest('.form-group').find('.filename').text(label);
     readURL(this)
   });
 
@@ -27,6 +28,7 @@
       reader.onload = function(e) {
         object.closest('.modal-body').find('.media-object').attr('src', e.target.result);
         object.closest('.card-body').find('.media-object').attr('src', e.target.result);
+        object.closest('.form-group').find('.media-object').attr('src', e.target.result);
       }
       reader.readAsDataURL(input.files[0]);
     }
