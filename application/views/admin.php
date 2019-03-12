@@ -29,9 +29,11 @@
                                 </table>
                                 <?php endif ?>
                             </div>
+                            <?php if(!empty($inquiry)): ?>
                             <div class="card-footer text-center border-0">
                                 <a href="<?php echo base_url('admin/leads') ?>"><b>View All</b></a>
                             </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

@@ -7,8 +7,10 @@ class Admin extends CI_Controller
       $this->load->model('product_model');
       $this->load->model('user_model');
       $this->load->model('event_model');
+      $this->load->model('article_model');
       $this->load->model('inquiry_model');
-      $this->load->model('page_model');    }
+      $this->load->model('page_model');    
+    }
 
     function check_session() {
       if(empty($this->session->userdata('user_id'))) {
@@ -712,7 +714,7 @@ class Admin extends CI_Controller
 
       $result_data = array(
         'class' => "success",
-        'message' => "<strong>Success!</strong> " . $title . " event is created. <a href='".base_url('events?id='.$event_id)."'Click this to view event."
+        'message' => "<strong>Success!</strong> " . $title . " event is created."
       );
       $this->session->set_flashdata('result',$result_data);
       redirect(base_url('admin/events'));
@@ -751,11 +753,25 @@ class Admin extends CI_Controller
 
       $result_data = array(
         'class' => "success",
-        'message' => "<strong>Success!</strong> " . $title . " event data is updated. <a href='".base_url('events?id='.$event_id)."'Click this to view event."
+        'message' => "<strong>Success!</strong> " . $title . " event data is updated."
       );
       $this->session->set_flashdata('result',$result_data);
       redirect(base_url('admin/events'));
 
+    }
+
+    function drop_event() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $event_id = $this->input->post('event_id');
+      $image = $this->event_model->pull_image($event_id);
+      !empty($image) ? unlink('./'.$image) : '';
+      $this->event_model->drop_event($event_id);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> Event removed from database."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
     }
 
     function config_event() {
@@ -1166,6 +1182,128 @@ class Admin extends CI_Controller
       $result_data = array(
         'class' => "success",
         'message' => "<strong>Success!</strong> About details updated."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+    }
+
+    function articles() {
+      $header = $this->header_array('','','','Admin Articles | Cytek Solutions Inc.','',base_url('admin/articles'));
+      $nav["page"] = "articles";
+      $nav["inquiry"] = $this->inquiry_model->pull_new_lead_cnt();
+      $data["articles"] = $this->article_model->pull_articles();
+
+      // load view
+      $this->load->view('header',$header);
+      $this->load->view('admin-navigation',$nav);
+      $this->load->view('admin-articles',$data);
+      $this->load->view('script');
+      $this->load->view('footer');
+    }
+
+    function new_article() {
+      $title = $this->input->post('title');
+      $description = $this->input->post('description');
+      $content = $this->input->post('content');
+      $img = "";
+
+      $config["upload_path"] = './utilities/images/articles';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if($this->upload->do_upload('meta_img')) {
+        $img = 'utilities/images/articles/' . $this->upload->data('raw_name').$this->upload->data('file_ext');
+      }
+
+      $data = array(
+        'title' => $title,
+        'description' => $description,
+        'content' => $content,
+        'img' => $img,
+        'date_created' => date('Y-m-d H:i:s')
+      );
+
+      $event_id = $this->article_model->push_article($data);
+
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> " . $title . " article is created."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect(base_url('admin/articles'));
+    }
+
+    function config_article() {
+      $id = $this->input->get('id');
+      $article_data = $this->article_model->pull_article($id);
+      
+      foreach($article_data as $a) {
+        $data['article'] = array(
+          'article_id' => $a->article_id,
+          'title' => $a->title,
+          'description' => $a->description,
+          'content' => $a->content,
+          'img' => $a->img,
+          'keyword' => $a->keyword
+        );
+      }
+
+      $header = $this->header_array('','','','Admin Article | Cytek Solutions Inc.','',base_url('admin/config_article?id='.$id));
+      $nav["page"] = "articles";
+
+      // load view
+      $this->load->view('header',$header);
+      $this->load->view('admin-navigation',$nav);
+      $this->load->view('config-article',$data);
+      $this->load->view('script');
+      $this->load->view('footer');
+    }
+
+    function modify_article() {
+      $article_id = $this->input->post('article_id');
+      $title = $this->input->post('title');
+      $description = $this->input->post('description');
+      $content = $this->input->post('content');
+      $img = "";
+
+      $old_image = $this->article_model->pull_image($article_id);
+
+      $config["upload_path"] = './utilities/images/articles';
+      $config["allowed_types"] = 'gif|jpg|png';
+      $this->load->library('upload', $config);
+      if(!empty($_FILES["meta_img"]["name"])) {
+        if($this->upload->do_upload('meta_img')) {
+          $img = 'utilities/images/articles/' . $this->upload->data('raw_name').$this->upload->data('file_ext');
+          unlink('./'.$old_image);
+          $this->article_model->push_update(array('img' => $img),$article_id);
+        }
+      }
+
+      $data = array(
+        'title' => $title,
+        'description' => $description,
+        'content' => $content,
+        'date_created' => date("Y-m-d H:i:s")
+      );
+
+      $this->article_model->push_update($data,$article_id);
+
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> " . $title . " article data is updated."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect(base_url('admin/articles'));
+    }
+
+    function drop_article() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $article_id = $this->input->post('article_id');
+      $image = $this->article_model->pull_image($article_id);
+      !empty($image) ? unlink('./'.$image) : '';
+      $this->article_model->drop_article($article_id);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> Article removed from database."
       );
       $this->session->set_flashdata('result',$result_data);
       redirect($referer);

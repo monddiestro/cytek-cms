@@ -6,7 +6,10 @@
     </ol>
     <div class="row pb-5">
         <div class="col-lg-3 col-md-3 mb-3 d-lg-block d-md-block d-none">
-            <div class="card">
+            <div class="card"> 
+                <div class="card-header">
+                    <label>List of Events</label>
+                </div>
                 <div class="card-body">
                     <ul class="list-unstyled fw-light">
                         <?php foreach($events as $e): ?>

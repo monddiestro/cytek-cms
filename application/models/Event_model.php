@@ -30,7 +30,7 @@ class Event_model extends CI_Model
         $this->db->select('img');
         $query = $this->db->get('events_tbl');
         $query = $query->row();
-        return $query->img;
+        return !empty($query->img) ? $query->img : '';
     }
 
     function push_update($data,$event_id) {
@@ -38,4 +38,11 @@ class Event_model extends CI_Model
         $this->db->set($data);
         $this->db->update('events_tbl');
     }
+
+    function drop_event($event_id) {
+        $this->db->where('event_id',$event_id);
+        $this->db->delete('events_tbl');
+    }
+
+    
 }

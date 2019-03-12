@@ -28,10 +28,10 @@
           <div class="col-lg-4 col-md-6">
             <p class="footer-title"><a href="<?php echo base_url('product/category/subcategory?id='.$p->subcat_id) ?>"><?php echo ucwords($p->subcat_title) ?></a></p>
             <ul class="list-unstyled">
-              <li><a href="<?php echo base_url('product/category/subcategory/item?id=='.$p->prod_id) ?>"><?php echo ucwords($p->prod_title) ?></a></li>
+              <li><a href="<?php echo base_url('product/category/subcategory/item?id='.$p->prod_id) ?>"><?php echo ucwords($p->prod_title) ?></a></li>
           <?php $subcat_id = $p->subcat_id;continue; ?>
           <?php endif; ?>
-          <li><a href="<?php echo base_url('product/category/subcategory/item?id=='.$p->prod_id) ?>"><?php echo ucwords($p->prod_title) ?></a></li>
+          <li><a href="<?php echo base_url('product/category/subcategory/item?id='.$p->prod_id) ?>"><?php echo ucwords($p->prod_title) ?></a></li>
           <?php endforeach; ?>
             </ul>
           </div>
