@@ -8,6 +8,7 @@ class Home extends CI_Controller
         $this->load->model('category_model');
         $this->load->model('product_model');
         $this->load->model('event_model');
+        $this->load->model('article_model');
     }
     function index() {
         $metas = $this->page_model->pull_page_meta(1);
@@ -33,6 +34,7 @@ class Home extends CI_Controller
         $body_data["product_description"] = $this->page_model->pull_description(2);
         $body_data["featured"] = $this->product_model->pull_products_featured();
         $body_data["events"] = $this->event_model->pull_events();
+        $body_data["articles"] = $this->article_model->pull_articles();
         $body_data["slider"] = $this->page_model->pull_slider();
         
         

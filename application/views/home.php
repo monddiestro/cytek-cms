@@ -100,6 +100,7 @@
   <div class="container home-page">   
     <!-- Events -->
     <div class="row pb-4">
+      <?php $cnt = 0 ?>
       <?php if(!empty($events)): ?>
       <div class="col-lg-7">
         <div class="section-title">
@@ -120,9 +121,17 @@
             </div>
           </div>
         </div>
+        <?php $cnt += 1; ?>
+        <?php 
+          if($cnt == 5) {
+            break;
+          }
+        ?>
         <?php endforeach; ?>
       </div>
       <?php endif; ?>
+      <?php $cnt = 0 ?>
+      <?php if(!empty($articles)): ?>
       <!-- What's New -->
       <div class="offset-lg-1 col-lg-4">
         <div class="section-title ">
@@ -130,37 +139,32 @@
         </div>
         <div class="line">
         </div>
+        <?php foreach($articles as $a): ?>
         <div class="col-lg-12 pb-3 mb-3 border-bottom">
           <div class="row">
             <div class="col-md-4 px-0">
-              <img src="<?php echo base_url('utilities/images/meta/pulag.jpg')?>" alt="" class="event-img">
+              <img src="<?php echo empty($a->img) ? base_url('utilities/images/no-image.pnh') : base_url($a->img) ?>" alt="" class="event-img">
             </div>
             <div class="col-md-8 px-2">
               <div class="col-blog"> 
-                <span>Bacon ipsum dolor amet biltong buffalo boudin venison prosciutto burgdoggen</span>
+                <label><?php echo $a->title ?></label>
+                <br/>
+                <span><?php echo mb_strimwidth($a->description, 0, 80, " ...") ?></span>
               </div>
               <div class="section-footer text-right">
-                <a href="">READ MORE</a>
+                <a href="<?php echo base_url('article?id='.$a->article_id) ?>">READ MORE</a>
               </div>
             </div>
           </div>
-        </div>  
-        <div class="col-lg-12 pb-3 mb-3 border-bottom">
-          <div class="row">
-            <div class="col-md-4 px-0">
-              <img src="<?php echo base_url('utilities/images/meta/pulag.jpg')?>" alt="" class="event-img">
-            </div>
-            <div class="col-md-8 px-2">
-              <div class="col-blog">
-                <span>Bacon ipsum dolor amet biltong buffalo boudin venison prosciutto burgdoggen</span>
-              </div>
-              <div class="section-footer text-right">
-                <a href="">READ MORE</a>
-              </div>
-            </div>
-          </div>
-        </div>      
-      </div>      
+        </div>
+        <?php 
+          if($cnt == 5) {
+            break;
+          }
+        ?>  
+        <?php endforeach; ?>    
+      </div>  
+      <?php endif; ?>    
     </div>
   </div> 
 </div>     

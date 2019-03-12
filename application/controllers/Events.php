@@ -48,7 +48,7 @@ class Events extends CI_Controller
             $data["events"] = $this->event_model->pull_events();
             $data["page_description"] = $this->page_model->pull_description(3);
             $view = "event-catalog";
-        }
+        } 
 
         $navigation["navs"] = $this->category_model->pull_subcategories();
         $navigation["page"] = "events";
