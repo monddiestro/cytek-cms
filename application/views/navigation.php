@@ -10,7 +10,7 @@
     <img src="<?php echo base_url('utilities/images/nav-logo/cytek-blue-logo.png') ?>" width="150" alt="">
   </a>
   <div class="navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto mr-2 mb-height">
+    <ul class="navbar-nav ml-auto mr-4 mb-height">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle <?php echo ($page == "products") ? 'active' : ''  ?>" data-toggle="dropdown" href="#">Products <span class="sr-only">(current)</span></a>
           <ul class="dropdown-menu">

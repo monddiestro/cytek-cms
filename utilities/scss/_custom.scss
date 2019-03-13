@@ -392,6 +392,10 @@ textarea {
   font-weight: 600;
   text-align: center
 }
+.navbar-nav.ml-auto a.nav-link {
+  padding-left: 14px;
+  padding-right:14px;
+}
 
 .inactive-lbl {
   color: #DC3545;
