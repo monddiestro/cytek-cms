@@ -88,6 +88,7 @@
             <ul class="list-unstyled">
               <li><a href="<?php echo base_url('about') ?>">About us</a></li>
               <li><a href="<?php echo base_url('events') ?>">Events</a></li>
+              <li><a href="<?php echo base_url('article') ?>">Article</a></li>
               <li><a href="<?php echo base_url('careers') ?>">Careers</a></li>
               <li><a href="<?php echo base_url('terms_and_conditions') ?>">Terms and Conditions</a></li>
               <li><a href="<?php echo base_url('privacy_policy') ?>">Privacy Policy</a></li>
