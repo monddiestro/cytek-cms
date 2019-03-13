@@ -1263,6 +1263,7 @@ class Admin extends CI_Controller
       $title = $this->input->post('title');
       $description = $this->input->post('description');
       $content = $this->input->post('content');
+      $keyword = $this->input->post('keyword');
       $img = "";
 
       $old_image = $this->article_model->pull_image($article_id);
@@ -1282,6 +1283,7 @@ class Admin extends CI_Controller
         'title' => $title,
         'description' => $description,
         'content' => $content,
+        'keyword' => $keyword
         'date_created' => date("Y-m-d H:i:s")
       );
 
