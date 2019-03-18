@@ -148,8 +148,6 @@
             <div class="col-md-8 px-2">
               <div class="col-blog"> 
                 <label><?php echo $a->title ?></label>
-                <br/>
-                <span><?php echo mb_strimwidth($a->description, 0, 80, " ...") ?></span>
               </div>
               <div class="section-footer text-right">
                 <a href="<?php echo base_url('article?id='.$a->article_id) ?>">READ MORE</a>

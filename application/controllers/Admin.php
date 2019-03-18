@@ -9,7 +9,8 @@ class Admin extends CI_Controller
       $this->load->model('event_model');
       $this->load->model('article_model');
       $this->load->model('inquiry_model');
-      $this->load->model('page_model');    
+      $this->load->model('page_model');
+      $this->load->model('career_model');    
     }
 
     function check_session() {
@@ -915,6 +916,7 @@ class Admin extends CI_Controller
       $data["product"] = $this->page_model->pull_page_meta(2);
       $data["company_settings"] = $this->page_model->pull_company_data();
       $data["about"] = $this->page_model->pull_page_meta(4);
+      $data["careers"] = $this->career_model->pull_careers();
       // view
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);
@@ -1283,7 +1285,7 @@ class Admin extends CI_Controller
         'title' => $title,
         'description' => $description,
         'content' => $content,
-        'keyword' => $keyword
+        'keyword' => $keyword,
         'date_created' => date("Y-m-d H:i:s")
       );
 
@@ -1306,6 +1308,24 @@ class Admin extends CI_Controller
       $result_data = array(
         'class' => "success",
         'message' => "<strong>Success!</strong> Article removed from database."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+    }
+
+    function add_career() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $title = $this->input->post('title');
+      $description = $this->input->post('description');
+      $data = array(
+        'title' => $title,
+        'description' => $description,
+        'date_created' => date('Y-m-d H:i:s')
+      );
+      $this->career_model->push_career($data);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> New job post saved to databsae"
       );
       $this->session->set_flashdata('result',$result_data);
       redirect($referer);
