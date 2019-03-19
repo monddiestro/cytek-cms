@@ -73,7 +73,7 @@
                                           <div class="col-9 text-left">
                                             <?php echo $subcat->subcat_title ?>
                                           </div>
-                                          <div class="col-3">
+                                          <div class="col-3 pl-0 text-right">
                                             <span data-toggle="tooltip" data-placement="top" title="Edit">
                                               <a class="text-success" data-toggle="modal" data-target="#modify-subcategory-<?php echo $subcat->subcat_id ?>">
                                                 <i class="fa fa-edit mr-1"></i>

@@ -4,7 +4,7 @@
       <div class="container px-5">
         <ol class="breadcrumb pt-5">
           <li class="breadcrumb-item"><a href="<?php echo base_url('admin') ?>">Home</a></li>
-          <li class="breadcrumb-item"><a href="<?php echo base_url('admin/products') ?>">Products</a></li>
+          <li class="breadcrumb-item mb-active"><a href="<?php echo base_url('admin/products') ?>">Products</a></li>
           <li class="breadcrumb-item active"><?php echo ucwords($product["prod_title"])?></li>
         </ol>
         <span class="header-text mb-2">Edit <?php echo ucwords($product["prod_title"]) ?> Details</span>

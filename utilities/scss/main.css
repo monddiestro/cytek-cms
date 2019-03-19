@@ -8010,6 +8010,9 @@ td.btn-collapse {
   img.admin-logo {
     width: 130px; } }
 @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .cytek-main .breadcrumb {
+    margin-top: 40px !important; }
+
   .navbar-nav .dropdown-menu {
     position: static;
     float: none; }

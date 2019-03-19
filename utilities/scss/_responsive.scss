@@ -114,6 +114,10 @@
 
 // Smartphones Landscape
 @include landscapeSm {
+
+    .cytek-main .breadcrumb {
+        margin-top: 40px !important;
+    }
     .navbar-nav .dropdown-menu {
         position: static;
         float: none;
