@@ -101,8 +101,8 @@
     }
 
   .footer-section {
-      .col-lg-4.pl-4 {
-          padding-left: 1rem !important;
+      .col-lg-5.pl-4 {
+          padding-left: 15px !important;
       }
   }  
   img.admin-logo {
@@ -118,7 +118,7 @@
         position: static;
         float: none;
     }
-    .footer-section .col-lg-8.pr-0 {
+    .footer-section .pr-0 {
         padding-right: 15px !important;
     }
     .container-fluid.pt-4 {
@@ -345,5 +345,11 @@
         max-height: 100%;
         overflow: auto;
     }
+
+    .footer-section {
+        .col-lg-5.pl-4 {
+            padding-left: 15px !important;
+        }
+    } 
     
 }
