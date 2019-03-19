@@ -249,6 +249,51 @@
           <div class="card">
             <div class="card-header">
               <div class="row">
+                <div class="col-10"><label>Careers</label></div>
+                <div class="col-2 text-right"><a data-toggle="modal" data-target="#career" class="text-primary"><span class="fas fa-plus"></span></a></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <table class="table tbl-mobile mb-0 ">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Date Posted</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($careers as $c): ?>
+                  <tr>
+                    <td><?php echo $c->title ?></td>
+                    <td><?php echo $c->description ?></td>
+                    <td><?php echo date('F d, Y',strtotime($c->date_created)); ?></td>
+                    <td>
+                    <span data-toggle="tooltip" data-placement="top" title="Edit">
+                      <a class="text-success" data-toggle="modal" data-target="#modify-career-<?php echo $c->career_id ?>">
+                        <i class="fa fa-edit mr-1"></i>
+                      </a>
+                    </span>
+                    <span data-toggle="tooltip" data-placement="top" title="Delete">
+                      <a class="text-danger" data-toggle="modal" data-target="#delete-career-<?php echo $c->career_id ?>">
+                        <i class="fa fa-trash"></i>
+                      </a>
+                    </span>
+                    </td>
+                  </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
                 <div class="col-10">
                   <label for="">Account</label>
                 </div>
@@ -537,3 +582,29 @@
   </div>
 </div>
 <?php endforeach ?>
+<!-- new career -->
+<div id="career" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <?php echo form_open(base_url('admin/add_career')); ?>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Job Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <input name="title" class="form-control" type="form-control" value="" placeholder="ex. Marketing Assistant"/>
+          <small>Job Title</small>
+        </div>
+        <div class="form-group">
+          <textarea name="description" placeholder="Add the job description here (accept HTML tags) .." class="form-control" rows="10"></textarea>
+          <small>Job Description</small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" name="button" class="btn btn-default">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <?php echo form_close(); ?>
+  </div>
+</div>
