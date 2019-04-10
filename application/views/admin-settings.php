@@ -236,7 +236,8 @@
               <div class="row">
                 <div class="col-sm-12">
                   <label for="">Description</label>
-                  <p></p>
+                  <br/>
+                  <?php echo $c->description ?>
                 </div>
               </div>
             </div>
@@ -568,7 +569,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-              <textarea class="form-control" name="description" id="" cols="30" rows="15" placeholder="ex. Add your company description here.."></textarea>
+              <textarea class="form-control" name="description" id="" cols="30" rows="15" placeholder="ex. Add your company description here.."><?php echo $c->description ?></textarea>
               <small>Company Description (accept html tag)</small>
             </div>
         </div>
@@ -608,3 +609,50 @@
     <?php echo form_close(); ?>
   </div>
 </div>
+<!-- modify and delete -->
+<?php foreach($careers as $c): ?>
+<div id="modify-career-<?php echo $c->career_id ?>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <?php echo form_open(base_url('admin/update_career')); ?>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Job Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <input type="hidden" name="career_id" value="<?php echo $c->career_id ?>">
+          <input name="title" class="form-control" type="form-control" value="<?php echo $c->title ?>" placeholder="ex. Marketing Assistant"/>
+          <small>Job Title</small>
+        </div>
+        <div class="form-group">
+          <textarea name="description" placeholder="Add the job description here (accept HTML tags) .." class="form-control" rows="10"><?php echo $c->description ?></textarea>
+          <small>Job Description</small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" name="button" class="btn btn-default">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <?php echo form_close(); ?>
+  </div>
+</div>
+<div id="delete-career-<?php echo $c->career_id ?>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <?php echo form_open(base_url('admin/update_career')); ?>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Job Post</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure to delete <strong><?php echo $c->title; ?></strong> job post? 
+      </div>
+      <div class="modal-footer">
+        <button type="submit" name="button" class="btn btn-default">Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+      </div>
+    </div>
+    <?php echo form_close(); ?>
+  </div>
+</div>
+<?php endforeach; ?>

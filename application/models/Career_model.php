@@ -9,4 +9,9 @@ class Career_model extends CI_Model
         $query = $this->db->get('careers_tbl');
         return $query->result();
     }
+
+    function drop_career($career_id) {
+        $this->db->where('career_id',$career_id);
+        $this->db->delete('careers_tbl');
+    }
 }

@@ -7,6 +7,7 @@ class About extends CI_Controller
         $this->load->model('category_model');
         $this->load->model('product_model');
         $this->load->model('page_model');
+        $this->load->model('career_model');
     }
 
     function index () {
@@ -21,6 +22,7 @@ class About extends CI_Controller
         $meta = $this->header_array($description,$keyword,$title,$img,base_url('about'));
 
         $data["company"] = $this->page_model->pull_company_data();
+        $data["careers"] = $this->career_model->pull_careers();
         $navigation["navs"] = $this->category_model->pull_subcategories();
         $navigation["page"] = "about";
         $footer["categories"] = $this->category_model->pull_categories();
