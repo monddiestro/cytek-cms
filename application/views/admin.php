@@ -102,9 +102,9 @@
                                     <tbody>
                                     <?php foreach($users as $u): ?>
                                     <tr>
-                                        <td data-title="Name" class="td-header">
+                                        <td data-title="Name" class="td-header"><div class="col-11">
                                         <img src="<?php echo empty($u->img) ? base_url('utilities/images/no-image.png') : base_url($u->img) ?>" class="rounded-circle mr-2" alt="" width="40" height="40"> 
-                                        <?php echo $u->f_name . " " . $u->l_name  ?>
+                                        <?php echo $u->f_name . " " . $u->l_name  ?></div><div class="col-1 mb-icon mt-2"><span><i class="fa fa-chevron-down "></i></span></div>
                                         </td>
                                         <td data-title="Email" ><?php echo $u->email ?></td>
                                         <td data-title="Contact" >09091234567</td>
