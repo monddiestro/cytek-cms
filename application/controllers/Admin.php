@@ -928,7 +928,8 @@ class Admin extends CI_Controller
       $this->load->view('admin-navigation',$nav);
       $this->load->view('admin-settings',$data);
       $this->load->view('script');
-      $this->load->view('footer');
+      $this->load->view('admin-settings-script');
+      $this->load->view('footer');      
     }
 
     function leads() {
