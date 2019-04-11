@@ -917,6 +917,7 @@ class Admin extends CI_Controller
       $data["company_settings"] = $this->page_model->pull_company_data();
       $data["about"] = $this->page_model->pull_page_meta(4);
       $data["careers"] = $this->career_model->pull_careers();
+      $data["user"] = $this->user_model->pull_user_details($this->session->userdata('user_id'));
       // view
       $this->load->view('header',$header);
       $this->load->view('admin-navigation',$nav);

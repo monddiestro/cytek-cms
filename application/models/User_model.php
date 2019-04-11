@@ -8,6 +8,12 @@ class User_model extends CI_Model
         return $query->num_rows();
     }
 
+    function pull_user_details($user_id) {
+        $this->db->where('user_id',$user_id);
+        $query = $this->db->get('user_tbl');
+        return $query->result();
+    }
+
     function pull_userdata($email,$password) {
         $this->db->where('email',$email);
         $this->db->where('password',md5($password));

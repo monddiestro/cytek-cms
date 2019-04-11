@@ -290,21 +290,55 @@
           </div>
         </div>
       </div>
-      <div class="row mt-3">
+      <div class="row mt-5">
+        <div class="col-sm-12">
+          <h6 class="fw-bold">Account Settings</h6>
+        </div>
+      </div>
+      <div class="row mt-3 mb-4">
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header">
               <div class="row">
                 <div class="col-10">
-                  <label for="">Account</label>
+                  <label for="">Personal Info</label>
                 </div>
                 <div class="col-2 text-right">
+                  <a data-toggle="modal" data-target="#updatepwd" class="text-primary"><span class="fas fa-shield-alt"></span></a>
                   <a data-toggle="modal" data-target="#account" class="text-success"><span class="fa fa-edit"></span></a>
                 </div>
               </div>
             </div>
             <div class="card-body">
-              
+              <?php foreach($user as $u): ?>
+              <div class="row">
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <img style="width:100%" src="<?php echo empty($u->img) ? base_url('utilities/images/no-image.png') : base_url($u->img) ?>" alt="">
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" value="<?php echo $u->f_name ?>" name="f_name" placeholder="ex. Juan"/>
+                  </div>
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" value="<?php echo $u->l_name ?>" name="l_name" placeholder="ex. Dela Cruz"/>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" value="<?php echo $u->email ?>" name="email" placeholder="ex. juandelacruz@email.com"/>
+                  </div>
+                  <div class="form-group">
+                    <label>Contact Number</label>
+                    <input type="text" class="form-control" value="<?php echo $u->contact ?>" name="contact" placeholder="ex. Dela Cruz"/>
+                  </div>
+                </div>
+              </div>
+              <?php endforeach; ?>
             </div>
           </div>
         </div>
@@ -313,6 +347,43 @@
     </div>
   </div>
 </main>
+<div id="account" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <?php echo form_open_multipart(base_url('admin/update_user')); ?>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Slider Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <input name="title" class="form-control" type="form-control" value="" placeholder="ex. Buy one take one"/>
+          <small>Title caption over slider</small>
+        </div>
+        <div class="form-group">
+          <textarea name="description" placeholder="Add your slider description here .." class="form-control" rows="10"></textarea>
+          <small>Subtext over the slider</small>
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Add URL for the slider" name="url" class="form-control">
+          <small>Landing page for the slider promotion</small>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Select Image</label>
+          <br/>
+          <label class="btn btn-default shadow" id="btn_browse">
+              <input type="file" name="meta_img" accept="image/*" style="display:none;">
+              BROWSE
+          </label>&nbsp;&nbsp;<span class="text-muted filename small">No image selected</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" name="button" class="btn btn-default">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <?php echo form_close(); ?>
+  </div>
+</div>
 <!-- new slider modal -->
 <div id="new-slider" class="modal fade" role="dialog">
   <div class="modal-dialog">

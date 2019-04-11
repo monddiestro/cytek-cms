@@ -31,7 +31,8 @@
                                 </div>
                                 <div id="collapse<?php echo $c->career_id ?>" class="panel-collapse collapse" style="">
                                     <div class="card-body">
-                                        <?php echo $description ?>
+                                        <?php echo $c->description ?>
+                                        <br/>
                                         <br/>
                                         <small>Date Posted: <?php echo date('F d, Y') ?></small>
                                     </div>
