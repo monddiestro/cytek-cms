@@ -11,6 +11,8 @@ class Home extends CI_Controller
         $this->load->model('article_model');
     }
     function index() {
+
+        $status = $this->page_model->pull_webstat();
         $metas = $this->page_model->pull_page_meta(1);
 
         foreach ($metas as $meta) {
@@ -45,9 +47,9 @@ class Home extends CI_Controller
 
         // load view
         $this->load->view('header',$meta);
-        $this->load->view('navigation',$navigation);
-        $this->load->view('home',$body_data);
-        $this->load->view('pre-footer',$footer);
+        ($status == "0") ? '' : $this->load->view('navigation',$navigation);
+        ($status == "0") ? $this->load->view('construction') : $this->load->view('home',$body_data);
+        ($status == "0") ? '' :  $this->load->view('pre-footer',$footer);
         $this->load->view('script');
         $this->load->view('footer');
     }

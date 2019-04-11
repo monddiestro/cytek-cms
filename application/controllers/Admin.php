@@ -13,6 +13,11 @@ class Admin extends CI_Controller
       $this->load->model('career_model');    
     }
 
+    function change_stat() {
+      $id = $this->input->get('id');
+      $this->page_model->update_webstat($id);
+    }
+
     function check_session() {
       if(empty($this->session->userdata('user_id'))) {
         redirect(base_url('admin'));

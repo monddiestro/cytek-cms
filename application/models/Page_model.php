@@ -75,4 +75,15 @@ class Page_model extends CI_Model
         $query = $this->db->get('company_tbl');
         return $query->result();
     }
+
+    function pull_webstat() {
+        $query = $this->db->get('webstat_tbl');
+        $query = $query->row();
+        return $query->status;
+    }
+
+    function update_webstat($id) {
+        $this->db->set('status', $id);
+        $this->db->update('webstat_tbl');
+    }
 }
