@@ -384,6 +384,34 @@
     <?php echo form_close(); ?>
   </div>
 </div>
+<!-- update password -->
+<div id="updatepwd" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <?php echo form_open_multipart(base_url('admin/update_user')); ?>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Update Password</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <input name="title" class="form-control" type="form-control" value="" placeholder="Current Password"/>
+        </div>
+        <div class="form-group">
+        <input name="title" class="form-control" type="form-control" id="newpwd" value="" placeholder="New Password"/>
+        </div>
+        <div class="form-group">
+          <input name="title" class="form-control" type="form-control" id="confirm" value="" placeholder="Confirm Password"/>
+          <span id="match_password" style="font-size:12px;display:none;" class="text-danger">Password not match</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" name="button" class="btn btn-default">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <?php echo form_close(); ?>
+  </div>
+</div>
 <!-- new slider modal -->
 <div id="new-slider" class="modal fade" role="dialog">
   <div class="modal-dialog">
