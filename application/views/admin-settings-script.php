@@ -1,32 +1,33 @@
 <script type="text/javascript">
-    var notif = $('#match_password');
+    var alert = $('#match_password');
     var match = false;
-    var typingTimer;                //timer identifier
-    var doneTypingInterval = 1000;
-
-    $('#confirm').on('keyup', function() {
-        var new_pwd = $('#newpwd').val();
+    var typingTimer; 
+    var _changeInterval = null;               //timer identifier
+    var doneTypingInterval = 100;  //time in ms, 5 second for example
+    
+    $('#confirm').on('keyup',function(){
+      var new_pwd = $('#newpwd').val();
+      clearInterval(_changeInterval);
+      _changeInterval = setInterval(function(){
         clearInterval(_changeInterval);
-        _changeInterval = setInterval(function(){
-            clearInterval(_changeInterval);
-            var confirm_pwd = $('#confirm').val();
-            password_match(new_pwd,confirm_pwd);
-        },100);
+        var confirm_pwd = $('#confirm').val();
+        password_match(new_pwd,confirm_pwd);
+      },100);
     });
 
-    funcion password_match(new_pwd,confirm_pwd) {
+    function password_match(new_pwd,confirm_pwd) {
         if(new_pwd == confirm_pwd) {
-            match = true;
-            notif.removeClass('text-danger');
-            notif.addClass('text-success')
-            notif.html('Pasword match');
-            notif.show(); 
+        match = true;
+        alert.removeClass('text-danger');
+        alert.addClass('text-success')
+        alert.html('Pasword match');
+        alert.show();
         } else {
-            match = false;
-            notif.removeClass('text-success');
-            notif.addClass('text-danger')
-            notif.html('Pasword did not match');
-            notif.show();  
+        match = false;
+        alert.removeClass('text-success');
+        alert.addClass('text-danger')
+        alert.html('Pasword did not match');
+        alert.show();
         }
     }
 </script>
