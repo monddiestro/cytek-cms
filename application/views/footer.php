@@ -49,6 +49,8 @@
     }).on('hidden.bs.collapse', function(){
     $(this).parent().find(".fa-minus-circle").removeClass("fa-minus-circle").addClass("fa-plus-circle");
   });
+
+ 
 </script>
 </body>
 </html>

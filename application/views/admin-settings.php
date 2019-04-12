@@ -394,14 +394,14 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <input name="title" class="form-control" type="form-control" value="" placeholder="Current Password"/>
+          <input name="title" class="form-control" type="text" value="" placeholder="Current Password"/>
         </div>
         <div class="form-group">
-        <input name="title" class="form-control" type="form-control" id="newpwd" value="" placeholder="New Password"/>
+        <input name="title" class="form-control" type="password" id="newpwd" value="" placeholder="New Password"/>
         </div>
         <div class="form-group">
-          <input name="title" class="form-control" type="form-control" id="confirm" value="" placeholder="Confirm Password"/>
-          <span id="match_password" style="font-size:12px;display:none;" class="text-danger">Password not match</span>
+          <input name="title" class="form-control" type="password" id="confirm" value="" placeholder="Confirm Password"/>
+          <span id="match_password" style="font-size:12px;display:none;" class="text-danger">Password did not match</span>
         </div>
       </div>
       <div class="modal-footer">
