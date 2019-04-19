@@ -394,20 +394,20 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <input name="current_pwd" id="current_pwd" class="form-control" type="password" value="" placeholder="Current Password"/>
+          <input name="current_pwd" id="current_pwd" class="form-control" type="password" value="" placeholder="Current Password" required/>
         </div>
         <div id="password_change" style="display:none">
           <div class="form-group">
-            <input name="title" class="form-control" type="password" id="newpwd" value="" placeholder="New Password"/>
+            <input name="title" class="form-control" type="password" id="newpwd" value="" placeholder="New Password" required/>
           </div>
           <div class="form-group">
-            <input name="password" class="form-control" type="password" id="#btn_pwd_save" value="" placeholder="Confirm Password"/>
+            <input name="password" class="form-control" type="password" id="confirm" value="" placeholder="Confirm Password" required/>
             <span id="match_password" style="font-size:12px;display:none;" class="text-danger">Password not match</span>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" name="button" class="btn btn-default" disabled>Save</button>
+        <button type="submit" id="btn_pwd_save" name="button" class="btn btn-default" disabled>Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
