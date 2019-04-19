@@ -142,7 +142,7 @@
                       <label for="">Message</label>
                       <textarea name="message" id="inquire-message" rows="5" class="form-control" placeholder="Your message to us"></textarea>
                     </div>
-                    <input type="hidden" value="<?php $prod_title ?> Product Page" id="inquire-source">
+                    <input type="hidden" value="<?php echo $prod_title ?> Product Page" id="inquire-source">
                     <button type="submit" id="inquire-send" class="btn btn-primary btn-lg btn-block">SEND INQUIRY</button>
                 </div>
             </div>

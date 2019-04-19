@@ -904,7 +904,7 @@ class Admin extends CI_Controller
       $this->user_model->push_user_update(array('password' => md5($password)),$user_id);
       $result_data = array(
         'class' => "success",
-        'message' => "<strong>Success!</strong> Your password is up to date."
+        'message' => "<strong>Success!</strong> Your password is  up to date."
       );
       $this->session->set_flashdata('result',$result_data);
       redirect($referer);

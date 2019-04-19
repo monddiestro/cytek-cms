@@ -387,27 +387,25 @@
 <!-- update password -->
 <div id="updatepwd" class="modal fade" role="dialog">
   <div class="modal-dialog">
-    <?php echo form_open_multipart(base_url('admin/update_password')); ?>
+    <?php echo form_open_multipart(base_url('admin/update_user')); ?>
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Update Password</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <input name="current_pwd" id="current_pwd" class="form-control" type="password" value="" placeholder="Current Password"/>
+          <input name="title" class="form-control" type="form-control" value="" placeholder="Current Password"/>
         </div>
-        <div id="password_change" style="display:none">
-          <div class="form-group">
-            <input name="new" class="form-control" type="password" id="newpwd" value="" placeholder="New Password"/>
-          </div>
-          <div class="form-group">
-            <input name="password" class="form-control" type="password" id="confirm" value="" placeholder="Confirm Password"/>
-            <span id="match_password" style="font-size:12px;display:none;" class="text-danger">Password did not match</span>
-          </div>
+        <div class="form-group">
+        <input name="title" class="form-control" type="form-control" id="newpwd" value="" placeholder="New Password"/>
+        </div>
+        <div class="form-group">
+          <input name="title" class="form-control" type="form-control" id="confirm" value="" placeholder="Confirm Password"/>
+          <span id="match_password" style="font-size:12px;display:none;" class="text-danger">Password not match</span>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" id="btn_pwd_save" name="button" class="btn btn-default" disabled>Save</button>
+        <button type="submit" name="button" class="btn btn-default">Save</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

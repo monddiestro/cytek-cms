@@ -65,7 +65,7 @@
                             <img src="<?php echo  empty($this->session->userdata('image')) ? base_url('utilities/images/no-image.png') : base_url($this->session->userdata('image')) ?>" class="rounded-circle mr-1" alt="" width="40" height="40">
                             </div>                
                             <div class="media-body mt-2">
-                              <span class="fw-bold">Mond</span>
+                              <span class="fw-bold"><?php echo $this->session->userdata('f_name') ?></span>
                               <span class="d-block fw-light text-white small" style="line-height:0.8;">System Admin</span>                                
                             </div>                
                             <span class="d-block py-2 pl-2 pr-2 mt-2"><i class="fa fa-sign-out-alt fa-lg"></i> </span>   
