@@ -858,7 +858,6 @@ class Admin extends CI_Controller
       $l_name = $this->input->post('l_name');
       $email = $this->input->post('email');
       $contact = $this->input->post('contact');
-      $password = $this->input->post('password');
       $img = "";
       $config["upload_path"] = './utilities/images/users';
       $config["allowed_types"] = 'gif|jpg|png';
@@ -885,7 +884,6 @@ class Admin extends CI_Controller
         'l_name' => $l_name,
         'email' => $email,
         'contact' => $contact,
-        'password' => md5($password),
       );
 
       $this->user_model->push_user_update($data,$user_id);
