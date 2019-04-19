@@ -387,7 +387,7 @@
 <!-- update password -->
 <div id="updatepwd" class="modal fade" role="dialog">
   <div class="modal-dialog">
-    <?php echo form_open_multipart(base_url('admin/update_user')); ?>
+    <?php echo form_open_multipart(base_url('admin/update_password')); ?>
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Update Password</h4>
@@ -401,7 +401,7 @@
             <input name="title" class="form-control" type="password" id="newpwd" value="" placeholder="New Password"/>
           </div>
           <div class="form-group">
-            <input name="password" class="form-control" type="password" id="confirm" value="" placeholder="Confirm Password"/>
+            <input name="password" class="form-control" type="password" id="#btn_pwd_save" value="" placeholder="Confirm Password"/>
             <span id="match_password" style="font-size:12px;display:none;" class="text-danger">Password not match</span>
           </div>
         </div>
