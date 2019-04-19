@@ -897,6 +897,27 @@ class Admin extends CI_Controller
       redirect($referer);
     }
 
+    function update_password() {
+      $referer = $this->input->server('HTTP_REFERER');
+      $password = $this->input->post('password');
+      $user_id = $this->session->userdata('user_id');
+      $this->user_model->push_user_update(array('password' => md5($password)),$user_id);
+      $result_data = array(
+        'class' => "success",
+        'message' => "<strong>Success!</strong> Your password is up to date."
+      );
+      $this->session->set_flashdata('result',$result_data);
+      redirect($referer);
+    }
+
+    function check_password() {
+      $password = $this->input->post('password');
+      $user_id = $this->input->post('user_id');
+      $result = $this->user_model->pull_password($password,$user_id);
+
+      echo $result;
+    }
+
     function drop_user() {
       $referer = $this->input->server('HTTP_REFERER');
       $user_id = $this->input->post('user_id');

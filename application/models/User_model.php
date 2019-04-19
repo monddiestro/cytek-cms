@@ -49,4 +49,11 @@ class User_model extends CI_Model
         $this->db->delete('user_tbl');
     }
 
+    function pull_password($password,$user_id) {
+        $this->db->where('password', md5($password));
+        $this->db->where('user_id',$user_id);
+        $query = $this->db->get('user_tbl');
+        return $query->num_rows();
+    }
+
 }
